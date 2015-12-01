@@ -1,0 +1,7 @@
+mtd_contratacion_empleados_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDContratacionEmpleadosBundle:Default:index }
+    
+mtd_proyecto_registro:
+    path:     /proyecto/registro
+    defaults: {_controller: MTDContratacionEmpleadosBundle:RegistroProyecto:registro }

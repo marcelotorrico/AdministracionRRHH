@@ -1,0 +1,7 @@
+mtd_contratacion_empleados:
+    resource: "@MTDContratacionEmpleadosBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
