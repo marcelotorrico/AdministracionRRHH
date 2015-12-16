@@ -5,3 +5,11 @@ mtd_contratacion_empleados_homepage:
 mtd_proyecto_registro:
     path:     /proyecto/registro
     defaults: {_controller: MTDContratacionEmpleadosBundle:RegistroProyecto:registro }
+
+mtd_cliente_registro:
+    path:     /registro/cliente
+    defaults: {_controller: MTDContratacionEmpleadosBundle:RegistroCliente:registroCliente }
+
+mtd_tipoProyecto_registro:
+    path:     /registro/tipoProyecto
+    defaults: {_controller: MTDContratacionEmpleadosBundle:TipoProyecto:registroTipoProyecto }

@@ -55,7 +55,7 @@ class Proyecto
      * @return integer
      */
     private $cliente;
-    public function setArticle(\Mdw\BlogBundle\Entity\Cliente $cliente)
+    public function setCliente(\MTD\ContratacionEmpleadosBundle\Entity\Cliente $cliente)
     {
         $this->cliente = $cliente;
     }
@@ -71,7 +71,7 @@ class Proyecto
      * @return integer
      */
     private $tipo_proyecto;
-    public function setTipo_Proyecto(\Mdw\BlogBundle\Entity\Tipo_Proyecto $tipo_proyecto)
+    public function setTipoProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Tipo_Proyecto $tipo_proyecto)
     {
         $this->tipo_proyecto = $tipo_proyecto;
     }

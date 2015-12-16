@@ -42,7 +42,7 @@ class Tipo_Proyecto
      *
      * @param \MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto
      *
-     * @return Cliente
+     * @return Tipo_Proyecto
      */
     public function addProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto)
     {

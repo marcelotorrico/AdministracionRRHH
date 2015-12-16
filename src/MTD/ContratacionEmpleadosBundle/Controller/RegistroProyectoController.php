@@ -5,6 +5,10 @@ namespace MTD\ContratacionEmpleadosBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\ContratacionEmpleadosBundle\Entity\Proyecto;
 use MTD\ContratacionEmpleadosBundle\Form\ProyectoType;
+use MTD\ContratacionEmpleadosBundle\Entity\Cliente;
+use MTD\ContratacionEmpleadosBundle\Form\ClienteType;
+use MTD\ContratacionEmpleadosBundle\Entity\Tipo_Proyecto;
+use MTD\ContratacionEmpleadosBundle\Form\Tipo_ProyectoType;
 use Symfony\Component\HttpFoundation\Request;
 
 class RegistroProyectoController extends Controller
@@ -16,36 +20,46 @@ class RegistroProyectoController extends Controller
         $form = $this->createForm(new ProyectoType(),$proyecto);
         $form->handleRequest($request);
         
+        $cliente = new Cliente();
+        $formularioCliente = $this->createForm(new ClienteType(),$cliente);
+        $formularioCliente->handleRequest($request);
+        
+        $tipoProyecto = new Tipo_Proyecto();
+        $formularioTipoProyecto = $this->createForm(new Tipo_ProyectoType(),$tipoProyecto);
+        $formularioTipoProyecto->handleRequest($request);
+        
         if($form->isValid()){
-            /*$usuario = $form->get('usuario')->getData();
-            $correo = $form->get('correo')->getData();
-            if(!$this->validarUsuariosRepetidos($usuario, $correo)){
+            $nombreProyecto = $form->get('nombre')->getData();
+            if(!$this->validarNombreRepetido($nombreProyecto)){
                 $this->addFlash(
                 'notice',
-                'El usuario ya fue registrado'
+                'El nombre del proyecto ya fue registrado, por favor elija otro.'
                 );
-                return $this->redirect($this->generateUrl('mtd_registro'));
+                return $this->redirect($this->generateUrl('mtd_proyecto_registro'));
             }else{
                 $this->addFlash(
                     'notice',
-                    'Se registro correctamente el usuario'
-                );*/
-                //$plainPassword = 'ryanpass';
-                //$encoder = $this->container->get('security.password_encoder');
-                //$encoded = $encoder->encodePassword($estudiante, $plainPassword);
+                    'Se registro correctamente el proyecto'
+                );
 
-                //$estudiante->setContrasena($encoded);
-                
                 $em = $this->getDoctrine()->getManager();
-                
-                $em->persist($proyecto);
-                //$em->persist($rol);             
+                $em->persist($proyecto);             
                 $em->flush();
-               
+
                 return $this->redirect($this->generateUrl('mtd_proyecto_registro'));
-            //}
+            }
         }
         
-        return $this->render('MTDContratacionEmpleadosBundle:Proyecto:registro.html.twig', array("form"=>$form->createView()));
+        return $this->render('MTDContratacionEmpleadosBundle:Proyecto:registro.html.twig', array("form"=>$form->createView(), "formularioCliente"=>$formularioCliente->createView(), "formularioTipoProyecto"=>$formularioTipoProyecto->createView()));
+    }
+    
+    public function validarNombreRepetido($nombre){
+        $res = false;
+        $em = $this->getDoctrine()->getEntityManager();
+        $nombreRegistrado = $em->getRepository('MTDContratacionEmpleadosBundle:Proyecto')->findByNombre($nombre);
+        if(!$nombreRegistrado){
+            $res = true;
+        }
+        return $res;
     }
 }

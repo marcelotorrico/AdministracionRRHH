@@ -17,10 +17,29 @@ class ProyectoType extends AbstractType
         $builder
             ->add('nombre')
             ->add('montoContrato')
-            ->add('plazoEntrega')
+            ->add('plazoEntrega', 'date', [
+                        'widget' => 'single_text',
+                        'format' => 'dd-MM-yyyy',
+                        'attr' => [
+                            'data-provide' => 'datepicker',
+                            'data-date-format' => 'dd-mm-yyyy'
+                        ]
+                    ])
             ->add('lugar')
-            ->add('cliente')
-            ->add('tipo_proyecto')
+            ->add('cliente', 'entity', array(
+                'class' => 'MTDContratacionEmpleadosBundle:Cliente',
+                'choice_label' => function ($cliente) {
+                    return $cliente->nombreCompleto();
+                },
+                'empty_value' => 'Seleccione un cliente'
+            ))
+            ->add('tipo_proyecto', 'entity', array(
+                'class' => 'MTDContratacionEmpleadosBundle:Tipo_Proyecto',
+                'choice_label' => function ($tipo) {
+                    return $tipo->getNombre();
+                },
+                'empty_value' => 'Seleccione un tipo de proyecto'
+            ))
         ;
     }
     

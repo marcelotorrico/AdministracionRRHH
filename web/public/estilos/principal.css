@@ -6,3 +6,15 @@
     color: #fff;
     padding: 1px 0;
 }
+
+.container .addonGroup{
+    width: 170px;
+}
+
+.container .inputGroup{
+    width: 370px;
+}
+
+.container .inputGroupTipo{
+    width: 320px;
+}

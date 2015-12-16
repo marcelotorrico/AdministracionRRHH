@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: '5432'
+    database_name: AdministracionRRHH
+    database_user: postgres
+    database_password: postgres
+    mailer_transport: null
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    secret: AdministracionRRHH
+    database_driver: pdo_pgsql
+    database_path: null

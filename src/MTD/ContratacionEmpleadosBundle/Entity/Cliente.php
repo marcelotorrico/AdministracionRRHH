@@ -3,6 +3,7 @@
 namespace MTD\ContratacionEmpleadosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cliente
@@ -25,6 +26,11 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=100)
+     * @Assert\NotNull(message="Debe escribir un nombre")
+     * @Assert\Regex(
+     *      pattern="/[A-Z]{1}[a-zñáéíóú]{2,20}$/",
+     *      match=true
+     * )
      */
     private $nombre;
 
@@ -32,6 +38,11 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="apellido", type="string", length=100)
+     * @Assert\NotNull(message="Debe escribir un apellido")
+     * @Assert\Regex(
+     *      pattern="/[A-Z]{1}[a-zñáéíóú]{2,20}\s?([A-Z]{1}[a-záéíóú]{2,20})?/",
+     *      match=true
+     * )
      */
     private $apellido;
 
@@ -39,6 +50,7 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="direccion", type="string", length=100)
+     * @Assert\NotNull(message="Debe escribir una direccion")
      */
     private $direccion;
 
@@ -46,6 +58,17 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="telefono", type="string", length=100)
+     * @Assert\NotNull(message="Debe escribir un telefono")
+     * @Assert\Length(
+     *      min = "7",
+     *      max = "8",
+     *      minMessage = "Tu numero de telefono por lo menos debe tener {{ limit }} digitos",
+     *      maxMessage = "Tu numero de telefono no puede tener más de {{ limit }} digitos"
+     * )
+     * @Assert\Regex(
+     *      pattern="/^(([4][0-9]{6,7})|([7|6][0-9]{7}))$/",
+     *      match=true
+     * )
      */
     private $telefono;
 
@@ -53,6 +76,7 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="nit", type="string", length=100)
+     * @Assert\NotNull(message="Debe escribir un NIT")
      */
     private $nit;
 
@@ -258,6 +282,12 @@ class Cliente
     public function getBanco()
     {
         return $this->banco;
+    }
+    
+    public function nombreCompleto()
+    {
+        $nombreCompleto = $this->nombre." ".$this->apellido;
+        return $nombreCompleto;
     }
 
 }
