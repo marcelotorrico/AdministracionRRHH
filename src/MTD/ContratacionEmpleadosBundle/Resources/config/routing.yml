@@ -13,3 +13,11 @@ mtd_cliente_registro:
 mtd_tipoProyecto_registro:
     path:     /registro/tipoProyecto
     defaults: {_controller: MTDContratacionEmpleadosBundle:TipoProyecto:registroTipoProyecto }
+
+mtd_lista_proyecto:
+    path:     /proyecto/lista
+    defaults: {_controller: MTDContratacionEmpleadosBundle:ListaProyecto:lista }
+    
+mtd_editar_proyecto:
+    path:     /proyecto/editar/{id}
+    defaults: {_controller: MTDContratacionEmpleadosBundle:EditaProyecto:editar }

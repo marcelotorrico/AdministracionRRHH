@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+        
+    <section class="jumbotron">
+        <div class="container ">
+            <h2>Lista de Proyectos</h2>
+        </div>
+    </section>
+    <div class ="container">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Proyecto</th>
+                            <th>Monto del contrato</th>
+                            <th>Plazo de Entrega</th>
+                            <th>Lugar</th>
+                            <th>Cliente</th>
+                            <th>Tipo de Proyecto</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for proyecto in proyectos %}
+                            <tr>
+                                <td>{{ proyecto.nombre }}</td>
+                                <td><strong>{{ proyecto.montoContrato }}</strong></td>
+                                <td>{{ proyecto.plazoEntrega|date('d-m-Y') }}</td>
+                                <td>{{ proyecto.lugar }}</td>
+                                <td>{{ proyecto.cliente.nombre }} {{ proyecto.cliente.apellido }}</td>
+                                <td>{{ proyecto.tipoProyecto.nombre }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-info">
+                                        Ver
+                                    </a>
+                                    <a href="{{ path('mtd_editar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-primary">
+                                        Editar
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger btn-delete">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

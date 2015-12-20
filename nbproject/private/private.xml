@@ -3,16 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Resources/config/routing.yml</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Form/Tipo_ProyectoType.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Resources/views/Proyecto/registro.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Entity/Proyecto.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Entity/Tipo_Proyecto.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/estilos/principal.css</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/guardar/guardarCliente.js</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/guardar/guardarTipoProyecto.js</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Form/ProyectoType.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Controller/RegistroClienteController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Entity/Tipo_Proyecto.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Form/ClienteType.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Entity/Cliente.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Form/ProyectoType.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Controller/TipoProyectoController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Controller/RegistroProyectoController.php</file>
         </group>
     </open-files>

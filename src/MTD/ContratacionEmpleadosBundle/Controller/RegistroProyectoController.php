@@ -46,7 +46,7 @@ class RegistroProyectoController extends Controller
                 $em->persist($proyecto);             
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('mtd_proyecto_registro'));
+                return $this->redirect($this->generateUrl('mtd_lista_proyecto'));
             }
         }
         

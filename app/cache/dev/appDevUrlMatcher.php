@@ -150,6 +150,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/proyecto')) {
+            // mtd_lista_proyecto
+            if ($pathinfo === '/proyecto/lista') {
+                return array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\ListaProyectoController::listaAction',  '_route' => 'mtd_lista_proyecto',);
+            }
+
+            // mtd_editar_proyecto
+            if (0 === strpos($pathinfo, '/proyecto/editar') && preg_match('#^/proyecto/editar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_editar_proyecto')), array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\EditaProyectoController::editarAction',));
+            }
+
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {

@@ -67,18 +67,18 @@ class Proyecto
 
     /**
      * @ORM\ManyToOne(targetEntity="Tipo_Proyecto", inversedBy="proyecto")
-     * @ORM\JoinColumn(name="id_proyecto", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_tipo_proyecto", referencedColumnName="id")
      * @return integer
      */
-    private $tipo_proyecto;
-    public function setTipoProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Tipo_Proyecto $tipo_proyecto)
+    private $tipoProyecto;
+    public function setTipoProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Tipo_Proyecto $tipoProyecto)
     {
-        $this->tipo_proyecto = $tipo_proyecto;
+        $this->tipoProyecto = $tipoProyecto;
     }
 
     public function getTipoProyecto()
     {
-        return $this->tipo_proyecto;
+        return $this->tipoProyecto;
     }
     
     /**
