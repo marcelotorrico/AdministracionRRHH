@@ -82,6 +82,13 @@ class Proyecto
     }
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean")
+     */
+    private $activo;
+    
+    /**
      * Get id
      *
      * @return integer
@@ -185,5 +192,29 @@ class Proyecto
     public function getLugar()
     {
         return $this->lugar;
+    }
+    
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Proyecto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 }

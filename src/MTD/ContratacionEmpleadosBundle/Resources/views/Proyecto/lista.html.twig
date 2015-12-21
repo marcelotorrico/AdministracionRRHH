@@ -29,29 +29,36 @@
                     </thead>
                     <tbody>
                         {% for proyecto in proyectos %}
-                            <tr>
-                                <td>{{ proyecto.nombre }}</td>
-                                <td><strong>{{ proyecto.montoContrato }}</strong></td>
-                                <td>{{ proyecto.plazoEntrega|date('d-m-Y') }}</td>
-                                <td>{{ proyecto.lugar }}</td>
-                                <td>{{ proyecto.cliente.nombre }} {{ proyecto.cliente.apellido }}</td>
-                                <td>{{ proyecto.tipoProyecto.nombre }}</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-info">
-                                        Ver
-                                    </a>
-                                    <a href="{{ path('mtd_editar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-primary">
-                                        Editar
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete">
-                                        Eliminar
-                                    </a>
-                                </td>
-                            </tr>
+                            {% if proyecto.activo == true %}
+                                <tr>
+                                    <td>{{ proyecto.nombre }}</td>
+                                    <td><strong>{{ proyecto.montoContrato }}</strong></td>
+                                    <td>{{ proyecto.plazoEntrega|date('d-m-Y') }}</td>
+                                    <td>{{ proyecto.lugar }}</td>
+                                    <td>{{ proyecto.cliente.nombre }} {{ proyecto.cliente.apellido }}</td>
+                                    <td>{{ proyecto.tipoProyecto.nombre }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-info">
+                                            Ver
+                                        </a>
+                                        <a href="{{ path('mtd_editar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-primary">
+                                            Editar
+                                        </a>
+                                        <a href="{{ path('mtd_eliminar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
+                                            Eliminar
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
                         {% endfor %}
                     </tbody>    
                 </table>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/eliminar/eliminarProyecto.js') }}"></script>
 {% endblock %}

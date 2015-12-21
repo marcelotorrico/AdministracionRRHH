@@ -42,6 +42,8 @@ class RegistroProyectoController extends Controller
                     'Se registro correctamente el proyecto'
                 );
 
+                $proyecto->setActivo("true");
+                
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($proyecto);             
                 $em->flush();
@@ -56,7 +58,10 @@ class RegistroProyectoController extends Controller
     public function validarNombreRepetido($nombre){
         $res = false;
         $em = $this->getDoctrine()->getEntityManager();
-        $nombreRegistrado = $em->getRepository('MTDContratacionEmpleadosBundle:Proyecto')->findByNombre($nombre);
+        $nombreRegistrado = $em->getRepository('MTDContratacionEmpleadosBundle:Proyecto')->findBy(array(
+                                                                                            'nombre' => $nombre,
+                                                                                            'activo' => 'true'
+                                                                                            ));
         if(!$nombreRegistrado){
             $res = true;
         }

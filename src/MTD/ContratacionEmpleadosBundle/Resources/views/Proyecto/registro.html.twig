@@ -8,6 +8,10 @@
 {% block body %}
     {{ parent() }}
     
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
     <section class="jumbotron">
         <div class="container">
             <h2>Agregar Proyecto</h2>

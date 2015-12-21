@@ -60,6 +60,7 @@ class EditaProyectoController extends Controller
                 $proyectoSeleccionado->setLugar($lugar);
                 $proyectoSeleccionado->setCliente($clienteProyecto);
                 $proyectoSeleccionado->setTipoProyecto($tipo);
+                $proyectoSeleccionado->setActivo("true");
                 
                 $em->persist($proyectoSeleccionado);             
                 $em->flush();
@@ -74,7 +75,10 @@ class EditaProyectoController extends Controller
     public function validarNombreRepetido($nombre, $nombreActual){
         $res = false;
         $em = $this->getDoctrine()->getEntityManager();
-        $nombreRegistrado = $em->getRepository('MTDContratacionEmpleadosBundle:Proyecto')->findByNombre($nombre);
+        $nombreRegistrado = $em->getRepository('MTDContratacionEmpleadosBundle:Proyecto')->findBy(array(
+                                                                                            'nombre' => $nombre,
+                                                                                            'activo' => 'true'
+                                                                                            ));
         if(!$nombreRegistrado || $nombre == $nombreActual){
             $res = true;
         }

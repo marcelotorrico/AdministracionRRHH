@@ -56,9 +56,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\ListaProyectoController::listaAction',  '_route' => 'mtd_lista_proyecto',);
             }
 
-            // mtd_editar_proyecto
-            if (0 === strpos($pathinfo, '/proyecto/editar') && preg_match('#^/proyecto/editar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_editar_proyecto')), array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\EditaProyectoController::editarAction',));
+            if (0 === strpos($pathinfo, '/proyecto/e')) {
+                // mtd_editar_proyecto
+                if (0 === strpos($pathinfo, '/proyecto/editar') && preg_match('#^/proyecto/editar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_editar_proyecto')), array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\EditaProyectoController::editarAction',));
+                }
+
+                // mtd_eliminar_proyecto
+                if (0 === strpos($pathinfo, '/proyecto/eliminar') && preg_match('#^/proyecto/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_eliminar_proyecto')), array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\EliminaProyectoController::eliminarAction',));
+                }
+
             }
 
         }

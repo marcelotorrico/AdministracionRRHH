@@ -21,3 +21,7 @@ mtd_lista_proyecto:
 mtd_editar_proyecto:
     path:     /proyecto/editar/{id}
     defaults: {_controller: MTDContratacionEmpleadosBundle:EditaProyecto:editar }
+    
+mtd_eliminar_proyecto:
+    path:     /proyecto/eliminar/{id}
+    defaults: {_controller: MTDContratacionEmpleadosBundle:EliminaProyecto:eliminar }
