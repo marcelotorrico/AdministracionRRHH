@@ -1,3 +1,7 @@
+mtd_categorias_trabajo:
+    resource: "@MTDCategoriasTrabajoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mtd_contratacion_empleados:
     resource: "@MTDContratacionEmpleadosBundle/Resources/config/routing.yml"
     prefix:   /

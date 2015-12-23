@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new MTD\ContratacionEmpleadosBundle\MTDContratacionEmpleadosBundle(),
+            new MTD\CategoriasTrabajoBundle\MTDCategoriasTrabajoBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

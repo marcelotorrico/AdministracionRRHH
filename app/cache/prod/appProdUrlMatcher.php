@@ -27,6 +27,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
+        // mtd_categorias_trabajo_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categorias_trabajo_homepage')), array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        // mtd_categoria_crear
+        if ($pathinfo === '/categoria/crear') {
+            return array (  '_controller' => 'MTDCategoriasTrabajoBundle:RegistroCategoria:registro',  '_route' => 'mtd_categoria_crear',);
+        }
+
         // mtd_contratacion_empleados_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_contratacion_empleados_homepage')), array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\DefaultController::indexAction',));

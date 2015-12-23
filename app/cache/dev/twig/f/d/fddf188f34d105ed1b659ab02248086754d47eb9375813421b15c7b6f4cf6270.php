@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9684ec2cb999a6e57d2f5c662fa91d101eeea1b533350d1df811607322d26e8c = $this->env->getExtension("native_profiler");
-        $__internal_9684ec2cb999a6e57d2f5c662fa91d101eeea1b533350d1df811607322d26e8c->enter($__internal_9684ec2cb999a6e57d2f5c662fa91d101eeea1b533350d1df811607322d26e8c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_d9443c7ddf0d71c7203d28dd635baff5562d0e8fbbb346c40a5cbd80934de4a9 = $this->env->getExtension("native_profiler");
+        $__internal_d9443c7ddf0d71c7203d28dd635baff5562d0e8fbbb346c40a5cbd80934de4a9->enter($__internal_d9443c7ddf0d71c7203d28dd635baff5562d0e8fbbb346c40a5cbd80934de4a9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -37,21 +37,38 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                 <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
                     <!--  <ul class=\"nav navbar-nav role=\"tablist\">     -->
                     <ul class=\"nav navbar-nav\">
+                        
                         <li class=\"dropdown\">
                             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Proyecto <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
                                 <li><a href=\"";
-        // line 22
+        // line 23
         echo $this->env->getExtension('routing')->getPath("mtd_proyecto_registro");
-        echo "\">Agregar Proyecto</a></li>
+        echo "\">Crear Proyecto</a></li>
                                 <li role=\"separator\" class=\"divider\"></li>
                                 <li><a href=\"";
-        // line 24
+        // line 25
         echo $this->env->getExtension('routing')->getPath("mtd_lista_proyecto");
         echo "\">Lista de Proyectos</a></li>
                             </ul>
                         </li>
-                        <li class=\"active\"><a href=\"\">Agregar Proyecto <span class=\"sr-only\">(current)</span></a></li>
+                        
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Categoria de Trabajo <span class=\"caret\"></span></a>
+                            <ul class=\"dropdown-menu\">
+                                <li ><a href=\"";
+        // line 32
+        echo $this->env->getExtension('routing')->getPath("mtd_categoria_crear");
+        echo "\">Crear Categoria de Trabajo </a></li>
+                                <li role=\"separator\" class=\"divider\"></li>
+                                <li ><a href=\"";
+        // line 34
+        echo $this->env->getExtension('routing')->getPath("mtd_categoria_crear");
+        echo "\">Asignar Requisitos a la Categoria </a></li>
+                            </ul>
+                        </li>
+                        
+                        <li ><a href=\"\">Crear Categoria de Trabajo <span class=\"sr-only\">(current)</span></a></li>
                         <li><a href=\"#\">Link</a></li>
                         <li class=\"dropdown\">
                             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>
@@ -93,7 +110,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_9684ec2cb999a6e57d2f5c662fa91d101eeea1b533350d1df811607322d26e8c->leave($__internal_9684ec2cb999a6e57d2f5c662fa91d101eeea1b533350d1df811607322d26e8c_prof);
+        $__internal_d9443c7ddf0d71c7203d28dd635baff5562d0e8fbbb346c40a5cbd80934de4a9->leave($__internal_d9443c7ddf0d71c7203d28dd635baff5562d0e8fbbb346c40a5cbd80934de4a9_prof);
 
     }
 
@@ -109,7 +126,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  50 => 24,  45 => 22,  22 => 1,);
+        return array (  66 => 34,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -130,15 +147,26 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">*/
 /*                     <!--  <ul class="nav navbar-nav role="tablist">     -->*/
 /*                     <ul class="nav navbar-nav">*/
+/*                         */
 /*                         <li class="dropdown">*/
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proyecto <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
-/*                                 <li><a href="{{ path('mtd_proyecto_registro') }}">Agregar Proyecto</a></li>*/
+/*                                 <li><a href="{{ path('mtd_proyecto_registro') }}">Crear Proyecto</a></li>*/
 /*                                 <li role="separator" class="divider"></li>*/
 /*                                 <li><a href="{{ path('mtd_lista_proyecto') }}">Lista de Proyectos</a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
-/*                         <li class="active"><a href="">Agregar Proyecto <span class="sr-only">(current)</span></a></li>*/
+/*                         */
+/*                         <li class="dropdown">*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria de Trabajo <span class="caret"></span></a>*/
+/*                             <ul class="dropdown-menu">*/
+/*                                 <li ><a href="{{ path('mtd_categoria_crear') }}">Crear Categoria de Trabajo </a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
+/*                                 <li ><a href="{{ path('mtd_categoria_crear') }}">Asignar Requisitos a la Categoria </a></li>*/
+/*                             </ul>*/
+/*                         </li>*/
+/*                         */
+/*                         <li ><a href="">Crear Categoria de Trabajo <span class="sr-only">(current)</span></a></li>*/
 /*                         <li><a href="#">Link</a></li>*/
 /*                         <li class="dropdown">*/
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>*/

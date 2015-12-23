@@ -1,0 +1,7 @@
+mtd_categorias_trabajo_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDCategoriasTrabajoBundle:Default:index }
+
+mtd_categoria_crear:
+    path:     /categoria/crear
+    defaults: {_controller: MTDCategoriasTrabajoBundle:RegistroCategoria:registro }

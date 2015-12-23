@@ -1,0 +1,98 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Crear Categoria de Trabajo</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        {{ form_start(form) }}
+        {{form_errors(form)}}
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.nombre, 'Nombre de la Categoria:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre de la categoria', 'class': 'form-control inputGroup',
+                                                     'title': 'El nombre de la categoria tiene que ser unico' } }) }}      
+                    </div>
+                    {{ form_errors(form.nombre) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.sueldoBasico, 'Sueldo Basico:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.sueldoBasico, { 'attr': {'placeholder': 'Escriba el monto del sueldo basico', 'class': 'form-control inputGroup',
+                                                     'title': 'Ingrese montos validos' } }) }}      
+                    </div>
+                    {{ form_errors(form.sueldoBasico) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.viatico, 'Monto Viatico:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.viatico, { 'attr': {'placeholder': 'Escriba el monto por los viaticos', 'class': 'form-control inputGroup',
+                                                     'title': 'Ingrese montos validos' } }) }}      
+                    </div>
+                    {{ form_errors(form.viatico) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.premio, 'Monto Premio:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.premio, { 'attr': {'placeholder': 'Escriba el monto por los premios', 'class': 'form-control inputGroup',
+                                                     'title': 'Ingrese montos validos' } }) }}      
+                    </div>
+                    {{ form_errors(form.premio) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.total, 'Total:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.total, { 'attr': {'placeholder': 'Total', 'class': 'form-control inputGroup',
+                                                     'title': 'Total', 'disabled':'disabled' } }) }}      
+                    </div>
+                    {{ form_errors(form.total) }}
+                </div>
+            </div>
+        </div>
+
+        <div class ="form-group">
+            <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+        </div>
+
+        {{form_end(form) }}
+    </div>
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/modificar/modificarInput.js') }}"></script>
+{% endblock %}                

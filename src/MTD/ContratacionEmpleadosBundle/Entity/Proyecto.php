@@ -3,6 +3,7 @@
 namespace MTD\ContratacionEmpleadosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Proyecto
@@ -87,6 +88,50 @@ class Proyecto
      * @ORM\Column(name="activo", type="boolean")
      */
     private $activo;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="MTD\CategoriasTrabajoBundle\Entity\Categoria", mappedBy="proyecto")
+     * @ORM\JoinTable(name="proyecto_categoria")
+     * 
+     */
+     private $categoria;
+
+     public function __construct()
+     {
+         $this->categoria = new ArrayCollection();
+     }
+     
+     /**
+     * Add categoria
+     *
+     * @param \MTD\CategoriasTrabajoBundle\Entity\Categoria $categoria
+     * @return Proyecto
+     */
+    public function addCategoria(\MTD\CategoriasTrabajoBundle\Entity\Categoria $categoria)
+    {
+        $this->categoria[] = $categoria;
+        return $this;
+    }
+
+    /**
+     * Remove categoria
+     *
+     * @param \MTD\CategoriasTrabajoBundle\Entity\Categoria $categoria
+     */
+    public function removeCategoria(\MTD\CategoriasTrabajoBundle\Entity\Categoria $categoria)
+    {
+        $this->categoria->removeElement($categoria);
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
     
     /**
      * Get id
