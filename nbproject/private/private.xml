@@ -7,6 +7,7 @@
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Controller/RegistroRequisitoController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/views/Categoria/requisito.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/app/Resources/views/menu.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Controller/RequisitoController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Form/Requisito_CategoriaType.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/guardar/guardarRequisito.js</file>
         </group>

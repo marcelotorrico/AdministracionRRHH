@@ -13,8 +13,8 @@ $(document).ready(function(){
             type: met,
             data: $('#main form').serialize(),
             success: function(resp) {
-                //actualizarTipoProyecto();
                 //debugger;
+                actualizarTipoProyecto();
                 $('#mtd_categoriastrabajobundle_requisito_categoria_nombre').val("");
                 $('#mtd_categoriastrabajobundle_requisito_categoria_descripcion').val("");
                 $('#mtd_categoriastrabajobundle_requisito_categoria_categoria').val("");
@@ -43,11 +43,17 @@ $(document).ready(function(){
         }
         conexion.onreadystatechange=function(){
             if(conexion.readyState==4 && conexion.status==200){
-                var div = $(conexion.responseText).find('#ventTipoProyecto').html();
-                document.getElementById("ventTipoProyecto").innerHTML=div;
+                var div = $(conexion.responseText).find('#tabla').html();
+                document.getElementById("tabla").innerHTML=div;
             }
         }
-        conexion.open("GET","/AdministracionRRHH/web/app_dev.php/proyecto/registro",true);
+        conexion.open("GET","/AdministracionRRHH/web/app_dev.php/requisito/crear",true);
         conexion.send();
         }
+        
+        $(".confirmarEliminacion").on("click", function(e) {
+
+            return confirm('¿Esta seguro que quiere eliminar el requisito?');
+
+        });
     });

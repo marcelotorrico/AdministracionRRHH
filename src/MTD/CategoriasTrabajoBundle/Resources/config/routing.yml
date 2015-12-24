@@ -13,3 +13,7 @@ mtd_requisito_crear:
 mtd_requisito_registrar:
     path:     /requisito/registrar
     defaults: {_controller: MTDCategoriasTrabajoBundle:Requisito:registro }
+    
+mtd_requisito_eliminar:
+    path:     /requisito/eliminar/{id}
+    defaults: {_controller: MTDCategoriasTrabajoBundle:EliminaRequisito:eliminar }

@@ -18,7 +18,8 @@ class RequisitoController extends Controller
         
         if($request->isXmlHttpRequest()){
             $data = $form->getData();
-
+            $requisitoCategoria->setActivo(true);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($data);             
             $em->flush();

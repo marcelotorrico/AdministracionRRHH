@@ -22,20 +22,20 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ae356f498f0e2439e322063b74cac0ddb82ffbb53abcc91172fe03b18170eff3 = $this->env->getExtension("native_profiler");
-        $__internal_ae356f498f0e2439e322063b74cac0ddb82ffbb53abcc91172fe03b18170eff3->enter($__internal_ae356f498f0e2439e322063b74cac0ddb82ffbb53abcc91172fe03b18170eff3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
+        $__internal_189ba0b5e8b763796934e6d69672f63f67ebb0ab90b7c39209b8cfacfd866624 = $this->env->getExtension("native_profiler");
+        $__internal_189ba0b5e8b763796934e6d69672f63f67ebb0ab90b7c39209b8cfacfd866624->enter($__internal_189ba0b5e8b763796934e6d69672f63f67ebb0ab90b7c39209b8cfacfd866624_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_ae356f498f0e2439e322063b74cac0ddb82ffbb53abcc91172fe03b18170eff3->leave($__internal_ae356f498f0e2439e322063b74cac0ddb82ffbb53abcc91172fe03b18170eff3_prof);
+        $__internal_189ba0b5e8b763796934e6d69672f63f67ebb0ab90b7c39209b8cfacfd866624->leave($__internal_189ba0b5e8b763796934e6d69672f63f67ebb0ab90b7c39209b8cfacfd866624_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_1895e949940a1c5dff1dba9892a1b6cbd07eefbddf6f4cdfeb92cfa4b92ce61b = $this->env->getExtension("native_profiler");
-        $__internal_1895e949940a1c5dff1dba9892a1b6cbd07eefbddf6f4cdfeb92cfa4b92ce61b->enter($__internal_1895e949940a1c5dff1dba9892a1b6cbd07eefbddf6f4cdfeb92cfa4b92ce61b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_97ecedaefe2f1be31aa61b7b595de4fd9f0384da748756bfbe8fa04f240fbbba = $this->env->getExtension("native_profiler");
+        $__internal_97ecedaefe2f1be31aa61b7b595de4fd9f0384da748756bfbe8fa04f240fbbba->enter($__internal_97ecedaefe2f1be31aa61b7b595de4fd9f0384da748756bfbe8fa04f240fbbba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -160,88 +160,163 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
             <div id=\"collapse1\" class=\"panel-collapse collapse in\">
                 <div class=\"panel-body\">
                     <div class=\"table-responsive\">
-                        <table class=\"table table-striped table-hover\">
+                        <table class=\"table table-striped table-bordered table-hover table-condensed\" id=\"tabla\">
                             <thead>
-                                <tr>
+                                <tr class=\"danger\">
+                                    <th>Categoria</th>
                                     <th>Nombre del Requisito</th>
                                     <th>Descripcion</th>
-                                    <th>Categoria</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                
                                 ";
-        // line 89
+        // line 90
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["requisitos"]) ? $context["requisitos"] : $this->getContext($context, "requisitos")));
-        foreach ($context['_seq'] as $context["_key"] => $context["requisito"]) {
-            // line 90
+        $context['_seq'] = twig_ensure_traversable((isset($context["categorias"]) ? $context["categorias"] : $this->getContext($context, "categorias")));
+        foreach ($context['_seq'] as $context["_key"] => $context["categoria"]) {
+            // line 91
             echo "                                    ";
-            if (($this->getAttribute($context["requisito"], "activo", array()) == true)) {
-                // line 91
-                echo "                                        <tr>
-                                            <td><strong>";
-                // line 92
-                echo twig_escape_filter($this->env, $this->getAttribute($context["requisito"], "nombre", array()), "html", null, true);
-                echo "</strong></td>
-                                            <td>";
+            $context["contador"] = 0;
+            // line 92
+            echo "                                    ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["requisitos"]) ? $context["requisitos"] : $this->getContext($context, "requisitos")));
+            foreach ($context['_seq'] as $context["_key"] => $context["requisito"]) {
                 // line 93
-                echo twig_escape_filter($this->env, $this->getAttribute($context["requisito"], "descripcion", array()), "html", null, true);
-                echo "</td>
-                                            <td><strong>";
-                // line 94
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["requisito"], "categoria", array()), "nombre", array()), "html", null, true);
-                echo "</strong></td>
-                                            <td>
-
-                                                <a href=\"\" class=\"btn btn-sm btn-danger btn-delete confirmarEliminacion\">
-                                                    Eliminar
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    ";
+                echo "                                        ";
+                if ((($this->getAttribute($context["categoria"], "nombre", array()) == $this->getAttribute($this->getAttribute($context["requisito"], "categoria", array()), "nombre", array())) && ($this->getAttribute($context["requisito"], "activo", array()) == true))) {
+                    // line 94
+                    echo "                                            ";
+                    $context["contador"] = ((isset($context["contador"]) ? $context["contador"] : $this->getContext($context, "contador")) + 1);
+                    // line 95
+                    echo "                                        ";
+                }
+                // line 96
+                echo "                                    ";
             }
-            // line 103
-            echo "                                ";
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['requisito'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 97
+            echo "                                    <tr>
+                                        <td rowspan=\"";
+            // line 98
+            echo twig_escape_filter($this->env, (isset($context["contador"]) ? $context["contador"] : $this->getContext($context, "contador")), "html", null, true);
+            echo "\">
+                                            <strong>";
+            // line 99
+            echo twig_escape_filter($this->env, $this->getAttribute($context["categoria"], "nombre", array()), "html", null, true);
+            echo "</strong>
+                                        </td>
+                                        ";
+            // line 101
+            $context["contadorRequisito"] = 0;
+            // line 102
+            echo "                                        ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["requisitos"]) ? $context["requisitos"] : $this->getContext($context, "requisitos")));
+            foreach ($context['_seq'] as $context["_key"] => $context["requisito"]) {
+                // line 103
+                echo "                                            ";
+                if ((($this->getAttribute($context["categoria"], "nombre", array()) == $this->getAttribute($this->getAttribute($context["requisito"], "categoria", array()), "nombre", array())) && ($this->getAttribute($context["requisito"], "activo", array()) == true))) {
+                    // line 104
+                    echo "                                               ";
+                    if (((isset($context["contadorRequisito"]) ? $context["contadorRequisito"] : $this->getContext($context, "contadorRequisito")) == 0)) {
+                        // line 105
+                        echo "                                                    <td>";
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["requisito"], "nombre", array()), "html", null, true);
+                        echo "</td>
+                                                    <td>";
+                        // line 106
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["requisito"], "descripcion", array()), "html", null, true);
+                        echo "</td>
+                                                    <td>
+                                                        <a href=\"";
+                        // line 108
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("mtd_requisito_eliminar", array("id" => $this->getAttribute($context["requisito"], "id", array()))), "html", null, true);
+                        echo "\" class=\"btn btn-sm btn-danger btn-delete confirmarEliminacion\">
+                                                            Eliminar
+                                                        </a>
+                                                    </td>
+                                               ";
+                    } else {
+                        // line 113
+                        echo "                                                    <tr>
+                                                        <td>";
+                        // line 114
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["requisito"], "nombre", array()), "html", null, true);
+                        echo "</td>
+                                                        <td>";
+                        // line 115
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["requisito"], "descripcion", array()), "html", null, true);
+                        echo "</td>
+                                                        <td>
+                                                            <a href=\"";
+                        // line 117
+                        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("mtd_requisito_eliminar", array("id" => $this->getAttribute($context["requisito"], "id", array()))), "html", null, true);
+                        echo "\" class=\"btn btn-sm btn-danger btn-delete confirmarEliminacion\">
+                                                                Eliminar
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                               ";
+                    }
+                    // line 123
+                    echo "                                               ";
+                    $context["contadorRequisito"] = ((isset($context["contadorRequisito"]) ? $context["contadorRequisito"] : $this->getContext($context, "contadorRequisito")) + 1);
+                    // line 124
+                    echo "                                            ";
+                }
+                // line 125
+                echo "                                        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['requisito'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 126
+            echo "                                        </tr>
+                                    ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['requisito'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categoria'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 104
-        echo "                            </tbody>    
-                        </table>
+        // line 128
+        echo "                                 </tbody>    
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 ";
         
-        $__internal_1895e949940a1c5dff1dba9892a1b6cbd07eefbddf6f4cdfeb92cfa4b92ce61b->leave($__internal_1895e949940a1c5dff1dba9892a1b6cbd07eefbddf6f4cdfeb92cfa4b92ce61b_prof);
+        $__internal_97ecedaefe2f1be31aa61b7b595de4fd9f0384da748756bfbe8fa04f240fbbba->leave($__internal_97ecedaefe2f1be31aa61b7b595de4fd9f0384da748756bfbe8fa04f240fbbba_prof);
 
     }
 
-    // line 113
+    // line 137
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_aa823eb89a36f1692dee316cbec87060eb06cb5634a12196ca878136c6720895 = $this->env->getExtension("native_profiler");
-        $__internal_aa823eb89a36f1692dee316cbec87060eb06cb5634a12196ca878136c6720895->enter($__internal_aa823eb89a36f1692dee316cbec87060eb06cb5634a12196ca878136c6720895_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_417fef3e1eab0ab3cb0d2217f0e180bb1928386b936e1490e0c1bb86c8468c0f = $this->env->getExtension("native_profiler");
+        $__internal_417fef3e1eab0ab3cb0d2217f0e180bb1928386b936e1490e0c1bb86c8468c0f->enter($__internal_417fef3e1eab0ab3cb0d2217f0e180bb1928386b936e1490e0c1bb86c8468c0f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 114
+        // line 138
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script src=\"";
-        // line 115
+        // line 139
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/guardar/guardarRequisito.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 116
+        // line 140
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/jquery-blockUI.js"), "html", null, true);
         echo "\"></script>
 ";
         
-        $__internal_aa823eb89a36f1692dee316cbec87060eb06cb5634a12196ca878136c6720895->leave($__internal_aa823eb89a36f1692dee316cbec87060eb06cb5634a12196ca878136c6720895_prof);
+        $__internal_417fef3e1eab0ab3cb0d2217f0e180bb1928386b936e1490e0c1bb86c8468c0f->leave($__internal_417fef3e1eab0ab3cb0d2217f0e180bb1928386b936e1490e0c1bb86c8468c0f_prof);
 
     }
 
@@ -257,7 +332,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 
     public function getDebugInfo()
     {
-        return array (  240 => 116,  236 => 115,  231 => 114,  225 => 113,  211 => 104,  205 => 103,  193 => 94,  189 => 93,  185 => 92,  182 => 91,  179 => 90,  175 => 89,  139 => 56,  135 => 54,  133 => 53,  128 => 51,  117 => 43,  113 => 41,  111 => 40,  106 => 38,  95 => 30,  91 => 28,  89 => 27,  84 => 25,  75 => 19,  71 => 18,  60 => 9,  51 => 7,  47 => 6,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  315 => 140,  311 => 139,  306 => 138,  300 => 137,  286 => 128,  279 => 126,  273 => 125,  270 => 124,  267 => 123,  258 => 117,  253 => 115,  249 => 114,  246 => 113,  238 => 108,  233 => 106,  228 => 105,  225 => 104,  222 => 103,  217 => 102,  215 => 101,  210 => 99,  206 => 98,  203 => 97,  197 => 96,  194 => 95,  191 => 94,  188 => 93,  183 => 92,  180 => 91,  176 => 90,  139 => 56,  135 => 54,  133 => 53,  128 => 51,  117 => 43,  113 => 41,  111 => 40,  106 => 38,  95 => 30,  91 => 28,  89 => 27,  84 => 25,  75 => 19,  71 => 18,  60 => 9,  51 => 7,  47 => 6,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'layout.html.twig' %}*/
@@ -338,38 +413,62 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 /*             <div id="collapse1" class="panel-collapse collapse in">*/
 /*                 <div class="panel-body">*/
 /*                     <div class="table-responsive">*/
-/*                         <table class="table table-striped table-hover">*/
+/*                         <table class="table table-striped table-bordered table-hover table-condensed" id="tabla">*/
 /*                             <thead>*/
-/*                                 <tr>*/
+/*                                 <tr class="danger">*/
+/*                                     <th>Categoria</th>*/
 /*                                     <th>Nombre del Requisito</th>*/
 /*                                     <th>Descripcion</th>*/
-/*                                     <th>Categoria</th>*/
 /*                                     <th>Acciones</th>*/
 /*                                 </tr>*/
 /*                             </thead>*/
 /*                             <tbody>*/
-/*                                 {% for requisito in requisitos %}*/
-/*                                     {% if requisito.activo == true %}*/
-/*                                         <tr>*/
-/*                                             <td><strong>{{ requisito.nombre }}</strong></td>*/
-/*                                             <td>{{ requisito.descripcion }}</td>*/
-/*                                             <td><strong>{{ requisito.categoria.nombre }}</strong></td>*/
-/*                                             <td>*/
-/* */
-/*                                                 <a href="" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">*/
-/*                                                     Eliminar*/
-/*                                                 </a>*/
-/*                                             </td>*/
+/*                                 */
+/*                                 {% for categoria in categorias %}*/
+/*                                     {% set contador = 0 %}*/
+/*                                     {% for requisito in requisitos %}*/
+/*                                         {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}*/
+/*                                             {% set contador = contador + 1 %}*/
+/*                                         {% endif %}*/
+/*                                     {% endfor %}*/
+/*                                     <tr>*/
+/*                                         <td rowspan="{{ contador }}">*/
+/*                                             <strong>{{ categoria.nombre }}</strong>*/
+/*                                         </td>*/
+/*                                         {% set contadorRequisito = 0 %}*/
+/*                                         {% for requisito in requisitos %}*/
+/*                                             {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}*/
+/*                                                {% if contadorRequisito == 0%}*/
+/*                                                     <td>{{ requisito.nombre }}</td>*/
+/*                                                     <td>{{ requisito.descripcion }}</td>*/
+/*                                                     <td>*/
+/*                                                         <a href="{{ path('mtd_requisito_eliminar', { 'id': requisito.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">*/
+/*                                                             Eliminar*/
+/*                                                         </a>*/
+/*                                                     </td>*/
+/*                                                {% else %}*/
+/*                                                     <tr>*/
+/*                                                         <td>{{ requisito.nombre }}</td>*/
+/*                                                         <td>{{ requisito.descripcion }}</td>*/
+/*                                                         <td>*/
+/*                                                             <a href="{{ path('mtd_requisito_eliminar', { 'id': requisito.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">*/
+/*                                                                 Eliminar*/
+/*                                                             </a>*/
+/*                                                         </td>*/
+/*                                                     </tr>*/
+/*                                                {% endif %}*/
+/*                                                {% set contadorRequisito = contadorRequisito + 1 %}*/
+/*                                             {% endif %}*/
+/*                                         {% endfor %}*/
 /*                                         </tr>*/
-/*                                     {% endif %}*/
-/*                                 {% endfor %}*/
-/*                             </tbody>    */
-/*                         </table>*/
+/*                                     {% endfor %}*/
+/*                                  </tbody>    */
+/*                             </table>*/
+/*                         </div>*/
 /*                     </div>*/
 /*                 </div>*/
 /*             </div>*/
 /*         </div>*/
-/*     </div>*/
 /* {% endblock %}*/
 /*     */
 /* {% block javascripts %}*/
