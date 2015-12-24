@@ -22,20 +22,20 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ff87ab929a24c8272baa3c78be47693e997a74d2646ec74d28ff12458e760b57 = $this->env->getExtension("native_profiler");
-        $__internal_ff87ab929a24c8272baa3c78be47693e997a74d2646ec74d28ff12458e760b57->enter($__internal_ff87ab929a24c8272baa3c78be47693e997a74d2646ec74d28ff12458e760b57_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:registro.html.twig"));
+        $__internal_40cde707c2d4aa5a593c6c0b1759f69fd5fb07b19d4519b13f312d974e0090c9 = $this->env->getExtension("native_profiler");
+        $__internal_40cde707c2d4aa5a593c6c0b1759f69fd5fb07b19d4519b13f312d974e0090c9->enter($__internal_40cde707c2d4aa5a593c6c0b1759f69fd5fb07b19d4519b13f312d974e0090c9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:registro.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_ff87ab929a24c8272baa3c78be47693e997a74d2646ec74d28ff12458e760b57->leave($__internal_ff87ab929a24c8272baa3c78be47693e997a74d2646ec74d28ff12458e760b57_prof);
+        $__internal_40cde707c2d4aa5a593c6c0b1759f69fd5fb07b19d4519b13f312d974e0090c9->leave($__internal_40cde707c2d4aa5a593c6c0b1759f69fd5fb07b19d4519b13f312d974e0090c9_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_685f03c24cd77101765299ca7eaef1a3dbd0273b3e587e4cf07f3d317cccfdad = $this->env->getExtension("native_profiler");
-        $__internal_685f03c24cd77101765299ca7eaef1a3dbd0273b3e587e4cf07f3d317cccfdad->enter($__internal_685f03c24cd77101765299ca7eaef1a3dbd0273b3e587e4cf07f3d317cccfdad_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_470d287334969729d5234d3c040a5902bf28cfb9813c745e6c8703f49f05d265 = $this->env->getExtension("native_profiler");
+        $__internal_470d287334969729d5234d3c040a5902bf28cfb9813c745e6c8703f49f05d265->enter($__internal_470d287334969729d5234d3c040a5902bf28cfb9813c745e6c8703f49f05d265_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -174,7 +174,7 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
 
                         ";
         // line 79
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "total", array()), 'widget', array("attr" => array("placeholder" => "Total", "class" => "form-control inputGroup", "title" => "Total", "disabled" => "disabled")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "total", array()), 'widget', array("attr" => array("placeholder" => "Total", "class" => "form-control inputGroup", "title" => "Total", "readonly" => "readonly")));
         // line 80
         echo "      
                     </div>
@@ -197,15 +197,15 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
     </div>
 ";
         
-        $__internal_685f03c24cd77101765299ca7eaef1a3dbd0273b3e587e4cf07f3d317cccfdad->leave($__internal_685f03c24cd77101765299ca7eaef1a3dbd0273b3e587e4cf07f3d317cccfdad_prof);
+        $__internal_470d287334969729d5234d3c040a5902bf28cfb9813c745e6c8703f49f05d265->leave($__internal_470d287334969729d5234d3c040a5902bf28cfb9813c745e6c8703f49f05d265_prof);
 
     }
 
     // line 95
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_ec6e5b91b761253ebf61d91c1ee21e5db0336e84b9b1638e3609538d60ab2a4a = $this->env->getExtension("native_profiler");
-        $__internal_ec6e5b91b761253ebf61d91c1ee21e5db0336e84b9b1638e3609538d60ab2a4a->enter($__internal_ec6e5b91b761253ebf61d91c1ee21e5db0336e84b9b1638e3609538d60ab2a4a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_033aa9ec81a6f715133eb195661aa26b495ea79e13178cc154872b60d66e548c = $this->env->getExtension("native_profiler");
+        $__internal_033aa9ec81a6f715133eb195661aa26b495ea79e13178cc154872b60d66e548c->enter($__internal_033aa9ec81a6f715133eb195661aa26b495ea79e13178cc154872b60d66e548c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 96
         echo "    ";
@@ -217,7 +217,7 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
         echo "\"></script>
 ";
         
-        $__internal_ec6e5b91b761253ebf61d91c1ee21e5db0336e84b9b1638e3609538d60ab2a4a->leave($__internal_ec6e5b91b761253ebf61d91c1ee21e5db0336e84b9b1638e3609538d60ab2a4a_prof);
+        $__internal_033aa9ec81a6f715133eb195661aa26b495ea79e13178cc154872b60d66e548c->leave($__internal_033aa9ec81a6f715133eb195661aa26b495ea79e13178cc154872b60d66e548c_prof);
 
     }
 
@@ -315,7 +315,7 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
 /*                         {{ form_label(form.total, 'Total:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
 /* */
 /*                         {{ form_widget(form.total, { 'attr': {'placeholder': 'Total', 'class': 'form-control inputGroup',*/
-/*                                                      'title': 'Total', 'disabled':'disabled' } }) }}      */
+/*                                                      'title': 'Total', 'readonly':'readonly' } }) }}      */
 /*                     </div>*/
 /*                     {{ form_errors(form.total) }}*/
 /*                 </div>*/
@@ -333,4 +333,4 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
 /* {% block javascripts %}*/
 /*     {{ parent() }}*/
 /*     <script src="{{ asset('public/js/modificar/modificarInput.js') }}"></script>*/
-/* {% endblock %}                */
+/* {% endblock %}*/

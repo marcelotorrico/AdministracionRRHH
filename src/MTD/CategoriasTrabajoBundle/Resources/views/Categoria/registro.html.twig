@@ -77,7 +77,7 @@
                         {{ form_label(form.total, 'Total:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
                         {{ form_widget(form.total, { 'attr': {'placeholder': 'Total', 'class': 'form-control inputGroup',
-                                                     'title': 'Total', 'disabled':'disabled' } }) }}      
+                                                     'title': 'Total', 'readonly':'readonly' } }) }}      
                     </div>
                     {{ form_errors(form.total) }}
                 </div>
@@ -95,4 +95,4 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('public/js/modificar/modificarInput.js') }}"></script>
-{% endblock %}                
+{% endblock %}

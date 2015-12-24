@@ -27,7 +27,21 @@ class Requisito_Categoria
      * @ORM\Column(name="nombre", type="string", length=100)
      */
     private $nombre;
+    
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=true)
+     */
+    private $descripcion;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean")
+     */
+    private $activo;
+    
     /**
      * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="requisito_categoria")
      * @ORM\JoinColumn(name="id_categoria", referencedColumnName="id")
@@ -76,6 +90,54 @@ class Requisito_Categoria
     public function getNombre()
     {
         return $this->nombre;
+    }
+    
+    /**
+     * Set descripcion
+     *
+     * @param text $descripcion
+     *
+     * @return Requisito_Categoria
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return text
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+    
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Proyecto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 }
 

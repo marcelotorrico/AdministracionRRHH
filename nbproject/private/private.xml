@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Entity/Categoria.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Entity/Proyecto.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/modificar/modificarInput.js</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/views/Categoria/registro.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Controller/RegistroRequisitoController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/views/Categoria/requisito.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/app/Resources/views/menu.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Entity/Cliente.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Form/ClienteType.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Controller/RegistroCategoriaController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Form/CategoriaType.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Form/Requisito_CategoriaType.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/guardar/guardarRequisito.js</file>
         </group>
     </open-files>
 </project-private>

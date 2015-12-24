@@ -137,6 +137,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\RegistroCategoriaController::registroAction',  '_route' => 'mtd_categoria_crear',);
         }
 
+        if (0 === strpos($pathinfo, '/requisito')) {
+            // mtd_requisito_crear
+            if ($pathinfo === '/requisito/crear') {
+                return array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\RegistroRequisitoController::registroAction',  '_route' => 'mtd_requisito_crear',);
+            }
+
+            // mtd_requisito_registrar
+            if ($pathinfo === '/requisito/registrar') {
+                return array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\RequisitoController::registroAction',  '_route' => 'mtd_requisito_registrar',);
+            }
+
+        }
+
         // mtd_contratacion_empleados_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_contratacion_empleados_homepage')), array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\DefaultController::indexAction',));

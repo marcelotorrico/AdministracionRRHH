@@ -74,6 +74,13 @@ class Categoria
     private $total;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean")
+     */
+    private $activo;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="MTD\ContratacionEmpleadosBundle\Entity\Proyecto", inversedBy="categoria")
      */
      private $proyecto;
@@ -286,6 +293,30 @@ class Categoria
     public function getTotal()
     {
         return $this->total;
+    }
+    
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Proyecto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 }
 

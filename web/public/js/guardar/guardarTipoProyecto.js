@@ -13,13 +13,23 @@ $(document).ready(function(){
             type: met,
             data: $('#mainTipo form').serialize(),
             success: function(resp) {
-                actualizarTipoProyecto();
-                $.unblockUI({
-                     onUnblock: function(){
-                         alert('El tipo de proyecto fue registrado correctamente');
-                     } 
-                 });
-                //console.log(datos);
+                if (resp != 1){
+                    actualizarTipoProyecto();
+                    $(this).submit();
+                    $.unblockUI({
+                        onUnblock: function(){
+                            alert('El tipo de proyecto fue registrado correctamente');
+                        } 
+                    });
+                    $('#mtd_contratacionempleadosbundle_tipo_proyecto_nombre').val("");
+                }else{
+                    $.unblockUI({
+                        onUnblock: function(){
+                            alert("El tipo de proyecto ya fue registrado, por favor elija otro nombre");
+                        } 
+                    });    
+               }
+                //console.log(resp);
             },
             error: function (jqXHR,estado,error){
                 //console.log(estado);

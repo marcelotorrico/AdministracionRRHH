@@ -5,3 +5,11 @@ mtd_categorias_trabajo_homepage:
 mtd_categoria_crear:
     path:     /categoria/crear
     defaults: {_controller: MTDCategoriasTrabajoBundle:RegistroCategoria:registro }
+    
+mtd_requisito_crear:
+    path:     /requisito/crear
+    defaults: {_controller: MTDCategoriasTrabajoBundle:RegistroRequisito:registro }
+    
+mtd_requisito_registrar:
+    path:     /requisito/registrar
+    defaults: {_controller: MTDCategoriasTrabajoBundle:Requisito:registro }

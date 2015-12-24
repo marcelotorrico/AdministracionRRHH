@@ -34,7 +34,20 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         // mtd_categoria_crear
         if ($pathinfo === '/categoria/crear') {
-            return array (  '_controller' => 'MTDCategoriasTrabajoBundle:RegistroCategoria:registro',  '_route' => 'mtd_categoria_crear',);
+            return array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\RegistroCategoriaController::registroAction',  '_route' => 'mtd_categoria_crear',);
+        }
+
+        if (0 === strpos($pathinfo, '/requisito')) {
+            // mtd_requisito_crear
+            if ($pathinfo === '/requisito/crear') {
+                return array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\RegistroRequisitoController::registroAction',  '_route' => 'mtd_requisito_crear',);
+            }
+
+            // mtd_requisito_registrar
+            if ($pathinfo === '/requisito/registrar') {
+                return array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\RequisitoController::registroAction',  '_route' => 'mtd_requisito_registrar',);
+            }
+
         }
 
         // mtd_contratacion_empleados_homepage

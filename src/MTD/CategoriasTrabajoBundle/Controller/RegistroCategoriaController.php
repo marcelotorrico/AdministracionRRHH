@@ -17,26 +17,26 @@ class RegistroCategoriaController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()){
-            $nombreProyecto = $form->get('nombre')->getData();
-            if(!$this->validarNombreRepetido($nombreProyecto)){
+            $nombreCategoria = $form->get('nombre')->getData();
+            if(!$this->validarNombreRepetido($nombreCategoria)){
                 $this->addFlash(
                 'notice',
-                'El nombre del proyecto ya fue registrado, por favor elija otro.'
+                'El nombre de la categoria ya fue registrado, por favor elija otro.'
                 );
-                return $this->redirect($this->generateUrl('mtd_proyecto_registro'));
+                return $this->redirect($this->generateUrl('mtd_categoria_crear'));
             }else{
                 $this->addFlash(
                     'notice',
-                    'Se registro correctamente el proyecto'
+                    'La categoria fue registrada correctamente'
                 );
 
-                $proyecto->setActivo("true");
+                $categoria->setActivo("true");
                 
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($proyecto);             
+                $em->persist($categoria);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('mtd_lista_proyecto'));
+                return $this->redirect($this->generateUrl('mtd_categoria_crear'));
             }
         }
         
@@ -46,7 +46,7 @@ class RegistroCategoriaController extends Controller
     public function validarNombreRepetido($nombre){
         $res = false;
         $em = $this->getDoctrine()->getEntityManager();
-        $nombreRegistrado = $em->getRepository('MTDContratacionEmpleadosBundle:Proyecto')->findBy(array(
+        $nombreRegistrado = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->findBy(array(
                                                                                             'nombre' => $nombre,
                                                                                             'activo' => 'true'
                                                                                             ));
