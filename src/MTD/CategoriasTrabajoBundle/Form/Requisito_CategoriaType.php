@@ -5,6 +5,7 @@ namespace MTD\CategoriasTrabajoBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Doctrine\ORM\EntityRepository;
 
 class Requisito_CategoriaType extends AbstractType
 {
@@ -18,6 +19,11 @@ class Requisito_CategoriaType extends AbstractType
             ->add('nombre')
             ->add('categoria', 'entity', array(
                 'class' => 'MTDCategoriasTrabajoBundle:Categoria',
+                'query_builder' => function($er) {
+                    return $er->createQueryBuilder('c')
+                        ->where('c.activo = TRUE')
+                        ->orderBy('c.nombre', 'ASC');
+                },
                 'choice_label' => function ($categoria) {
                     return $categoria->getNombre();
                 },

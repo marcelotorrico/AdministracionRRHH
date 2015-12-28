@@ -511,14 +511,15 @@ class appProdDebugProjectContainer extends Container
     {
         $a = $this->get('annotation_reader');
 
-        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\MTD\\ContratacionEmpleadosBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\MTD\\CategoriasTrabajoBundle\\Entity')));
+        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\MTD\\ContratacionEmpleadosBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\MTD\\CategoriasTrabajoBundle\\Entity'), 2 => ($this->targetDirs[3].'\\src\\MTD\\ProyectoBundle\\Entity')));
 
         $c = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
         $c->addDriver($b, 'MTD\\ContratacionEmpleadosBundle\\Entity');
         $c->addDriver($b, 'MTD\\CategoriasTrabajoBundle\\Entity');
+        $c->addDriver($b, 'MTD\\ProyectoBundle\\Entity');
 
         $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array('MTDContratacionEmpleadosBundle' => 'MTD\\ContratacionEmpleadosBundle\\Entity', 'MTDCategoriasTrabajoBundle' => 'MTD\\CategoriasTrabajoBundle\\Entity'));
+        $d->setEntityNamespaces(array('MTDContratacionEmpleadosBundle' => 'MTD\\ContratacionEmpleadosBundle\\Entity', 'MTDCategoriasTrabajoBundle' => 'MTD\\CategoriasTrabajoBundle\\Entity', 'MTDProyectoBundle' => 'MTD\\ProyectoBundle\\Entity'));
         $d->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
         $d->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
         $d->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
@@ -1791,7 +1792,7 @@ class appProdDebugProjectContainer extends Container
 
         $e = new \Symfony\Component\Security\Http\AccessMap();
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5679aa26102e46.57855897', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5681700816c955.34198816', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
     }
 
     /**
@@ -2780,6 +2781,7 @@ class appProdDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
         $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\ContratacionEmpleadosBundle/Resources/views'), 'MTDContratacionEmpleados');
         $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\CategoriasTrabajoBundle/Resources/views'), 'MTDCategoriasTrabajo');
+        $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\ProyectoBundle/Resources/views'), 'MTDProyecto');
         $instance->addPath(($this->targetDirs[2].'/Resources/views'));
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bridge\\Twig/Resources/views/Form'));
 
@@ -2972,7 +2974,7 @@ class appProdDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5679aa26102e46.57855897')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5681700816c955.34198816')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -3168,6 +3170,7 @@ class appProdDebugProjectContainer extends Container
                 'AppBundle' => 'AppBundle\\AppBundle',
                 'MTDContratacionEmpleadosBundle' => 'MTD\\ContratacionEmpleadosBundle\\MTDContratacionEmpleadosBundle',
                 'MTDCategoriasTrabajoBundle' => 'MTD\\CategoriasTrabajoBundle\\MTDCategoriasTrabajoBundle',
+                'MTDProyectoBundle' => 'MTD\\ProyectoBundle\\MTDProyectoBundle',
             ),
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'appProdDebugProjectContainer',

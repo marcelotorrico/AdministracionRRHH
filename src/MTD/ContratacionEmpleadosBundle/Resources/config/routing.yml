@@ -1,27 +1,3 @@
 mtd_contratacion_empleados_homepage:
     path:     /hello/{name}
     defaults: { _controller: MTDContratacionEmpleadosBundle:Default:index }
-    
-mtd_proyecto_registro:
-    path:     /proyecto/registro
-    defaults: {_controller: MTDContratacionEmpleadosBundle:RegistroProyecto:registro }
-
-mtd_cliente_registro:
-    path:     /registro/cliente
-    defaults: {_controller: MTDContratacionEmpleadosBundle:RegistroCliente:registroCliente }
-
-mtd_tipoProyecto_registro:
-    path:     /registro/tipoProyecto
-    defaults: {_controller: MTDContratacionEmpleadosBundle:TipoProyecto:registroTipoProyecto }
-
-mtd_lista_proyecto:
-    path:     /proyecto/lista
-    defaults: {_controller: MTDContratacionEmpleadosBundle:ListaProyecto:lista }
-    
-mtd_editar_proyecto:
-    path:     /proyecto/editar/{id}
-    defaults: {_controller: MTDContratacionEmpleadosBundle:EditaProyecto:editar }
-    
-mtd_eliminar_proyecto:
-    path:     /proyecto/eliminar/{id}
-    defaults: {_controller: MTDContratacionEmpleadosBundle:EliminaProyecto:eliminar }

@@ -19,6 +19,7 @@
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="MTDContratacionEmpleadosBundle">MTD\ContratacionEmpleadosBundle\MTDContratacionEmpleadosBundle</parameter>
       <parameter key="MTDCategoriasTrabajoBundle">MTD\CategoriasTrabajoBundle\MTDCategoriasTrabajoBundle</parameter>
+      <parameter key="MTDProyectoBundle">MTD\ProyectoBundle\MTDProyectoBundle</parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appProdDebugProjectContainer</parameter>
@@ -1405,7 +1406,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5679aa26102e46.57855897</argument>
+            <argument>5681700816c955.34198816</argument>
           </service>
         </argument>
       </argument>
@@ -1528,7 +1529,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5679aa26102e46.57855897</argument>
+            <argument>5681700816c955.34198816</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2003,6 +2004,7 @@
             <argument type="collection">
               <argument key="MTDContratacionEmpleadosBundle">MTD\ContratacionEmpleadosBundle\Entity</argument>
               <argument key="MTDCategoriasTrabajoBundle">MTD\CategoriasTrabajoBundle\Entity</argument>
+              <argument key="MTDProyectoBundle">MTD\ProyectoBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2024,6 +2026,7 @@
                       <argument type="collection">
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ContratacionEmpleadosBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2036,10 +2039,24 @@
                       <argument type="collection">
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ContratacionEmpleadosBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>MTD\CategoriasTrabajoBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ContratacionEmpleadosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>MTD\ProyectoBundle\Entity</argument>
                 </call>
               </service>
             </argument>
@@ -2284,6 +2301,10 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle/Resources/views</argument>
         <argument>MTDCategoriasTrabajo</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle/Resources/views</argument>
+        <argument>MTDProyecto</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\app/Resources/views</argument>

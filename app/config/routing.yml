@@ -1,3 +1,7 @@
+mtd_proyecto:
+    resource: "@MTDProyectoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mtd_categorias_trabajo:
     resource: "@MTDCategoriasTrabajoBundle/Resources/config/routing.yml"
     prefix:   /

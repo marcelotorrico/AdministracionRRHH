@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ContratacionEmpleadosBundle/Resources/config/routing.yml</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Entity/Categoria.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/views/Categoria/editaCategoria.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/views/Categoria/lista.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Resources/views/Categoria/registro.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Controller/ListaCategoriaController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Controller/EditaCategoriaController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Controller/RegistroCategoriaController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Form/CategoriaType.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/CategoriasTrabajoBundle/Form/CategoriaEditarType.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/app/AppKernel.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProyectoBundle/Resources/config/routing.yml</file>
         </group>
     </open-files>
 </project-private>

@@ -88,29 +88,21 @@
                             <tbody>
                                 
                                 {% for categoria in categorias %}
-                                    {% set contador = 0 %}
-                                    {% for requisito in requisitos %}
-                                        {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}
-                                            {% set contador = contador + 1 %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    <tr>
-                                        <td rowspan="{{ contador }}">
-                                            <strong>{{ categoria.nombre }}</strong>
-                                        </td>
-                                        {% set contadorRequisito = 0 %}
+                                    {% if categoria.activo == true %}
+                                        {% set contador = 0 %}
                                         {% for requisito in requisitos %}
                                             {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}
-                                               {% if contadorRequisito == 0%}
-                                                    <td>{{ requisito.nombre }}</td>
-                                                    <td>{{ requisito.descripcion }}</td>
-                                                    <td>
-                                                        <a href="{{ path('mtd_requisito_eliminar', { 'id': requisito.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
-                                                            Eliminar
-                                                        </a>
-                                                    </td>
-                                               {% else %}
-                                                    <tr>
+                                                {% set contador = contador + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        <tr>
+                                            <td rowspan="{{ contador }}">
+                                                <strong>{{ categoria.nombre }}</strong>
+                                            </td>
+                                            {% set contadorRequisito = 0 %}
+                                            {% for requisito in requisitos %}
+                                                {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}
+                                                   {% if contadorRequisito == 0%}
                                                         <td>{{ requisito.nombre }}</td>
                                                         <td>{{ requisito.descripcion }}</td>
                                                         <td>
@@ -118,12 +110,22 @@
                                                                 Eliminar
                                                             </a>
                                                         </td>
-                                                    </tr>
-                                               {% endif %}
-                                               {% set contadorRequisito = contadorRequisito + 1 %}
-                                            {% endif %}
-                                        {% endfor %}
-                                        </tr>
+                                                   {% else %}
+                                                        <tr>
+                                                            <td>{{ requisito.nombre }}</td>
+                                                            <td>{{ requisito.descripcion }}</td>
+                                                            <td>
+                                                                <a href="{{ path('mtd_requisito_eliminar', { 'id': requisito.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
+                                                                    Eliminar
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                   {% endif %}
+                                                   {% set contadorRequisito = contadorRequisito + 1 %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            </tr>
+                                        {% endif %}
                                     {% endfor %}
                                  </tbody>    
                             </table>

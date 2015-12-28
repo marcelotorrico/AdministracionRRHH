@@ -19,6 +19,7 @@
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="MTDContratacionEmpleadosBundle">MTD\ContratacionEmpleadosBundle\MTDContratacionEmpleadosBundle</parameter>
       <parameter key="MTDCategoriasTrabajoBundle">MTD\CategoriasTrabajoBundle\MTDCategoriasTrabajoBundle</parameter>
+      <parameter key="MTDProyectoBundle">MTD\ProyectoBundle\MTDProyectoBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -417,7 +418,7 @@
     <parameter key="assetic.read_from">C:\xampp\htdocs\AdministracionRRHH\app/../web</parameter>
     <parameter key="assetic.write_to">C:\xampp\htdocs\AdministracionRRHH\app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
-    <parameter key="assetic.java.bin">c:\Windows\SYSTEM32\java.EXE</parameter>
+    <parameter key="assetic.java.bin">C:\Windows\SYSTEM32\java.EXE</parameter>
     <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
@@ -1715,7 +1716,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5679818c1a3e11.34111355</argument>
+            <argument>56816f1899f6d6.83339550</argument>
           </service>
         </argument>
       </argument>
@@ -1838,7 +1839,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5679818c1a3e11.34111355</argument>
+            <argument>56816f1899f6d6.83339550</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2355,6 +2356,7 @@
             <argument type="collection">
               <argument key="MTDContratacionEmpleadosBundle">MTD\ContratacionEmpleadosBundle\Entity</argument>
               <argument key="MTDCategoriasTrabajoBundle">MTD\CategoriasTrabajoBundle\Entity</argument>
+              <argument key="MTDProyectoBundle">MTD\ProyectoBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2376,6 +2378,7 @@
                       <argument type="collection">
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ContratacionEmpleadosBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2388,10 +2391,24 @@
                       <argument type="collection">
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ContratacionEmpleadosBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>MTD\CategoriasTrabajoBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ContratacionEmpleadosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>MTD\ProyectoBundle\Entity</argument>
                 </call>
               </service>
             </argument>
@@ -2816,6 +2833,10 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle/Resources/views</argument>
         <argument>MTDCategoriasTrabajo</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle/Resources/views</argument>
+        <argument>MTDProyecto</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>

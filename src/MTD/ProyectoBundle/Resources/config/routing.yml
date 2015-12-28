@@ -1,0 +1,27 @@
+mtd_proyecto_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDProyectoBundle:Default:index }
+
+mtd_proyecto_registro:
+    path:     /proyecto/registro
+    defaults: {_controller: MTDProyectoBundle:RegistroProyecto:registro }
+
+mtd_cliente_registro:
+    path:     /registro/cliente
+    defaults: {_controller: MTDProyectoBundle:RegistroCliente:registroCliente }
+
+mtd_tipoProyecto_registro:
+    path:     /registro/tipoProyecto
+    defaults: {_controller: MTDProyectoBundle:TipoProyecto:registroTipoProyecto }
+
+mtd_lista_proyecto:
+    path:     /proyecto/lista
+    defaults: {_controller: MTDProyectoBundle:ListaProyecto:lista }
+    
+mtd_editar_proyecto:
+    path:     /proyecto/editar/{id}
+    defaults: {_controller: MTDProyectoBundle:EditaProyecto:editar }
+    
+mtd_eliminar_proyecto:
+    path:     /proyecto/eliminar/{id}
+    defaults: {_controller: MTDProyectoBundle:EliminaProyecto:eliminar }

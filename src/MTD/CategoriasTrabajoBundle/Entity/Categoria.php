@@ -81,7 +81,7 @@ class Categoria
     private $activo;
     
     /**
-     * @ORM\ManyToMany(targetEntity="MTD\ContratacionEmpleadosBundle\Entity\Proyecto", inversedBy="categoria")
+     * @ORM\ManyToMany(targetEntity="MTD\ProyectoBundle\Entity\Proyecto", inversedBy="categoria")
      */
      private $proyecto;
      
@@ -133,11 +133,11 @@ class Categoria
     /**
      * Add proyecto
      *
-     * @param \MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto
+     * @param \MTD\ProyectoBundle\Entity\Proyecto $proyecto
      *
      * @return Categoria
      */
-    public function addProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto)
+    public function addProyecto(\MTD\ProyectoBundle\Entity\Proyecto $proyecto)
     {
         $this->proyecto[] = $proyecto;
 
@@ -147,9 +147,9 @@ class Categoria
     /**
      * Remove proyecto
      *
-     * @param \MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto
+     * @param \MTD\ProyectoBundle\Entity\Proyecto $proyecto
      */
-    public function removeProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto)
+    public function removeProyecto(\MTD\ProyectoBundle\Entity\Proyecto $proyecto)
     {
         $this->proyecto->removeElement($proyecto);
     }

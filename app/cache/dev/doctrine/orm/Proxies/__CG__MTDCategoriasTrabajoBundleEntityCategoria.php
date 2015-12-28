@@ -209,7 +209,7 @@ class Categoria extends \MTD\CategoriasTrabajoBundle\Entity\Categoria implements
     /**
      * {@inheritDoc}
      */
-    public function addProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto)
+    public function addProyecto(\MTD\ProyectoBundle\Entity\Proyecto $proyecto)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProyecto', array($proyecto));
@@ -220,7 +220,7 @@ class Categoria extends \MTD\CategoriasTrabajoBundle\Entity\Categoria implements
     /**
      * {@inheritDoc}
      */
-    public function removeProyecto(\MTD\ContratacionEmpleadosBundle\Entity\Proyecto $proyecto)
+    public function removeProyecto(\MTD\ProyectoBundle\Entity\Proyecto $proyecto)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProyecto', array($proyecto));

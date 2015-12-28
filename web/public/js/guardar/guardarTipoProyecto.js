@@ -21,7 +21,7 @@ $(document).ready(function(){
                             alert('El tipo de proyecto fue registrado correctamente');
                         } 
                     });
-                    $('#mtd_contratacionempleadosbundle_tipo_proyecto_nombre').val("");
+                    $('#mtd_proyectobundle_tipo_proyecto_nombre').val("");
                 }else{
                     $.unblockUI({
                         onUnblock: function(){
