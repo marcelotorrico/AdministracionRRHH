@@ -36,7 +36,7 @@ class RegistroCategoriaController extends Controller
                 $em->persist($categoria);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('mtd_categoria_crear'));
+                return $this->redirect($this->generateUrl('mtd_categoria_lista'));
             }
         }
         

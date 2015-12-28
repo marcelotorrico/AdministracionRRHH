@@ -150,7 +150,28 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // mtd_requisito_eliminar
             if (0 === strpos($pathinfo, '/requisito/eliminar') && preg_match('#^/requisito/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_requisito_eliminar')), array (  '_controller' => 'MTDCategoriasTrabajoBundle:EliminaRequisito:eliminar',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_requisito_eliminar')), array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\EliminaRequisitoController::eliminarAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/categoria')) {
+            // mtd_categoria_lista
+            if ($pathinfo === '/categoria/lista') {
+                return array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\ListaCategoriaController::listarAction',  '_route' => 'mtd_categoria_lista',);
+            }
+
+            if (0 === strpos($pathinfo, '/categoria/e')) {
+                // mtd_categoria_editar
+                if (0 === strpos($pathinfo, '/categoria/editar') && preg_match('#^/categoria/editar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categoria_editar')), array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\EditaCategoriaController::editarAction',));
+                }
+
+                // mtd_categoria_eliminar
+                if (0 === strpos($pathinfo, '/categoria/eliminar') && preg_match('#^/categoria/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categoria_eliminar')), array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\EliminaCategoriaController::eliminarAction',));
+                }
+
             }
 
         }

@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_64f2a96bf2f18ddaa6bc2850eaecd58126b9f40b804066b087d46c6ea1c1d487 = $this->env->getExtension("native_profiler");
-        $__internal_64f2a96bf2f18ddaa6bc2850eaecd58126b9f40b804066b087d46c6ea1c1d487->enter($__internal_64f2a96bf2f18ddaa6bc2850eaecd58126b9f40b804066b087d46c6ea1c1d487_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f = $this->env->getExtension("native_profiler");
+        $__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f->enter($__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -60,9 +60,13 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
         // line 32
         echo $this->env->getExtension('routing')->getPath("mtd_categoria_crear");
         echo "\">Crear Categoria de Trabajo </a></li>
+                                <li ><a href=\"";
+        // line 33
+        echo $this->env->getExtension('routing')->getPath("mtd_categoria_lista");
+        echo "\">Lista de las Categorias </a></li>
                                 <li role=\"separator\" class=\"divider\"></li>
                                 <li ><a href=\"";
-        // line 34
+        // line 35
         echo $this->env->getExtension('routing')->getPath("mtd_requisito_crear");
         echo "\">Asignar Requisitos a la Categoria </a></li>
                             </ul>
@@ -110,7 +114,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_64f2a96bf2f18ddaa6bc2850eaecd58126b9f40b804066b087d46c6ea1c1d487->leave($__internal_64f2a96bf2f18ddaa6bc2850eaecd58126b9f40b804066b087d46c6ea1c1d487_prof);
+        $__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f->leave($__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f_prof);
 
     }
 
@@ -126,7 +130,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  66 => 34,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
+        return array (  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -161,6 +165,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categoria de Trabajo <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
 /*                                 <li ><a href="{{ path('mtd_categoria_crear') }}">Crear Categoria de Trabajo </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_categoria_lista') }}">Lista de las Categorias </a></li>*/
 /*                                 <li role="separator" class="divider"></li>*/
 /*                                 <li ><a href="{{ path('mtd_requisito_crear') }}">Asignar Requisitos a la Categoria </a></li>*/
 /*                             </ul>*/

@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+        
+    <section class="jumbotron">
+        <div class="container ">
+            <h2>Lista de las Categorias de Trabajo</h2>
+        </div>
+    </section>
+    <div class ="container">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre de la Categoria</th>
+                            <th>Sueldo Basico</th>
+                            <th>Monto Viatico</th>
+                            <th>Monto Premio</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for categoria in categorias %}
+                            {% if categoria.activo == true %}
+                                <tr>
+                                    <td><strong>{{ categoria.nombre }}</strong></td>
+                                    <td>{{ categoria.sueldoBasico }}</td>
+                                    <td>{{ categoria.viatico }}</td>
+                                    <td>{{ categoria.premio }}</td>
+                                    <td><strong>{{ categoria.total }}</strong></td>
+                                    <td>
+                                        <a href="{{ path('mtd_categoria_editar', { 'id': categoria.id }) }}" class="btn btn-sm btn-primary">
+                                            Editar
+                                        </a>
+                                        <a href="{{ path('mtd_categoria_eliminar', { 'id': categoria.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
+                                            Eliminar
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/eliminar/eliminarCategoria.js') }}"></script>
+{% endblock %}

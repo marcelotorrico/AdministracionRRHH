@@ -17,3 +17,15 @@ mtd_requisito_registrar:
 mtd_requisito_eliminar:
     path:     /requisito/eliminar/{id}
     defaults: {_controller: MTDCategoriasTrabajoBundle:EliminaRequisito:eliminar }
+
+mtd_categoria_lista:
+    path:     /categoria/lista
+    defaults: {_controller: MTDCategoriasTrabajoBundle:ListaCategoria:listar }
+    
+mtd_categoria_editar:
+    path:     /categoria/editar/{id}
+    defaults: {_controller: MTDCategoriasTrabajoBundle:EditaCategoria:editar }
+    
+mtd_categoria_eliminar:
+    path:     /categoria/eliminar/{id}
+    defaults: {_controller: MTDCategoriasTrabajoBundle:EliminaCategoria:eliminar }
