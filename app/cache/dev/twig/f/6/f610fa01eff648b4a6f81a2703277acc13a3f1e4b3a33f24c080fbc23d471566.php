@@ -22,20 +22,20 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b = $this->env->getExtension("native_profiler");
-        $__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b->enter($__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
+        $__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9 = $this->env->getExtension("native_profiler");
+        $__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9->enter($__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b->leave($__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b_prof);
+        $__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9->leave($__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4 = $this->env->getExtension("native_profiler");
-        $__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4->enter($__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee = $this->env->getExtension("native_profiler");
+        $__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee->enter($__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -60,7 +60,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         echo "    
     <section class=\"jumbotron\">
         <div class=\"container\">
-            <h2>Crear Requisito para una Categoria</h2>
+            <h2>Perfil Tecnico para una Categoria</h2>
         </div>
     </section>
 
@@ -153,7 +153,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
             <div class=\"panel-heading\" role=\"tab\" id=\"heading1\">
                 <h4 class=\"panel-title\">
                     <a href=\"#collapse1\" data-toggle=\"collapse\" data-parent=\"#accordion\">
-                        Lista de los Requisitos para las Categorias
+                        Perfil Tecnico para las Categorias
                     </a>
                 </h4>
             </div>
@@ -298,15 +298,15 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         </div>
 ";
         
-        $__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4->leave($__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4_prof);
+        $__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee->leave($__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee_prof);
 
     }
 
     // line 139
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195 = $this->env->getExtension("native_profiler");
-        $__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195->enter($__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76 = $this->env->getExtension("native_profiler");
+        $__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76->enter($__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 140
         echo "    ";
@@ -322,7 +322,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         echo "\"></script>
 ";
         
-        $__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195->leave($__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195_prof);
+        $__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76->leave($__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76_prof);
 
     }
 
@@ -352,7 +352,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 /*     */
 /*     <section class="jumbotron">*/
 /*         <div class="container">*/
-/*             <h2>Crear Requisito para una Categoria</h2>*/
+/*             <h2>Perfil Tecnico para una Categoria</h2>*/
 /*         </div>*/
 /*     </section>*/
 /* */
@@ -412,7 +412,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 /*             <div class="panel-heading" role="tab" id="heading1">*/
 /*                 <h4 class="panel-title">*/
 /*                     <a href="#collapse1" data-toggle="collapse" data-parent="#accordion">*/
-/*                         Lista de los Requisitos para las Categorias*/
+/*                         Perfil Tecnico para las Categorias*/
 /*                     </a>*/
 /*                 </h4>*/
 /*             </div>*/

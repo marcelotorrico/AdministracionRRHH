@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f = $this->env->getExtension("native_profiler");
-        $__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f->enter($__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_008a6f037f36e51a52c77b0052bbb2227b125a547413fe3f147d9660bcc68ffb = $this->env->getExtension("native_profiler");
+        $__internal_008a6f037f36e51a52c77b0052bbb2227b125a547413fe3f147d9660bcc68ffb->enter($__internal_008a6f037f36e51a52c77b0052bbb2227b125a547413fe3f147d9660bcc68ffb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -68,7 +68,26 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                                 <li ><a href=\"";
         // line 35
         echo $this->env->getExtension('routing')->getPath("mtd_requisito_crear");
-        echo "\">Asignar Requisitos a la Categoria </a></li>
+        echo "\">Perfil Tecnico </a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Reclutamiento <span class=\"caret\"></span></a>
+                            <ul class=\"dropdown-menu\">
+                                <li ><a href=\"";
+        // line 42
+        echo $this->env->getExtension('routing')->getPath("mtd_categoria_crear");
+        echo "\">Registrar Postulante </a></li>
+                                <li ><a href=\"";
+        // line 43
+        echo $this->env->getExtension('routing')->getPath("mtd_categoria_lista");
+        echo "\">Lista de las Categorias </a></li>
+                                <li role=\"separator\" class=\"divider\"></li>
+                                <li ><a href=\"";
+        // line 45
+        echo $this->env->getExtension('routing')->getPath("mtd_requisito_crear");
+        echo "\">Perfil Tecnico </a></li>
                             </ul>
                         </li>
                         
@@ -114,7 +133,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f->leave($__internal_3555494fac3914ac751c8f1d70de2380c2b2222b5b6ebdb60eb00bc103eeea1f_prof);
+        $__internal_008a6f037f36e51a52c77b0052bbb2227b125a547413fe3f147d9660bcc68ffb->leave($__internal_008a6f037f36e51a52c77b0052bbb2227b125a547413fe3f147d9660bcc68ffb_prof);
 
     }
 
@@ -130,7 +149,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
+        return array (  89 => 45,  84 => 43,  80 => 42,  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -167,7 +186,17 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                                 <li ><a href="{{ path('mtd_categoria_crear') }}">Crear Categoria de Trabajo </a></li>*/
 /*                                 <li ><a href="{{ path('mtd_categoria_lista') }}">Lista de las Categorias </a></li>*/
 /*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li ><a href="{{ path('mtd_requisito_crear') }}">Asignar Requisitos a la Categoria </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_requisito_crear') }}">Perfil Tecnico </a></li>*/
+/*                             </ul>*/
+/*                         </li>*/
+/*                         */
+/*                         <li class="dropdown">*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reclutamiento <span class="caret"></span></a>*/
+/*                             <ul class="dropdown-menu">*/
+/*                                 <li ><a href="{{ path('mtd_categoria_crear') }}">Registrar Postulante </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_categoria_lista') }}">Lista de las Categorias </a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
+/*                                 <li ><a href="{{ path('mtd_requisito_crear') }}">Perfil Tecnico </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */
