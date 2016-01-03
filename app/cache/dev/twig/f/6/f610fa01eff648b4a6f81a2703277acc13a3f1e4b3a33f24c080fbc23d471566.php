@@ -22,20 +22,20 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_9ce152b4332b7b1b71b045b8ba13aed13f686ff16fa8e76834ac12ffb5f8fdda = $this->env->getExtension("native_profiler");
-        $__internal_9ce152b4332b7b1b71b045b8ba13aed13f686ff16fa8e76834ac12ffb5f8fdda->enter($__internal_9ce152b4332b7b1b71b045b8ba13aed13f686ff16fa8e76834ac12ffb5f8fdda_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
+        $__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b = $this->env->getExtension("native_profiler");
+        $__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b->enter($__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_9ce152b4332b7b1b71b045b8ba13aed13f686ff16fa8e76834ac12ffb5f8fdda->leave($__internal_9ce152b4332b7b1b71b045b8ba13aed13f686ff16fa8e76834ac12ffb5f8fdda_prof);
+        $__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b->leave($__internal_368309434b14968524263f86ba9cc703d34ed3a6b38dc4e621a62de8ad25b63b_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_6778215059152119900cbd048ca83378ac057208b010309881db0701999f3a2d = $this->env->getExtension("native_profiler");
-        $__internal_6778215059152119900cbd048ca83378ac057208b010309881db0701999f3a2d->enter($__internal_6778215059152119900cbd048ca83378ac057208b010309881db0701999f3a2d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4 = $this->env->getExtension("native_profiler");
+        $__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4->enter($__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -149,7 +149,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         </div>
     </div>
     <div class=\"container\">    
-        <div class=\"panel panel-danger\">
+        <div class=\"panel panel-primary\">
             <div class=\"panel-heading\" role=\"tab\" id=\"heading1\">
                 <h4 class=\"panel-title\">
                     <a href=\"#collapse1\" data-toggle=\"collapse\" data-parent=\"#accordion\">
@@ -162,7 +162,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
                     <div class=\"table-responsive\">
                         <table class=\"table table-striped table-bordered table-hover table-condensed\" id=\"tabla\">
                             <thead>
-                                <tr class=\"danger\">
+                                <tr class=\"info\">
                                     <th>Categoria</th>
                                     <th>Nombre del Requisito</th>
                                     <th>Descripcion</th>
@@ -298,15 +298,15 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         </div>
 ";
         
-        $__internal_6778215059152119900cbd048ca83378ac057208b010309881db0701999f3a2d->leave($__internal_6778215059152119900cbd048ca83378ac057208b010309881db0701999f3a2d_prof);
+        $__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4->leave($__internal_0a37a5a82827a72bfdc820e29661c4bd05255544e06cb8461b22e8bbc44629e4_prof);
 
     }
 
     // line 139
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_df74f8f84499e9ee42cbba7825129115e655b8b5123f4e193fc5897c881aa04c = $this->env->getExtension("native_profiler");
-        $__internal_df74f8f84499e9ee42cbba7825129115e655b8b5123f4e193fc5897c881aa04c->enter($__internal_df74f8f84499e9ee42cbba7825129115e655b8b5123f4e193fc5897c881aa04c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195 = $this->env->getExtension("native_profiler");
+        $__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195->enter($__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 140
         echo "    ";
@@ -322,7 +322,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         echo "\"></script>
 ";
         
-        $__internal_df74f8f84499e9ee42cbba7825129115e655b8b5123f4e193fc5897c881aa04c->leave($__internal_df74f8f84499e9ee42cbba7825129115e655b8b5123f4e193fc5897c881aa04c_prof);
+        $__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195->leave($__internal_87a01a986fd7a8db6047e8e44591cc9a5729cfb74b46fcfb516843b0d23e5195_prof);
 
     }
 
@@ -408,7 +408,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 /*         </div>*/
 /*     </div>*/
 /*     <div class="container">    */
-/*         <div class="panel panel-danger">*/
+/*         <div class="panel panel-primary">*/
 /*             <div class="panel-heading" role="tab" id="heading1">*/
 /*                 <h4 class="panel-title">*/
 /*                     <a href="#collapse1" data-toggle="collapse" data-parent="#accordion">*/
@@ -421,7 +421,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 /*                     <div class="table-responsive">*/
 /*                         <table class="table table-striped table-bordered table-hover table-condensed" id="tabla">*/
 /*                             <thead>*/
-/*                                 <tr class="danger">*/
+/*                                 <tr class="info">*/
 /*                                     <th>Categoria</th>*/
 /*                                     <th>Nombre del Requisito</th>*/
 /*                                     <th>Descripcion</th>*/

@@ -90,7 +90,7 @@ class Proyecto
     private $activo;
     
     /**
-     * @ORM\ManyToMany(targetEntity="MTD\CategoriasTrabajoBundle\Entity\Categoria", mappedBy="proyecto")
+     * @ORM\ManyToMany(targetEntity="\MTD\CategoriasTrabajoBundle\Entity\Categoria", inversedBy="proyecto")
      * @ORM\JoinTable(name="proyecto_categoria")
      * 
      */
@@ -127,10 +127,15 @@ class Proyecto
      * Get categoria
      *
      * @return \Doctrine\Common\Collections\Collection 
-     */
+     */  
     public function getCategoria()
     {
         return $this->categoria;
+    }
+    
+    public function setCategoria($categoria)
+    {
+        return $this->categoria = $categoria;
     }
     
     /**

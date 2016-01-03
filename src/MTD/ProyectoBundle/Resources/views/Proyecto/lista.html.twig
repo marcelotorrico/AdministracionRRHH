@@ -38,7 +38,7 @@
                                     <td>{{ proyecto.cliente.nombre }} {{ proyecto.cliente.apellido }}</td>
                                     <td>{{ proyecto.tipoProyecto.nombre }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-info">
+                                        <a href="{{ path('mtd_mostrar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-info">
                                             Ver
                                         </a>
                                         <a href="{{ path('mtd_editar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-primary">

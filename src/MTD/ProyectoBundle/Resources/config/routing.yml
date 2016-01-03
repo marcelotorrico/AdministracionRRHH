@@ -25,3 +25,11 @@ mtd_editar_proyecto:
 mtd_eliminar_proyecto:
     path:     /proyecto/eliminar/{id}
     defaults: {_controller: MTDProyectoBundle:EliminaProyecto:eliminar }
+    
+mtd_mostrar_proyecto:
+    path:     /proyecto/mostrar/{id}
+    defaults: {_controller: MTDProyectoBundle:InformacionProyecto:mostrar }
+    
+mtd_categorias_proyecto:
+    path:     /categoria/proyecto/{id}
+    defaults: {_controller: MTDProyectoBundle:CategoriaProyecto:listar }

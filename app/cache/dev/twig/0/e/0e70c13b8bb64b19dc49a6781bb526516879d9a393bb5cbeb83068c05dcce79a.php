@@ -22,20 +22,20 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_11d05fc280853d39776f4a3e6caea3c641d67214408af6bda8cc6d394fe2e1c9 = $this->env->getExtension("native_profiler");
-        $__internal_11d05fc280853d39776f4a3e6caea3c641d67214408af6bda8cc6d394fe2e1c9->enter($__internal_11d05fc280853d39776f4a3e6caea3c641d67214408af6bda8cc6d394fe2e1c9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:lista.html.twig"));
+        $__internal_3a124df27c294c53ee13c6cbb9cca36ea9fee3a990f4d6b0d45ad325935b1e1d = $this->env->getExtension("native_profiler");
+        $__internal_3a124df27c294c53ee13c6cbb9cca36ea9fee3a990f4d6b0d45ad325935b1e1d->enter($__internal_3a124df27c294c53ee13c6cbb9cca36ea9fee3a990f4d6b0d45ad325935b1e1d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:lista.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_11d05fc280853d39776f4a3e6caea3c641d67214408af6bda8cc6d394fe2e1c9->leave($__internal_11d05fc280853d39776f4a3e6caea3c641d67214408af6bda8cc6d394fe2e1c9_prof);
+        $__internal_3a124df27c294c53ee13c6cbb9cca36ea9fee3a990f4d6b0d45ad325935b1e1d->leave($__internal_3a124df27c294c53ee13c6cbb9cca36ea9fee3a990f4d6b0d45ad325935b1e1d_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e0a41b818a38ec32b618f5e1d172c6e8754bf6c691ee155cd48c6400a5063bf3 = $this->env->getExtension("native_profiler");
-        $__internal_e0a41b818a38ec32b618f5e1d172c6e8754bf6c691ee155cd48c6400a5063bf3->enter($__internal_e0a41b818a38ec32b618f5e1d172c6e8754bf6c691ee155cd48c6400a5063bf3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_7979ac21510915da44eabf4e7cdd5b9ead49a52b65927943a89f064e0edee962 = $this->env->getExtension("native_profiler");
+        $__internal_7979ac21510915da44eabf4e7cdd5b9ead49a52b65927943a89f064e0edee962->enter($__internal_7979ac21510915da44eabf4e7cdd5b9ead49a52b65927943a89f064e0edee962_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -116,7 +116,10 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["proyecto"], "tipoProyecto", array()), "nombre", array()), "html", null, true);
                 echo "</td>
                                     <td>
-                                        <a href=\"#\" class=\"btn btn-sm btn-info\">
+                                        <a href=\"";
+                // line 41
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("mtd_mostrar_proyecto", array("id" => $this->getAttribute($context["proyecto"], "id", array()))), "html", null, true);
+                echo "\" class=\"btn btn-sm btn-info\">
                                             Ver
                                         </a>
                                         <a href=\"";
@@ -149,15 +152,15 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
     </div>
 ";
         
-        $__internal_e0a41b818a38ec32b618f5e1d172c6e8754bf6c691ee155cd48c6400a5063bf3->leave($__internal_e0a41b818a38ec32b618f5e1d172c6e8754bf6c691ee155cd48c6400a5063bf3_prof);
+        $__internal_7979ac21510915da44eabf4e7cdd5b9ead49a52b65927943a89f064e0edee962->leave($__internal_7979ac21510915da44eabf4e7cdd5b9ead49a52b65927943a89f064e0edee962_prof);
 
     }
 
     // line 61
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_f1ae2fef57d240f03f81837e0001fb2cdef035809a919453b69a9be9e3477c39 = $this->env->getExtension("native_profiler");
-        $__internal_f1ae2fef57d240f03f81837e0001fb2cdef035809a919453b69a9be9e3477c39->enter($__internal_f1ae2fef57d240f03f81837e0001fb2cdef035809a919453b69a9be9e3477c39_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_8331a430c3f80a55d69def9b4657d0aa57a6e8e772684f303f9b7706ee927ddc = $this->env->getExtension("native_profiler");
+        $__internal_8331a430c3f80a55d69def9b4657d0aa57a6e8e772684f303f9b7706ee927ddc->enter($__internal_8331a430c3f80a55d69def9b4657d0aa57a6e8e772684f303f9b7706ee927ddc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 62
         echo "    ";
@@ -169,7 +172,7 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
         echo "\"></script>
 ";
         
-        $__internal_f1ae2fef57d240f03f81837e0001fb2cdef035809a919453b69a9be9e3477c39->leave($__internal_f1ae2fef57d240f03f81837e0001fb2cdef035809a919453b69a9be9e3477c39_prof);
+        $__internal_8331a430c3f80a55d69def9b4657d0aa57a6e8e772684f303f9b7706ee927ddc->leave($__internal_8331a430c3f80a55d69def9b4657d0aa57a6e8e772684f303f9b7706ee927ddc_prof);
 
     }
 
@@ -185,7 +188,7 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
 
     public function getDebugInfo()
     {
-        return array (  168 => 63,  163 => 62,  157 => 61,  145 => 54,  139 => 53,  130 => 47,  124 => 44,  116 => 39,  110 => 38,  106 => 37,  102 => 36,  98 => 35,  94 => 34,  91 => 33,  88 => 32,  84 => 31,  60 => 9,  51 => 7,  47 => 6,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  171 => 63,  166 => 62,  160 => 61,  148 => 54,  142 => 53,  133 => 47,  127 => 44,  121 => 41,  116 => 39,  110 => 38,  106 => 37,  102 => 36,  98 => 35,  94 => 34,  91 => 33,  88 => 32,  84 => 31,  60 => 9,  51 => 7,  47 => 6,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'layout.html.twig' %}*/
@@ -228,7 +231,7 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
 /*                                     <td>{{ proyecto.cliente.nombre }} {{ proyecto.cliente.apellido }}</td>*/
 /*                                     <td>{{ proyecto.tipoProyecto.nombre }}</td>*/
 /*                                     <td>*/
-/*                                         <a href="#" class="btn btn-sm btn-info">*/
+/*                                         <a href="{{ path('mtd_mostrar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-info">*/
 /*                                             Ver*/
 /*                                         </a>*/
 /*                                         <a href="{{ path('mtd_editar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-primary">*/

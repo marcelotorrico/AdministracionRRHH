@@ -83,7 +83,7 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="banco", type="string",nullable=true, length=100)
+     * @ORM\Column(name="banco", type="string", nullable=true, length=100)
      */
     private $banco;
 

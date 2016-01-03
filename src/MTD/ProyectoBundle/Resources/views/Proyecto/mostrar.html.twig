@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Proyecto: {{proyectoSeleccionado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            
+            {{ include('menuProyecto.html.twig')}}
+            
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Informacion</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="nombre" class="control-label col-md-3">Nombre del Proyecto:</label>
+                                <div class="col-md-7">
+                                    <p class="form-control-static">{{proyectoSeleccionado.nombre}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="monto" class="control-label col-md-3">Monto del Contrato:</label>
+                                <div class="col-md-7">
+                                    <p class="form-control-static">{{proyectoSeleccionado.montoContrato}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="plazo" class="control-label col-md-3">Plazo de Entrega:</label>
+                                <div class="col-md-7">
+                                    <p class="form-control-static">{{proyectoSeleccionado.plazoEntrega|date('d-m-Y')}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lugar" class="control-label col-md-3">Lugar del Proyecto:</label>
+                                <div class="col-md-7">
+                                    <p class="form-control-static">{{proyectoSeleccionado.lugar}}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cliente" class="control-label col-md-3">Cliente:</label>
+                                <div class="col-md-7">
+                                    <p class="form-control-static">{{proyectoSeleccionado.cliente.nombre }} {{ proyectoSeleccionado.cliente.apellido }}</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo" class="control-label col-md-3">Tipo de Proyecto:</label>
+                                <div class="col-md-7">
+                                    <p class="form-control-static">{{proyectoSeleccionado.tipoProyecto.nombre}}</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

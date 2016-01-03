@@ -69,6 +69,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             }
 
+            // mtd_mostrar_proyecto
+            if (0 === strpos($pathinfo, '/proyecto/mostrar') && preg_match('#^/proyecto/mostrar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_mostrar_proyecto')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\InformacionProyectoController::mostrarAction',));
+            }
+
+        }
+
+        // mtd_categorias_proyecto
+        if (0 === strpos($pathinfo, '/categoria/proyecto') && preg_match('#^/categoria/proyecto/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categorias_proyecto')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\CategoriaProyectoController::listarAction',));
         }
 
         // mtd_categorias_trabajo_homepage

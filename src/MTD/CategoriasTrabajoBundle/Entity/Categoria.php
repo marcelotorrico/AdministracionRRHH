@@ -81,7 +81,7 @@ class Categoria
     private $activo;
     
     /**
-     * @ORM\ManyToMany(targetEntity="MTD\ProyectoBundle\Entity\Proyecto", inversedBy="categoria")
+     * @ORM\ManyToMany(targetEntity="\MTD\ProyectoBundle\Entity\Proyecto", mappedBy="categoria")
      */
      private $proyecto;
      

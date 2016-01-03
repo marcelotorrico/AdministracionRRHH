@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class EliminaRequisitoController extends Controller
 {
     
-    public function eliminarAction(Request $request,$id)
+    public function eliminarAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $requisitoSeleccionado = $em->getRepository('MTDCategoriasTrabajoBundle:Requisito_Categoria')->find($id);

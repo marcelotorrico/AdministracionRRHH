@@ -39,7 +39,7 @@ class RegistroProyectoController extends Controller
             }else{
                 $this->addFlash(
                     'notice',
-                    'Se registro correctamente el proyecto'
+                    'El proyecto fue registrado correctamente'
                 );
 
                 $proyecto->setActivo("true");
