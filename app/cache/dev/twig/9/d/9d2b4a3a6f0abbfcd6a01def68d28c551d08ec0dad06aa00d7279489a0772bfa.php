@@ -23,20 +23,20 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_79c0048fd177b000aad193ee61ceb1ad575dff5e61607c028f4a26c488da5fc8 = $this->env->getExtension("native_profiler");
-        $__internal_79c0048fd177b000aad193ee61ceb1ad575dff5e61607c028f4a26c488da5fc8->enter($__internal_79c0048fd177b000aad193ee61ceb1ad575dff5e61607c028f4a26c488da5fc8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:registro.html.twig"));
+        $__internal_055700501103d2d73fa73dc83d94fcea7dfe6c4a17f2e9289f707af380a533e0 = $this->env->getExtension("native_profiler");
+        $__internal_055700501103d2d73fa73dc83d94fcea7dfe6c4a17f2e9289f707af380a533e0->enter($__internal_055700501103d2d73fa73dc83d94fcea7dfe6c4a17f2e9289f707af380a533e0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:registro.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_79c0048fd177b000aad193ee61ceb1ad575dff5e61607c028f4a26c488da5fc8->leave($__internal_79c0048fd177b000aad193ee61ceb1ad575dff5e61607c028f4a26c488da5fc8_prof);
+        $__internal_055700501103d2d73fa73dc83d94fcea7dfe6c4a17f2e9289f707af380a533e0->leave($__internal_055700501103d2d73fa73dc83d94fcea7dfe6c4a17f2e9289f707af380a533e0_prof);
 
     }
 
     // line 3
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_2a70f43d2259dfe53553aa59d74f7e084e82bd0d953ff210fac2416b147fcb2b = $this->env->getExtension("native_profiler");
-        $__internal_2a70f43d2259dfe53553aa59d74f7e084e82bd0d953ff210fac2416b147fcb2b->enter($__internal_2a70f43d2259dfe53553aa59d74f7e084e82bd0d953ff210fac2416b147fcb2b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_8c5a058146580fa018ece70135ee8f9bd3b6d097e67fd1b4628227b0778ac2cb = $this->env->getExtension("native_profiler");
+        $__internal_8c5a058146580fa018ece70135ee8f9bd3b6d097e67fd1b4628227b0778ac2cb->enter($__internal_8c5a058146580fa018ece70135ee8f9bd3b6d097e67fd1b4628227b0778ac2cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 4
         echo "    ";
@@ -48,15 +48,15 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
         echo "\" /> 
 ";
         
-        $__internal_2a70f43d2259dfe53553aa59d74f7e084e82bd0d953ff210fac2416b147fcb2b->leave($__internal_2a70f43d2259dfe53553aa59d74f7e084e82bd0d953ff210fac2416b147fcb2b_prof);
+        $__internal_8c5a058146580fa018ece70135ee8f9bd3b6d097e67fd1b4628227b0778ac2cb->leave($__internal_8c5a058146580fa018ece70135ee8f9bd3b6d097e67fd1b4628227b0778ac2cb_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_d1b3530084ad9dfaa5f3918813373a65f6afb2a8eb84f0946b912cb710a0a5a9 = $this->env->getExtension("native_profiler");
-        $__internal_d1b3530084ad9dfaa5f3918813373a65f6afb2a8eb84f0946b912cb710a0a5a9->enter($__internal_d1b3530084ad9dfaa5f3918813373a65f6afb2a8eb84f0946b912cb710a0a5a9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4e79ef22c8a611a10c0847d943fe42924945843e3e0f7aefbbb010ee910c9d7a = $this->env->getExtension("native_profiler");
+        $__internal_4e79ef22c8a611a10c0847d943fe42924945843e3e0f7aefbbb010ee910c9d7a->enter($__internal_4e79ef22c8a611a10c0847d943fe42924945843e3e0f7aefbbb010ee910c9d7a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    ";
@@ -81,7 +81,7 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
         echo "    
     <section class=\"jumbotron\">
         <div class=\"container\">
-            <h2>Crear Proyecto</h2>
+            <h2>Registrar Proyecto</h2>
         </div>
     </section>
 
@@ -456,15 +456,15 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
     </div>
 ";
         
-        $__internal_d1b3530084ad9dfaa5f3918813373a65f6afb2a8eb84f0946b912cb710a0a5a9->leave($__internal_d1b3530084ad9dfaa5f3918813373a65f6afb2a8eb84f0946b912cb710a0a5a9_prof);
+        $__internal_4e79ef22c8a611a10c0847d943fe42924945843e3e0f7aefbbb010ee910c9d7a->leave($__internal_4e79ef22c8a611a10c0847d943fe42924945843e3e0f7aefbbb010ee910c9d7a_prof);
 
     }
 
     // line 254
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_fb5dd357383e1c70181fb74f5026542c2fc78afd6ac9df4e4c793646c588250f = $this->env->getExtension("native_profiler");
-        $__internal_fb5dd357383e1c70181fb74f5026542c2fc78afd6ac9df4e4c793646c588250f->enter($__internal_fb5dd357383e1c70181fb74f5026542c2fc78afd6ac9df4e4c793646c588250f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_5d82136fcb095ad692ba6abc74f91387023acba28c94121bce017290c12d3ca5 = $this->env->getExtension("native_profiler");
+        $__internal_5d82136fcb095ad692ba6abc74f91387023acba28c94121bce017290c12d3ca5->enter($__internal_5d82136fcb095ad692ba6abc74f91387023acba28c94121bce017290c12d3ca5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 255
         echo "    ";
@@ -492,7 +492,7 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
         echo "\"></script>
 ";
         
-        $__internal_fb5dd357383e1c70181fb74f5026542c2fc78afd6ac9df4e4c793646c588250f->leave($__internal_fb5dd357383e1c70181fb74f5026542c2fc78afd6ac9df4e4c793646c588250f_prof);
+        $__internal_5d82136fcb095ad692ba6abc74f91387023acba28c94121bce017290c12d3ca5->leave($__internal_5d82136fcb095ad692ba6abc74f91387023acba28c94121bce017290c12d3ca5_prof);
 
     }
 
@@ -527,7 +527,7 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
 /*     */
 /*     <section class="jumbotron">*/
 /*         <div class="container">*/
-/*             <h2>Crear Proyecto</h2>*/
+/*             <h2>Registrar Proyecto</h2>*/
 /*         </div>*/
 /*     </section>*/
 /* */

@@ -22,20 +22,20 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_06415c67382a85e02835e9cf04cbdac13923ac9f758aaf31a0506cfec37797fa = $this->env->getExtension("native_profiler");
-        $__internal_06415c67382a85e02835e9cf04cbdac13923ac9f758aaf31a0506cfec37797fa->enter($__internal_06415c67382a85e02835e9cf04cbdac13923ac9f758aaf31a0506cfec37797fa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:registro.html.twig"));
+        $__internal_a586aa6feecc3345edea64e388ca514e0016243fca6a683480a38f3e3138b223 = $this->env->getExtension("native_profiler");
+        $__internal_a586aa6feecc3345edea64e388ca514e0016243fca6a683480a38f3e3138b223->enter($__internal_a586aa6feecc3345edea64e388ca514e0016243fca6a683480a38f3e3138b223_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:registro.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_06415c67382a85e02835e9cf04cbdac13923ac9f758aaf31a0506cfec37797fa->leave($__internal_06415c67382a85e02835e9cf04cbdac13923ac9f758aaf31a0506cfec37797fa_prof);
+        $__internal_a586aa6feecc3345edea64e388ca514e0016243fca6a683480a38f3e3138b223->leave($__internal_a586aa6feecc3345edea64e388ca514e0016243fca6a683480a38f3e3138b223_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_a05a04ef40b24f443dcb3f753c69527f4db174b2d41d4e654aee7b8a043f3e0f = $this->env->getExtension("native_profiler");
-        $__internal_a05a04ef40b24f443dcb3f753c69527f4db174b2d41d4e654aee7b8a043f3e0f->enter($__internal_a05a04ef40b24f443dcb3f753c69527f4db174b2d41d4e654aee7b8a043f3e0f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_b410e13f1430a2e32fdbf73febd1526569f0a9b23b1824584dc0b9f0c5e6da20 = $this->env->getExtension("native_profiler");
+        $__internal_b410e13f1430a2e32fdbf73febd1526569f0a9b23b1824584dc0b9f0c5e6da20->enter($__internal_b410e13f1430a2e32fdbf73febd1526569f0a9b23b1824584dc0b9f0c5e6da20_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -60,7 +60,7 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
         echo "    
     <section class=\"jumbotron\">
         <div class=\"container\">
-            <h2>Crear Categoria de Trabajo</h2>
+            <h2>Registrar Categoria de Trabajo</h2>
         </div>
     </section>
 
@@ -197,15 +197,15 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
     </div>
 ";
         
-        $__internal_a05a04ef40b24f443dcb3f753c69527f4db174b2d41d4e654aee7b8a043f3e0f->leave($__internal_a05a04ef40b24f443dcb3f753c69527f4db174b2d41d4e654aee7b8a043f3e0f_prof);
+        $__internal_b410e13f1430a2e32fdbf73febd1526569f0a9b23b1824584dc0b9f0c5e6da20->leave($__internal_b410e13f1430a2e32fdbf73febd1526569f0a9b23b1824584dc0b9f0c5e6da20_prof);
 
     }
 
     // line 95
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_b515bc5b5626c4fa5346558c51c1e5f8e7d4ab36a54c4da87c8fa3a0f3929a40 = $this->env->getExtension("native_profiler");
-        $__internal_b515bc5b5626c4fa5346558c51c1e5f8e7d4ab36a54c4da87c8fa3a0f3929a40->enter($__internal_b515bc5b5626c4fa5346558c51c1e5f8e7d4ab36a54c4da87c8fa3a0f3929a40_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_822f662406631fd6518dea11ebcf5c30fd25d7c173ecd765425a1206ba025bd4 = $this->env->getExtension("native_profiler");
+        $__internal_822f662406631fd6518dea11ebcf5c30fd25d7c173ecd765425a1206ba025bd4->enter($__internal_822f662406631fd6518dea11ebcf5c30fd25d7c173ecd765425a1206ba025bd4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 96
         echo "    ";
@@ -217,7 +217,7 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
         echo "\"></script>
 ";
         
-        $__internal_b515bc5b5626c4fa5346558c51c1e5f8e7d4ab36a54c4da87c8fa3a0f3929a40->leave($__internal_b515bc5b5626c4fa5346558c51c1e5f8e7d4ab36a54c4da87c8fa3a0f3929a40_prof);
+        $__internal_822f662406631fd6518dea11ebcf5c30fd25d7c173ecd765425a1206ba025bd4->leave($__internal_822f662406631fd6518dea11ebcf5c30fd25d7c173ecd765425a1206ba025bd4_prof);
 
     }
 
@@ -247,7 +247,7 @@ class __TwigTemplate_450bcef1642b3a04e8c54d85ac2265ffb1a82e39e04861ea92cef775764
 /*     */
 /*     <section class="jumbotron">*/
 /*         <div class="container">*/
-/*             <h2>Crear Categoria de Trabajo</h2>*/
+/*             <h2>Registrar Categoria de Trabajo</h2>*/
 /*         </div>*/
 /*     </section>*/
 /* */

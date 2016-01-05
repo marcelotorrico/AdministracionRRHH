@@ -1,0 +1,7 @@
+mtd_reclutamiento_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDReclutamientoBundle:Default:index }
+
+mtd_postulante_registro:
+    path:     /postulante/registro
+    defaults: {_controller: MTDReclutamientoBundle:RegistroPostulante:registro }

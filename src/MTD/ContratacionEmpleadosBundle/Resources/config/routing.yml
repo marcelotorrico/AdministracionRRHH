@@ -1,3 +1,0 @@
-mtd_contratacion_empleados_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: MTDContratacionEmpleadosBundle:Default:index }

@@ -27,6 +27,24 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
+        if (0 === strpos($pathinfo, '/hello')) {
+            // mtd_seleccion_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_seleccion_homepage')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\DefaultController::indexAction',));
+            }
+
+            // mtd_reclutamiento_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_reclutamiento_homepage')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\DefaultController::indexAction',));
+            }
+
+        }
+
+        // mtd_postulante_registro
+        if ($pathinfo === '/postulante/registro') {
+            return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPostulanteController::registroAction',  '_route' => 'mtd_postulante_registro',);
+        }
+
         // mtd_proyecto_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_homepage')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\DefaultController::indexAction',));
@@ -128,11 +146,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             }
 
-        }
-
-        // mtd_contratacion_empleados_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_contratacion_empleados_homepage')), array (  '_controller' => 'MTD\\ContratacionEmpleadosBundle\\Controller\\DefaultController::indexAction',));
         }
 
         // homepage

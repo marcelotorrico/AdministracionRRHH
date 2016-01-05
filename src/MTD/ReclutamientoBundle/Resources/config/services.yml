@@ -1,0 +1,4 @@
+services:
+#    mtd_reclutamiento.example:
+#        class: MTD\ReclutamientoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

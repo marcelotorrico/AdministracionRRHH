@@ -17,9 +17,10 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-            new MTD\ContratacionEmpleadosBundle\MTDContratacionEmpleadosBundle(),
             new MTD\CategoriasTrabajoBundle\MTDCategoriasTrabajoBundle(),
             new MTD\ProyectoBundle\MTDProyectoBundle(),
+            new MTD\ReclutamientoBundle\MTDReclutamientoBundle(),
+            new MTD\SeleccionBundle\MTDSeleccionBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

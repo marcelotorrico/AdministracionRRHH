@@ -1,0 +1,4 @@
+services:
+#    mtd_seleccion.example:
+#        class: MTD\SeleccionBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

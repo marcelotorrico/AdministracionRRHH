@@ -1,0 +1,3 @@
+mtd_seleccion_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDSeleccionBundle:Default:index }

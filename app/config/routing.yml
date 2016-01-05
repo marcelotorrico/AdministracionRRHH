@@ -1,13 +1,17 @@
+mtd_seleccion:
+    resource: "@MTDSeleccionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mtd_reclutamiento:
+    resource: "@MTDReclutamientoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mtd_proyecto:
     resource: "@MTDProyectoBundle/Resources/config/routing.yml"
     prefix:   /
 
 mtd_categorias_trabajo:
     resource: "@MTDCategoriasTrabajoBundle/Resources/config/routing.yml"
-    prefix:   /
-
-mtd_contratacion_empleados:
-    resource: "@MTDContratacionEmpleadosBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

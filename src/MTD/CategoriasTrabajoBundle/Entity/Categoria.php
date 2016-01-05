@@ -90,10 +90,50 @@ class Categoria
      */
     private $requisitCategoria;
      
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\SeleccionBundle\Entity\Ascenso", mappedBy="categoria")
+     */
+    private $ascenso;
+    
      public function __construct()
     {
         $this->proyecto  = new ArrayCollection();
         $this->requisitCategoria = new ArrayCollection();
+        $this->ascenso = new ArrayCollection();
+    }
+    
+    /**
+     * Add ascenso
+     *
+     * @param \MTD\SeleccionBundle\Entity\Ascenso $ascenso
+     *
+     * @return Categoria
+     */
+    public function addAscenso(\MTD\SeleccionBundle\Entity\Ascenso $ascenso)
+    {
+        $this->ascenso[] = $ascenso;
+
+        return $this;
+    }
+
+    /**
+     * Remove ascenso
+     *
+     * @param \MTD\SeleccionBundle\Entity\Ascenso $ascenso
+     */
+    public function removeAscenso(\MTD\SeleccionBundle\Entity\Ascenso $ascenso)
+    {
+        $this->ascenso->removeElement($ascenso);
+    }
+
+    /**
+     * Get ascenso
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAscenso()
+    {
+        return $this->ascenso;
     }
     
     /**

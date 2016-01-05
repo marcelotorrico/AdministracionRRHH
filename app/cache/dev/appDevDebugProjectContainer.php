@@ -647,15 +647,16 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('annotation_reader');
 
-        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\MTD\\ContratacionEmpleadosBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\MTD\\CategoriasTrabajoBundle\\Entity'), 2 => ($this->targetDirs[3].'\\src\\MTD\\ProyectoBundle\\Entity')));
+        $b = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => ($this->targetDirs[3].'\\src\\MTD\\CategoriasTrabajoBundle\\Entity'), 1 => ($this->targetDirs[3].'\\src\\MTD\\ProyectoBundle\\Entity'), 2 => ($this->targetDirs[3].'\\src\\MTD\\ReclutamientoBundle\\Entity'), 3 => ($this->targetDirs[3].'\\src\\MTD\\SeleccionBundle\\Entity')));
 
         $c = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
-        $c->addDriver($b, 'MTD\\ContratacionEmpleadosBundle\\Entity');
         $c->addDriver($b, 'MTD\\CategoriasTrabajoBundle\\Entity');
         $c->addDriver($b, 'MTD\\ProyectoBundle\\Entity');
+        $c->addDriver($b, 'MTD\\ReclutamientoBundle\\Entity');
+        $c->addDriver($b, 'MTD\\SeleccionBundle\\Entity');
 
         $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array('MTDContratacionEmpleadosBundle' => 'MTD\\ContratacionEmpleadosBundle\\Entity', 'MTDCategoriasTrabajoBundle' => 'MTD\\CategoriasTrabajoBundle\\Entity', 'MTDProyectoBundle' => 'MTD\\ProyectoBundle\\Entity'));
+        $d->setEntityNamespaces(array('MTDCategoriasTrabajoBundle' => 'MTD\\CategoriasTrabajoBundle\\Entity', 'MTDProyectoBundle' => 'MTD\\ProyectoBundle\\Entity', 'MTDReclutamientoBundle' => 'MTD\\ReclutamientoBundle\\Entity', 'MTDSeleccionBundle' => 'MTD\\SeleccionBundle\\Entity'));
         $d->setMetadataCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_metadata_cache'));
         $d->setQueryCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_query_cache'));
         $d->setResultCacheImpl($this->get('doctrine_cache.providers.doctrine.orm.default_result_cache'));
@@ -2039,7 +2040,7 @@ class appDevDebugProjectContainer extends Container
 
         $e = new \Symfony\Component\Security\Http\AccessMap();
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '56816f1899f6d6.83339550', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('debug.event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '568ae2c86bcee4.27564916', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
     }
 
     /**
@@ -3072,9 +3073,10 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\TwigBundle/Resources/views'), 'Twig');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\swiftmailer-bundle/Resources/views'), 'Swiftmailer');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
-        $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\ContratacionEmpleadosBundle/Resources/views'), 'MTDContratacionEmpleados');
         $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\CategoriasTrabajoBundle/Resources/views'), 'MTDCategoriasTrabajo');
         $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\ProyectoBundle/Resources/views'), 'MTDProyecto');
+        $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\ReclutamientoBundle/Resources/views'), 'MTDReclutamiento');
+        $instance->addPath(($this->targetDirs[3].'\\src\\MTD\\SeleccionBundle/Resources/views'), 'MTDSeleccion');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views'), 'WebProfiler');
         $instance->addPath(($this->targetDirs[3].'\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views'), 'SensioDistribution');
@@ -3374,7 +3376,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('56816f1899f6d6.83339550')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('568ae2c86bcee4.27564916')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -3568,9 +3570,10 @@ class appDevDebugProjectContainer extends Container
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'AppBundle' => 'AppBundle\\AppBundle',
-                'MTDContratacionEmpleadosBundle' => 'MTD\\ContratacionEmpleadosBundle\\MTDContratacionEmpleadosBundle',
                 'MTDCategoriasTrabajoBundle' => 'MTD\\CategoriasTrabajoBundle\\MTDCategoriasTrabajoBundle',
                 'MTDProyectoBundle' => 'MTD\\ProyectoBundle\\MTDProyectoBundle',
+                'MTDReclutamientoBundle' => 'MTD\\ReclutamientoBundle\\MTDReclutamientoBundle',
+                'MTDSeleccionBundle' => 'MTD\\SeleccionBundle\\MTDSeleccionBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -3983,7 +3986,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.variables' => array(
 
             ),
-            'assetic.java.bin' => 'C:\\Windows\\SYSTEM32\\java.EXE',
+            'assetic.java.bin' => 'c:\\Windows\\SYSTEM32\\java.EXE',
             'assetic.node.bin' => '/usr/bin/node',
             'assetic.ruby.bin' => '/usr/bin/ruby',
             'assetic.sass.bin' => '/usr/bin/sass',

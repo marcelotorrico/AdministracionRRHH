@@ -1,0 +1,234 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" /> 
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Registrar Postulante</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        {{ form_start(form) }}
+        {{form_errors(form)}}
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.nombre, 'Nombre del Postulante:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del postulante', 'class': 'form-control inputGroup',
+                                                     'title': 'Escriba nombres validos' } }) }}      
+                    </div>
+                    {{ form_errors(form.nombre) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.apellido, 'Apellido del Postulante:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.apellido, { 'attr': {'placeholder': 'Escriba el apellido del postulante', 'class': 'form-control inputGroup',
+                                                     'title': 'Escriba apellidos validos' } }) }}      
+                    </div>
+                    {{ form_errors(form.apellido) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.fechaNacimiento, 'Fecha de Nacimiento:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.fechaNacimiento, { 'attr': {'placeholder': 'Seleccione la fecha de nacimiento', 'class': 'form-control input-inline datepicker inputGroup',
+                                                     'title': 'Fecha de Nacimiento' } }) }}
+                    </div>
+                    {{ form_errors(form.fechaNacimiento) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.lugar, 'Lugar:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Lugar', 'class': 'form-control inputGroup',
+                                                     'title': 'Lugar' } }) }}      
+                    </div>
+                    {{ form_errors(form.lugar) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.estadoCivil, 'Estado civil:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.estadoCivil, { 'attr': {'placeholder': 'Seleccione el estado civil', 'class': 'form-control inputGroup',
+                                                     'title': 'Seleccione el estado civil' } }) }}      
+                    </div>
+                    {{ form_errors(form.estadoCivil) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.dependientes, 'Nro de Dependientes:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.dependientes, { 'attr': {'placeholder': 'Ingrese el numero de dependientes', 'class': 'form-control inputGroup',
+                                                     'title': 'Numero de dependientes' } }) }}      
+                    </div>
+                    {{ form_errors(form.dependientes) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.cedulaIdentidad, 'Cedula de Identidad:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.cedulaIdentidad, { 'attr': {'placeholder': 'Escriba la cedula de identidad', 'class': 'form-control inputGroup',
+                                                     'title': 'Cedula de identidad' } }) }}      
+                    </div>
+                    {{ form_errors(form.cedulaIdentidad) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.direccion, 'Direccion del Postulante:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.direccion, { 'attr': {'placeholder': 'Escriba la direccion del postulante', 'class': 'form-control inputGroup',
+                                                     'title': 'Direccion del postulante' } }) }}      
+                    </div>
+                    {{ form_errors(form.direccion) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.zona, 'Zona del Postulante:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.zona, { 'attr': {'placeholder': 'Escriba la zona donde vive el postulante', 'class': 'form-control inputGroup',
+                                                     'title': 'Zona del postulante' } }) }}      
+                    </div>
+                    {{ form_errors(form.zona) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.telefonoParticular, 'Telefono Particular:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.telefonoParticular, { 'attr': {'placeholder': 'Ingrese un telefono particular', 'class': 'form-control inputGroup',
+                                                     'title': 'Ingrese un telefono particular validos' } }) }}      
+                    </div>
+                    {{ form_errors(form.telefonoParticular) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.telefonoMovil, 'Telefono Movil:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.telefonoMovil, { 'attr': {'placeholder': 'Ingrese un telefono movil', 'class': 'form-control inputGroup',
+                                                     'title': 'Ingrese un telefono movil valido' } }) }}      
+                    </div>
+                    {{ form_errors(form.telefonoMovil) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.gradoEscolaridad, 'Grado de Escolaridad:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.gradoEscolaridad, { 'attr': {'placeholder': 'Escriba el grado de escolaridad', 'class': 'form-control inputGroup',
+                                                     'title': 'Grado de escolaridad' } }) }}      
+                    </div>
+                    {{ form_errors(form.gradoEscolaridad) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.profesion, 'Profesion Postulante:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.profesion, { 'attr': {'placeholder': 'Escriba la profesion del postulante', 'class': 'form-control inputGroup',
+                                                     'title': 'Profesion del postulante' } }) }}      
+                    </div>
+                    {{ form_errors(form.profesion) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.otrosCursos, 'Otros Cursos:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.otrosCursos, { 'attr': {'placeholder': 'Escriba los cursos del postulante', 'class': 'form-control inputGroup',
+                                                     'title': 'Cursos del postulante' } }) }}      
+                    </div>
+                    {{ form_errors(form.otrosCursos) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class ="form-group">
+                    <div class="input-group">
+                        {{ form_label(form.trabajosAnteriores, 'Trabajos Anteriores:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                        {{ form_widget(form.trabajosAnteriores, { 'attr': {'placeholder': 'Escriba los trabajos en los que participo anteriormente el postulante', 'class': 'form-control inputGroup',
+                                                     'title': 'Trabajos anteriores' } }) }}      
+                    </div>
+                    {{ form_errors(form.trabajosAnteriores) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class ="form-group">
+            <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+        </div>
+
+        {{form_end(form) }}
+    </div>
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+    <script src="{{ asset('public/js/fechas/fechaNacimiento.js') }}"></script>
+{% endblock %}

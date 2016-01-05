@@ -1,6 +1,6 @@
 <?php
 
-namespace MTD\ContratacionEmpleadosBundle\Tests\Controller;
+namespace MTD\ReclutamientoBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
