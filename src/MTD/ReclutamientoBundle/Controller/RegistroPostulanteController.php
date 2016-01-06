@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class RegistroPostulanteController extends Controller
 {
     
-    public function registroAction(Request $request)
+    public function registrarAction(Request $request)
     {
         $empleado = new Empleado();
         $form = $this->createForm(new EmpleadoType(),$empleado);
@@ -21,13 +21,13 @@ class RegistroPostulanteController extends Controller
             if(!$this->validarNombreRepetido($ci)){
                 $this->addFlash(
                 'notice',
-                'El empleado ya fue registrado en la empresa, por favor verifique los datos.'
+                'El postulante ya fue registrado en la empresa, por favor verifique los datos.'
                 );
                 return $this->redirect($this->generateUrl('mtd_postulante_registro'));
             }else{
                 $this->addFlash(
                     'notice',
-                    'El empleado fue registrado correctamente'
+                    'El postulante fue registrado correctamente'
                 );
 
                 $empleado->setActivo("true");
@@ -35,8 +35,11 @@ class RegistroPostulanteController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($empleado);
                 $em->flush();
+                
+                $postulante = $em->getRepository('MTDReclutamientoBundle:Empleado')->findOneBy(array('cedulaIdentidad' => $ci));
+                $idPostulante = $postulante->getId();
 
-                return $this->redirect($this->generateUrl('mtd_postulante_registro'));
+                return $this->redirect($this->generateUrl('mtd_postulante_requisito', array('id'=> $idPostulante, true)));
             }
         }
         

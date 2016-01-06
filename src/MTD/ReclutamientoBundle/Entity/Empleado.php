@@ -100,6 +100,10 @@ class Empleado
      * @var string
      *
      * @ORM\Column(name="telefono_particular", type="string", nullable=true, length=50)
+     * @Assert\Regex(
+     *      pattern="/^(([4][0-9]{6,7}))$/",
+     *      match=true
+     * )
      */
     private $telefonoParticular;
 
@@ -107,6 +111,10 @@ class Empleado
      * @var string
      *
      * @ORM\Column(name="telefono_movil", type="string", nullable=true, length=50)
+     * @Assert\Regex(
+     *      pattern="/^(([7|6][0-9]{7}))$/",
+     *      match=true
+     * )
      */
     private $telefonoMovil;
 
@@ -146,47 +154,47 @@ class Empleado
     private $activo;
     
     /**
-     * @ORM\OneToMany(targetEntity="\MTD\SeleccionBundle\Entity\Ascenso", mappedBy="empleado")
+     * @ORM\OneToMany(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado_Requisito", mappedBy="empleado")
      */
-    private $ascenso;
+    private $empleadoRequisito;
     
     public function __construct()
     {
-        $this->ascenso = new ArrayCollection();
+        $this->empleadoRequisito = new ArrayCollection();
     }
 
     /**
-     * Add ascenso
+     * Add empleadoRequisito
      *
-     * @param \MTD\SeleccionBundle\Entity\Ascenso $ascenso
+     * @param \MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito
      *
      * @return Empleado
      */
-    public function addAscenso(\MTD\SeleccionBundle\Entity\Ascenso $ascenso)
+    public function addEmpleadoRequisito(\MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito)
     {
-        $this->ascenso[] = $ascenso;
+        $this->empleadoRequisito[] = $empleadoRequisito;
 
         return $this;
     }
 
     /**
-     * Remove ascenso
+     * Remove empleadoRequisito
      *
-     * @param \MTD\SeleccionBundle\Entity\Ascenso $ascenso
+     * @param \MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito
      */
-    public function removeAscenso(\MTD\SeleccionBundle\Entity\Ascenso $ascenso)
+    public function removeEmpleadoRequisito(\MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito)
     {
-        $this->ascenso->removeElement($ascenso);
+        $this->empleadoRequisito->removeElement($empleadoRequisito);
     }
 
     /**
-     * Get ascenso
+     * Get empleadoRequisito
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAscenso()
+    public function getEmpleadoRequisito()
     {
-        return $this->ascenso;
+        return $this->empleadoRequisito;
     }
 
     /**

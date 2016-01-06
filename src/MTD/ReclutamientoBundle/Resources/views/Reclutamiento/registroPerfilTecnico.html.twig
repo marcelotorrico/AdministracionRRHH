@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Postulante: {{empleadoSeleccionado.nombre}}</h2>
+        </div>
+    </section>
+        
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Perfil Tecnico</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{{ path('mtd_postulante_registrar_requisito', { 'id': empleadoSeleccionado.id }) }}" method="post" class="form-horizontal" onsubmit="return verificar();">
+                            <div class="row">
+                                <div class ="form-group">
+                                    <label for="categoria" class="control-label col-md-3">Categoria:</label>
+                                    <select id="categoria" name="categoria" required="required" class="form-control inputGroup col-md-5" title="Seleccione una categoria" data-id="{{empleadoSeleccionado.id}}">
+                                        <option value="" selected="selected">Seleccione una categoria</option>
+                                        {% for categoria in categorias %}
+                                            {% if categoria.activo == true %}
+                                                <option value="{{ categoria.id }}">{{ categoria.nombre | trans }}</option>
+                                            {%endif%}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class ="form-group">
+                                    <label for="requisitos" class="control-label col-md-3">Requisitos que Cumple:</label>
+                                    <div id="mostrarRequisitos" class=" inputGroup col-md-5"></div>
+                                </div>
+                                
+                            </div>
+                            <div class ="form-group">
+                                <div class="control-label col-md-3">
+                                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Agregar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/modificar/mostrarRequisitos.js') }}"></script>
+{% endblock %}

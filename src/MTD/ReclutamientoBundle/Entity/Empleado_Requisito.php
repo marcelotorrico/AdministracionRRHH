@@ -1,16 +1,16 @@
 <?php
 
-namespace MTD\SeleccionBundle\Entity;
+namespace MTD\ReclutamientoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Ascenso
+ * Empleado_Requisito
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="MTD\SeleccionBundle\Entity\AscensoRepository")
+ * @ORM\Entity(repositoryClass="MTD\ReclutamientoBundle\Entity\Empleado_RequisitoRepository")
  */
-class Ascenso
+class Empleado_Requisito
 {
     /**
      * @var integer
@@ -22,7 +22,7 @@ class Ascenso
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado", inversedBy="ascenso")
+     * @ORM\ManyToOne(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado", inversedBy="empleadoRequisito")
      * @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * @return integer
      */
@@ -38,21 +38,21 @@ class Ascenso
     }
     
     /**
-     * @ORM\ManyToOne(targetEntity="\MTD\CategoriasTrabajoBundle\Entity\Categoria", inversedBy="ascenso")
-     * @ORM\JoinColumn(name="id_categoria", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="\MTD\CategoriasTrabajoBundle\Entity\Requisito_Categoria", inversedBy="empleadoRequisito")
+     * @ORM\JoinColumn(name="id_requisito", referencedColumnName="id")
      * @return integer
      */
-    private $categoria;
-    public function setCategoria(\MTD\CategoriasTrabajoBundle\Entity\Categoria $categoria)
+    private $requisito;
+    public function setRequisito(\MTD\CategoriasTrabajoBundle\Entity\Requisito_Categoria $requisito)
     {
-        $this->categoria = $categoria;
+        $this->requisito = $requisito;
     }
 
-    public function getCategoria()
+    public function getRequisito()
     {
-        return $this->categoria;
+        return $this->requisito;
     }
-
+    
     /**
      * Get id
      *

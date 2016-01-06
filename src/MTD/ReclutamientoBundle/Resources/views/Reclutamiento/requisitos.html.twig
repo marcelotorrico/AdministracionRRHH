@@ -1,0 +1,21 @@
+{% if requisitos|length == requisitosEmpleado|length%}
+    <div class="col-md-12">
+        <h4>El postulante cumple con todos los requisitos</h4>
+    </div>
+{% else %}
+{% for requisito in requisitos %}
+    {% if requisito.activo == true %}
+        {% set contador = 0 %}
+        {% for requisitoEmpleado in requisitosEmpleado %}
+                {% if requisito.id != requisitoEmpleado.requisito.id and requisito.activo == true %}
+                    {% set contador = contador + 1 %}
+                {% endif %}
+        {% endfor %}
+        {% if contador == requisitosEmpleado|length%}
+            <div class="col-md-12">
+                <input name="requisitos[]" type="checkbox" value="{{ requisito.id}}">{{ requisito.nombre | trans }}
+            </div>
+        {% endif %}
+    {%endif%}
+{% endfor %}
+{%endif%}

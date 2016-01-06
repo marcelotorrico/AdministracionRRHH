@@ -4,4 +4,18 @@ mtd_reclutamiento_homepage:
 
 mtd_postulante_registro:
     path:     /postulante/registro
-    defaults: {_controller: MTDReclutamientoBundle:RegistroPostulante:registro }
+    defaults: {_controller: MTDReclutamientoBundle:RegistroPostulante:registrar }
+    
+mtd_postulante_requisito:
+    path:     /postulante/registroPerfil/{id}
+    defaults: {_controller: MTDReclutamientoBundle:FormularioPerfilTecnico:registrar }
+    
+mtd_postulante_mostrar_requisito:
+    path:     /postulante/registroPerfil/requisitos/{id}/{idEmpleado}
+    defaults: {_controller: MTDReclutamientoBundle:FormularioPerfilTecnico:mostrarRequisitos }
+    options:
+        expose: true
+        
+mtd_postulante_registrar_requisito:
+    path:     /postulante/registroRequisitoPerfil/{id}
+    defaults: {_controller: MTDReclutamientoBundle:RegistroPerfilTecnico:registrar }

@@ -22,20 +22,20 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9 = $this->env->getExtension("native_profiler");
-        $__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9->enter($__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
+        $__internal_21959f96f59cc3688abeaff6c41685dd5c00bd8be5dc73e4988cd4b2819a1503 = $this->env->getExtension("native_profiler");
+        $__internal_21959f96f59cc3688abeaff6c41685dd5c00bd8be5dc73e4988cd4b2819a1503->enter($__internal_21959f96f59cc3688abeaff6c41685dd5c00bd8be5dc73e4988cd4b2819a1503_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9->leave($__internal_3a032ff3b92964cef6c7deaaab334af49292f09b495a119f257f743ffd6210f9_prof);
+        $__internal_21959f96f59cc3688abeaff6c41685dd5c00bd8be5dc73e4988cd4b2819a1503->leave($__internal_21959f96f59cc3688abeaff6c41685dd5c00bd8be5dc73e4988cd4b2819a1503_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee = $this->env->getExtension("native_profiler");
-        $__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee->enter($__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_b51f39f45d7850b3a73310cf8a8cded6b0b2e4c03f9a6732ba79efc1d8b9a63f = $this->env->getExtension("native_profiler");
+        $__internal_b51f39f45d7850b3a73310cf8a8cded6b0b2e4c03f9a6732ba79efc1d8b9a63f->enter($__internal_b51f39f45d7850b3a73310cf8a8cded6b0b2e4c03f9a6732ba79efc1d8b9a63f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -189,7 +189,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
                 foreach ($context['_seq'] as $context["_key"] => $context["requisito"]) {
                     // line 94
                     echo "                                            ";
-                    if ((($this->getAttribute($context["categoria"], "nombre", array()) == $this->getAttribute($this->getAttribute($context["requisito"], "categoria", array()), "nombre", array())) && ($this->getAttribute($context["requisito"], "activo", array()) == true))) {
+                    if ((($this->getAttribute($context["categoria"], "id", array()) == $this->getAttribute($this->getAttribute($context["requisito"], "categoria", array()), "id", array())) && ($this->getAttribute($context["requisito"], "activo", array()) == true))) {
                         // line 95
                         echo "                                                ";
                         $context["contador"] = ((isset($context["contador"]) ? $context["contador"] : $this->getContext($context, "contador")) + 1);
@@ -223,7 +223,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
                 foreach ($context['_seq'] as $context["_key"] => $context["requisito"]) {
                     // line 104
                     echo "                                                ";
-                    if ((($this->getAttribute($context["categoria"], "nombre", array()) == $this->getAttribute($this->getAttribute($context["requisito"], "categoria", array()), "nombre", array())) && ($this->getAttribute($context["requisito"], "activo", array()) == true))) {
+                    if ((($this->getAttribute($context["categoria"], "id", array()) == $this->getAttribute($this->getAttribute($context["requisito"], "categoria", array()), "id", array())) && ($this->getAttribute($context["requisito"], "activo", array()) == true))) {
                         // line 105
                         echo "                                                   ";
                         if (((isset($context["contadorRequisito"]) ? $context["contadorRequisito"] : $this->getContext($context, "contadorRequisito")) == 0)) {
@@ -298,15 +298,15 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         </div>
 ";
         
-        $__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee->leave($__internal_e7bb8f68a8c691659bc0b75d51130c1e5d84557f216870b0d3248ce8120258ee_prof);
+        $__internal_b51f39f45d7850b3a73310cf8a8cded6b0b2e4c03f9a6732ba79efc1d8b9a63f->leave($__internal_b51f39f45d7850b3a73310cf8a8cded6b0b2e4c03f9a6732ba79efc1d8b9a63f_prof);
 
     }
 
     // line 139
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76 = $this->env->getExtension("native_profiler");
-        $__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76->enter($__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_1b2880b97500226028755502b3e1f46d3ef09f2e7bc2c35ec8a9cfd4fa182522 = $this->env->getExtension("native_profiler");
+        $__internal_1b2880b97500226028755502b3e1f46d3ef09f2e7bc2c35ec8a9cfd4fa182522->enter($__internal_1b2880b97500226028755502b3e1f46d3ef09f2e7bc2c35ec8a9cfd4fa182522_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 140
         echo "    ";
@@ -322,7 +322,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
         echo "\"></script>
 ";
         
-        $__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76->leave($__internal_6518baee73ba05871a0718c09012c05d827fc20dec36eabd7a237d2d420dfe76_prof);
+        $__internal_1b2880b97500226028755502b3e1f46d3ef09f2e7bc2c35ec8a9cfd4fa182522->leave($__internal_1b2880b97500226028755502b3e1f46d3ef09f2e7bc2c35ec8a9cfd4fa182522_prof);
 
     }
 
@@ -434,7 +434,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 /*                                     {% if categoria.activo == true %}*/
 /*                                         {% set contador = 0 %}*/
 /*                                         {% for requisito in requisitos %}*/
-/*                                             {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}*/
+/*                                             {% if categoria.id == requisito.categoria.id and requisito.activo == true %}*/
 /*                                                 {% set contador = contador + 1 %}*/
 /*                                             {% endif %}*/
 /*                                         {% endfor %}*/
@@ -444,7 +444,7 @@ class __TwigTemplate_49b86cbc9061302ba4f48070b809b793d5d964b8079ec1b9a460e042600
 /*                                             </td>*/
 /*                                             {% set contadorRequisito = 0 %}*/
 /*                                             {% for requisito in requisitos %}*/
-/*                                                 {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}*/
+/*                                                 {% if categoria.id == requisito.categoria.id and requisito.activo == true %}*/
 /*                                                    {% if contadorRequisito == 0%}*/
 /*                                                         <td>{{ requisito.nombre }}</td>*/
 /*                                                         <td>{{ requisito.descripcion }}</td>*/

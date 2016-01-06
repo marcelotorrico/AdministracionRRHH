@@ -88,52 +88,12 @@ class Categoria
      /**
      * @ORM\OneToMany(targetEntity="Requisito_Categoria", mappedBy="categoria")
      */
-    private $requisitCategoria;
-     
-    /**
-     * @ORM\OneToMany(targetEntity="\MTD\SeleccionBundle\Entity\Ascenso", mappedBy="categoria")
-     */
-    private $ascenso;
+    private $requisitoCategoria;
     
-     public function __construct()
+    public function __construct()
     {
         $this->proyecto  = new ArrayCollection();
-        $this->requisitCategoria = new ArrayCollection();
-        $this->ascenso = new ArrayCollection();
-    }
-    
-    /**
-     * Add ascenso
-     *
-     * @param \MTD\SeleccionBundle\Entity\Ascenso $ascenso
-     *
-     * @return Categoria
-     */
-    public function addAscenso(\MTD\SeleccionBundle\Entity\Ascenso $ascenso)
-    {
-        $this->ascenso[] = $ascenso;
-
-        return $this;
-    }
-
-    /**
-     * Remove ascenso
-     *
-     * @param \MTD\SeleccionBundle\Entity\Ascenso $ascenso
-     */
-    public function removeAscenso(\MTD\SeleccionBundle\Entity\Ascenso $ascenso)
-    {
-        $this->ascenso->removeElement($ascenso);
-    }
-
-    /**
-     * Get ascenso
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAscenso()
-    {
-        return $this->ascenso;
+        $this->requisitoCategoria = new ArrayCollection();
     }
     
     /**
@@ -145,7 +105,7 @@ class Categoria
      */
     public function addRequisitoCategoria(\MTD\CategoriasTrabajoBundle\Entity\Requisito_Categoria $requisitoCategoria)
     {
-        $this->requisitCategoria[] = $requisitoCategoria;
+        $this->requisitoCategoria[] = $requisitoCategoria;
 
         return $this;
     }
@@ -167,7 +127,7 @@ class Categoria
      */
     public function getRequisitoCategoria()
     {
-        return $this->requisitCategoria;
+        return $this->requisitoCategoria;
     }
     
     /**

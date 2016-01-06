@@ -3,6 +3,7 @@
 namespace MTD\CategoriasTrabajoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Requisito_Categoria
@@ -58,6 +59,50 @@ class Requisito_Categoria
         return $this->categoria;
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado_Requisito", mappedBy="requisitoCategoria")
+     */
+    private $empleadoRequisito;
+    
+    public function __construct()
+    {
+        $this->empleadoRequisito = new ArrayCollection();
+    }
+    
+    /**
+     * Add empleadoRequisito
+     *
+     * @param \MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito
+     *
+     * @return Requisito_Categoria
+     */
+    public function addEmpleadoRequisito(\MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito)
+    {
+        $this->empleadoRequisito[] = $empleadoRequisito;
+
+        return $this;
+    }
+
+    /**
+     * Remove empleadoRequisito
+     *
+     * @param \MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito
+     */
+    public function removeEmpleadoRequisito(\MTD\ReclutamientoBundle\Entity\Empleado_Requisito $empleadoRequisito)
+    {
+        $this->empleadoRequisito->removeElement($empleadoRequisito);
+    }
+
+    /**
+     * Get empleadoRequisito
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAscenso()
+    {
+        return $this->empleadoRequisito;
+    }
+    
     /**
      * Get id
      *

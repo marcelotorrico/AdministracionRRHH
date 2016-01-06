@@ -46,7 +46,7 @@
                                                 </td>
                                                 {% set contadorRequisito = 0 %}
                                                 {% for requisito in requisitos %}
-                                                    {% if categoria.nombre == requisito.categoria.nombre and requisito.activo == true %}
+                                                    {% if categoria.id == requisito.categoria.id and requisito.activo == true %}
                                                        {% if contadorRequisito == 0%}
                                                             <td>{{ requisito.nombre }}</td>
                                                             <td>

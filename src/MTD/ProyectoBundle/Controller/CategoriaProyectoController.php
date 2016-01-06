@@ -24,19 +24,19 @@ class CategoriaProyectoController extends Controller
         
         if($form->isValid()){
             
-                $this->addFlash(
-                    'notice',
-                    'La categoria fue agregada correctamente'
-                );
-                $idCategoria = $this->get('request')->request->get('categoria');
-                $categoria = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->find($idCategoria);
-                
-                $proyectoSeleccionado->getCategoria()->add($categoria);
-                
-                $em->persist($proyectoSeleccionado);             
-                $em->flush();
-               
-                return $this->redirect($this->generateUrl('mtd_categorias_proyecto', array('id'=> $id, true)));
+            $this->addFlash(
+                'notice',
+                'La categoria fue agregada correctamente'
+            );
+            $idCategoria = $this->get('request')->request->get('categoria');
+            $categoria = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->find($idCategoria);
+
+            $proyectoSeleccionado->getCategoria()->add($categoria);
+
+            $em->persist($proyectoSeleccionado);             
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('mtd_categorias_proyecto', array('id'=> $id, true)));
             
         }
         
