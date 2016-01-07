@@ -32,7 +32,7 @@ class RegistroPerfilTecnicoController extends Controller
             'El perfil tecnico del postulante fue registrado correctamente'
         );
 
-        return $this->redirect($this->generateUrl('mtd_postulante_registro'));
+        return $this->redirect($this->generateUrl('mtd_postulante_lista'));
     }
     
 }

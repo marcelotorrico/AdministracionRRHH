@@ -19,3 +19,7 @@ mtd_postulante_mostrar_requisito:
 mtd_postulante_registrar_requisito:
     path:     /postulante/registroRequisitoPerfil/{id}
     defaults: {_controller: MTDReclutamientoBundle:RegistroPerfilTecnico:registrar }
+    
+mtd_postulante_lista:
+    path:     /postulantes/lista
+    defaults: {_controller: MTDReclutamientoBundle:Lista:listar }

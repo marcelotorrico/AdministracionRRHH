@@ -40,28 +40,36 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
-        if (0 === strpos($pathinfo, '/postulante/registro')) {
-            // mtd_postulante_registro
-            if ($pathinfo === '/postulante/registro') {
-                return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPostulanteController::registrarAction',  '_route' => 'mtd_postulante_registro',);
-            }
-
-            if (0 === strpos($pathinfo, '/postulante/registroPerfil')) {
-                // mtd_postulante_requisito
-                if (preg_match('#^/postulante/registroPerfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::registrarAction',));
+        if (0 === strpos($pathinfo, '/postulante')) {
+            if (0 === strpos($pathinfo, '/postulante/registro')) {
+                // mtd_postulante_registro
+                if ($pathinfo === '/postulante/registro') {
+                    return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPostulanteController::registrarAction',  '_route' => 'mtd_postulante_registro',);
                 }
 
-                // mtd_postulante_mostrar_requisito
-                if (0 === strpos($pathinfo, '/postulante/registroPerfil/requisitos') && preg_match('#^/postulante/registroPerfil/requisitos/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_mostrar_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::mostrarRequisitosAction',));
+                if (0 === strpos($pathinfo, '/postulante/registroPerfil')) {
+                    // mtd_postulante_requisito
+                    if (preg_match('#^/postulante/registroPerfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::registrarAction',));
+                    }
+
+                    // mtd_postulante_mostrar_requisito
+                    if (0 === strpos($pathinfo, '/postulante/registroPerfil/requisitos') && preg_match('#^/postulante/registroPerfil/requisitos/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_mostrar_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::mostrarRequisitosAction',));
+                    }
+
+                }
+
+                // mtd_postulante_registrar_requisito
+                if (0 === strpos($pathinfo, '/postulante/registroRequisitoPerfil') && preg_match('#^/postulante/registroRequisitoPerfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_registrar_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPerfilTecnicoController::registrarAction',));
                 }
 
             }
 
-            // mtd_postulante_registrar_requisito
-            if (0 === strpos($pathinfo, '/postulante/registroRequisitoPerfil') && preg_match('#^/postulante/registroRequisitoPerfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_registrar_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPerfilTecnicoController::registrarAction',));
+            // mtd_postulante_lista
+            if ($pathinfo === '/postulantes/lista') {
+                return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\ListaController::listarAction',  '_route' => 'mtd_postulante_lista',);
             }
 
         }

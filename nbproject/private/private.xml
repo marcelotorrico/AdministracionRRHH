@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Resources/views/Reclutamiento/requisitos.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Entity/Empleado_Requisito.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Controller/FormularioPerfilTecnicoController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/app/Resources/views/menu.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Resources/views/Reclutamiento/registroPerfilTecnico.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProyectoBundle/Controller/CategoriaProyectoController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Resources/views/Reclutamiento/lista.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Controller/ListaController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Controller/RegistroPerfilTecnicoController.php</file>
         </group>
     </open-files>

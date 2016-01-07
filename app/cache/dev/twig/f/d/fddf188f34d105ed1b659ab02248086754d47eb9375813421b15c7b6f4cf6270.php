@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_52f3726480e8972442c07d2ebd548c7c81763fb82b422b3ae89087582dc1bd0e = $this->env->getExtension("native_profiler");
-        $__internal_52f3726480e8972442c07d2ebd548c7c81763fb82b422b3ae89087582dc1bd0e->enter($__internal_52f3726480e8972442c07d2ebd548c7c81763fb82b422b3ae89087582dc1bd0e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db = $this->env->getExtension("native_profiler");
+        $__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db->enter($__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -81,8 +81,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
         echo "\">Registrar Postulante </a></li>
                                 <li ><a href=\"";
         // line 43
-        echo $this->env->getExtension('routing')->getPath("mtd_categoria_lista");
-        echo "\">Lista de las Categorias </a></li>
+        echo $this->env->getExtension('routing')->getPath("mtd_postulante_lista");
+        echo "\">Lista de los Postulantes </a></li>
                                 <li role=\"separator\" class=\"divider\"></li>
                                 <li ><a href=\"";
         // line 45
@@ -133,7 +133,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_52f3726480e8972442c07d2ebd548c7c81763fb82b422b3ae89087582dc1bd0e->leave($__internal_52f3726480e8972442c07d2ebd548c7c81763fb82b422b3ae89087582dc1bd0e_prof);
+        $__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db->leave($__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db_prof);
 
     }
 
@@ -194,7 +194,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reclutamiento <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
 /*                                 <li ><a href="{{ path('mtd_postulante_registro') }}">Registrar Postulante </a></li>*/
-/*                                 <li ><a href="{{ path('mtd_categoria_lista') }}">Lista de las Categorias </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de los Postulantes </a></li>*/
 /*                                 <li role="separator" class="divider"></li>*/
 /*                                 <li ><a href="{{ path('mtd_requisito_crear') }}">Perfil Tecnico </a></li>*/
 /*                             </ul>*/
