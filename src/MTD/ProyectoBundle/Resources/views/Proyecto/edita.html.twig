@@ -12,7 +12,7 @@
     {% endfor %}
     <section class="jumbotron">
         <div class="container">
-            <h2>Editar Proyecto</h2>
+            <h2>Editar el Proyecto: {{proyectoSeleccionado.nombre}}</h2>
         </div>
     </section>
 
@@ -29,7 +29,7 @@
 
                         {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del proyecto', 'class': 'form-control inputGroup',
                                                      'title': 'El nombre del proyecto tiene que ser unico',
-                                                      'value': proyectoSeleccionado.nombre } }) }}      
+                                                      'value': proyectoSeleccionado.nombre } }) }}
                     </div>
                     {{ form_errors(form.nombre) }}
                 </div>

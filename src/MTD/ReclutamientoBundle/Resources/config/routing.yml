@@ -23,3 +23,15 @@ mtd_postulante_registrar_requisito:
 mtd_postulante_lista:
     path:     /postulantes/lista
     defaults: {_controller: MTDReclutamientoBundle:Lista:listar }
+    
+mtd_postulante_ver:
+    path:     /postulante/ver/{id}
+    defaults: {_controller: MTDReclutamientoBundle:Informacion:mostrar }
+    
+mtd_postulante_eliminar:
+    path:     /postulante/eliminar/{id}
+    defaults: {_controller: MTDReclutamientoBundle:EliminaPostulante:eliminar }
+    
+mtd_postulante_editar:
+    path:     /postulante/editar/{id}
+    defaults: {_controller: MTDReclutamientoBundle:EditaPostulante:editar }

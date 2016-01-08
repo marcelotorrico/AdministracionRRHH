@@ -172,6 +172,24 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\ListaController::listarAction',  '_route' => 'mtd_postulante_lista',);
             }
 
+            // mtd_postulante_ver
+            if (0 === strpos($pathinfo, '/postulante/ver') && preg_match('#^/postulante/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_ver')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\InformacionController::mostrarAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/postulante/e')) {
+                // mtd_postulante_eliminar
+                if (0 === strpos($pathinfo, '/postulante/eliminar') && preg_match('#^/postulante/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_eliminar')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\EliminaPostulanteController::eliminarAction',));
+                }
+
+                // mtd_postulante_editar
+                if (0 === strpos($pathinfo, '/postulante/editar') && preg_match('#^/postulante/editar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_editar')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\EditaPostulanteController::editarAction',));
+                }
+
+            }
+
         }
 
         // mtd_proyecto_homepage

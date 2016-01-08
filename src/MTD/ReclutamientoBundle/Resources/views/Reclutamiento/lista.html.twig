@@ -46,10 +46,10 @@
                                     {%endif%}
 
                                     <td>
-                                        <a href="{{ path('mtd_mostrar_proyecto', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
+                                        <a href="{{ path('mtd_postulante_ver', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
                                             Ver
                                         </a>
-                                        <a href="" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
+                                        <a href="{{ path('mtd_postulante_eliminar', { 'id': postulante.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
                                             Eliminar
                                         </a>
                                     </td>
@@ -61,4 +61,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/eliminar/eliminaPostulante.js') }}"></script>
 {% endblock %}
