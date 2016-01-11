@@ -90,6 +90,24 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             }
 
+            if (0 === strpos($pathinfo, '/postulante/perfilTecnico')) {
+                // mtd_perfil_tecnico_ver
+                if (0 === strpos($pathinfo, '/postulante/perfilTecnico/ver') && preg_match('#^/postulante/perfilTecnico/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_perfil_tecnico_ver')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\PerfilTecnicoInformacionController::mostrarAction',));
+                }
+
+                // mtd_perfil_tecnico_editar
+                if (0 === strpos($pathinfo, '/postulante/perfilTecnico/editar') && preg_match('#^/postulante/perfilTecnico/editar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_perfil_tecnico_editar')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\PerfilTecnicoEditaController::editarAction',));
+                }
+
+            }
+
+            // mtd_postulante_mostrar_requisito_editar
+            if (0 === strpos($pathinfo, '/postulante/registroPerfil/requisitos/editar') && preg_match('#^/postulante/registroPerfil/requisitos/editar/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_mostrar_requisito_editar')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\PerfilTecnicoEditaController::mostrarRequisitosAction',));
+            }
+
         }
 
         // mtd_proyecto_homepage

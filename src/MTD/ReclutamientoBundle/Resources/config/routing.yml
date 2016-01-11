@@ -35,3 +35,17 @@ mtd_postulante_eliminar:
 mtd_postulante_editar:
     path:     /postulante/editar/{id}
     defaults: {_controller: MTDReclutamientoBundle:EditaPostulante:editar }
+    
+mtd_perfil_tecnico_ver:
+    path:     /postulante/perfilTecnico/ver/{id}
+    defaults: {_controller: MTDReclutamientoBundle:PerfilTecnicoInformacion:mostrar }
+    
+mtd_perfil_tecnico_editar:
+    path:     /postulante/perfilTecnico/editar/{id}
+    defaults: {_controller: MTDReclutamientoBundle:PerfilTecnicoEdita:editar }
+    
+mtd_postulante_mostrar_requisito_editar:
+    path:     /postulante/registroPerfil/requisitos/editar/{id}/{idEmpleado}
+    defaults: {_controller: MTDReclutamientoBundle:PerfilTecnicoEdita:mostrarRequisitos }
+    options:
+        expose: true

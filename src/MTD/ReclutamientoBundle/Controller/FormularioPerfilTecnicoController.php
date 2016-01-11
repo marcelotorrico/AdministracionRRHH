@@ -14,10 +14,10 @@ class FormularioPerfilTecnicoController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         
-        $empleadoSeleccionado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
+        $postulante = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
         $categorias = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->findAll();
         
-        return $this->render('MTDReclutamientoBundle:Reclutamiento:registroPerfilTecnico.html.twig', array('empleadoSeleccionado' => $empleadoSeleccionado, "categorias"=>$categorias));
+        return $this->render('MTDReclutamientoBundle:Reclutamiento:registroPerfilTecnico.html.twig', array('postulante' => $postulante, "categorias"=>$categorias));
     }
     
     public function mostrarRequisitosAction(Request $request, $id, $idEmpleado)

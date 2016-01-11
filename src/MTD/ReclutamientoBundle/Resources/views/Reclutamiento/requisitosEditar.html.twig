@@ -1,0 +1,19 @@
+{% for requisito in requisitos %}
+    {% if requisito.activo == true %}
+        {% set contador = 0 %}
+        {% for requisitoEmpleado in requisitosEmpleado %}
+            {% if requisitoEmpleado.requisito.id == requisito.id and requisitoEmpleado.activo == true %}
+                {% set contador = contador + 1 %}
+            {%endif%}
+        {% endfor %}
+        {% if contador > 0%}
+            <div class="col-md-12">
+                <input name="requisitos[]" type="checkbox" value="{{ requisito.id}}" checked>{{ requisito.nombre | trans }}
+            </div>
+        {% else %}
+            <div class="col-md-12">
+                <input name="requisitos[]" type="checkbox" value="{{ requisito.id}}">{{ requisito.nombre | trans }}
+            </div>
+        {%endif%}
+    {%endif%}
+{% endfor %}

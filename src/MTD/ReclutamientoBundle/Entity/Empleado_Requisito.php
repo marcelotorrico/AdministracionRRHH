@@ -22,6 +22,13 @@ class Empleado_Requisito
     private $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean")
+     */
+    private $activo;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado", inversedBy="empleadoRequisito")
      * @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * @return integer
@@ -61,6 +68,30 @@ class Empleado_Requisito
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Proyecto
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
     }
 }
 

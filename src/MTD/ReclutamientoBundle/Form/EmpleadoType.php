@@ -27,7 +27,7 @@ class EmpleadoType extends AbstractType
                 ])
             ->add('lugar', null, array( 'required' => false ))
             ->add('estadoCivil', 'choice', array(
-                   'choices'   => array('casado' => 'Casado', 'soltero' => 'Soltero'),
+                   'choices'   => array('Casado' => 'Casado', 'Soltero' => 'Soltero'),
                    'empty_value' => 'Seleccione el estado civil'
                   ))
             ->add('dependientes', null, array( 'required' => false ))

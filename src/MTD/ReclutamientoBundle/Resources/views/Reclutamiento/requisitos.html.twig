@@ -7,7 +7,7 @@
     {% if requisito.activo == true %}
         {% set contador = 0 %}
         {% for requisitoEmpleado in requisitosEmpleado %}
-                {% if requisito.id != requisitoEmpleado.requisito.id and requisito.activo == true %}
+                {% if requisito.id != requisitoEmpleado.requisito.id%}
                     {% set contador = contador + 1 %}
                 {% endif %}
         {% endfor %}

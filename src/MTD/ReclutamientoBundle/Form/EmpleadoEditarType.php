@@ -32,7 +32,7 @@ class EmpleadoEditarType extends AbstractType
                 ])
             ->add('lugar', null, array( 'required' => false ))
             ->add('estadoCivil', 'choice', array(
-                   'choices'   => array('casado' => 'Casado', 'soltero' => 'Soltero'),
+                   'choices'   => array('Casado' => 'Casado', 'Soltero' => 'Soltero'),
                    'data' => $this->estadoCivil
                   ))
             ->add('dependientes', null, array( 'required' => false ))
