@@ -98,7 +98,7 @@ class Requisito_Categoria
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAscenso()
+    public function getEmpleadoRequisito()
     {
         return $this->empleadoRequisito;
     }

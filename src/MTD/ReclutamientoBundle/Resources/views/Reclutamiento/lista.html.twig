@@ -40,8 +40,10 @@
                                     {% else %}
                                         {% set break = false %}
                                         {% for requisito in postulante.empleadoRequisito if not break %}
-                                            <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
-                                            {% set break = true %}
+                                            {% if requisito.activo == true %}
+                                                <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
+                                                {% set break = true %}
+                                            {%endif%}
                                         {% endfor %}
                                     {%endif%}
 

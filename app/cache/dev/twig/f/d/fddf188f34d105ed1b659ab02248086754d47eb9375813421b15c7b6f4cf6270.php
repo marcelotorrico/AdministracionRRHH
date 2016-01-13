@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db = $this->env->getExtension("native_profiler");
-        $__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db->enter($__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0 = $this->env->getExtension("native_profiler");
+        $__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0->enter($__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -79,15 +79,21 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
         // line 42
         echo $this->env->getExtension('routing')->getPath("mtd_postulante_registro");
         echo "\">Registrar Postulante </a></li>
-                                <li ><a href=\"";
-        // line 43
-        echo $this->env->getExtension('routing')->getPath("mtd_postulante_lista");
-        echo "\">Lista de los Postulantes </a></li>
                                 <li role=\"separator\" class=\"divider\"></li>
                                 <li ><a href=\"";
-        // line 45
-        echo $this->env->getExtension('routing')->getPath("mtd_requisito_crear");
-        echo "\">Perfil Tecnico </a></li>
+        // line 44
+        echo $this->env->getExtension('routing')->getPath("mtd_postulante_lista");
+        echo "\">Lista de los Postulantes </a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Seleccion <span class=\"caret\"></span></a>
+                            <ul class=\"dropdown-menu\">
+                                <li ><a href=\"";
+        // line 51
+        echo $this->env->getExtension('routing')->getPath("mtd_buscar_empleado");
+        echo "\">Buscar Empleado </a></li>
                             </ul>
                         </li>
                         
@@ -133,7 +139,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db->leave($__internal_f01fca214faf80c2fe223e8baa095b37a8648e515e96c81f662b8b32472ac2db_prof);
+        $__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0->leave($__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0_prof);
 
     }
 
@@ -149,7 +155,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  89 => 45,  84 => 43,  80 => 42,  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
+        return array (  95 => 51,  85 => 44,  80 => 42,  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -194,9 +200,15 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reclutamiento <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
 /*                                 <li ><a href="{{ path('mtd_postulante_registro') }}">Registrar Postulante </a></li>*/
-/*                                 <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de los Postulantes </a></li>*/
 /*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li ><a href="{{ path('mtd_requisito_crear') }}">Perfil Tecnico </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de los Postulantes </a></li>*/
+/*                             </ul>*/
+/*                         </li>*/
+/*                         */
+/*                         <li class="dropdown">*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seleccion <span class="caret"></span></a>*/
+/*                             <ul class="dropdown-menu">*/
+/*                                 <li ><a href="{{ path('mtd_buscar_empleado') }}">Buscar Empleado </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */

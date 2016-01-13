@@ -147,17 +147,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPostulanteController::registrarAction',  '_route' => 'mtd_postulante_registro',);
                 }
 
-                if (0 === strpos($pathinfo, '/postulante/registroPerfil')) {
-                    // mtd_postulante_requisito
-                    if (preg_match('#^/postulante/registroPerfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::registrarAction',));
-                    }
-
-                    // mtd_postulante_mostrar_requisito
-                    if (0 === strpos($pathinfo, '/postulante/registroPerfil/requisitos') && preg_match('#^/postulante/registroPerfil/requisitos/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_mostrar_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::mostrarRequisitosAction',));
-                    }
-
+                // mtd_postulante_requisito
+                if (0 === strpos($pathinfo, '/postulante/registroPerfil') && preg_match('#^/postulante/registroPerfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::registrarAction',));
                 }
 
                 // mtd_postulante_registrar_requisito
@@ -206,6 +198,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // mtd_postulante_mostrar_requisito_editar
             if (0 === strpos($pathinfo, '/postulante/registroPerfil/requisitos/editar') && preg_match('#^/postulante/registroPerfil/requisitos/editar/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_mostrar_requisito_editar')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\PerfilTecnicoEditaController::mostrarRequisitosAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/postulantes')) {
+                // mtd_buscar_empleado
+                if ($pathinfo === '/postulantes/buscar') {
+                    return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\BuscadorEmpleadosController::buscarAction',  '_route' => 'mtd_buscar_empleado',);
+                }
+
+                // mtd_empleados_idoneos
+                if (0 === strpos($pathinfo, '/postulantes/idoneos') && preg_match('#^/postulantes/idoneos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleados_idoneos')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\BuscadorEmpleadosController::mostrarIdoneosAction',));
+                }
+
             }
 
         }

@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Buscar Empleados</h2>
+        </div>
+    </section>
+        
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Buscador</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id="main">
+                            <form action="{{ path('mtd_buscar_empleado') }}" method="post" class="form-horizontal">
+                                <div class="row">
+                                    <div class ="form-group">
+                                        <label for="categoria" class="control-label col-md-3">Categoria:</label>
+                                        <select id="categoria" name="categoria" required="required" class="form-control inputGroup col-md-5" title="Seleccione una categoria">
+                                            <option value="" selected="selected">Seleccione una categoria</option>
+                                            {% for categoria in categorias %}
+                                                {% if categoria.activo == true %}
+                                                    <option value="{{ categoria.id }}">{{ categoria.nombre | trans }}</option>
+                                                {%endif%}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class ="form-group">
+                                    <div class="control-label col-md-4">
+                                        <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Buscar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tablaEmpleados"></div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/modificar/buscaEmpleados.js') }}"></script>
+    <script src="{{ asset('public/js/jquery-blockUI.js') }}"></script>
+{% endblock %}

@@ -108,6 +108,19 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_mostrar_requisito_editar')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\PerfilTecnicoEditaController::mostrarRequisitosAction',));
             }
 
+            if (0 === strpos($pathinfo, '/postulantes')) {
+                // mtd_buscar_empleado
+                if ($pathinfo === '/postulantes/buscar') {
+                    return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\BuscadorEmpleadosController::buscarAction',  '_route' => 'mtd_buscar_empleado',);
+                }
+
+                // mtd_empleados_idoneos
+                if ($pathinfo === '/postulantes/idoneos') {
+                    return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\BuscadorEmpleadosController::mostrarIdoneosAction',  '_route' => 'mtd_empleados_idoneos',);
+                }
+
+            }
+
         }
 
         // mtd_proyecto_homepage
