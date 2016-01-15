@@ -12,14 +12,14 @@
     {% endfor %}
     <section class="jumbotron">
         <div class="container">
-            <h2>Editar al Postulante: {{postulante.apellido}} {{postulante.nombre}}</h2>
+            <h2>Editar al Empleado: {{empleado.apellido}} {{empleado.nombre}}</h2>
         </div>
     </section>
 
     <div class="container">
         <div class="row">
             
-            {{ include('menuPostulante.html.twig')}}
+            {{ include('menuEmpleado.html.twig')}}
             
                 <div class="col-md-9">
                     {{ form_start(form) }}
@@ -33,7 +33,7 @@
 
                                     {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del postulante', 'class': 'form-control inputGroup',
                                                                  'title': 'Escriba nombres validos',
-                                                                  'value': postulante.nombre } }) }}
+                                                                  'value': empleado.nombre } }) }}
                                 </div>
                                 {{ form_errors(form.nombre) }}
                             </div>
@@ -47,7 +47,7 @@
 
                                     {{ form_widget(form.apellido, { 'attr': {'placeholder': 'Escriba el apellido del postulante', 'class': 'form-control inputGroup',
                                                                  'title': 'Escriba apellidos validos',
-                                                                  'value': postulante.apellido } }) }}      
+                                                                  'value': empleado.apellido } }) }}      
                                 </div>
                                 {{ form_errors(form.apellido) }}
                             </div>
@@ -61,7 +61,7 @@
 
                                     {{ form_widget(form.fechaNacimiento, { 'attr': {'placeholder': 'Seleccione la fecha de nacimiento', 'class': 'form-control input-inline datepicker inputGroup',
                                                                  'title': 'Fecha de Nacimiento',
-                                                                  'value': postulante.fechaNacimiento|date('d-m-Y') } }) }}
+                                                                  'value': empleado.fechaNacimiento|date('d-m-Y') } }) }}
                                 </div>
                                 {{ form_errors(form.fechaNacimiento) }}
                             </div>
@@ -75,7 +75,7 @@
 
                                     {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Lugar', 'class': 'form-control inputGroup',
                                                                  'title': 'Lugar',
-                                                                  'value': postulante.lugar } }) }}
+                                                                  'value': empleado.lugar } }) }}
                                 </div>
                                 {{ form_errors(form.lugar) }}
                             </div>
@@ -89,7 +89,7 @@
 
                                     {{ form_widget(form.estadoCivil, { 'attr': {'placeholder': 'Seleccione el estado civil', 'class': 'form-control inputGroup',
                                                                  'title': 'Seleccione el estado civil',
-                                                                  'value': postulante.estadoCivil } }) }}      
+                                                                  'value': empleado.estadoCivil } }) }}      
                                 </div>
                                 {{ form_errors(form.estadoCivil) }}
                             </div>
@@ -103,7 +103,7 @@
 
                                     {{ form_widget(form.dependientes, { 'attr': {'placeholder': 'Ingrese el numero de dependientes', 'class': 'form-control inputGroup',
                                                                  'title': 'Numero de dependientes',
-                                                                  'value': postulante.dependientes } }) }}      
+                                                                  'value': empleado.dependientes } }) }}      
                                 </div>
                                 {{ form_errors(form.dependientes) }}
                             </div>
@@ -117,7 +117,7 @@
 
                                     {{ form_widget(form.cedulaIdentidad, { 'attr': {'placeholder': 'Escriba la cedula de identidad', 'class': 'form-control inputGroup',
                                                                  'title': 'Cedula de identidad',
-                                                                  'value': postulante.cedulaIdentidad } }) }}      
+                                                                  'value': empleado.cedulaIdentidad } }) }}      
                                 </div>
                                 {{ form_errors(form.cedulaIdentidad) }}
                             </div>
@@ -131,7 +131,7 @@
 
                                     {{ form_widget(form.direccion, { 'attr': {'placeholder': 'Escriba la direccion del postulante', 'class': 'form-control inputGroup',
                                                                  'title': 'Direccion del postulante',
-                                                                  'value': postulante.direccion } }) }}
+                                                                  'value': empleado.direccion } }) }}
                                 </div>
                                 {{ form_errors(form.direccion) }}
                             </div>
@@ -145,7 +145,7 @@
 
                                     {{ form_widget(form.zona, { 'attr': {'placeholder': 'Escriba la zona donde vive el postulante', 'class': 'form-control inputGroup',
                                                                  'title': 'Zona del postulante',
-                                                                  'value': postulante.zona } }) }}
+                                                                  'value': empleado.zona } }) }}
                                 </div>
                                 {{ form_errors(form.zona) }}
                             </div>
@@ -159,7 +159,7 @@
 
                                     {{ form_widget(form.telefonoParticular, { 'attr': {'placeholder': 'Ingrese un telefono particular', 'class': 'form-control inputGroup',
                                                                  'title': 'Ingrese un telefono particular valido',
-                                                                  'value': postulante.telefonoParticular } }) }}
+                                                                  'value': empleado.telefonoParticular } }) }}
                                 </div>
                                 {{ form_errors(form.telefonoParticular) }}
                             </div>
@@ -173,7 +173,7 @@
 
                                     {{ form_widget(form.telefonoMovil, { 'attr': {'placeholder': 'Ingrese un telefono movil', 'class': 'form-control inputGroup',
                                                                  'title': 'Ingrese un telefono movil valido',
-                                                                  'value': postulante.telefonoMovil } }) }}
+                                                                  'value': empleado.telefonoMovil } }) }}
                                 </div>
                                 {{ form_errors(form.telefonoMovil) }}
                             </div>
@@ -187,7 +187,7 @@
 
                                     {{ form_widget(form.gradoEscolaridad, { 'attr': {'placeholder': 'Escriba el grado de escolaridad', 'class': 'form-control inputGroup',
                                                                  'title': 'Grado de escolaridad',
-                                                                  'value': postulante.gradoEscolaridad } }) }}
+                                                                  'value': empleado.gradoEscolaridad } }) }}
                                 </div>
                                 {{ form_errors(form.gradoEscolaridad) }}
                             </div>
@@ -201,7 +201,7 @@
 
                                     {{ form_widget(form.profesion, { 'attr': {'placeholder': 'Escriba la profesion del postulante', 'class': 'form-control inputGroup',
                                                                  'title': 'Profesion del postulante',
-                                                                  'value': postulante.profesion } }) }}
+                                                                  'value': empleado.profesion } }) }}
                                 </div>
                                 {{ form_errors(form.profesion) }}
                             </div>
@@ -215,7 +215,7 @@
 
                                     {{ form_widget(form.otrosCursos, { 'attr': {'placeholder': 'Escriba los cursos del postulante', 'class': 'form-control inputGroup',
                                                                  'title': 'Cursos del postulante',
-                                                                  'value': postulante.otrosCursos } }) }}
+                                                                  'value': empleado.otrosCursos } }) }}
                                 </div>
                                 {{ form_errors(form.otrosCursos) }}
                             </div>
@@ -229,7 +229,7 @@
 
                                     {{ form_widget(form.trabajosAnteriores, { 'attr': {'placeholder': 'Escriba los trabajos en los que participo anteriormente el postulante', 'class': 'form-control inputGroup',
                                                                  'title': 'Trabajos anteriores',
-                                                                  'value': postulante.trabajosAnteriores } }) }}
+                                                                  'value': empleado.trabajosAnteriores } }) }}
                                 </div>
                                 {{ form_errors(form.trabajosAnteriores) }}
                             </div>
@@ -237,7 +237,7 @@
                     </div>
 
                     <div class ="form-group">
-                        <a type="button" href="{{ path('mtd_postulante_ver', { 'id': postulante.id }) }}" class="btn btn-default"> Cancelar</a>
+                        <a type="button" href="{{ path('mtd_empleado_ver', { 'id': empleado.id }) }}" class="btn btn-default"> Cancelar</a>
                         <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Actualizar</button>
                     </div>
 

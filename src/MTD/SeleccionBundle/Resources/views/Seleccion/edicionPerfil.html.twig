@@ -9,14 +9,14 @@
     
     <section class="jumbotron">
         <div class="container">
-            <h2>Editar Perfil Tecnico de : {{postulante.apellido}} {{postulante.nombre}}</h2>
+            <h2>Editar Perfil Tecnico de : {{empleado.apellido}} {{empleado.nombre}}</h2>
         </div>
     </section>
         
     <div class="container">
         <div class="row">
             
-            {{ include('menuPostulante.html.twig')}}
+            {{ include('menuEmpleado.html.twig')}}
             
             <div class="col-md-9">
                 <div class="panel panel-primary">
@@ -24,11 +24,11 @@
                         <h4 class="panel-title">Perfil Tecnico</h4>
                     </div>
                     <div class="panel-body">
-                        <form action="{{ path('mtd_postulante_registrar_requisito', { 'id': postulante.id }) }}" method="post" class="form-horizontal" onsubmit="return verificar();">
+                        <form action="{{ path('mtd_postulante_registrar_requisito', { 'id': empleado.id }) }}" method="post" class="form-horizontal" onsubmit="return verificar();">
                             <div class="row">
                                 <div class ="form-group">
                                     <label for="categoria" class="control-label col-md-3">Categoria:</label>
-                                    <select id="categoria" name="categoria" required="required" class="form-control inputGroup col-md-5" title="Seleccione una categoria" data-id="{{postulante.id}}">
+                                    <select id="categoria" name="categoria" required="required" class="form-control inputGroup col-md-5" title="Seleccione una categoria" data-id="{{empleado.id}}">
                                         {% for categoria in todasCategorias %}
                                             {% if categoria.activo == true %}
                                                 {% if categoria.id == categoriaSeleccionada.id %}

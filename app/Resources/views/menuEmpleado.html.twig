@@ -1,0 +1,10 @@
+<aside class ="col-md-3">
+    <h4>Opciones</h4>
+    <div class="list-group">
+        <a href="{{ path('mtd_empleado_ver', { 'id': empleado.id }) }}" class="list-group-item">Ver Postulante</a>
+        <a href="{{ path('mtd_postulante_editar', { 'id': empleado.id }) }}" class="list-group-item">Editar Postulante</a>
+        <a href="{{ path('mtd_empleado_perfilTecnico', { 'id': empleado.id }) }}" class="list-group-item">Perfil Tecnico</a>
+        <a href="{{ path('mtd_perfil_tecnico_editar', { 'id': empleado.id }) }}" class="list-group-item">Editar Perfil Tecnico</a>
+        <a href="{{ path('mtd_perfil_tecnico_editar', { 'id': empleado.id }) }}" class="list-group-item">Proyectos en los que participa</a>
+    </div>
+</aside>

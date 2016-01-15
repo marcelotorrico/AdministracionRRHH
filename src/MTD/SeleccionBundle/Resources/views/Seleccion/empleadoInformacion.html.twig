@@ -1,0 +1,168 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Empleado: {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            
+            {{ include('menuEmpleado.html.twig')}}
+            
+            <div class="col-md-9">
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Informacion</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nombre" class="control-label col-md-6">Apellido del Empleado:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.apellido}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monto" class="control-label col-md-6">Nombre del Empleado:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.nombre}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="plazo" class="control-label col-md-6">Fecha de Nacimiento:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.fechaNacimiento|date('d-m-Y')}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lugar" class="control-label col-md-6">Lugar:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.lugar}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cliente" class="control-label col-md-6">Estado Civil:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.estadoCivil }}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Numero de Dependientes:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.dependientes}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Cedula de Identidad:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.cedulaIdentidad}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Direccion:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.direccion}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Zona:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.zona}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Telefono Particular:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.telefonoParticular}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Telefono Movil:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.telefonoMovil}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Grado Escolaridad:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.gradoEscolaridad}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Profesion:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.profesion}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Otros Cursos:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.otrosCursos}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo" class="control-label col-md-6">Trabajos Anteriores:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{empleado.trabajosAnteriores}}</p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="categoria" class="control-label col-md-6">Categoria:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{categoria.nombre}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha" class="control-label col-md-6">Fecha de Contratacion:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{contratacion.fechaIngreso|date('d-m-Y')}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="entrevista" class="control-label col-md-6">Entrevista:</label>
+                                    <div class="col-md-6">
+                                        {% if contratacion.entrevista == true %}
+                                            <p class="form-control-static">Si</p>
+                                        {%else%}
+                                            <p class="form-control-static">No</p>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="examen" class="control-label col-md-6">Examen Medico:</label>
+                                    <div class="col-md-6">
+                                        {% if contratacion.examenMedico == true %}
+                                            <p class="form-control-static">Si</p>
+                                        {%else%}
+                                            <p class="form-control-static">No</p>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="observacion" class="control-label col-md-6">Observaciones:</label>
+                                    <div class="col-md-6">
+                                        <p class="form-control-static">{{contratacion.observaciones}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

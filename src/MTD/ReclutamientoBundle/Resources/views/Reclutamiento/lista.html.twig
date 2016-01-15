@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         {% for postulante in postulantes %}
-                            {% if postulante.activo == true %}
+                            {% if postulante.activo == true and postulante.contratado == false %}
                                 <tr>
                                     <td><strong>{{ postulante.apellido }}</strong></td>
                                     <td><strong>{{ postulante.nombre }}</strong></td>

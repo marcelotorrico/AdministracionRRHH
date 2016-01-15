@@ -95,11 +95,19 @@ class RegistroPerfilTecnicoController extends Controller
                     $this->guardar($requisitoId, $em, $postulante);
                 }           
             }
-            $this->addFlash(
-            'notice',
-            'El perfil tecnico del postulante fue actualizado correctamente'
-            );
-            return $this->redirect($this->generateUrl('mtd_perfil_tecnico_ver', array("id"=>$id)));
+            if($postulante->getContratado()){
+                $this->addFlash(
+                'notice',
+                'El perfil tecnico del empleado fue actualizado correctamente'
+                );
+                return $this->redirect($this->generateUrl('mtd_empleado_perfilTecnico', array("id"=>$id)));
+            }else{
+                $this->addFlash(
+                'notice',
+                'El perfil tecnico del postulante fue actualizado correctamente'
+                );
+                return $this->redirect($this->generateUrl('mtd_perfil_tecnico_ver', array("id"=>$id)));
+            }
         }else{
             foreach($requisitos  as $requisitoId){
                 $this->guardar($requisitoId, $em, $postulante);

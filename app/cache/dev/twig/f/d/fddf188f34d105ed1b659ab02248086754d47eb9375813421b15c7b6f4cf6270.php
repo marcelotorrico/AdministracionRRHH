@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0 = $this->env->getExtension("native_profiler");
-        $__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0->enter($__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_7e8a1211fe1921646a170d7e5dab9f50b0882bf4e01b5767d2997601022781c4 = $this->env->getExtension("native_profiler");
+        $__internal_7e8a1211fe1921646a170d7e5dab9f50b0882bf4e01b5767d2997601022781c4->enter($__internal_7e8a1211fe1921646a170d7e5dab9f50b0882bf4e01b5767d2997601022781c4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -97,6 +97,16 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             </ul>
                         </li>
                         
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Empleados <span class=\"caret\"></span></a>
+                            <ul class=\"dropdown-menu\">
+                                <li ><a href=\"";
+        // line 58
+        echo $this->env->getExtension('routing')->getPath("mtd_empleados_lista");
+        echo "\">Lista de Empleados </a></li>
+                            </ul>
+                        </li>
+                        
                         <li ><a href=\"\">Crear Categoria de Trabajo <span class=\"sr-only\">(current)</span></a></li>
                         <li><a href=\"#\">Link</a></li>
                         <li class=\"dropdown\">
@@ -112,12 +122,6 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             </ul>
                         </li>
                     </ul>
-                    <form class=\"navbar-form navbar-left\" role=\"search\">
-                        <div class=\"form-group\">
-                            <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-                        </div>
-                        <button type=\"submit\" class=\"btn btn-default\">Submit</button>
-                    </form>
                     <ul class=\"nav navbar-nav navbar-right\">
                         <li><a href=\"\">Cerrar Sesion</a></li>
                         
@@ -139,7 +143,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0->leave($__internal_37599b666900cf565b7e462c307482d96a579b182260a5cbafeafd43e68b2ee0_prof);
+        $__internal_7e8a1211fe1921646a170d7e5dab9f50b0882bf4e01b5767d2997601022781c4->leave($__internal_7e8a1211fe1921646a170d7e5dab9f50b0882bf4e01b5767d2997601022781c4_prof);
 
     }
 
@@ -155,7 +159,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  95 => 51,  85 => 44,  80 => 42,  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
+        return array (  105 => 58,  95 => 51,  85 => 44,  80 => 42,  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -212,6 +216,13 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */
+/*                         <li class="dropdown">*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empleados <span class="caret"></span></a>*/
+/*                             <ul class="dropdown-menu">*/
+/*                                 <li ><a href="{{ path('mtd_empleados_lista') }}">Lista de Empleados </a></li>*/
+/*                             </ul>*/
+/*                         </li>*/
+/*                         */
 /*                         <li ><a href="">Crear Categoria de Trabajo <span class="sr-only">(current)</span></a></li>*/
 /*                         <li><a href="#">Link</a></li>*/
 /*                         <li class="dropdown">*/
@@ -227,12 +238,6 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             </ul>*/
 /*                         </li>*/
 /*                     </ul>*/
-/*                     <form class="navbar-form navbar-left" role="search">*/
-/*                         <div class="form-group">*/
-/*                             <input type="text" class="form-control" placeholder="Search">*/
-/*                         </div>*/
-/*                         <button type="submit" class="btn btn-default">Submit</button>*/
-/*                     </form>*/
 /*                     <ul class="nav navbar-nav navbar-right">*/
 /*                         <li><a href="">Cerrar Sesion</a></li>*/
 /*                         */

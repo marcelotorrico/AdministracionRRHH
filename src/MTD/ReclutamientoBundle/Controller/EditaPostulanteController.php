@@ -33,10 +33,6 @@ class EditaPostulanteController extends Controller
                 );
                 return $this->redirect($this->generateUrl('mtd_postulante_editar', array('id'=> $id, true)));
             }else{
-                $this->addFlash(
-                    'notice',
-                    'El postulante fue actualizado correctamente'
-                );
                 $nombre = $form->get('nombre')->getData();
                 $apellido = $form->get('apellido')->getData();
                 $fechaNacimiento = $form->get('fechaNacimiento')->getData();
@@ -72,11 +68,27 @@ class EditaPostulanteController extends Controller
                 $em->persist($postulante);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('mtd_postulante_ver', array('id'=> $id, true)));
+                if($postulante->getContratado()){
+                    $this->addFlash(
+                    'notice',
+                    'El empleado fue actualizado correctamente'
+                    );
+                    return $this->redirect($this->generateUrl('mtd_empleado_ver', array('id'=> $id, true)));
+                }else{
+                    $this->addFlash(
+                    'notice',
+                    'El postulante fue actualizado correctamente'
+                    );
+                    return $this->redirect($this->generateUrl('mtd_postulante_ver', array('id'=> $id, true)));
+                } 
             }
         }
         
-        return $this->render('MTDReclutamientoBundle:Reclutamiento:editaPostulante.html.twig', array("postulante"=>$postulante,"form"=>$form->createView()));
+        if($postulante->getContratado()){
+            return $this->render('MTDSeleccionBundle:Seleccion:editaEmpleado.html.twig', array("empleado"=>$postulante,"form"=>$form->createView()));
+        }else{
+            return $this->render('MTDReclutamientoBundle:Reclutamiento:editaPostulante.html.twig', array("postulante"=>$postulante,"form"=>$form->createView()));
+        }
     }
     
     public function validarCiRepetido($cedulaIdentidad, $ciActual){

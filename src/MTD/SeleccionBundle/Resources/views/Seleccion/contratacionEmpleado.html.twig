@@ -1,0 +1,106 @@
+{% extends 'layout.html.twig' %}
+    
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" /> 
+{% endblock %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Postulante: {{postulante.apellido}} {{postulante.nombre}}</h2>
+        </div>
+    </section>
+        
+    <div class="container">
+        <div class="row">
+            
+            {{ include('menuPostulante.html.twig')}}
+            
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Formulario Contratacion</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{{ path('mtd_empleado_registro', { 'id': postulante.id, 'idCategoria': categoria.id }) }}" method="post" class="form-horizontal">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="postulante" class="control-label col-md-3">Postulante:</label>
+                                    <div class="col-md-5">
+                                            <p class="form-control-static">{{postulante.apellido}} {{postulante.nombre}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cargo" class="control-label col-md-3">Cargo:</label>
+                                    <div class="col-md-5">
+                                            <p class="form-control-static">{{categoria.nombre}}</p>
+                                    </div>
+                                </div>
+                                <div class ="form-group">
+                                    <label for="entrevista" class="control-label col-md-3">Entrevista:</label>
+                                    <div class="col-md-5">
+                                        <select id="entrevista" name="entrevista" required="required" class="form-control inputGroup col-md-5" title="Seleccione una opcion">
+                                            <option value="TRUE">Si</option>
+                                            <option value="FALSE">No</option> 
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class ="form-group">
+                                    <label for="examen" class="control-label col-md-3">Examen Medico:</label>
+                                    <div class="col-md-5">
+                                        <select id="examen" name="examen" required="required" class="form-control inputGroup col-md-5" title="Seleccione una categoria" data-id="{{postulante.id}}">
+                                            <option value="TRUE">Si</option>
+                                            <option value="FALSE">No</option> 
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {% if postulante.contratado == false %}
+                                        <label for="fecha" class="control-label col-md-3">Fecha de Ingreso a la Empresa:</label>
+                                    {% else %}
+                                        <label for="fecha" class="control-label col-md-3">Fecha de Ascenso:</label>
+                                    {% endif %}
+                                    
+                                    <div class="col-md-5">
+                                        <input type="text" id="mtd_proyectobundle_proyecto_plazoEntrega" name="mtd_proyectobundle_proyecto_plazoEntrega" required="required" data-provide="datepicker" data-date-format="dd-mm-yyyy" placeholder="Fecha de ingreso a la empresa" class="form-control input-inline datepicker inputGroup" title="Ingrese la fecha de ingreso.">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="observacion" class="control-label col-md-3">Observaciones:</label>
+                                    <div class="col-md-5">
+                                        <textarea id="observaciones" name="observaciones" placeholder="Observaciones" class="form-control inputGroup" title="Observaciones del postulante"></textarea>
+                                    </div>
+                                </div>
+                            
+                                <div class ="form-group">
+                                    {% if postulante.contratado == false %}
+                                        <label for="registro" class="control-label col-md-3">¿Desea Contratarlo?</label>
+                                    {% else %}
+                                        <label for="registro" class="control-label col-md-3">Registrar:</label>
+                                    {% endif %}
+                                    <div class="col-md-5">
+                                        <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Si</button>
+                                        <a type="button" href="{{ path('mtd_buscar_empleado') }}" class="btn btn-default"> No</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/fechas/validacionFechas.js') }}"></script>
+    <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+{% endblock %}

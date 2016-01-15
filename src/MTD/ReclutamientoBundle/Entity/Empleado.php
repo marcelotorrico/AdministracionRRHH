@@ -128,7 +128,7 @@ class Empleado
     /**
      * @var string
      *
-     * @ORM\Column(name="profesion", type="string", length=100)
+     * @ORM\Column(name="profesion", type="string", nullable=true, length=100)
      */
     private $profesion;
 
@@ -154,15 +154,102 @@ class Empleado
     private $activo;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="contratado", type="boolean")
+     */
+    private $contratado;
+    
+    /**
      * @ORM\OneToMany(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado_Requisito", mappedBy="empleado")
      */
     private $empleadoRequisito;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\SeleccionBundle\Entity\Contratacion", mappedBy="empleado")
+     */
+    private $contratacion;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\SeleccionBundle\Entity\Proyecto_Empleado", mappedBy="empleado")
+     */
+    private $proyectoEmpleado;
+    
     public function __construct()
     {
         $this->empleadoRequisito = new ArrayCollection();
+        $this->contratacion = new ArrayCollection();
+        $this->proyectoEmpleado = new ArrayCollection();
     }
 
+    /**
+     * Add proyectoEmpleado
+     *
+     * @param \MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado
+     *
+     * @return Empleado
+     */
+    public function addProyectoEmpleado(\MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado)
+    {
+        $this->proyectoEmpleado[] = $proyectoEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Remove proyectoEmpleado
+     *
+     * @param \MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado
+     */
+    public function removeProyectoEmpleado(\MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado)
+    {
+        $this->proyectoEmpleado->removeElement($proyectoEmpleado);
+    }
+
+    /**
+     * Get proyectoEmpleado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProyectoEmpleado()
+    {
+        return $this->proyectoEmpleado;
+    }
+    
+    /**
+     * Add contratacion
+     *
+     * @param \MTD\SeleccionBundle\Entity\Contratacion $contratacion
+     *
+     * @return Empleado
+     */
+    public function addContratacion(\MTD\SeleccionBundle\Entity\Contratacion $contratacion)
+    {
+        $this->contratacion[] = $contratacion;
+
+        return $this;
+    }
+
+    /**
+     * Remove contratacion
+     *
+     * @param \MTD\SeleccionBundle\Entity\Contratacion $contratacion
+     */
+    public function removeContratacion(\MTD\SeleccionBundle\Entity\Contratacion $contratacion)
+    {
+        $this->contratacion->removeElement($contratacion);
+    }
+
+    /**
+     * Get contratacion
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContratacion()
+    {
+        return $this->contratacion;
+    }
+    
     /**
      * Add empleadoRequisito
      *
@@ -589,6 +676,30 @@ class Empleado
     public function getActivo()
     {
         return $this->activo;
+    }
+    
+    /**
+     * Set contratado
+     *
+     * @param boolean $contratado
+     *
+     * @return Proyecto
+     */
+    public function setContratado($contratado)
+    {
+        $this->contratado = $contratado;
+
+        return $this;
+    }
+
+    /**
+     * Get contratado
+     *
+     * @return boolean
+     */
+    public function getContratado()
+    {
+        return $this->contratado;
     }
 }
 

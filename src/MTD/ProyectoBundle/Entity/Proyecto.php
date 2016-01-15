@@ -95,11 +95,51 @@ class Proyecto
      * 
      */
      private $categoria;
+     
+     /**
+     * @ORM\OneToMany(targetEntity="\MTD\SeleccionBundle\Entity\Proyecto_Empleado", mappedBy="proyecto")
+     */
+    private $proyectoEmpleado;
 
      public function __construct()
      {
          $this->categoria = new ArrayCollection();
+         $this->proyectoEmpleado = new ArrayCollection();
      }
+     
+     /**
+     * Add proyectoEmpleado
+     *
+     * @param \MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado
+     *
+     * @return Proyecto
+     */
+    public function addProyectoEmpleado(\MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado)
+    {
+        $this->proyectoEmpleado[] = $proyectoEmpleado;
+
+        return $this;
+    }
+
+    /**
+     * Remove proyectoEmpleado
+     *
+     * @param \MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado
+     */
+    public function removeProyectoEmpleado(\MTD\SeleccionBundle\Entity\Proyecto_Empleado $proyectoEmpleado)
+    {
+        $this->proyectoEmpleado->removeElement($proyectoEmpleado);
+    }
+
+    /**
+     * Get proyectoEmpleado
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProyectoEmpleado()
+    {
+        return $this->proyectoEmpleado;
+    }
      
      /**
      * Add categoria

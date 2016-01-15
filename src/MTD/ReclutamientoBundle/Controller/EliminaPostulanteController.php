@@ -26,7 +26,6 @@ class EliminaPostulanteController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('mtd_postulante_lista'));
-            
         }
         
     }

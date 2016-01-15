@@ -22,7 +22,11 @@ class PerfilTecnicoEditaController extends Controller
             }
             $requisitosCategoria = $categoriaSeleccionada->getRequisitoCategoria();
 
-            return $this->render('MTDReclutamientoBundle:Reclutamiento:editaPerfil.html.twig', array("postulante"=>$postulante, "perfil"=>$perfil, "categoriaSeleccionada"=>$categoriaSeleccionada, "todasCategorias"=>$todasCategorias, "requisitosCategoria"=>$requisitosCategoria));
+            if($postulante->getContratado()){
+                return $this->render('MTDSeleccionBundle:Seleccion:edicionPerfil.html.twig', array("empleado"=>$postulante, "perfil"=>$perfil, "categoriaSeleccionada"=>$categoriaSeleccionada, "todasCategorias"=>$todasCategorias, "requisitosCategoria"=>$requisitosCategoria));
+            }else{
+                return $this->render('MTDReclutamientoBundle:Reclutamiento:editaPerfil.html.twig', array("postulante"=>$postulante, "perfil"=>$perfil, "categoriaSeleccionada"=>$categoriaSeleccionada, "todasCategorias"=>$todasCategorias, "requisitosCategoria"=>$requisitosCategoria));
+            }
         }else{
             $idPostulante = $postulante->getId();
             return $this->redirect($this->generateUrl('mtd_postulante_requisito', array('id'=> $idPostulante, true)));

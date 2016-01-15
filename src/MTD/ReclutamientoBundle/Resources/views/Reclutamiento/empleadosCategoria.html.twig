@@ -18,38 +18,69 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     {% for postulante in postulantes %}
-                        {% set break = false %}
-                        {% for requisito in postulante.empleadoRequisito if not break %}
-                            {% if requisito.activo == true and requisito.requisito.categoria.id == categorias.id %}
-                                {% set break = true %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if break == true %}
-                            <tr>
-                                <td><strong>{{ postulante.apellido }}</strong></td>
-                                <td><strong>{{ postulante.nombre }}</strong></td>
-                                <td>{{ postulante.profesion }}</td>
-                                <td>{{ categorias.nombre }}</td>
-                                <td>
-                                    {% for requisito in postulante.empleadoRequisito %}
-                                        {% if requisito.activo == true %}
-                                            {{ requisito.requisito.nombre }}<br>
+                            {% set break = false %}
+                            {% for requisito in postulante.empleadoRequisito if not break %}
+                                {% if requisito.activo == true and requisito.requisito.categoria.id == categorias.id %}
+                                    {% set break = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if break == true %}
+                                {% if postulante.contratado == false %}
+                                    <tr>
+                                        <td><strong>{{ postulante.apellido }}</strong></td>
+                                        <td><strong>{{ postulante.nombre }}</strong></td>
+                                        <td>{{ postulante.profesion }}</td>
+                                        <td>{{ categorias.nombre }}</td>
+                                        <td>
+                                            {% for requisito in postulante.empleadoRequisito %}
+                                                {% if requisito.activo == true %}
+                                                    {{ requisito.requisito.nombre }}<br>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>{{ postulante.telefonoParticular }}</td>
+                                        <td>{{ postulante.telefonoMovil }}</td>
+                                        <td>
+                                            <a href="{{ path('mtd_postulante_ver', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
+                                                Ver al Postulante
+                                            </a>
+                                            <a href="{{ path('mtd_postulante_contratar', { 'id': postulante.id, 'idCategoria': categorias.id }) }}" class="btn btn-sm btn-primary">
+                                                Contratar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    {% for contratacion in postulante.contratacion %}
+                                        {% if  contratacion.categoria != categorias.id %}
+                                            <tr>
+                                                <td><strong>{{ postulante.apellido }}</strong></td>
+                                                <td><strong>{{ postulante.nombre }}</strong></td>
+                                                <td>{{ postulante.profesion }}</td>
+                                                <td>{{ categorias.nombre }}</td>
+                                                <td>
+                                                    {% for requisito in postulante.empleadoRequisito %}
+                                                        {% if requisito.activo == true %}
+                                                            {{ requisito.requisito.nombre }}<br>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </td>
+                                                <td>{{ postulante.telefonoParticular }}</td>
+                                                <td>{{ postulante.telefonoMovil }}</td>
+                                                <td>
+                                                    <a href="{{ path('mtd_postulante_ver', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
+                                                        Ver al Postulante
+                                                    </a>
+                                                    <a href="{{ path('mtd_postulante_contratar', { 'id': postulante.id, 'idCategoria': categorias.id }) }}" class="btn btn-sm btn-success">
+                                                        Ascender
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         {% endif %}
                                     {% endfor %}
-                                </td>
-                                <td>{{ postulante.telefonoParticular }}</td>
-                                <td>{{ postulante.telefonoMovil }}</td>
-                                <td>
-                                    <a href="{{ path('mtd_postulante_ver', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
-                                        Ver al Postulante
-                                    </a>
-                                    <a href="{{ path('mtd_postulante_eliminar', { 'id': postulante.id }) }}" class="btn btn-sm btn-primary">
-                                        Contratar
-                                    </a>
-                                </td>
-                            </tr>
-                        {% endif %}
+                                {% endif %}
+                            {% endif %}
                     {% endfor %}
                 </tbody>    
             </table>

@@ -16,7 +16,9 @@ class PerfilTecnicoInformacionController extends Controller
         
         if(!$perfil->isEmpty()){
             foreach($perfil  as $requisito) {
-                $categoria = $requisito->getRequisito()->getCategoria();
+                if($requisito->getActivo()){
+                    $categoria = $requisito->getRequisito()->getCategoria();
+                }
             }
 
             return $this->render('MTDReclutamientoBundle:Reclutamiento:mostrarPerfil.html.twig', array("postulante"=>$postulante, "perfil"=>$perfil, "categoria"=>$categoria));

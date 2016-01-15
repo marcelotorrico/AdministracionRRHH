@@ -1,3 +1,23 @@
 mtd_seleccion_homepage:
     path:     /hello/{name}
     defaults: { _controller: MTDSeleccionBundle:Default:index }
+    
+mtd_postulante_contratar:
+    path:     /postulante/contratacion/{id}/{idCategoria}
+    defaults: {_controller: MTDSeleccionBundle:ContratacionEmpleado:mostrar }
+    
+mtd_empleado_registro:
+    path:     /empleado/registro/{id}/{idCategoria}
+    defaults: {_controller: MTDSeleccionBundle:ContratacionEmpleado:registrar }
+    
+mtd_empleados_lista:
+    path:     /empleados/lista
+    defaults: {_controller: MTDSeleccionBundle:ListaEmpleados:listar }
+    
+mtd_empleado_ver:
+    path:     /empleado/ver/{id}
+    defaults: {_controller: MTDSeleccionBundle:EmpleadoInformacion:mostrar }
+    
+mtd_empleado_perfilTecnico:
+    path:     /empleado/perfil/{id}
+    defaults: {_controller: MTDSeleccionBundle:PerfilTecnicoEmpleado:mostrar }
