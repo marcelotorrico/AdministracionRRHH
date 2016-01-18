@@ -33,3 +33,21 @@ mtd_mostrar_proyecto:
 mtd_categorias_proyecto:
     path:     /categoria/proyecto/{id}
     defaults: {_controller: MTDProyectoBundle:CategoriaProyecto:listar }
+    
+mtd_proyecto_empleado:
+    path:     /proyecto/empleados/{id}
+    defaults: {_controller: MTDProyectoBundle:ProyectoEmpleado:asignar }
+    
+mtd_proyecto_empleado_agregar:
+    path:     /proyecto/empleados/agregar/{id}/{proyecto}
+    defaults: {_controller: MTDProyectoBundle:ProyectoEmpleado:mostrar }
+    options:
+        expose: true
+    
+mtd_proyecto_empleado_registro:
+    path:     /proyecto/empleados/registro/{id}/{idProyecto}
+    defaults: {_controller: MTDProyectoBundle:EmpleadoRegistro:registrar }
+    
+mtd_proyecto_lista_empleados:
+    path:     /proyecto/lista/empleados/{id}
+    defaults: {_controller: MTDProyectoBundle:ListaEmpleados:listar }

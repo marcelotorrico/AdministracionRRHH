@@ -194,6 +194,24 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categorias_proyecto')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\CategoriaProyectoController::listarAction',));
         }
 
+        if (0 === strpos($pathinfo, '/proyecto/empleados')) {
+            // mtd_proyecto_empleado
+            if (preg_match('#^/proyecto/empleados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::asignarAction',));
+            }
+
+            // mtd_proyecto_empleado_agregar
+            if (0 === strpos($pathinfo, '/proyecto/empleados/agregar') && preg_match('#^/proyecto/empleados/agregar/(?P<id>[^/]++)/(?P<proyecto>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_agregar')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::mostrarAction',));
+            }
+
+            // mtd_proyecto_empleado_registro
+            if (0 === strpos($pathinfo, '/proyecto/empleados/registro') && preg_match('#^/proyecto/empleados/registro/(?P<id>[^/]++)/(?P<idProyecto>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_registro')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\EmpleadoRegistroController::registrarAction',));
+            }
+
+        }
+
         // mtd_categorias_trabajo_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categorias_trabajo_homepage')), array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\DefaultController::indexAction',));

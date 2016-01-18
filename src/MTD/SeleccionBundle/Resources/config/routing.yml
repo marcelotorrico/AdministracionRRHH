@@ -21,3 +21,7 @@ mtd_empleado_ver:
 mtd_empleado_perfilTecnico:
     path:     /empleado/perfil/{id}
     defaults: {_controller: MTDSeleccionBundle:PerfilTecnicoEmpleado:mostrar }
+    
+mtd_empleado_proyectos_participa:
+    path:     /proyectos/empleado/{id}
+    defaults: {_controller: MTDSeleccionBundle:ProyectosEmpleado:listar }

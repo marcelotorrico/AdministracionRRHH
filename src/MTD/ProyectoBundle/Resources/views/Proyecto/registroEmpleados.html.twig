@@ -1,0 +1,65 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Proyecto: {{proyectoSeleccionado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            
+            {{ include('menuProyecto.html.twig')}}
+            
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Buscar Empleados</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id="main">
+                            <form action="{{ path('mtd_buscar_empleado') }}" method="post" >
+                                <div class="form-group">
+                                    <div class="input-group col-md-6">
+                                        <span class="input-group-addon">Seleccione una categoria:</span>
+                                        <select class="form-control inputGroup col-md-5" required="required" name="categoria" id="categoria" title="Seleccione una categoria" data-id="{{proyectoSeleccionado.id}}">
+                                            <option value="" selected="selected">Seleccione una categoria</option>
+                                            {% for categoria in categoriasProyecto %}
+                                                {% if categoria.activo == true %}
+                                                    <option value="{{ categoria.id }}">{{ categoria.nombre | trans }}</option>
+                                                {%endif%}
+                                            {% endfor %}
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                                <input type="hidden" id="proyecto" name ="proyecto" value="{{proyectoSeleccionado.id}}" />
+                                <div class ="form-group">
+                                    <div class="control-label col-md-4">
+                                        <button type="submit"  class="btn btn-primary" id ="enviar" name="enviar" > Buscar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>   
+                </div>
+                
+                <div id="tablaEmpleados"></div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/modificar/empleadosProyecto.js') }}"></script>
+    <script src="{{ asset('public/js/jquery-blockUI.js') }}"></script>
+{% endblock %}

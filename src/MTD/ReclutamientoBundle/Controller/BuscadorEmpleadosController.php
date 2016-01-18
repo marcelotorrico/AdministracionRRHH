@@ -24,7 +24,6 @@ class BuscadorEmpleadosController extends Controller
             $em = $this->getDoctrine()->getManager();
             
             $categorias = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->find($id);
-            
             $postulantes = $em->getRepository('MTDReclutamientoBundle:Empleado')->findAll();
 
             return $this->render('MTDReclutamientoBundle:Reclutamiento:empleadosCategoria.html.twig', array("categorias"=>$categorias, "postulantes"=>$postulantes));

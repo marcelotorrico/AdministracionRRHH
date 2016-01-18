@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+        
+    <section class="jumbotron">
+        <div class="container ">
+            <h2>Lista de Empleados en el proyecto: {{proyectoSeleccionado.nombre}}</h2>
+        </div>
+    </section>
+    <div class ="container">
+        
+        {{ include('menuProyecto.html.twig')}}
+        
+        <div class="col-md-9">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Apellido del Empleado</th>
+                            <th>Nombre del Empleado</th>
+                            <th>Cedula de Identidad</th>
+                            <th>Categoria</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for proyectoEmpleado in proyectoSeleccionado.proyectoEmpleado %}
+                            <tr>
+                                <td>{{ proyectoEmpleado.empleado.nombre }}</td>
+                                <td>{{ proyectoEmpleado.empleado.apellido }}</td>
+                                <td>{{ proyectoEmpleado.empleado.cedulaIdentidad }}</td>
+                                
+                                {% for contratacion in proyectoEmpleado.empleado.contratacion %}
+                                    {% if contratacion.activo == true %}
+                                        {% set break = false %}
+                                        {% for requisito in proyectoEmpleado.empleado.empleadoRequisito if not break %}
+                                            {% if requisito.requisito.categoria.id == contratacion.categoria %}
+                                                <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
+                                                {% set break = true %}
+                                            {%endif%}
+                                        {% endfor %}
+                                    {%endif%}
+                                {% endfor %}
+                                <td>
+                                    <a href="{{ path('mtd_empleado_ver', { 'id': proyectoEmpleado.empleado.id }) }}" class="btn btn-sm btn-info">
+                                        Ver Empleado
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
