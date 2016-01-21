@@ -11,10 +11,10 @@ class BuscadorEmpleadosController extends Controller
     public function buscarAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
         $categorias = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->findAll();
         
-        return $this->render('MTDReclutamientoBundle:Reclutamiento:buscador.html.twig', array('categorias' => $categorias));
+        return $this->render('MTDReclutamientoBundle:Reclutamiento:buscador.html.twig', array('categorias' => $categorias, 'proyectos' => $proyectos));
     }
     
     public function mostrarIdoneosAction(Request $request, $id)

@@ -250,6 +250,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_homepage')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\DefaultController::indexAction',));
         }
 
+        // mtd_inicio
+        if ($pathinfo === '/inicio') {
+            return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\InicioController::mostrarAction',  '_route' => 'mtd_inicio',);
+        }
+
         // mtd_proyecto_registro
         if ($pathinfo === '/proyecto/registro') {
             return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\RegistroProyectoController::registroAction',  '_route' => 'mtd_proyecto_registro',);

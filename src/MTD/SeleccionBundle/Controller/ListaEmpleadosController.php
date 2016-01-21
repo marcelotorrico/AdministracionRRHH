@@ -12,8 +12,9 @@ class ListaEmpleadosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $contrataciones = $em->getRepository('MTDSeleccionBundle:Contratacion')->findAll();
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
         
-        return $this->render('MTDSeleccionBundle:Seleccion:listaEmpleados.html.twig', array('contrataciones' => $contrataciones));
+        return $this->render('MTDSeleccionBundle:Seleccion:listaEmpleados.html.twig', array('contrataciones' => $contrataciones, 'proyectos' => $proyectos));
     }
     
 }

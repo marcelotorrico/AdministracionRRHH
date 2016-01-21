@@ -1,6 +1,4 @@
-<div class="container ">
-    <h2>Empleados para la categoria {{ categorias.nombre }}</h2>
-</div>
+<h2>Empleados para la categoria {{ categorias.nombre }}</h2>
 <div class ="container">
     <div class="col-md-12">
         <div class="table-responsive">
@@ -53,7 +51,7 @@
                                     </tr>
                                 {% else %}
                                     {% for contratacion in postulante.contratacion %}
-                                        {% if  contratacion.categoria != categorias.id %}
+                                        {% if contratacion.activo == true and contratacion.categoria != categorias.id %}
                                             <tr>
                                                 <td><strong>{{ postulante.apellido }}</strong></td>
                                                 <td><strong>{{ postulante.nombre }}</strong></td>
@@ -82,6 +80,17 @@
                                 {% endif %}
                             {% endif %}
                     {% endfor %}
+                    {% set break = false %}
+                    {% for postulante in postulantes %}
+                        {% for requisito in postulante.empleadoRequisito if not break %}
+                            {% if requisito.activo == true and requisito.requisito.categoria.id == categorias.id %}
+                                {% set break = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    {% if break == false %}
+                        <h4>No se encontraron empleados para esta categoria</h4>                
+                    {% endif %}
                 </tbody>    
             </table>
         </div>

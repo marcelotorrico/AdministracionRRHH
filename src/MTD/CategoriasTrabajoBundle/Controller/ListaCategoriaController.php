@@ -12,8 +12,10 @@ class ListaCategoriaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $categorias = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->findAll();
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
         
-        return $this->render('MTDCategoriasTrabajoBundle:Categoria:lista.html.twig', array('categorias' => $categorias));
+        
+        return $this->render('MTDCategoriasTrabajoBundle:Categoria:lista.html.twig', array('categorias' => $categorias, 'proyectos' => $proyectos));
     }
     
 }

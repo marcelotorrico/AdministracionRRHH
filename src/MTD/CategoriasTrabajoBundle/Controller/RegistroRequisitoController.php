@@ -19,7 +19,9 @@ class RegistroRequisitoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $requisitos = $em->getRepository('MTDCategoriasTrabajoBundle:Requisito_Categoria')->findAll();
         $categorias = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->findAll();
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
+        $postulantes = $em->getRepository('MTDReclutamientoBundle:Empleado')->findAll();
         
-        return $this->render('MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig', array("form"=>$form->createView(),'requisitos' => $requisitos,'categorias' => $categorias));
+        return $this->render('MTDCategoriasTrabajoBundle:Categoria:requisito.html.twig', array("form"=>$form->createView(),'requisitos' => $requisitos,'categorias' => $categorias, 'proyectos' => $proyectos, 'postulantes' => $postulantes));
     }
 }

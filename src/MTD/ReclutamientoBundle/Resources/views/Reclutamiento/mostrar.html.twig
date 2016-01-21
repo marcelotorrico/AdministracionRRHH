@@ -13,18 +13,19 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             
             {{ include('menuPostulante.html.twig')}}
             
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">Informacion</h4>
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal">
+                            <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nombre" class="control-label col-md-3">Apellido del Postulante:</label>
                                 <div class="col-md-7">
@@ -79,6 +80,8 @@
                                     <p class="form-control-static">{{postulante.zona}}</p>
                                 </div>
                             </div>
+                                </div>
+                            <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tipo" class="control-label col-md-3">Telefono Particular:</label>
                                 <div class="col-md-7">
@@ -115,6 +118,7 @@
                                     <p class="form-control-static">{{postulante.trabajosAnteriores}}</p>
                                 </div>
                             </div>
+                                </div>
                         </form>
                     </div>
                 </div>

@@ -12,7 +12,8 @@ class ListaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $postulantes = $em->getRepository('MTDReclutamientoBundle:Empleado')->findAll();
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
         
-        return $this->render('MTDReclutamientoBundle:Reclutamiento:lista.html.twig', array('postulantes' => $postulantes));
+        return $this->render('MTDReclutamientoBundle:Reclutamiento:lista.html.twig', array('postulantes' => $postulantes, 'proyectos' => $proyectos));
     }
 }

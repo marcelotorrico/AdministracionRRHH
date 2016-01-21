@@ -75,7 +75,7 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="nit", type="string", length=100)
+     * @ORM\Column(name="nit", type="string", nullable=true, length=100)
      * @Assert\NotNull(message="Debe escribir un NIT")
      */
     private $nit;

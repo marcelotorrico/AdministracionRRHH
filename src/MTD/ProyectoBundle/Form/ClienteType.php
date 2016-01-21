@@ -19,7 +19,7 @@ class ClienteType extends AbstractType
             ->add('apellido')
             ->add('direccion')
             ->add('telefono')
-            ->add('nit')
+            ->add('nit', null, array( 'required' => false ))
             ->add('banco', null, array( 'required' => false ))
             ->getForm()
         ;

@@ -1,0 +1,14 @@
+<aside class ="col-md-3 full-height">
+    <div><h3>Proyectos</h3></div>
+    <div class="well" id="well2">
+        {% for proyecto in proyectos %}
+            {% if proyecto.activo == true %}
+            <a href="{{ path('mtd_mostrar_proyecto', { 'id': proyecto.id }) }}" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ proyecto.nombre }}</h4>
+                <p class="list-group-item-text">Tipo de Proyecto: {{ proyecto.tipoProyecto.nombre }}</p>
+                <p class="list-group-item-text">Lugar del Proyecto: {{ proyecto.lugar }}</p>
+            </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</aside>

@@ -2,6 +2,10 @@ mtd_proyecto_homepage:
     path:     /hello/{name}
     defaults: { _controller: MTDProyectoBundle:Default:index }
 
+mtd_inicio:
+    path:     /inicio
+    defaults: {_controller: MTDProyectoBundle:Inicio:mostrar }
+
 mtd_proyecto_registro:
     path:     /proyecto/registro
     defaults: {_controller: MTDProyectoBundle:RegistroProyecto:registro }

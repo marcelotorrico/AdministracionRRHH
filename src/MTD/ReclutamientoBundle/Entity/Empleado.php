@@ -101,7 +101,7 @@ class Empleado
      *
      * @ORM\Column(name="telefono_particular", type="string", nullable=true, length=50)
      * @Assert\Regex(
-     *      pattern="/^(([4][0-9]{6,7}))$/",
+     *      pattern="/^(([4][0-9]{7,8}))$/",
      *      match=true
      * )
      */

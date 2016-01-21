@@ -60,6 +60,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
+        // mtd_empleado_proyectos_participa
+        if (0 === strpos($pathinfo, '/proyectos/empleado') && preg_match('#^/proyectos/empleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_proyectos_participa')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\ProyectosEmpleadoController::listarAction',));
+        }
+
         // mtd_reclutamiento_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_reclutamiento_homepage')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\DefaultController::indexAction',));
@@ -145,6 +150,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_homepage')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\DefaultController::indexAction',));
         }
 
+        // mtd_inicio
+        if ($pathinfo === '/inicio') {
+            return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\InicioController::mostrarAction',  '_route' => 'mtd_inicio',);
+        }
+
         // mtd_proyecto_registro
         if ($pathinfo === '/proyecto/registro') {
             return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\RegistroProyectoController::registroAction',  '_route' => 'mtd_proyecto_registro',);
@@ -194,20 +204,28 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categorias_proyecto')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\CategoriaProyectoController::listarAction',));
         }
 
-        if (0 === strpos($pathinfo, '/proyecto/empleados')) {
-            // mtd_proyecto_empleado
-            if (preg_match('#^/proyecto/empleados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::asignarAction',));
+        if (0 === strpos($pathinfo, '/proyecto')) {
+            if (0 === strpos($pathinfo, '/proyecto/empleados')) {
+                // mtd_proyecto_empleado
+                if (preg_match('#^/proyecto/empleados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::asignarAction',));
+                }
+
+                // mtd_proyecto_empleado_agregar
+                if (0 === strpos($pathinfo, '/proyecto/empleados/agregar') && preg_match('#^/proyecto/empleados/agregar/(?P<id>[^/]++)/(?P<proyecto>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_agregar')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::mostrarAction',));
+                }
+
+                // mtd_proyecto_empleado_registro
+                if (0 === strpos($pathinfo, '/proyecto/empleados/registro') && preg_match('#^/proyecto/empleados/registro/(?P<id>[^/]++)/(?P<idProyecto>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_registro')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\EmpleadoRegistroController::registrarAction',));
+                }
+
             }
 
-            // mtd_proyecto_empleado_agregar
-            if (0 === strpos($pathinfo, '/proyecto/empleados/agregar') && preg_match('#^/proyecto/empleados/agregar/(?P<id>[^/]++)/(?P<proyecto>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_agregar')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::mostrarAction',));
-            }
-
-            // mtd_proyecto_empleado_registro
-            if (0 === strpos($pathinfo, '/proyecto/empleados/registro') && preg_match('#^/proyecto/empleados/registro/(?P<id>[^/]++)/(?P<idProyecto>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_registro')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\EmpleadoRegistroController::registrarAction',));
+            // mtd_proyecto_lista_empleados
+            if (0 === strpos($pathinfo, '/proyecto/lista/empleados') && preg_match('#^/proyecto/lista/empleados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_lista_empleados')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ListaEmpleadosController::listarAction',));
             }
 
         }

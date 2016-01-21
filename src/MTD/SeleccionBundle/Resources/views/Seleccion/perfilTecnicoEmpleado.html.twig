@@ -13,12 +13,12 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             
             {{ include('menuEmpleado.html.twig')}}
             
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4 class="panel-title">Informacion</h4>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="container ">
-                    <h2>Categorias Anteriores</h2>
+                     <h3>Categorias Anteriores</h3>
                 </div>
                 {% if empleado.contratacion | length > 1 %}
                     <div class="table-responsive">

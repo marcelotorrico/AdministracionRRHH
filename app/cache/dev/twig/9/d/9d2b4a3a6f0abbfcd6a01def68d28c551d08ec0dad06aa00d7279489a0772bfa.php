@@ -23,20 +23,20 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_690797f9d3f4aac2f496f9f301ad068de4f95968ed2fc61a781a35b0ccdef3b2 = $this->env->getExtension("native_profiler");
-        $__internal_690797f9d3f4aac2f496f9f301ad068de4f95968ed2fc61a781a35b0ccdef3b2->enter($__internal_690797f9d3f4aac2f496f9f301ad068de4f95968ed2fc61a781a35b0ccdef3b2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:registro.html.twig"));
+        $__internal_a0504b315e0a6a71addcd776de2c9a907d6f8d3b62a96d15d79ba52b90416b3c = $this->env->getExtension("native_profiler");
+        $__internal_a0504b315e0a6a71addcd776de2c9a907d6f8d3b62a96d15d79ba52b90416b3c->enter($__internal_a0504b315e0a6a71addcd776de2c9a907d6f8d3b62a96d15d79ba52b90416b3c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:registro.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_690797f9d3f4aac2f496f9f301ad068de4f95968ed2fc61a781a35b0ccdef3b2->leave($__internal_690797f9d3f4aac2f496f9f301ad068de4f95968ed2fc61a781a35b0ccdef3b2_prof);
+        $__internal_a0504b315e0a6a71addcd776de2c9a907d6f8d3b62a96d15d79ba52b90416b3c->leave($__internal_a0504b315e0a6a71addcd776de2c9a907d6f8d3b62a96d15d79ba52b90416b3c_prof);
 
     }
 
     // line 3
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_f235faa3b28848bacddf1a0de8a65255bb783f805446d9e77420b254d3487077 = $this->env->getExtension("native_profiler");
-        $__internal_f235faa3b28848bacddf1a0de8a65255bb783f805446d9e77420b254d3487077->enter($__internal_f235faa3b28848bacddf1a0de8a65255bb783f805446d9e77420b254d3487077_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_e1831b8cdc5266276bf5bf8e470bc2dc88e8d33e199e82e916e85edbea2494a7 = $this->env->getExtension("native_profiler");
+        $__internal_e1831b8cdc5266276bf5bf8e470bc2dc88e8d33e199e82e916e85edbea2494a7->enter($__internal_e1831b8cdc5266276bf5bf8e470bc2dc88e8d33e199e82e916e85edbea2494a7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 4
         echo "    ";
@@ -48,15 +48,15 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
         echo "\" /> 
 ";
         
-        $__internal_f235faa3b28848bacddf1a0de8a65255bb783f805446d9e77420b254d3487077->leave($__internal_f235faa3b28848bacddf1a0de8a65255bb783f805446d9e77420b254d3487077_prof);
+        $__internal_e1831b8cdc5266276bf5bf8e470bc2dc88e8d33e199e82e916e85edbea2494a7->leave($__internal_e1831b8cdc5266276bf5bf8e470bc2dc88e8d33e199e82e916e85edbea2494a7_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_224b7d19d78363e255172a7321cba18b5520ba2ba02149241bd1336f5e984367 = $this->env->getExtension("native_profiler");
-        $__internal_224b7d19d78363e255172a7321cba18b5520ba2ba02149241bd1336f5e984367->enter($__internal_224b7d19d78363e255172a7321cba18b5520ba2ba02149241bd1336f5e984367_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_e38aa7cf4991718befde0bb2fbd1fbea3616c23fda822f7a20e2608ebdb842ec = $this->env->getExtension("native_profiler");
+        $__internal_e38aa7cf4991718befde0bb2fbd1fbea3616c23fda822f7a20e2608ebdb842ec->enter($__internal_e38aa7cf4991718befde0bb2fbd1fbea3616c23fda822f7a20e2608ebdb842ec_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    ";
@@ -85,164 +85,173 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
         </div>
     </section>
 
-    <div class=\"container\">
+    <div class=\"container-fluid full-height\">
         
         ";
         // line 23
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
-        echo "
-        ";
-        // line 24
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'errors');
+        echo twig_include($this->env, $context, "menuListaProyectos.html.twig");
         echo "
         
-        <div class=\"row\">
-            <div class=\"col-md-12\">
-                <div class =\"form-group\">
-                    <div class=\"input-group\">
-                        ";
-        // line 30
+        <div class=\"col-md-9\">
+            <br><br>
+            ";
+        // line 27
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
+        echo "
+            ";
+        // line 28
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'errors');
+        echo "
+
+            <div class=\"row\">
+                <div class=\"col-md-6\">
+                    <div class =\"form-group\">
+                        <div class=\"input-group\">
+                            ";
+        // line 34
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombre", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Nombre del Proyecto:"));
         echo "
 
-                        ";
-        // line 32
+                            ";
+        // line 36
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombre", array()), 'widget', array("attr" => array("placeholder" => "Escriba el nombre del proyecto", "class" => "form-control inputGroup", "title" => "El nombre del proyecto tiene que ser unico")));
-        // line 33
+        // line 37
         echo "      
-                    </div>
-                    ";
-        // line 35
+                        </div>
+                        ";
+        // line 39
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombre", array()), 'errors');
         echo "
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class=\"row\">
-            <div class=\"col-md-12\">
-                <div class =\"form-group\">
-                    <div class=\"input-group\">
-                        ";
-        // line 43
+            <div class=\"row\">
+                <div class=\"col-md-6\">
+                    <div class =\"form-group\">
+                        <div class=\"input-group\">
+                            ";
+        // line 47
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "montoContrato", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Monto del Contrato:"));
         echo "
 
-                        ";
-        // line 45
+                            ";
+        // line 49
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "montoContrato", array()), 'widget', array("attr" => array("placeholder" => "Escriba el monto del contrato", "class" => "form-control inputGroup", "title" => "Ingrese el monto del contrato.")));
-        // line 46
+        // line 50
         echo "      
-                    </div>
-                    ";
-        // line 48
+                        </div>
+                        ";
+        // line 52
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "montoContrato", array()), 'errors');
         echo "
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class=\"row\">
-            <div class=\"col-md-12\">
-                <div class =\"form-group\">
-                    <div class=\"input-group\">
-                        ";
-        // line 56
+            <div class=\"row\">
+                <div class=\"col-md-6\">
+                    <div class =\"form-group\">
+                        <div class=\"input-group\">
+                            ";
+        // line 60
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plazoEntrega", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Plazo de Entrega:"));
         echo "
 
-                        ";
-        // line 58
+                            ";
+        // line 62
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plazoEntrega", array()), 'widget', array("attr" => array("placeholder" => "Elija la fecha de entrega", "class" => "form-control input-inline datepicker inputGroup", "title" => "Ingrese la fecha de entrega.")));
-        // line 59
+        // line 63
         echo "      
-                    </div>
-                    ";
-        // line 61
+                        </div>
+                        ";
+        // line 65
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "plazoEntrega", array()), 'errors');
         echo "
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class=\"row\">
-            <div class=\"col-md-12\">
-                <div class =\"form-group\">
-                    <div class=\"input-group\">
-                        ";
-        // line 69
+            <div class=\"row\">
+                <div class=\"col-md-6\">
+                    <div class =\"form-group\">
+                        <div class=\"input-group\">
+                            ";
+        // line 73
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lugar", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Lugar:"));
         echo "
 
-                        ";
-        // line 71
+                            ";
+        // line 75
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lugar", array()), 'widget', array("attr" => array("placeholder" => "Escriba el lugar donde se realiza el proyecto", "class" => "form-control inputGroup", "title" => "Ingrese el lugar del proyecto.")));
-        // line 72
+        // line 76
         echo "      
-                    </div>
-                    ";
-        // line 74
+                        </div>
+                        ";
+        // line 78
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lugar", array()), 'errors');
         echo "
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class=\"row\" id=\"ventCliente\">
-            <div class=\"col-md-6\">
-                <div class =\"form-group\">
-                    <div class=\"input-group\">
+            <div class=\"row\" id=\"ventCliente\">
+                <div class=\"col-md-6\">
+                    <div class =\"form-group\">
+                        <div class=\"input-group\">
 
-                        ";
-        // line 83
+                            ";
+        // line 87
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "cliente", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Cliente:"));
         echo "
 
-                        ";
-        // line 85
+                            ";
+        // line 89
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "cliente", array()), 'widget', array("attr" => array("placeholder" => "Seleccione el nombre del cliente", "class" => "form-control inputGroup", "title" => "Seleccione el nombre del cliente.")));
-        // line 86
+        // line 90
         echo "     
-                    </div>
-                    ";
-        // line 88
+                        </div>
+                        ";
+        // line 92
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "cliente", array()), 'errors');
         echo "   
+                    </div>
+                </div>
+                <div class=\"col-md-6\">
+                    <a href=\"#ventanaCliente\" data-toggle=\"modal\">Presione aqui para agregar un nuevo cliente</a>
                 </div>
             </div>
-            <div class=\"col-md-6\">
-                <a href=\"#ventanaCliente\" data-toggle=\"modal\">Presione aqui para agregar un nuevo cliente</a>
-            </div>
-        </div>
-        <div class=\"row\" id=\"ventTipoProyecto\">
-            <div class=\"col-md-6\">
-                <div class =\"form-group\">
-                    <div class=\"input-group\">
-                        ";
-        // line 99
+            <div class=\"row\" id=\"ventTipoProyecto\">
+                <div class=\"col-md-6\">
+                    <div class =\"form-group\">
+                        <div class=\"input-group\">
+                            ";
+        // line 103
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "tipo_proyecto", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Tipo Proyecto:"));
         echo "
 
-                        ";
-        // line 101
+                            ";
+        // line 105
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "tipo_proyecto", array()), 'widget', array("attr" => array("placeholder" => "Seleccione el tipo de proyecto", "class" => "form-control inputGroup", "title" => "Seleccione el tipo de proyecto.")));
-        // line 102
+        // line 106
         echo "      
-                    </div>
-                    ";
-        // line 104
+                        </div>
+                        ";
+        // line 108
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "tipo_proyecto", array()), 'errors');
         echo "
+                    </div>
+                </div>
+                <div class=\"col-md-6\">
+                    <a href=\"#ventanaTipoProyecto\" data-toggle=\"modal\">Presione aqui para agregar un nuevo tipo de proyecto</a>
                 </div>
             </div>
-            <div class=\"col-md-6\">
-                <a href=\"#ventanaTipoProyecto\" data-toggle=\"modal\">Presione aqui para agregar un nuevo tipo de proyecto</a>
+            <div class =\"form-group\">
+                <button type=\"submit\" id =\"enviar\" name=\"enviar\" class=\"btn btn-primary\"> Registrar</button>
             </div>
-        </div>
-        <div class =\"form-group\">
-            <button type=\"submit\" id =\"enviar\" name=\"enviar\" class=\"btn btn-primary\"> Registrar</button>
-        </div>
 
-        ";
-        // line 115
+            ";
+        // line 119
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
+        
+        </div>
 
         <div class=\"modal fade\" id=\"ventanaTipoProyecto\">
             <div class=\"modal-dialog\">
@@ -255,11 +264,11 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                         <div id=\"mainTipo\">
 
                             <form action=\"";
-        // line 127
+        // line 133
         echo $this->env->getExtension('routing')->getPath("mtd_tipoProyecto_registro");
         echo "\" method=\"post\" role=\"form\" data-async data-target=\"#rating-modal\" class=\"text-left\">
                                 ";
-        // line 128
+        // line 134
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["formularioTipoProyecto"]) ? $context["formularioTipoProyecto"] : $this->getContext($context, "formularioTipoProyecto")), 'errors');
         echo "
                                 <div class=\"row\">
@@ -267,18 +276,18 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                                         <div class =\"form-group\">
                                             <div class=\"input-group\">
                                                 ";
-        // line 133
+        // line 139
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioTipoProyecto"]) ? $context["formularioTipoProyecto"] : $this->getContext($context, "formularioTipoProyecto")), "nombre", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Nombre del Tipo de Proyecto:"));
         echo "
 
                                                 ";
-        // line 135
+        // line 141
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioTipoProyecto"]) ? $context["formularioTipoProyecto"] : $this->getContext($context, "formularioTipoProyecto")), "nombre", array()), 'widget', array("attr" => array("placeholder" => "Escriba el nombre del tipo de proyecto", "class" => "form-control inputGroupTipo", "title" => "El nombre del tipo de proyecto debe ser unico.")));
-        // line 136
+        // line 142
         echo "      
                                             </div>
                                             ";
-        // line 138
+        // line 144
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioTipoProyecto"]) ? $context["formularioTipoProyecto"] : $this->getContext($context, "formularioTipoProyecto")), "nombre", array()), 'errors');
         echo "
                                         </div>
@@ -306,11 +315,11 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                         <div id=\"main\">
 
                             <form action=\"";
-        // line 163
+        // line 169
         echo $this->env->getExtension('routing')->getPath("mtd_cliente_registro");
         echo "\" method=\"post\" role=\"form\" data-async data-target=\"#rating-modal\" class=\"text-left\">
                                 ";
-        // line 164
+        // line 170
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), 'errors');
         echo "
                                 <div class=\"row\">
@@ -318,18 +327,18 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                                         <div class =\"form-group\">
                                             <div class=\"input-group\">
                                                 ";
-        // line 169
+        // line 175
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "nombre", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Nombre del Cliente:"));
         echo "
 
                                                 ";
-        // line 171
+        // line 177
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "nombre", array()), 'widget', array("attr" => array("placeholder" => "Escriba el nombre del cliente", "class" => "form-control inputGroup", "title" => "El nombre debe empezar con mayuscula")));
-        // line 172
+        // line 178
         echo "      
                                             </div>
                                             ";
-        // line 174
+        // line 180
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "nombre", array()), 'errors');
         echo "
                                         </div>
@@ -340,18 +349,18 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                                         <div class =\"form-group\">
                                             <div class=\"input-group\">
                                                 ";
-        // line 182
+        // line 188
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "apellido", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Apellido del Cliente:"));
         echo "
 
                                                 ";
-        // line 184
+        // line 190
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "apellido", array()), 'widget', array("attr" => array("placeholder" => "Escriba el apellido del cliente", "class" => "form-control inputGroup", "title" => "El apellido debe empezar con mayuscula.")));
-        // line 185
+        // line 191
         echo "      
                                             </div>
                                             ";
-        // line 187
+        // line 193
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "apellido", array()), 'errors');
         echo "
                                         </div>
@@ -362,17 +371,17 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                                         <div class =\"form-group\">
                                             <div class=\"input-group\">
                                                 ";
-        // line 195
+        // line 201
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "direccion", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Direccion del Cliente:"));
         echo "
 
                                                 ";
-        // line 197
+        // line 203
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "direccion", array()), 'widget', array("attr" => array("placeholder" => "Escriba la direccion del cliente", "class" => "form-control input-inline datepicker inputGroup")));
         echo "      
                                             </div>
                                             ";
-        // line 199
+        // line 205
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "direccion", array()), 'errors');
         echo "
                                         </div>
@@ -383,18 +392,18 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                                         <div class =\"form-group\">
                                             <div class=\"input-group\">
                                                 ";
-        // line 207
+        // line 213
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "telefono", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Telefono del Cliente:"));
         echo "
 
                                                 ";
-        // line 209
+        // line 215
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "telefono", array()), 'widget', array("attr" => array("placeholder" => "Escriba el telefono del cliente", "class" => "form-control inputGroup", "title" => "Ingrese números telefonicos validos.")));
-        // line 210
+        // line 216
         echo "      
                                             </div>
                                             ";
-        // line 212
+        // line 218
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "telefono", array()), 'errors');
         echo "
                                         </div>
@@ -406,17 +415,17 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                                             <div class=\"input-group\">
 
                                                 ";
-        // line 221
+        // line 227
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "nit", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Nit del Cliente:"));
         echo "
 
                                                 ";
-        // line 223
+        // line 229
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "nit", array()), 'widget', array("attr" => array("placeholder" => "Escriba el nit del cliente", "class" => "form-control inputGroup")));
         echo "     
                                             </div>
                                             ";
-        // line 225
+        // line 231
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "nit", array()), 'errors');
         echo "   
                                         </div>
@@ -427,17 +436,17 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
                                         <div class =\"form-group\">
                                             <div class=\"input-group\">
                                                 ";
-        // line 233
+        // line 239
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "banco", array()), 'label', array("label_attr" => array("class" => "input-group-addon addonGroup"), "label" => "Banco del Cliente:"));
         echo "
 
                                                 ";
-        // line 235
+        // line 241
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "banco", array()), 'widget', array("attr" => array("placeholder" => "Escriba el banco del cliente", "class" => "form-control inputGroup")));
         echo "      
                                             </div>
                                             ";
-        // line 237
+        // line 243
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["formularioCliente"]) ? $context["formularioCliente"] : $this->getContext($context, "formularioCliente")), "banco", array()), 'errors');
         echo "
                                         </div>
@@ -456,43 +465,43 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
     </div>
 ";
         
-        $__internal_224b7d19d78363e255172a7321cba18b5520ba2ba02149241bd1336f5e984367->leave($__internal_224b7d19d78363e255172a7321cba18b5520ba2ba02149241bd1336f5e984367_prof);
+        $__internal_e38aa7cf4991718befde0bb2fbd1fbea3616c23fda822f7a20e2608ebdb842ec->leave($__internal_e38aa7cf4991718befde0bb2fbd1fbea3616c23fda822f7a20e2608ebdb842ec_prof);
 
     }
 
-    // line 254
+    // line 260
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_c7b17582ba7940dabb6b245a34261a344651ff0f4f3539240cd277be945f24aa = $this->env->getExtension("native_profiler");
-        $__internal_c7b17582ba7940dabb6b245a34261a344651ff0f4f3539240cd277be945f24aa->enter($__internal_c7b17582ba7940dabb6b245a34261a344651ff0f4f3539240cd277be945f24aa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_40455c6cbadf5451d42c2e791ed761f697e86384f2f688859d721fef9d3d547a = $this->env->getExtension("native_profiler");
+        $__internal_40455c6cbadf5451d42c2e791ed761f697e86384f2f688859d721fef9d3d547a->enter($__internal_40455c6cbadf5451d42c2e791ed761f697e86384f2f688859d721fef9d3d547a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 255
+        // line 261
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script src=\"";
-        // line 256
+        // line 262
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/fechas/validacionFechas.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 257
+        // line 263
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/jquery-datepicker.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 258
+        // line 264
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/guardar/guardarCliente.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 259
+        // line 265
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/guardar/guardarTipoProyecto.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 260
+        // line 266
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/jquery-blockUI.js"), "html", null, true);
         echo "\"></script>
 ";
         
-        $__internal_c7b17582ba7940dabb6b245a34261a344651ff0f4f3539240cd277be945f24aa->leave($__internal_c7b17582ba7940dabb6b245a34261a344651ff0f4f3539240cd277be945f24aa_prof);
+        $__internal_40455c6cbadf5451d42c2e791ed761f697e86384f2f688859d721fef9d3d547a->leave($__internal_40455c6cbadf5451d42c2e791ed761f697e86384f2f688859d721fef9d3d547a_prof);
 
     }
 
@@ -508,7 +517,7 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
 
     public function getDebugInfo()
     {
-        return array (  491 => 260,  487 => 259,  483 => 258,  479 => 257,  475 => 256,  470 => 255,  464 => 254,  441 => 237,  436 => 235,  431 => 233,  420 => 225,  415 => 223,  410 => 221,  398 => 212,  394 => 210,  392 => 209,  387 => 207,  376 => 199,  371 => 197,  366 => 195,  355 => 187,  351 => 185,  349 => 184,  344 => 182,  333 => 174,  329 => 172,  327 => 171,  322 => 169,  314 => 164,  310 => 163,  282 => 138,  278 => 136,  276 => 135,  271 => 133,  263 => 128,  259 => 127,  244 => 115,  230 => 104,  226 => 102,  224 => 101,  219 => 99,  205 => 88,  201 => 86,  199 => 85,  194 => 83,  182 => 74,  178 => 72,  176 => 71,  171 => 69,  160 => 61,  156 => 59,  154 => 58,  149 => 56,  138 => 48,  134 => 46,  132 => 45,  127 => 43,  116 => 35,  112 => 33,  110 => 32,  105 => 30,  96 => 24,  92 => 23,  81 => 14,  72 => 12,  68 => 11,  62 => 9,  56 => 8,  47 => 5,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  500 => 266,  496 => 265,  492 => 264,  488 => 263,  484 => 262,  479 => 261,  473 => 260,  450 => 243,  445 => 241,  440 => 239,  429 => 231,  424 => 229,  419 => 227,  407 => 218,  403 => 216,  401 => 215,  396 => 213,  385 => 205,  380 => 203,  375 => 201,  364 => 193,  360 => 191,  358 => 190,  353 => 188,  342 => 180,  338 => 178,  336 => 177,  331 => 175,  323 => 170,  319 => 169,  291 => 144,  287 => 142,  285 => 141,  280 => 139,  272 => 134,  268 => 133,  251 => 119,  237 => 108,  233 => 106,  231 => 105,  226 => 103,  212 => 92,  208 => 90,  206 => 89,  201 => 87,  189 => 78,  185 => 76,  183 => 75,  178 => 73,  167 => 65,  163 => 63,  161 => 62,  156 => 60,  145 => 52,  141 => 50,  139 => 49,  134 => 47,  123 => 39,  119 => 37,  117 => 36,  112 => 34,  103 => 28,  99 => 27,  92 => 23,  81 => 14,  72 => 12,  68 => 11,  62 => 9,  56 => 8,  47 => 5,  42 => 4,  36 => 3,  11 => 1,);
     }
 }
 /* {% extends 'layout.html.twig' %}*/
@@ -531,101 +540,107 @@ class __TwigTemplate_4d811ca9963af9eeb16b8675f2534c35ff9e69273412697cafe298bbe85
 /*         </div>*/
 /*     </section>*/
 /* */
-/*     <div class="container">*/
+/*     <div class="container-fluid full-height">*/
 /*         */
-/*         {{ form_start(form) }}*/
-/*         {{form_errors(form)}}*/
+/*         {{ include('menuListaProyectos.html.twig')}}*/
 /*         */
-/*         <div class="row">*/
-/*             <div class="col-md-12">*/
-/*                 <div class ="form-group">*/
-/*                     <div class="input-group">*/
-/*                         {{ form_label(form.nombre, 'Nombre del Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
+/*         <div class="col-md-9">*/
+/*             <br><br>*/
+/*             {{ form_start(form) }}*/
+/*             {{form_errors(form)}}*/
 /* */
-/*                         {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del proyecto', 'class': 'form-control inputGroup',*/
-/*                                                      'title': 'El nombre del proyecto tiene que ser unico' } }) }}      */
+/*             <div class="row">*/
+/*                 <div class="col-md-6">*/
+/*                     <div class ="form-group">*/
+/*                         <div class="input-group">*/
+/*                             {{ form_label(form.nombre, 'Nombre del Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
+/* */
+/*                             {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del proyecto', 'class': 'form-control inputGroup',*/
+/*                                                          'title': 'El nombre del proyecto tiene que ser unico' } }) }}      */
+/*                         </div>*/
+/*                         {{ form_errors(form.nombre) }}*/
 /*                     </div>*/
-/*                     {{ form_errors(form.nombre) }}*/
 /*                 </div>*/
 /*             </div>*/
-/*         </div>*/
-/*         <div class="row">*/
-/*             <div class="col-md-12">*/
-/*                 <div class ="form-group">*/
-/*                     <div class="input-group">*/
-/*                         {{ form_label(form.montoContrato, 'Monto del Contrato:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
+/*             <div class="row">*/
+/*                 <div class="col-md-6">*/
+/*                     <div class ="form-group">*/
+/*                         <div class="input-group">*/
+/*                             {{ form_label(form.montoContrato, 'Monto del Contrato:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
 /* */
-/*                         {{ form_widget(form.montoContrato, { 'attr': {'placeholder': 'Escriba el monto del contrato', 'class': 'form-control inputGroup',*/
-/*                                                      'title': 'Ingrese el monto del contrato.' } }) }}      */
+/*                             {{ form_widget(form.montoContrato, { 'attr': {'placeholder': 'Escriba el monto del contrato', 'class': 'form-control inputGroup',*/
+/*                                                          'title': 'Ingrese el monto del contrato.' } }) }}      */
+/*                         </div>*/
+/*                         {{ form_errors(form.montoContrato) }}*/
 /*                     </div>*/
-/*                     {{ form_errors(form.montoContrato) }}*/
 /*                 </div>*/
 /*             </div>*/
-/*         </div>*/
-/*         <div class="row">*/
-/*             <div class="col-md-12">*/
-/*                 <div class ="form-group">*/
-/*                     <div class="input-group">*/
-/*                         {{ form_label(form.plazoEntrega, 'Plazo de Entrega:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
+/*             <div class="row">*/
+/*                 <div class="col-md-6">*/
+/*                     <div class ="form-group">*/
+/*                         <div class="input-group">*/
+/*                             {{ form_label(form.plazoEntrega, 'Plazo de Entrega:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
 /* */
-/*                         {{ form_widget(form.plazoEntrega, { 'attr': {'placeholder': 'Elija la fecha de entrega', 'class': 'form-control input-inline datepicker inputGroup',*/
-/*                                                      'title': 'Ingrese la fecha de entrega.' } }) }}      */
+/*                             {{ form_widget(form.plazoEntrega, { 'attr': {'placeholder': 'Elija la fecha de entrega', 'class': 'form-control input-inline datepicker inputGroup',*/
+/*                                                          'title': 'Ingrese la fecha de entrega.' } }) }}      */
+/*                         </div>*/
+/*                         {{ form_errors(form.plazoEntrega) }}*/
 /*                     </div>*/
-/*                     {{ form_errors(form.plazoEntrega) }}*/
 /*                 </div>*/
 /*             </div>*/
-/*         </div>*/
-/*         <div class="row">*/
-/*             <div class="col-md-12">*/
-/*                 <div class ="form-group">*/
-/*                     <div class="input-group">*/
-/*                         {{ form_label(form.lugar, 'Lugar:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
+/*             <div class="row">*/
+/*                 <div class="col-md-6">*/
+/*                     <div class ="form-group">*/
+/*                         <div class="input-group">*/
+/*                             {{ form_label(form.lugar, 'Lugar:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
 /* */
-/*                         {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Escriba el lugar donde se realiza el proyecto', 'class': 'form-control inputGroup',*/
-/*                                                      'title': 'Ingrese el lugar del proyecto.' } }) }}      */
+/*                             {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Escriba el lugar donde se realiza el proyecto', 'class': 'form-control inputGroup',*/
+/*                                                          'title': 'Ingrese el lugar del proyecto.' } }) }}      */
+/*                         </div>*/
+/*                         {{ form_errors(form.lugar) }}*/
 /*                     </div>*/
-/*                     {{ form_errors(form.lugar) }}*/
 /*                 </div>*/
 /*             </div>*/
-/*         </div>*/
-/*         <div class="row" id="ventCliente">*/
-/*             <div class="col-md-6">*/
-/*                 <div class ="form-group">*/
-/*                     <div class="input-group">*/
+/*             <div class="row" id="ventCliente">*/
+/*                 <div class="col-md-6">*/
+/*                     <div class ="form-group">*/
+/*                         <div class="input-group">*/
 /* */
-/*                         {{ form_label(form.cliente, 'Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
+/*                             {{ form_label(form.cliente, 'Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
 /* */
-/*                         {{ form_widget(form.cliente, { 'attr': {'placeholder': 'Seleccione el nombre del cliente', 'class': 'form-control inputGroup',*/
-/*                                                      'title': 'Seleccione el nombre del cliente.' } }) }}     */
+/*                             {{ form_widget(form.cliente, { 'attr': {'placeholder': 'Seleccione el nombre del cliente', 'class': 'form-control inputGroup',*/
+/*                                                          'title': 'Seleccione el nombre del cliente.' } }) }}     */
+/*                         </div>*/
+/*                         {{ form_errors(form.cliente) }}   */
 /*                     </div>*/
-/*                     {{ form_errors(form.cliente) }}   */
+/*                 </div>*/
+/*                 <div class="col-md-6">*/
+/*                     <a href="#ventanaCliente" data-toggle="modal">Presione aqui para agregar un nuevo cliente</a>*/
 /*                 </div>*/
 /*             </div>*/
-/*             <div class="col-md-6">*/
-/*                 <a href="#ventanaCliente" data-toggle="modal">Presione aqui para agregar un nuevo cliente</a>*/
-/*             </div>*/
-/*         </div>*/
-/*         <div class="row" id="ventTipoProyecto">*/
-/*             <div class="col-md-6">*/
-/*                 <div class ="form-group">*/
-/*                     <div class="input-group">*/
-/*                         {{ form_label(form.tipo_proyecto, 'Tipo Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
+/*             <div class="row" id="ventTipoProyecto">*/
+/*                 <div class="col-md-6">*/
+/*                     <div class ="form-group">*/
+/*                         <div class="input-group">*/
+/*                             {{ form_label(form.tipo_proyecto, 'Tipo Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}*/
 /* */
-/*                         {{ form_widget(form.tipo_proyecto, { 'attr': {'placeholder': 'Seleccione el tipo de proyecto', 'class': 'form-control inputGroup',*/
-/*                                                      'title': 'Seleccione el tipo de proyecto.' } }) }}      */
+/*                             {{ form_widget(form.tipo_proyecto, { 'attr': {'placeholder': 'Seleccione el tipo de proyecto', 'class': 'form-control inputGroup',*/
+/*                                                          'title': 'Seleccione el tipo de proyecto.' } }) }}      */
+/*                         </div>*/
+/*                         {{ form_errors(form.tipo_proyecto) }}*/
 /*                     </div>*/
-/*                     {{ form_errors(form.tipo_proyecto) }}*/
+/*                 </div>*/
+/*                 <div class="col-md-6">*/
+/*                     <a href="#ventanaTipoProyecto" data-toggle="modal">Presione aqui para agregar un nuevo tipo de proyecto</a>*/
 /*                 </div>*/
 /*             </div>*/
-/*             <div class="col-md-6">*/
-/*                 <a href="#ventanaTipoProyecto" data-toggle="modal">Presione aqui para agregar un nuevo tipo de proyecto</a>*/
+/*             <div class ="form-group">*/
+/*                 <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>*/
 /*             </div>*/
-/*         </div>*/
-/*         <div class ="form-group">*/
-/*             <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>*/
-/*         </div>*/
 /* */
-/*         {{form_end(form) }}*/
+/*             {{form_end(form) }}*/
+/*         */
+/*         </div>*/
 /* */
 /*         <div class="modal fade" id="ventanaTipoProyecto">*/
 /*             <div class="modal-dialog">*/

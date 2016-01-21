@@ -13,82 +13,88 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container-fluid full-height">
         
-        {{ form_start(form) }}
-        {{form_errors(form)}}
+        {{ include('menuListaProyectos.html.twig')}}
         
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.nombre, 'Nombre de la Categoria:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+        <div class="col-md-9">
+            <br><br>
+            
+            {{ form_start(form) }}
+            {{form_errors(form)}}
 
-                        {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre de la categoria', 'class': 'form-control inputGroup',
-                                                     'title': 'El nombre de la categoria tiene que ser unico' } }) }}      
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.nombre, 'Nombre de la Categoria:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre de la categoria', 'class': 'form-control inputGroup',
+                                                         'title': 'El nombre de la categoria tiene que ser unico' } }) }}      
+                        </div>
+                        {{ form_errors(form.nombre) }}
                     </div>
-                    {{ form_errors(form.nombre) }}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.sueldoBasico, 'Sueldo Basico:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.sueldoBasico, 'Sueldo Basico:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.sueldoBasico, { 'attr': {'placeholder': 'Escriba el monto del sueldo basico', 'class': 'form-control inputGroup',
-                                                     'title': 'Ingrese montos validos' } }) }}      
+                            {{ form_widget(form.sueldoBasico, { 'attr': {'placeholder': 'Escriba el monto del sueldo basico', 'class': 'form-control inputGroup',
+                                                         'title': 'Ingrese montos validos' } }) }}      
+                        </div>
+                        {{ form_errors(form.sueldoBasico) }}
                     </div>
-                    {{ form_errors(form.sueldoBasico) }}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.viatico, 'Monto Viatico:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.viatico, 'Monto Viatico:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.viatico, { 'attr': {'placeholder': 'Escriba el monto por los viaticos', 'class': 'form-control inputGroup',
-                                                     'title': 'Ingrese montos validos' } }) }}      
+                            {{ form_widget(form.viatico, { 'attr': {'placeholder': 'Escriba el monto por los viaticos', 'class': 'form-control inputGroup',
+                                                         'title': 'Ingrese montos validos' } }) }}      
+                        </div>
+                        {{ form_errors(form.viatico) }}
                     </div>
-                    {{ form_errors(form.viatico) }}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.premio, 'Monto Premio:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.premio, 'Monto Premio:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.premio, { 'attr': {'placeholder': 'Escriba el monto por los premios', 'class': 'form-control inputGroup',
-                                                     'title': 'Ingrese montos validos' } }) }}      
+                            {{ form_widget(form.premio, { 'attr': {'placeholder': 'Escriba el monto por los premios', 'class': 'form-control inputGroup',
+                                                         'title': 'Ingrese montos validos' } }) }}      
+                        </div>
+                        {{ form_errors(form.premio) }}
                     </div>
-                    {{ form_errors(form.premio) }}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.total, 'Total:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.total, 'Total:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.total, { 'attr': {'placeholder': 'Total', 'class': 'form-control inputGroup',
-                                                     'title': 'Total', 'readonly':'readonly' } }) }}      
+                            {{ form_widget(form.total, { 'attr': {'placeholder': 'Total', 'class': 'form-control inputGroup',
+                                                         'title': 'Total', 'readonly':'readonly' } }) }}      
+                        </div>
+                        {{ form_errors(form.total) }}
                     </div>
-                    {{ form_errors(form.total) }}
                 </div>
             </div>
-        </div>
 
-        <div class ="form-group">
-            <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
-        </div>
+            <div class ="form-group">
+                <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+            </div>
 
-        {{form_end(form) }}
+            {{form_end(form) }}
+        </div>
     </div>
 {% endblock %}
     

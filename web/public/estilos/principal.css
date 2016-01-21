@@ -7,14 +7,34 @@
     padding: 1px 0;
 }
 
-.container .addonGroup{
+.container-fluid .addonGroup{
     width: 183px;
 }
 
-.container .inputGroup{
+.container-fluid .inputGroup{
     width: 370px;
 }
 
-.container .inputGroupTipo{
+.container-fluid .inputGroupTipo{
     width: 320px;
+}
+
+html, body, .full-height {
+    height: 100%;
+}
+
+#well2 {
+    height: 65%;
+    margin-bottom: 0;
+    overflow: auto;
+}
+
+#well1 {
+    height: 5%; /*fall back for IE8, Safari 5.1, Opera Mini and pre-4.4 Android browsers*/
+    height: calc(10% - 10px);
+    overflow: hidden; /*better to decide how you want to handle this than to let the browser decide*/
+}
+
+h2{
+    margin-left: 15%;
 }

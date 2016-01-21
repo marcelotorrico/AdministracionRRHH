@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_15936baada1e7cec76e153ef53738bfc919fb649865ceed534cbef987d7c7e0e = $this->env->getExtension("native_profiler");
-        $__internal_15936baada1e7cec76e153ef53738bfc919fb649865ceed534cbef987d7c7e0e->enter($__internal_15936baada1e7cec76e153ef53738bfc919fb649865ceed534cbef987d7c7e0e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_82bea44f9e978cdd054606c89babbd332be279af78bf6b457f74bd2866bfd199 = $this->env->getExtension("native_profiler");
+        $__internal_82bea44f9e978cdd054606c89babbd332be279af78bf6b457f74bd2866bfd199->enter($__internal_82bea44f9e978cdd054606c89babbd332be279af78bf6b457f74bd2866bfd199_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -31,7 +31,10 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                         <span class=\"icon-bar\"></span>
                         <span class=\"icon-bar\"></span>
                     </button>
-                    <a class=\"navbar-brand\" href=\"#\">Inicio</a>
+                    <a class=\"navbar-brand\" href=\"";
+        // line 13
+        echo $this->env->getExtension('routing')->getPath("mtd_inicio");
+        echo "\">Inicio</a>
                 </div>
 
                 <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
@@ -107,34 +110,6 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             </ul>
                         </li>
                         
-                        <li ><a href=\"\">Crear Categoria de Trabajo <span class=\"sr-only\">(current)</span></a></li>
-                        <li><a href=\"#\">Link</a></li>
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>
-                            <ul class=\"dropdown-menu\">
-                                <li><a href=\"#\">Registro Materia</a></li>
-                                <li><a href=\"#\">Another action</a></li>
-                                <li><a href=\"#\">Something else here</a></li>
-                                <li role=\"separator\" class=\"divider\"></li>
-                                <li><a href=\"#\">Separated link</a></li>
-                                <li role=\"separator\" class=\"divider\"></li>
-                                <li><a href=\"#\">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class=\"nav navbar-nav navbar-right\">
-                        <li><a href=\"\">Cerrar Sesion</a></li>
-                        
-                        <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>
-                            <ul class=\"dropdown-menu\">
-                                <li><a href=\"#\">Action</a></li>
-                                <li><a href=\"#\">Another action</a></li>
-                                <li><a href=\"#\">Something else here</a></li>
-                                <li role=\"separator\" class=\"divider\"></li>
-                                <li><a href=\"#\">Separated link</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -143,7 +118,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_15936baada1e7cec76e153ef53738bfc919fb649865ceed534cbef987d7c7e0e->leave($__internal_15936baada1e7cec76e153ef53738bfc919fb649865ceed534cbef987d7c7e0e_prof);
+        $__internal_82bea44f9e978cdd054606c89babbd332be279af78bf6b457f74bd2866bfd199->leave($__internal_82bea44f9e978cdd054606c89babbd332be279af78bf6b457f74bd2866bfd199_prof);
 
     }
 
@@ -159,7 +134,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  105 => 58,  95 => 51,  85 => 44,  80 => 42,  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
+        return array (  108 => 58,  98 => 51,  88 => 44,  83 => 42,  73 => 35,  68 => 33,  64 => 32,  54 => 25,  49 => 23,  36 => 13,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -174,7 +149,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                         <span class="icon-bar"></span>*/
 /*                         <span class="icon-bar"></span>*/
 /*                     </button>*/
-/*                     <a class="navbar-brand" href="#">Inicio</a>*/
+/*                     <a class="navbar-brand" href="{{ path('mtd_inicio') }}">Inicio</a>*/
 /*                 </div>*/
 /* */
 /*                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">*/
@@ -223,34 +198,6 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */
-/*                         <li ><a href="">Crear Categoria de Trabajo <span class="sr-only">(current)</span></a></li>*/
-/*                         <li><a href="#">Link</a></li>*/
-/*                         <li class="dropdown">*/
-/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>*/
-/*                             <ul class="dropdown-menu">*/
-/*                                 <li><a href="#">Registro Materia</a></li>*/
-/*                                 <li><a href="#">Another action</a></li>*/
-/*                                 <li><a href="#">Something else here</a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li><a href="#">Separated link</a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li><a href="#">One more separated link</a></li>*/
-/*                             </ul>*/
-/*                         </li>*/
-/*                     </ul>*/
-/*                     <ul class="nav navbar-nav navbar-right">*/
-/*                         <li><a href="">Cerrar Sesion</a></li>*/
-/*                         */
-/*                         <li class="dropdown">*/
-/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>*/
-/*                             <ul class="dropdown-menu">*/
-/*                                 <li><a href="#">Action</a></li>*/
-/*                                 <li><a href="#">Another action</a></li>*/
-/*                                 <li><a href="#">Something else here</a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li><a href="#">Separated link</a></li>*/
-/*                             </ul>*/
-/*                         </li>*/
 /*                     </ul>*/
 /*                 </div><!-- /.navbar-collapse -->*/
 /*             </div><!-- /.container-fluid -->*/

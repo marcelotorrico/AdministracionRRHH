@@ -18,6 +18,7 @@ class EditaProyectoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $proyectoSeleccionado = $em->getRepository('MTDProyectoBundle:Proyecto')->find($id);
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
         
         $idCliente = $proyectoSeleccionado->getCliente()->getId();
         $idTipoProyecto = $proyectoSeleccionado->getTipoProyecto()->getId();
@@ -69,7 +70,7 @@ class EditaProyectoController extends Controller
             }
         }
         
-        return $this->render('MTDProyectoBundle:Proyecto:edita.html.twig', array("proyectoSeleccionado"=>$proyectoSeleccionado,"form"=>$form->createView(), "formularioCliente"=>$formularioCliente->createView(), "formularioTipoProyecto"=>$formularioTipoProyecto->createView()));
+        return $this->render('MTDProyectoBundle:Proyecto:edita.html.twig', array("proyectoSeleccionado"=>$proyectoSeleccionado,"form"=>$form->createView(), "formularioCliente"=>$formularioCliente->createView(), "formularioTipoProyecto"=>$formularioTipoProyecto->createView(), 'proyectos' => $proyectos));
     }
     
     public function validarNombreRepetido($nombre, $nombreActual){

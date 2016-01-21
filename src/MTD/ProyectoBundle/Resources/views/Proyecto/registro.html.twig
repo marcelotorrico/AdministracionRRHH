@@ -18,101 +18,107 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container-fluid full-height">
         
-        {{ form_start(form) }}
-        {{form_errors(form)}}
+        {{ include('menuListaProyectos.html.twig')}}
         
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.nombre, 'Nombre del Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+        <div class="col-md-9">
+            <br><br>
+            {{ form_start(form) }}
+            {{form_errors(form)}}
 
-                        {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del proyecto', 'class': 'form-control inputGroup',
-                                                     'title': 'El nombre del proyecto tiene que ser unico' } }) }}      
+            <div class="row">
+                <div class="col-md-6">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.nombre, 'Nombre del Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del proyecto', 'class': 'form-control inputGroup',
+                                                         'title': 'El nombre del proyecto tiene que ser unico' } }) }}      
+                        </div>
+                        {{ form_errors(form.nombre) }}
                     </div>
-                    {{ form_errors(form.nombre) }}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.montoContrato, 'Monto del Contrato:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.montoContrato, 'Monto del Contrato:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.montoContrato, { 'attr': {'placeholder': 'Escriba el monto del contrato', 'class': 'form-control inputGroup',
-                                                     'title': 'Ingrese el monto del contrato.' } }) }}      
+                            {{ form_widget(form.montoContrato, { 'attr': {'placeholder': 'Escriba el monto del contrato', 'class': 'form-control inputGroup',
+                                                         'title': 'Ingrese el monto del contrato.' } }) }}      
+                        </div>
+                        {{ form_errors(form.montoContrato) }}
                     </div>
-                    {{ form_errors(form.montoContrato) }}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.plazoEntrega, 'Plazo de Entrega:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.plazoEntrega, 'Plazo de Entrega:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.plazoEntrega, { 'attr': {'placeholder': 'Elija la fecha de entrega', 'class': 'form-control input-inline datepicker inputGroup',
-                                                     'title': 'Ingrese la fecha de entrega.' } }) }}      
+                            {{ form_widget(form.plazoEntrega, { 'attr': {'placeholder': 'Elija la fecha de entrega', 'class': 'form-control input-inline datepicker inputGroup',
+                                                         'title': 'Ingrese la fecha de entrega.' } }) }}      
+                        </div>
+                        {{ form_errors(form.plazoEntrega) }}
                     </div>
-                    {{ form_errors(form.plazoEntrega) }}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.lugar, 'Lugar:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.lugar, 'Lugar:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Escriba el lugar donde se realiza el proyecto', 'class': 'form-control inputGroup',
-                                                     'title': 'Ingrese el lugar del proyecto.' } }) }}      
+                            {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Escriba el lugar donde se realiza el proyecto', 'class': 'form-control inputGroup',
+                                                         'title': 'Ingrese el lugar del proyecto.' } }) }}      
+                        </div>
+                        {{ form_errors(form.lugar) }}
                     </div>
-                    {{ form_errors(form.lugar) }}
                 </div>
             </div>
-        </div>
-        <div class="row" id="ventCliente">
-            <div class="col-md-6">
-                <div class ="form-group">
-                    <div class="input-group">
+            <div class="row" id="ventCliente">
+                <div class="col-md-6">
+                    <div class ="form-group">
+                        <div class="input-group">
 
-                        {{ form_label(form.cliente, 'Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+                            {{ form_label(form.cliente, 'Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.cliente, { 'attr': {'placeholder': 'Seleccione el nombre del cliente', 'class': 'form-control inputGroup',
-                                                     'title': 'Seleccione el nombre del cliente.' } }) }}     
+                            {{ form_widget(form.cliente, { 'attr': {'placeholder': 'Seleccione el nombre del cliente', 'class': 'form-control inputGroup',
+                                                         'title': 'Seleccione el nombre del cliente.' } }) }}     
+                        </div>
+                        {{ form_errors(form.cliente) }}   
                     </div>
-                    {{ form_errors(form.cliente) }}   
+                </div>
+                <div class="col-md-6">
+                    <a href="#ventanaCliente" data-toggle="modal">Presione aqui para agregar un nuevo cliente</a>
                 </div>
             </div>
-            <div class="col-md-6">
-                <a href="#ventanaCliente" data-toggle="modal">Presione aqui para agregar un nuevo cliente</a>
-            </div>
-        </div>
-        <div class="row" id="ventTipoProyecto">
-            <div class="col-md-6">
-                <div class ="form-group">
-                    <div class="input-group">
-                        {{ form_label(form.tipo_proyecto, 'Tipo Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+            <div class="row" id="ventTipoProyecto">
+                <div class="col-md-6">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.tipo_proyecto, 'Tipo Proyecto:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                        {{ form_widget(form.tipo_proyecto, { 'attr': {'placeholder': 'Seleccione el tipo de proyecto', 'class': 'form-control inputGroup',
-                                                     'title': 'Seleccione el tipo de proyecto.' } }) }}      
+                            {{ form_widget(form.tipo_proyecto, { 'attr': {'placeholder': 'Seleccione el tipo de proyecto', 'class': 'form-control inputGroup',
+                                                         'title': 'Seleccione el tipo de proyecto.' } }) }}      
+                        </div>
+                        {{ form_errors(form.tipo_proyecto) }}
                     </div>
-                    {{ form_errors(form.tipo_proyecto) }}
+                </div>
+                <div class="col-md-6">
+                    <a href="#ventanaTipoProyecto" data-toggle="modal">Presione aqui para agregar un nuevo tipo de proyecto</a>
                 </div>
             </div>
-            <div class="col-md-6">
-                <a href="#ventanaTipoProyecto" data-toggle="modal">Presione aqui para agregar un nuevo tipo de proyecto</a>
+            <div class ="form-group">
+                <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
             </div>
-        </div>
-        <div class ="form-group">
-            <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
-        </div>
 
-        {{form_end(form) }}
+            {{form_end(form) }}
+        
+        </div>
 
         <div class="modal fade" id="ventanaTipoProyecto">
             <div class="modal-dialog">

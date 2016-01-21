@@ -12,6 +12,9 @@ class RegistroCategoriaController extends Controller
     
     public function registroAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
+        
         $categoria = new Categoria();
         $form = $this->createForm(new CategoriaType(),$categoria);
         $form->handleRequest($request);
@@ -32,7 +35,6 @@ class RegistroCategoriaController extends Controller
 
                 $categoria->setActivo("true");
                 
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($categoria);
                 $em->flush();
 
@@ -40,7 +42,7 @@ class RegistroCategoriaController extends Controller
             }
         }
         
-        return $this->render('MTDCategoriasTrabajoBundle:Categoria:registro.html.twig', array("form"=>$form->createView()));
+        return $this->render('MTDCategoriasTrabajoBundle:Categoria:registro.html.twig', array("form"=>$form->createView(), 'proyectos' => $proyectos));
     }
     
     public function validarNombreRepetido($nombre){

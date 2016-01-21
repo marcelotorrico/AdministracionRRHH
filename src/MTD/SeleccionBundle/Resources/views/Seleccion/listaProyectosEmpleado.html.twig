@@ -12,7 +12,7 @@
             <h2>Lista de Proyectos en el que participa el empleado {{empleado.apellido}} {{empleado.nombre}}</h2>
         </div>
     </section>
-    <div class ="container">
+    <div class ="container-fluid">
         
         {{ include('menuEmpleado.html.twig')}}
         
@@ -46,6 +46,9 @@
                                 </tr>
                             {% endif %}
                         {% endfor %}
+                        {% if proyectoEmpleado |length < 1 %}
+                            <h4>El empleado no esta participando en ningun proyecto</h4>
+                        {% endif %}
                     </tbody>    
                 </table>
             </div>

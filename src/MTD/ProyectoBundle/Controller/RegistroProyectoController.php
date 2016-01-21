@@ -16,6 +16,9 @@ class RegistroProyectoController extends Controller
     
     public function registroAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
+        
         $proyecto = new Proyecto();
         $form = $this->createForm(new ProyectoType(),$proyecto);
         $form->handleRequest($request);
@@ -44,15 +47,16 @@ class RegistroProyectoController extends Controller
 
                 $proyecto->setActivo("true");
                 
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($proyecto);             
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('mtd_lista_proyecto'));
+                $idProyecto = $proyecto->getId();
+                
+                return $this->redirect($this->generateUrl('mtd_mostrar_proyecto', array('id'=> $idProyecto, true)));   
             }
         }
         
-        return $this->render('MTDProyectoBundle:Proyecto:registro.html.twig', array("form"=>$form->createView(), "formularioCliente"=>$formularioCliente->createView(), "formularioTipoProyecto"=>$formularioTipoProyecto->createView()));
+        return $this->render('MTDProyectoBundle:Proyecto:registro.html.twig', array("form"=>$form->createView(), "formularioCliente"=>$formularioCliente->createView(), "formularioTipoProyecto"=>$formularioTipoProyecto->createView(), 'proyectos' => $proyectos));
     }
     
     public function validarNombreRepetido($nombre){

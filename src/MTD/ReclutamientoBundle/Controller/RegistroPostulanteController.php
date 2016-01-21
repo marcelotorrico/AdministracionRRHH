@@ -12,6 +12,9 @@ class RegistroPostulanteController extends Controller
     
     public function registrarAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
+        
         $empleado = new Empleado();
         $form = $this->createForm(new EmpleadoType(),$empleado);
         $form->handleRequest($request);
@@ -31,8 +34,8 @@ class RegistroPostulanteController extends Controller
                 );
 
                 $empleado->setActivo("true");
+                $empleado->setContratado("false");
                 
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($empleado);
                 $em->flush();
                 
@@ -43,7 +46,7 @@ class RegistroPostulanteController extends Controller
             }
         }
         
-        return $this->render('MTDReclutamientoBundle:Reclutamiento:registro.html.twig', array("form"=>$form->createView()));
+        return $this->render('MTDReclutamientoBundle:Reclutamiento:registro.html.twig', array("form"=>$form->createView(), 'proyectos' => $proyectos));
     }
     
     public function validarNombreRepetido($ci){

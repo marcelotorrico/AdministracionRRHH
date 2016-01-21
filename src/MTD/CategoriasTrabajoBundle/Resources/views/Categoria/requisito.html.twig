@@ -13,59 +13,63 @@
         </div>
     </section>
 
-    <div class="container">
-        <div id="main">
-            <form action="{{ path("mtd_requisito_registrar") }}" method="post" role="form">
-                {{form_errors(form)}}
+    <div class="container-fluid full-height">
+        
+        {{ include('menuListaProyectos.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            <div id="main">
+                <form action="{{ path("mtd_requisito_registrar") }}" method="post" role="form">
+                    {{form_errors(form)}}
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                {{ form_label(form.nombre, 'Nombre del Requisito:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    {{ form_label(form.nombre, 'Nombre del Requisito:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                                {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del requisito', 'class': 'form-control inputGroup',
-                                                             'title': 'Nombre del Requisito' } }) }}      
+                                    {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del requisito', 'class': 'form-control inputGroup',
+                                                                 'title': 'Nombre del Requisito' } }) }}      
+                                </div>
+                                {{ form_errors(form.nombre) }}
                             </div>
-                            {{ form_errors(form.nombre) }}
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                {{ form_label(form.descripcion, 'Descripcion:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    {{ form_label(form.descripcion, 'Descripcion:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                                {{ form_widget(form.descripcion, { 'attr': {'placeholder': 'Escriba una descripcion del requisito', 'class': 'form-control inputGroup',
-                                                             'title': 'Descripcion del Requisito' } }) }}      
+                                    {{ form_widget(form.descripcion, { 'attr': {'placeholder': 'Escriba una descripcion del requisito', 'class': 'form-control inputGroup',
+                                                                 'title': 'Descripcion del Requisito' } }) }}      
+                                </div>
+                                {{ form_errors(form.descripcion) }}
                             </div>
-                            {{ form_errors(form.descripcion) }}
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                {{ form_label(form.categoria, 'Categoria:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    {{ form_label(form.categoria, 'Categoria:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                                {{ form_widget(form.categoria, { 'attr': { 'class': 'form-control inputGroup',
-                                                             'title': 'Seleccione la categoria' } }) }}      
+                                    {{ form_widget(form.categoria, { 'attr': { 'class': 'form-control inputGroup',
+                                                                 'title': 'Seleccione la categoria' } }) }}      
+                                </div>
+                                {{ form_errors(form.categoria) }}
                             </div>
-                            {{ form_errors(form.categoria) }}
                         </div>
                     </div>
-                </div>
 
-                <div class ="form-group">
-                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="container">    
-        <div class="panel panel-primary">
+                    <div class ="form-group">
+                        <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+                    </div>
+                </form>
+            </div>
+            
+        <div class="panel panel-primary ">
             <div class="panel-heading" role="tab" id="heading1">
                 <h4 class="panel-title">
                     <a href="#collapse1" data-toggle="collapse" data-parent="#accordion">
@@ -101,23 +105,54 @@
                                             </td>
                                             {% set contadorRequisito = 0 %}
                                             {% for requisito in requisitos %}
+                                            
                                                 {% if categoria.id == requisito.categoria.id and requisito.activo == true %}
                                                    {% if contadorRequisito == 0%}
                                                         <td>{{ requisito.nombre }}</td>
                                                         <td>{{ requisito.descripcion }}</td>
                                                         <td>
-                                                            <a href="{{ path('mtd_requisito_eliminar', { 'id': requisito.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
-                                                                Eliminar
-                                                            </a>
-                                                        </td>
+                                                            {% set break = false %}
+                                                            {% for postulante in postulantes %}
+                                                                {% for requisitoEmpleado in postulante.empleadoRequisito if not break%}
+                                                                    {% if requisitoEmpleado.requisito.id == requisito.id %}
+                                                                        {% set break = true %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endfor %}
+                                                            
+                                                            {% if break == true %}
+                                                                <a href="" class="btn btn-sm btn-danger btn-delete alertaEliminacion">
+                                                                    Eliminar
+                                                                </a>
+                                                            {% else %}
+                                                                <a href="{{ path('mtd_requisito_eliminar', { 'id': requisito.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
+                                                                    Eliminar
+                                                                </a>
+                                                            {% endif %}
+                                                            </td>
                                                    {% else %}
                                                         <tr>
                                                             <td>{{ requisito.nombre }}</td>
                                                             <td>{{ requisito.descripcion }}</td>
                                                             <td>
+                                                                {% for postulante in postulantes %}
+                                                                    {% set break = false %}
+                                                                    {% for requisitoEmpleado in postulante.empleadoRequisito if not break%}
+                                                                        {% if requisitoEmpleado.requisito.id == requisito.id %}
+                                                                            {% set break = true %}
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            
+                                                            {% if break == true %}
+                                                                <a href="" class="btn btn-sm btn-danger btn-delete alertaEliminacion">
+                                                                    Eliminar
+                                                                </a>
+                                                            {% else %}
                                                                 <a href="{{ path('mtd_requisito_eliminar', { 'id': requisito.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
                                                                     Eliminar
                                                                 </a>
+                                                            {% endif %}
                                                             </td>
                                                         </tr>
                                                    {% endif %}
@@ -133,7 +168,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+    </div>
 {% endblock %}
     
 {% block javascripts %}
