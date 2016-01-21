@@ -48,6 +48,9 @@
                                             <a href="{{ path('mtd_proyecto_empleado_registro', { 'id': postulante.id, 'idProyecto': proyectoSeleccionado.id }) }}" class="btn btn-sm btn-primary">
                                                 Agregar al Proyecto
                                             </a>
+                                            <a href="{{ path('mtd_empleado_ver', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
+                                                Ver Empleado
+                                            </a>
                                         </td>
                                     </tr>      
                                 {% endif %}
