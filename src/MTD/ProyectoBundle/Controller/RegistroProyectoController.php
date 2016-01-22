@@ -9,6 +9,8 @@ use MTD\ProyectoBundle\Entity\Cliente;
 use MTD\ProyectoBundle\Form\ClienteType;
 use MTD\ProyectoBundle\Entity\Tipo_Proyecto;
 use MTD\ProyectoBundle\Form\Tipo_ProyectoType;
+use MTD\ProyectoBundle\Entity\Lugar;
+use MTD\ProyectoBundle\Form\LugarType;
 use Symfony\Component\HttpFoundation\Request;
 
 class RegistroProyectoController extends Controller
@@ -30,6 +32,10 @@ class RegistroProyectoController extends Controller
         $tipoProyecto = new Tipo_Proyecto();
         $formularioTipoProyecto = $this->createForm(new Tipo_ProyectoType(),$tipoProyecto);
         $formularioTipoProyecto->handleRequest($request);
+        
+        $lugar = new Lugar();
+        $formularioLugar = $this->createForm(new LugarType(), $lugar);
+        $formularioLugar->handleRequest($request);
         
         if($form->isValid()){
             $nombreProyecto = $form->get('nombre')->getData();
@@ -56,7 +62,7 @@ class RegistroProyectoController extends Controller
             }
         }
         
-        return $this->render('MTDProyectoBundle:Proyecto:registro.html.twig', array("form"=>$form->createView(), "formularioCliente"=>$formularioCliente->createView(), "formularioTipoProyecto"=>$formularioTipoProyecto->createView(), 'proyectos' => $proyectos));
+        return $this->render('MTDProyectoBundle:Proyecto:registro.html.twig', array("form"=>$form->createView(), "formularioCliente"=>$formularioCliente->createView(), "formularioTipoProyecto"=>$formularioTipoProyecto->createView(), "formularioLugar"=>$formularioLugar->createView(),'proyectos' => $proyectos));
     }
     
     public function validarNombreRepetido($nombre){

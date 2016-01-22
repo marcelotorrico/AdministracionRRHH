@@ -2,6 +2,7 @@
     <h4>Opciones</h4>
     <div class="list-group">
         <a href="{{ path('mtd_mostrar_proyecto', { 'id': proyectoSeleccionado.id }) }}" class="list-group-item">Ver Proyecto</a>
+        <a href="{{ path('mtd_editar_proyecto', { 'id': proyectoSeleccionado.id }) }}" class="list-group-item">Editar Proyecto</a>
         <a href="{{ path('mtd_categorias_proyecto', { 'id': proyectoSeleccionado.id }) }}" class="list-group-item">Categorias</a>
         <a href="{{ path('mtd_proyecto_empleado', { 'id': proyectoSeleccionado.id }) }}" class="list-group-item">Agregar Empleados</a>
         <a href="{{ path('mtd_proyecto_lista_empleados', { 'id': proyectoSeleccionado.id }) }}" class="list-group-item">Lista de Empleados</a>

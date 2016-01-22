@@ -17,6 +17,10 @@ mtd_cliente_registro:
 mtd_tipoProyecto_registro:
     path:     /registro/tipoProyecto
     defaults: {_controller: MTDProyectoBundle:TipoProyecto:registroTipoProyecto }
+    
+mtd_lugar_registro:
+    path:     /registro/lugar
+    defaults: {_controller: MTDProyectoBundle:Lugar:registrar }
 
 mtd_lista_proyecto:
     path:     /proyecto/lista
@@ -55,3 +59,11 @@ mtd_proyecto_empleado_registro:
 mtd_proyecto_lista_empleados:
     path:     /proyecto/lista/empleados/{id}
     defaults: {_controller: MTDProyectoBundle:ListaEmpleados:listar }
+    
+mtd_lista_clientes:
+    path:     /clientes/lista
+    defaults: {_controller: MTDProyectoBundle:ListaClientes:listar }
+    
+mtd_cliente_edita:
+    path:     /cliente/edita/{id}
+    defaults: {_controller: MTDProyectoBundle:EditaCliente:editar }

@@ -6,7 +6,7 @@
             <a href="{{ path('mtd_mostrar_proyecto', { 'id': proyecto.id }) }}" class="list-group-item">
                 <h4 class="list-group-item-heading">{{ proyecto.nombre }}</h4>
                 <p class="list-group-item-text">Tipo de Proyecto: {{ proyecto.tipoProyecto.nombre }}</p>
-                <p class="list-group-item-text">Lugar del Proyecto: {{ proyecto.lugar }}</p>
+                <p class="list-group-item-text">Lugar del Proyecto: {{ proyecto.lugar.nombre }}</p>
             </a>
             {% endif %}
         {% endfor %}

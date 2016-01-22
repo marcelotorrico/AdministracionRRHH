@@ -66,17 +66,20 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="ventLugar">
                 <div class="col-md-6">
                     <div class ="form-group">
                         <div class="input-group">
                             {{ form_label(form.lugar, 'Lugar:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                            {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Escriba el lugar donde se realiza el proyecto', 'class': 'form-control inputGroup',
-                                                         'title': 'Ingrese el lugar del proyecto.' } }) }}      
+                            {{ form_widget(form.lugar, { 'attr': {'placeholder': 'Seleccione el nombre del lugar', 'class': 'form-control inputGroup',
+                                                         'title': 'Seleccione el nombre del lugar.' } }) }}      
                         </div>
                         {{ form_errors(form.lugar) }}
                     </div>
+                </div>
+                <div class="col-md-6">
+                    <a href="#ventanaLugar" data-toggle="modal">Presione aqui para agregar un nuevo lugar</a>
                 </div>
             </div>
             <div class="row" id="ventCliente">
@@ -148,6 +151,42 @@
                                 <div class="modal-footer form-group">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                     <button type="submit" id ="enviarTipoProyecto" name="enviarTipoProyecto" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="ventanaLugar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Registro de un Nuevo Lugar</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="mainLugar">
+
+                            <form action="{{ path("mtd_lugar_registro") }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                                {{form_errors(formularioLugar)}}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class ="form-group">
+                                            <div class="input-group">
+                                                {{ form_label(formularioLugar.nombre, 'Nombre del Lugar:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                                                {{ form_widget(formularioLugar.nombre, { 'attr': {'placeholder': 'Escriba el nombre del lugar', 'class': 'form-control inputGroupTipo',
+                                                                             'title': 'El nombre del lugar debe ser unico.' } }) }}      
+                                            </div>
+                                            {{ form_errors(formularioLugar.nombre) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer form-group">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" id ="enviarLugar" name="enviarLugar" class="btn btn-primary">Guardar Cambios</button>
                                 </div>
                             </form>
                         </div>
@@ -263,5 +302,6 @@
     <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
     <script src="{{ asset('public/js/guardar/guardarCliente.js') }}"></script>
     <script src="{{ asset('public/js/guardar/guardarTipoProyecto.js') }}"></script>
+    <script src="{{ asset('public/js/guardar/guardarLugar.js') }}"></script>
     <script src="{{ asset('public/js/jquery-blockUI.js') }}"></script>
 {% endblock %}                

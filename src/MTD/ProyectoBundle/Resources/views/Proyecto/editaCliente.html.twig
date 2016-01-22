@@ -1,0 +1,116 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Editar el Cliente: {{cliente.apellido}} {{cliente.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid full-height">
+        
+        {{ include('menuListaProyectos.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            
+            {{ form_start(formularioCliente) }}
+            {{form_errors(formularioCliente)}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                {{ form_label(formularioCliente.nombre, 'Nombre del Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                                {{ form_widget(formularioCliente.nombre, { 'attr': {'placeholder': 'Escriba el nombre del cliente', 'class': 'form-control inputGroup',
+                                                             'title': 'El nombre debe empezar con mayuscula',
+                                                             'value': cliente.nombre } }) }}      
+                            </div>
+                            {{ form_errors(formularioCliente.nombre) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="col-md-12">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                {{ form_label(formularioCliente.apellido, 'Apellido del Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                                {{ form_widget(formularioCliente.apellido, { 'attr': {'placeholder': 'Escriba el apellido del cliente', 'class': 'form-control inputGroup',
+                                                                                    'title': 'El apellido debe empezar con mayuscula.',
+                                                                                    'value': cliente.apellido } }) }}      
+                            </div>
+                            {{ form_errors(formularioCliente.apellido) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                {{ form_label(formularioCliente.direccion, 'Direccion del Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                                {{ form_widget(formularioCliente.direccion, { 'attr': {'placeholder': 'Escriba la direccion del cliente', 'class': 'form-control input-inline inputGroup',
+                                                                                        'title': 'Ingrese su direccion.',
+                                                                                        'value': cliente.direccion} }) }}      
+                            </div>
+                            {{ form_errors(formularioCliente.direccion) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                {{ form_label(formularioCliente.telefono, 'Telefono del Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                                {{ form_widget(formularioCliente.telefono, { 'attr': {'placeholder': 'Escriba el telefono del cliente', 'class': 'form-control inputGroup',
+                                                                                    'title': 'Ingrese números telefonicos validos.',
+                                                                                    'value': cliente.telefono } }) }}      
+                            </div>
+                            {{ form_errors(formularioCliente.telefono) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class ="form-group">
+                            <div class="input-group">
+
+                                {{ form_label(formularioCliente.nit, 'Nit del Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                                {{ form_widget(formularioCliente.nit, { 'attr': {'placeholder': 'Escriba el nit del cliente', 'class': 'form-control inputGroup',
+                                                                                        'title': 'Ingrese numero de nit.',
+                                                                                        'value': cliente.nit} }) }}     
+                            </div>
+                            {{ form_errors(formularioCliente.nit) }}   
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                {{ form_label(formularioCliente.banco, 'Banco del Cliente:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                                {{ form_widget(formularioCliente.banco, { 'attr': {'placeholder': 'Escriba el banco del cliente', 'class': 'form-control inputGroup',
+                                                                                        'title': 'Ingrese el banco.',
+                                                                                        'value': cliente.banco} }) }}      
+                            </div>
+                            {{ form_errors(formularioCliente.banco) }}
+                        </div>
+                    </div>
+                </div>
+                <div class ="form-group">
+                    <a type="button" href="{{ path('mtd_lista_clientes') }}" class="btn btn-default"> Cancelar</a>
+                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Actualizar</button>
+                </div>
+            {{form_end(formularioCliente) }}
+                            
+        </div>
+    </div>
+{% endblock %}

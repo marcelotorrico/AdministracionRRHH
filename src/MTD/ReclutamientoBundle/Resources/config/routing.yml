@@ -5,6 +5,10 @@ mtd_reclutamiento_homepage:
 mtd_postulante_registro:
     path:     /postulante/registro
     defaults: {_controller: MTDReclutamientoBundle:RegistroPostulante:registrar }
+
+mtd_lugar_empleado:
+    path:     /registro/lugarEmpleado
+    defaults: {_controller: MTDReclutamientoBundle:Lugar:registrar }
     
 mtd_postulante_requisito:
     path:     /postulante/registroPerfil/{id}

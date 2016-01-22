@@ -36,7 +36,7 @@
                                     <td>{{ proyecto.proyecto.nombre }}</td>
                                     <td><strong>{{ proyecto.proyecto.montoContrato }}</strong></td>
                                     <td>{{ proyecto.proyecto.plazoEntrega|date('d-m-Y') }}</td>
-                                    <td>{{ proyecto.proyecto.lugar }}</td>
+                                    <td>{{ proyecto.proyecto.lugar.nombre }}</td>
                                     <td>{{ proyecto.proyecto.tipoProyecto.nombre }}</td>
                                     <td>
                                         <a href="{{ path('mtd_mostrar_proyecto', { 'id': proyecto.proyecto.id }) }}" class="btn btn-sm btn-info">

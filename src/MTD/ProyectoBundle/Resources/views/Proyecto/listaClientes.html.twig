@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+        
+    <section class="jumbotron">
+        <div class="container ">
+            <h2>Lista de Clientes</h2>
+        </div>
+    </section>
+    <div class="container-fluid full-height">
+        
+        {{ include('menuListaProyectos.html.twig')}}
+        
+        <div class="col-md-9">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Apellido del Cliente</th>
+                            <th>Nombre del Cliente</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Nit</th>
+                            <th>Banco</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                            <tr>
+                                <td>{{ cliente.apellido }}</td>
+                                <td>{{ cliente.nombre }}</td>
+                                <td>{{ cliente.direccion }}</td>
+                                <td>{{ cliente.telefono }}</td>
+                                <td>{{ cliente.nit }}</td>
+                                <td>{{ cliente.banco }}</td>
+                                <td>
+                                    <a href="{{ path('mtd_cliente_edita', { 'id': cliente.id }) }}" class="btn btn-sm btn-primary">
+                                        Editar
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

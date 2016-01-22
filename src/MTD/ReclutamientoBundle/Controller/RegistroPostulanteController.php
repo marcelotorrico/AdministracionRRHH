@@ -5,6 +5,8 @@ namespace MTD\ReclutamientoBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\ReclutamientoBundle\Entity\Empleado;
 use MTD\ReclutamientoBundle\Form\EmpleadoType;
+use MTD\ProyectoBundle\Entity\Lugar;
+use MTD\ProyectoBundle\Form\LugarType;
 use Symfony\Component\HttpFoundation\Request;
 
 class RegistroPostulanteController extends Controller
@@ -18,6 +20,10 @@ class RegistroPostulanteController extends Controller
         $empleado = new Empleado();
         $form = $this->createForm(new EmpleadoType(),$empleado);
         $form->handleRequest($request);
+        
+        $lugar = new Lugar();
+        $formularioLugar = $this->createForm(new LugarType(), $lugar);
+        $formularioLugar->handleRequest($request);
         
         if($form->isValid()){
             $ci = $form->get('cedulaIdentidad')->getData();
@@ -46,7 +52,7 @@ class RegistroPostulanteController extends Controller
             }
         }
         
-        return $this->render('MTDReclutamientoBundle:Reclutamiento:registro.html.twig', array("form"=>$form->createView(), 'proyectos' => $proyectos));
+        return $this->render('MTDReclutamientoBundle:Reclutamiento:registro.html.twig', array("form"=>$form->createView(), 'proyectos' => $proyectos, "formularioLugar"=>$formularioLugar->createView()));
     }
     
     public function validarNombreRepetido($ci){

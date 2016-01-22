@@ -8,10 +8,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EmpleadoEditarType extends AbstractType
 {
-    public function __construct($estadoCivil, $otrosCursos, $trabajosAnteriores) {
+    public function __construct($em, $estadoCivil, $otrosCursos, $trabajosAnteriores, $lugar) {
+        $this->em = $em;
         $this->estadoCivil = $estadoCivil;
         $this->otrosCursos = $otrosCursos;
         $this->trabajosAnteriores = $trabajosAnteriores;
+        $this->lugar = $lugar;
     }
     /**
      * @param FormBuilderInterface $builder
@@ -30,7 +32,14 @@ class EmpleadoEditarType extends AbstractType
                     'data-date-format' => 'dd-mm-yyyy'
                   ]
                 ])
-            ->add('lugar', null, array( 'required' => false ))
+            ->add('lugar', 'entity', array(
+                'required' => false,
+                'class' => 'MTDProyectoBundle:Lugar',
+                'choice_label' => function ($lugar) {
+                    return $lugar->getNombre();
+                },
+                'data' => $this->em->getReference("MTDProyectoBundle:Lugar", $this->lugar)
+            ))
             ->add('estadoCivil', 'choice', array(
                    'choices'   => array('Casado' => 'Casado', 'Soltero' => 'Soltero'),
                    'data' => $this->estadoCivil

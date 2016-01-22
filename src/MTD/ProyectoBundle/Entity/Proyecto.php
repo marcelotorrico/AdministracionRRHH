@@ -44,11 +44,20 @@ class Proyecto
     private $plazoEntrega;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="lugar", type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="Lugar", inversedBy="proyecto")
+     * @ORM\JoinColumn(name="id_lugar", referencedColumnName="id")
+     * @return integer
      */
     private $lugar;
+    public function setLugar(\MTD\ProyectoBundle\Entity\Lugar $lugar)
+    {
+        $this->lugar = $lugar;
+    }
+
+    public function getLugar()
+    {
+        return $this->lugar;
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="proyecto")
@@ -258,30 +267,6 @@ class Proyecto
     public function getPlazoEntrega()
     {
         return $this->plazoEntrega;
-    }
-
-    /**
-     * Set lugar
-     *
-     * @param string $lugar
-     *
-     * @return Proyecto
-     */
-    public function setLugar($lugar)
-    {
-        $this->lugar = $lugar;
-
-        return $this;
-    }
-
-    /**
-     * Get lugar
-     *
-     * @return string
-     */
-    public function getLugar()
-    {
-        return $this->lugar;
     }
     
     /**

@@ -55,9 +55,9 @@ class Empleado
     private $fechaNacimiento;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="lugar", type="string", nullable=true, length=100)
+     * @ORM\ManyToOne(targetEntity="\MTD\ProyectoBundle\Entity\Lugar", inversedBy="empleado")
+     * @ORM\JoinColumn(name="id_lugar", referencedColumnName="id", nullable = true)
+     * @return integer
      */
     private $lugar;
 
@@ -101,7 +101,7 @@ class Empleado
      *
      * @ORM\Column(name="telefono_particular", type="string", nullable=true, length=50)
      * @Assert\Regex(
-     *      pattern="/^(([4][0-9]{7,8}))$/",
+     *      pattern="/^(([4][0-9]{6,7}))$/",
      *      match=true
      * )
      */
@@ -366,25 +366,11 @@ class Empleado
         return $this->fechaNacimiento;
     }
 
-    /**
-     * Set lugar
-     *
-     * @param string $lugar
-     *
-     * @return Empleado
-     */
-    public function setLugar($lugar)
+    public function setLugar(\MTD\ProyectoBundle\Entity\Lugar $lugar)
     {
         $this->lugar = $lugar;
-
-        return $this;
     }
 
-    /**
-     * Get lugar
-     *
-     * @return string
-     */
     public function getLugar()
     {
         return $this->lugar;

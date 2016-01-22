@@ -25,7 +25,14 @@ class EmpleadoType extends AbstractType
                     'data-date-format' => 'dd-mm-yyyy'
                   ]
                 ])
-            ->add('lugar', null, array( 'required' => false ))
+            ->add('lugar', 'entity', array(
+                'required' => false,
+                'class' => 'MTDProyectoBundle:Lugar',
+                'choice_label' => function ($lugar) {
+                    return $lugar->getNombre();
+                },
+                'empty_value' => 'Seleccione un lugar'
+            ))
             ->add('estadoCivil', 'choice', array(
                    'choices'   => array('Casado' => 'Casado', 'Soltero' => 'Soltero'),
                    'empty_value' => 'Seleccione el estado civil'

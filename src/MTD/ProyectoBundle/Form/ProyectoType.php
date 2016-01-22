@@ -25,7 +25,13 @@ class ProyectoType extends AbstractType
                             'data-date-format' => 'dd-mm-yyyy'
                         ]
                     ])
-            ->add('lugar')
+            ->add('lugar', 'entity', array(
+                'class' => 'MTDProyectoBundle:Lugar',
+                'choice_label' => function ($lugar) {
+                    return $lugar->getNombre();
+                },
+                'empty_value' => 'Seleccione un lugar'
+            ))
             ->add('cliente', 'entity', array(
                 'class' => 'MTDProyectoBundle:Cliente',
                 'choice_label' => function ($cliente) {

@@ -5,6 +5,8 @@ namespace MTD\ReclutamientoBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\ReclutamientoBundle\Entity\Empleado;
 use MTD\ReclutamientoBundle\Form\EmpleadoEditarType;
+use MTD\ProyectoBundle\Entity\Lugar;
+use MTD\ProyectoBundle\Form\LugarType;
 use Symfony\Component\HttpFoundation\Request;
 
 class EditaPostulanteController extends Controller
@@ -19,10 +21,15 @@ class EditaPostulanteController extends Controller
         $estadoCivilActual = $postulante->getEstadoCivil();
         $otrosCursosActual = $postulante->getOtrosCursos();
         $trabajosAnterioresActual = $postulante->getTrabajosAnteriores();
+        $idlugar = $postulante->getLugar()->getId();
         
         $empleado = new Empleado();
-        $form = $this->createForm(new EmpleadoEditarType($estadoCivilActual, $otrosCursosActual, $trabajosAnterioresActual),$empleado);
+        $form = $this->createForm(new EmpleadoEditarType($em, $estadoCivilActual, $otrosCursosActual, $trabajosAnterioresActual, $idlugar),$empleado);
         $form->handleRequest($request);
+        
+        $lugar = new Lugar();
+        $formularioLugar = $this->createForm(new LugarType(), $lugar);
+        $formularioLugar->handleRequest($request);
         
         if($form->isValid()){
             $cedulaIdentidad = $form->get('cedulaIdentidad')->getData();
@@ -85,9 +92,9 @@ class EditaPostulanteController extends Controller
         }
         
         if($postulante->getContratado()){
-            return $this->render('MTDSeleccionBundle:Seleccion:editaEmpleado.html.twig', array("empleado"=>$postulante,"form"=>$form->createView()));
+            return $this->render('MTDSeleccionBundle:Seleccion:editaEmpleado.html.twig', array("empleado"=>$postulante,"form"=>$form->createView(), "formularioLugar"=>$formularioLugar->createView()));
         }else{
-            return $this->render('MTDReclutamientoBundle:Reclutamiento:editaPostulante.html.twig', array("postulante"=>$postulante,"form"=>$form->createView()));
+            return $this->render('MTDReclutamientoBundle:Reclutamiento:editaPostulante.html.twig', array("postulante"=>$postulante,"form"=>$form->createView(), "formularioLugar"=>$formularioLugar->createView()));
         }
     }
     

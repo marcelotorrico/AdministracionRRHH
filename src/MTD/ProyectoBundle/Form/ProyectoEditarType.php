@@ -9,10 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ProyectoEditarType extends AbstractType
 {
 
-    public function __construct($em,$idCliente,$idTipoProyecto) {
+    public function __construct($em, $idCliente, $idTipoProyecto, $lugar) {
         $this->em = $em;
         $this->idCliente = $idCliente;
         $this->idTipoProyecto = $idTipoProyecto;
+        $this->lugar = $lugar;
     }
     /**
      * @param FormBuilderInterface $builder
@@ -31,7 +32,13 @@ class ProyectoEditarType extends AbstractType
                             'data-date-format' => 'dd-mm-yyyy'
                         ]
                     ])
-            ->add('lugar')
+            ->add('lugar', 'entity', array(
+                'class' => 'MTDProyectoBundle:Lugar',
+                'choice_label' => function ($lugar) {
+                    return $lugar->getNombre();
+                },
+                'data' => $this->em->getReference("MTDProyectoBundle:Lugar", $this->lugar)
+            ))
             ->add('cliente', 'entity', array(
                 'class' => 'MTDProyectoBundle:Cliente',
                 'choice_label' => function ($cliente) {

@@ -70,13 +70,18 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_reclutamiento_homepage')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\DefaultController::indexAction',));
         }
 
+        // mtd_postulante_registro
+        if ($pathinfo === '/postulante/registro') {
+            return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPostulanteController::registrarAction',  '_route' => 'mtd_postulante_registro',);
+        }
+
+        // mtd_lugar_empleado
+        if ($pathinfo === '/registro/lugarEmpleado') {
+            return array (  '_controller' => 'MTDReclutamientoBundle:Lugar:registrar',  '_route' => 'mtd_lugar_empleado',);
+        }
+
         if (0 === strpos($pathinfo, '/postulante')) {
             if (0 === strpos($pathinfo, '/postulante/registro')) {
-                // mtd_postulante_registro
-                if ($pathinfo === '/postulante/registro') {
-                    return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPostulanteController::registrarAction',  '_route' => 'mtd_postulante_registro',);
-                }
-
                 // mtd_postulante_requisito
                 if (0 === strpos($pathinfo, '/postulante/registroPerfil') && preg_match('#^/postulante/registroPerfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_postulante_requisito')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\FormularioPerfilTecnicoController::registrarAction',));
@@ -171,6 +176,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\TipoProyectoController::registroTipoProyectoAction',  '_route' => 'mtd_tipoProyecto_registro',);
             }
 
+            // mtd_lugar_registro
+            if ($pathinfo === '/registro/lugar') {
+                return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\LugarController::registrarAction',  '_route' => 'mtd_lugar_registro',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/proyecto')) {
@@ -228,6 +238,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_lista_empleados')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ListaEmpleadosController::listarAction',));
             }
 
+        }
+
+        // mtd_lista_clientes
+        if ($pathinfo === '/clientes/lista') {
+            return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ListaClientesController::listarAction',  '_route' => 'mtd_lista_clientes',);
         }
 
         // mtd_categorias_trabajo_homepage
