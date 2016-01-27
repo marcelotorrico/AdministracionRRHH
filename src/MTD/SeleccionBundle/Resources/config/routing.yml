@@ -18,6 +18,10 @@ mtd_empleado_ver:
     path:     /empleado/ver/{id}
     defaults: {_controller: MTDSeleccionBundle:EmpleadoInformacion:mostrar }
     
+mtd_empleado_eliminar:
+    path:     /postulante/eliminar/{id}
+    defaults: {_controller: MTDSeleccionBundle:EliminaEmpleado:eliminar }
+    
 mtd_empleado_perfilTecnico:
     path:     /empleado/perfil/{id}
     defaults: {_controller: MTDSeleccionBundle:PerfilTecnicoEmpleado:mostrar }

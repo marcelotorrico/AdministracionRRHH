@@ -33,7 +33,6 @@ class EmpleadoEditarType extends AbstractType
                   ]
                 ])
             ->add('lugar', 'entity', array(
-                'required' => false,
                 'class' => 'MTDProyectoBundle:Lugar',
                 'choice_label' => function ($lugar) {
                     return $lugar->getNombre();

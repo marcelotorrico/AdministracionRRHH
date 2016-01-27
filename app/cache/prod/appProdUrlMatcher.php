@@ -240,9 +240,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
-        // mtd_lista_clientes
-        if ($pathinfo === '/clientes/lista') {
-            return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ListaClientesController::listarAction',  '_route' => 'mtd_lista_clientes',);
+        if (0 === strpos($pathinfo, '/cliente')) {
+            // mtd_lista_clientes
+            if ($pathinfo === '/clientes/lista') {
+                return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ListaClientesController::listarAction',  '_route' => 'mtd_lista_clientes',);
+            }
+
+            // mtd_cliente_edita
+            if (0 === strpos($pathinfo, '/cliente/edita') && preg_match('#^/cliente/edita/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_cliente_edita')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\EditaClienteController::editarAction',));
+            }
+
         }
 
         // mtd_categorias_trabajo_homepage

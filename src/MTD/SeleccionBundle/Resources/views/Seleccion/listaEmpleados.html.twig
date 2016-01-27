@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                         {% for contratacion in contrataciones %}
-                            {% if contratacion.activo == true %}
+                            {% if contratacion.activo == true and contratacion.empleado.contratado == true %}
                                 <tr>
                                     <td><strong>{{ contratacion.empleado.apellido }}</strong></td>
                                     <td>{{ contratacion.empleado.nombre }}</td>
@@ -49,6 +49,9 @@
                                         <a href="{{ path('mtd_empleado_ver', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
                                             Ver Empleado
                                         </a>
+                                        <a href="{{ path('mtd_empleado_eliminar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacionEmpleado">
+                                            Eliminar
+                                        </a>
                                     </td>
                                 </tr>
                             {%endif%}
@@ -58,4 +61,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/eliminar/eliminaPostulante.js') }}"></script>
 {% endblock %}

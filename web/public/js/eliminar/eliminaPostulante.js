@@ -6,4 +6,10 @@ $(document).ready(function(){
 
     });
     
+    $(".confirmarEliminacionEmpleado").on("click", function(e) {
+
+        return confirm('¿Esta seguro que quiere eliminar al empleado?');
+
+    });
+    
 });
