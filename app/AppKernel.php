@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new MTD\ProyectoBundle\MTDProyectoBundle(),
             new MTD\ReclutamientoBundle\MTDReclutamientoBundle(),
             new MTD\SeleccionBundle\MTDSeleccionBundle(),
+            new MTD\AsistenciaBundle\MTDAsistenciaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

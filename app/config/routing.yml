@@ -1,3 +1,7 @@
+mtd_asistencia:
+    resource: "@MTDAsistenciaBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mtd_seleccion:
     resource: "@MTDSeleccionBundle/Resources/config/routing.yml"
     prefix:   /

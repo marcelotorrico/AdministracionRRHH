@@ -53,11 +53,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_ver')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\EmpleadoInformacionController::mostrarAction',));
             }
 
-            // mtd_empleado_perfilTecnico
-            if (0 === strpos($pathinfo, '/empleado/perfil') && preg_match('#^/empleado/perfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_perfilTecnico')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\PerfilTecnicoEmpleadoController::mostrarAction',));
-            }
+        }
 
+        // mtd_empleado_eliminar
+        if (0 === strpos($pathinfo, '/postulante/eliminar') && preg_match('#^/postulante/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_eliminar')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\EliminaEmpleadoController::eliminarAction',));
+        }
+
+        // mtd_empleado_perfilTecnico
+        if (0 === strpos($pathinfo, '/empleado/perfil') && preg_match('#^/empleado/perfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_perfilTecnico')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\PerfilTecnicoEmpleadoController::mostrarAction',));
         }
 
         // mtd_empleado_proyectos_participa

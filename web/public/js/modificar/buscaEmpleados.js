@@ -6,7 +6,7 @@ $(document).ready(function(){
        $.ajax({
             beforeSend: function(){
                 
-               console.log();
+               //console.log();
                $.blockUI();
             },
             url: '/AdministracionRRHH/web/app_dev.php/postulantes/idoneos/'+id,

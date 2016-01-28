@@ -1,0 +1,7 @@
+mtd_asistencia_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDAsistenciaBundle:Default:index }
+    
+mtd_asistencia_empleado:
+    path:     /asistencia/postulante/{id}
+    defaults: {_controller: MTDAsistenciaBundle:RegistroAsistencia:registrar }

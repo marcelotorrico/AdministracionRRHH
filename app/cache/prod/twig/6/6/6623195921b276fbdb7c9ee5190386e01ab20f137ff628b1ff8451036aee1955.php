@@ -15,8 +15,8 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8e14211e51f8640f5b49a3f9916c2b5500c9192cec70bfdc32d795bf42e0b178 = $this->env->getExtension("native_profiler");
-        $__internal_8e14211e51f8640f5b49a3f9916c2b5500c9192cec70bfdc32d795bf42e0b178->enter($__internal_8e14211e51f8640f5b49a3f9916c2b5500c9192cec70bfdc32d795bf42e0b178_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_2afb35713c59a6306496ae2e60a4db1017ed68ef6f534a57745d84b2d53ab6ac = $this->env->getExtension("native_profiler");
+        $__internal_2afb35713c59a6306496ae2e60a4db1017ed68ef6f534a57745d84b2d53ab6ac->enter($__internal_2afb35713c59a6306496ae2e60a4db1017ed68ef6f534a57745d84b2d53ab6ac_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -31,7 +31,10 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
                         <span class=\"icon-bar\"></span>
                         <span class=\"icon-bar\"></span>
                     </button>
-                    <a class=\"navbar-brand\" href=\"#\">Inicio</a>
+                    <a class=\"navbar-brand\" href=\"";
+        // line 13
+        echo $this->env->getExtension('routing')->getPath("mtd_inicio");
+        echo "\">Inicio</a>
                 </div>
 
                 <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
@@ -45,11 +48,15 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
         // line 23
         echo $this->env->getExtension('routing')->getPath("mtd_proyecto_registro");
         echo "\">Registrar Proyecto</a></li>
-                                <li role=\"separator\" class=\"divider\"></li>
                                 <li><a href=\"";
-        // line 25
+        // line 24
         echo $this->env->getExtension('routing')->getPath("mtd_lista_proyecto");
         echo "\">Lista de Proyectos</a></li>
+                                <li role=\"separator\" class=\"divider\"></li>
+                                <li><a href=\"";
+        // line 26
+        echo $this->env->getExtension('routing')->getPath("mtd_lista_clientes");
+        echo "\">Lista de Clientes</a></li>
                             </ul>
                         </li>
                         
@@ -57,16 +64,16 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
                             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Categoria de Trabajo <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
                                 <li ><a href=\"";
-        // line 32
+        // line 33
         echo $this->env->getExtension('routing')->getPath("mtd_categoria_crear");
         echo "\">Registrar Categoria de Trabajo </a></li>
                                 <li ><a href=\"";
-        // line 33
+        // line 34
         echo $this->env->getExtension('routing')->getPath("mtd_categoria_lista");
         echo "\">Lista de las Categorias </a></li>
                                 <li role=\"separator\" class=\"divider\"></li>
                                 <li ><a href=\"";
-        // line 35
+        // line 36
         echo $this->env->getExtension('routing')->getPath("mtd_requisito_crear");
         echo "\">Perfil Tecnico </a></li>
                             </ul>
@@ -76,55 +83,37 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
                             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Reclutamiento <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
                                 <li ><a href=\"";
-        // line 42
+        // line 43
         echo $this->env->getExtension('routing')->getPath("mtd_postulante_registro");
         echo "\">Registrar Postulante </a></li>
-                                <li ><a href=\"";
-        // line 43
-        echo $this->env->getExtension('routing')->getPath("mtd_postulante_lista");
-        echo "\">Lista de los Postulantes </a></li>
                                 <li role=\"separator\" class=\"divider\"></li>
                                 <li ><a href=\"";
         // line 45
-        echo $this->env->getExtension('routing')->getPath("mtd_requisito_crear");
-        echo "\">Perfil Tecnico </a></li>
+        echo $this->env->getExtension('routing')->getPath("mtd_postulante_lista");
+        echo "\">Lista de los Postulantes </a></li>
                             </ul>
                         </li>
                         
-                        <li ><a href=\"\">Crear Categoria de Trabajo <span class=\"sr-only\">(current)</span></a></li>
-                        <li><a href=\"#\">Link</a></li>
                         <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Seleccion <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
-                                <li><a href=\"#\">Registro Materia</a></li>
-                                <li><a href=\"#\">Another action</a></li>
-                                <li><a href=\"#\">Something else here</a></li>
-                                <li role=\"separator\" class=\"divider\"></li>
-                                <li><a href=\"#\">Separated link</a></li>
-                                <li role=\"separator\" class=\"divider\"></li>
-                                <li><a href=\"#\">One more separated link</a></li>
+                                <li ><a href=\"";
+        // line 52
+        echo $this->env->getExtension('routing')->getPath("mtd_buscar_empleado");
+        echo "\">Buscar Empleado </a></li>
                             </ul>
                         </li>
-                    </ul>
-                    <form class=\"navbar-form navbar-left\" role=\"search\">
-                        <div class=\"form-group\">
-                            <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-                        </div>
-                        <button type=\"submit\" class=\"btn btn-default\">Submit</button>
-                    </form>
-                    <ul class=\"nav navbar-nav navbar-right\">
-                        <li><a href=\"\">Cerrar Sesion</a></li>
                         
                         <li class=\"dropdown\">
-                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Empleados <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
-                                <li><a href=\"#\">Action</a></li>
-                                <li><a href=\"#\">Another action</a></li>
-                                <li><a href=\"#\">Something else here</a></li>
-                                <li role=\"separator\" class=\"divider\"></li>
-                                <li><a href=\"#\">Separated link</a></li>
+                                <li ><a href=\"";
+        // line 59
+        echo $this->env->getExtension('routing')->getPath("mtd_empleados_lista");
+        echo "\">Lista de Empleados </a></li>
                             </ul>
                         </li>
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -133,7 +122,7 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_8e14211e51f8640f5b49a3f9916c2b5500c9192cec70bfdc32d795bf42e0b178->leave($__internal_8e14211e51f8640f5b49a3f9916c2b5500c9192cec70bfdc32d795bf42e0b178_prof);
+        $__internal_2afb35713c59a6306496ae2e60a4db1017ed68ef6f534a57745d84b2d53ab6ac->leave($__internal_2afb35713c59a6306496ae2e60a4db1017ed68ef6f534a57745d84b2d53ab6ac_prof);
 
     }
 
@@ -149,7 +138,7 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
 
     public function getDebugInfo()
     {
-        return array (  89 => 45,  84 => 43,  80 => 42,  70 => 35,  65 => 33,  61 => 32,  51 => 25,  46 => 23,  22 => 1,);
+        return array (  112 => 59,  102 => 52,  92 => 45,  87 => 43,  77 => 36,  72 => 34,  68 => 33,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -164,7 +153,7 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
 /*                         <span class="icon-bar"></span>*/
 /*                         <span class="icon-bar"></span>*/
 /*                     </button>*/
-/*                     <a class="navbar-brand" href="#">Inicio</a>*/
+/*                     <a class="navbar-brand" href="{{ path('mtd_inicio') }}">Inicio</a>*/
 /*                 </div>*/
 /* */
 /*                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">*/
@@ -175,8 +164,9 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proyecto <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
 /*                                 <li><a href="{{ path('mtd_proyecto_registro') }}">Registrar Proyecto</a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
 /*                                 <li><a href="{{ path('mtd_lista_proyecto') }}">Lista de Proyectos</a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
+/*                                 <li><a href="{{ path('mtd_lista_clientes') }}">Lista de Clientes</a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */
@@ -194,46 +184,25 @@ class __TwigTemplate_f523874b6279c5947a729bbe02a969d2afc0d3f1e5a84f089d8667a4340
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reclutamiento <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
 /*                                 <li ><a href="{{ path('mtd_postulante_registro') }}">Registrar Postulante </a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
 /*                                 <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de los Postulantes </a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li ><a href="{{ path('mtd_requisito_crear') }}">Perfil Tecnico </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */
-/*                         <li ><a href="">Crear Categoria de Trabajo <span class="sr-only">(current)</span></a></li>*/
-/*                         <li><a href="#">Link</a></li>*/
 /*                         <li class="dropdown">*/
-/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seleccion <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
-/*                                 <li><a href="#">Registro Materia</a></li>*/
-/*                                 <li><a href="#">Another action</a></li>*/
-/*                                 <li><a href="#">Something else here</a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li><a href="#">Separated link</a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li><a href="#">One more separated link</a></li>*/
+/*                                 <li ><a href="{{ path('mtd_buscar_empleado') }}">Buscar Empleado </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
-/*                     </ul>*/
-/*                     <form class="navbar-form navbar-left" role="search">*/
-/*                         <div class="form-group">*/
-/*                             <input type="text" class="form-control" placeholder="Search">*/
-/*                         </div>*/
-/*                         <button type="submit" class="btn btn-default">Submit</button>*/
-/*                     </form>*/
-/*                     <ul class="nav navbar-nav navbar-right">*/
-/*                         <li><a href="">Cerrar Sesion</a></li>*/
 /*                         */
 /*                         <li class="dropdown">*/
-/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empleados <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
-/*                                 <li><a href="#">Action</a></li>*/
-/*                                 <li><a href="#">Another action</a></li>*/
-/*                                 <li><a href="#">Something else here</a></li>*/
-/*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li><a href="#">Separated link</a></li>*/
+/*                                 <li ><a href="{{ path('mtd_empleados_lista') }}">Lista de Empleados </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
+/*                         */
 /*                     </ul>*/
 /*                 </div><!-- /.navbar-collapse -->*/
 /*             </div><!-- /.container-fluid -->*/

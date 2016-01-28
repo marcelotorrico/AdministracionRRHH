@@ -10,8 +10,7 @@
                         <th>Profesion</th>
                         <th>Categoria</th>
                         <th>Perfil Tecnico</th>
-                        <th>Telefono Particular</th>
-                        <th>Telefono Movil</th>
+                        <th>Telefono</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -38,8 +37,7 @@
                                                 {% endif %}
                                             {% endfor %}
                                         </td>
-                                        <td>{{ postulante.telefonoParticular }}</td>
-                                        <td>{{ postulante.telefonoMovil }}</td>
+                                        <td>{{ postulante.telefonoParticular }}<br>{{ postulante.telefonoMovil }}</td>
                                         <td>
                                             <a href="{{ path('mtd_postulante_ver', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
                                                 Ver al Postulante
@@ -64,8 +62,7 @@
                                                         {% endif %}
                                                     {% endfor %}
                                                 </td>
-                                                <td>{{ postulante.telefonoParticular }}</td>
-                                                <td>{{ postulante.telefonoMovil }}</td>
+                                                <td>{{ postulante.telefonoParticular }}<br>{{ postulante.telefonoMovil }}</td>
                                                 <td>
                                                     <a href="{{ path('mtd_postulante_ver', { 'id': postulante.id }) }}" class="btn btn-sm btn-info">
                                                         Ver al Postulante
