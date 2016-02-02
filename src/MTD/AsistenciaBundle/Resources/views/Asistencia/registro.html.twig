@@ -1,0 +1,161 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/css/clockpicker.min.css') }}" />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Registrar Asistencia de {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        
+        {{ include('menuEmpleado.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            
+            {{ form_start(form) }}
+            {{form_errors(form)}}
+
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.fecha, 'Fecha:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.fecha, { 'attr': {'placeholder': 'Seleccione la fecha de la asistencia', 'class': 'form-control input-inline datepicker inputGroup',
+                                                         'title': 'Fecha de asistencia' } }) }}
+                        </div>
+                        {{ form_errors(form.fecha) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.horaIngresoManana, 'H. Ingreso Mañana:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.horaIngresoManana, { 'attr': {'placeholder': 'Seleccione la hora de ingreso en la mañana', 'class': 'form-control input-inline
+                                                                                                                                                     inputGroup clockpicker pull-center',
+                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
+                                                         'title': 'Hora de ingreso en la mañana' } }) }}      
+                        </div>
+                        {{ form_errors(form.horaIngresoManana) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.horaSalidaManana, 'H. Salida Mañana:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.horaSalidaManana, { 'attr': {'placeholder': 'Seleccione la hora de salida en la mañana', 'class': 'form-control input-inline
+                                                                                                                                                     inputGroup clockpicker pull-center',
+                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
+                                                         'title': 'Hora de salida en la mañana' } }) }}      
+                        </div>
+                        {{ form_errors(form.horaSalidaManana) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.horaIngresoTarde, 'H. Ingreso Tarde:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.horaIngresoTarde, { 'attr': {'placeholder': 'Seleccione la hora de ingreso en la tarde', 'class': 'form-control input-inline
+                                                                                                                                                     inputGroup clockpicker pull-center',
+                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
+                                                         'title': 'Hora de ingreso en la tarde' } }) }}      
+                        </div>
+                        {{ form_errors(form.horaIngresoTarde) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.horaSalidaTarde, 'H. Salida Tarde:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.horaSalidaTarde, { 'attr': {'placeholder': 'Seleccione la hora de salida en la tarde', 'class': 'form-control input-inline
+                                                                                                                                                     inputGroup clockpicker pull-center',
+                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
+                                                         'title': 'Hora de salida en la tarde' } }) }}      
+                        </div>
+                        {{ form_errors(form.horaSalidaTarde) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.actividad, 'Actividades:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.actividad, { 'attr': {'placeholder': 'Escriba las actividades principales que realizo el empleado', 'class': 'form-control inputGroup',
+                                                         'title': 'Actividades principales' } }) }}      
+                        </div>
+                        {{ form_errors(form.actividad) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.totalHorasNormales, 'Total Horas Normales:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.totalHorasNormales, { 'attr': {'placeholder': 'Total Horas Normales', 'class': 'form-control inputGroup',
+                                                         'title': 'Total Horas Normales', 'readonly':'readonly' } }) }}      
+                        </div>
+                        {{ form_errors(form.totalHorasNormales) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class ="form-group">
+                        <div class="input-group">
+                            {{ form_label(form.totalHorasExtras, 'Total Horas Extras:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
+
+                            {{ form_widget(form.totalHorasExtras, { 'attr': {'placeholder': 'Total Horas Extras', 'class': 'form-control inputGroup',
+                                                         'title': 'Total Horas Extras', 'readonly':'readonly' } }) }}      
+                        </div>
+                        {{ form_errors(form.totalHorasExtras) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class ="form-group">
+                <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+            </div>
+
+            {{form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+    <script src="{{ asset('public/js/clockpicker.min.js') }}"></script>
+    <script src="{{ asset('public/js/highlight.min.js') }}"></script>
+    <script src="{{ asset('public/js/fechas/fechaAsistencia.js') }}"></script>
+    <script src="{{ asset('public/js/hora/horaAsistencia.js') }}"></script>
+{% endblock %}

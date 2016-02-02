@@ -3,6 +3,7 @@
 namespace MTD\SeleccionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Proyecto_Empleado
@@ -59,7 +60,51 @@ class Proyecto_Empleado
     {
         return $this->proyecto;
     }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\AsistenciaBundle\Entity\Asistencia_Proyecto", mappedBy="proyectoEmpleado")
+     */
+    private $asistenciaProyecto;
 
+    public function __construct()
+    {
+        $this->asistenciaProyecto = new ArrayCollection();
+    }
+    
+    /**
+     * Add asistenciaProyecto
+     *
+     * @param \MTD\AsistenciaBundle\Entity\Asistencia_Proyecto $asistenciaProyecto
+     *
+     * @return Proyecto_Empleado
+     */
+    public function addAsistenciaProyecto(\MTD\AsistenciaBundle\Entity\Asistencia_Proyecto $asistenciaProyecto)
+    {
+        $this->asistenciaProyecto[] = $asistenciaProyecto;
+
+        return $this;
+    }
+
+    /**
+     * Remove asistenciaProyecto
+     *
+     * @param \MTD\AsistenciaBundle\Entity\AsistenciaProyecto $asistenciaProyecto
+     */
+    public function removeAsistenciaProyecto(\MTD\AsistenciaBundle\Entity\Asistencia_Proyecto $asistenciaProyecto)
+    {
+        $this->asistenciaProyecto->removeElement($asistenciaProyecto);
+    }
+
+    /**
+     * Get asistenciaProyecto
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAsistenciaProyecto()
+    {
+        return $this->asistenciaProyecto;
+    }
+    
     /**
      * Get id
      *

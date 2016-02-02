@@ -21,6 +21,7 @@
       <parameter key="MTDProyectoBundle">MTD\ProyectoBundle\MTDProyectoBundle</parameter>
       <parameter key="MTDReclutamientoBundle">MTD\ReclutamientoBundle\MTDReclutamientoBundle</parameter>
       <parameter key="MTDSeleccionBundle">MTD\SeleccionBundle\MTDSeleccionBundle</parameter>
+      <parameter key="MTDAsistenciaBundle">MTD\AsistenciaBundle\MTDAsistenciaBundle</parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appProdDebugProjectContainer</parameter>
@@ -1407,7 +1408,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>568b04325fa689.49886946</argument>
+            <argument>56abdd849f69b7.30277102</argument>
           </service>
         </argument>
       </argument>
@@ -1530,7 +1531,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>568b04325fa689.49886946</argument>
+            <argument>56abdd849f69b7.30277102</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2007,6 +2008,7 @@
               <argument key="MTDProyectoBundle">MTD\ProyectoBundle\Entity</argument>
               <argument key="MTDReclutamientoBundle">MTD\ReclutamientoBundle\Entity</argument>
               <argument key="MTDSeleccionBundle">MTD\SeleccionBundle\Entity</argument>
+              <argument key="MTDAsistenciaBundle">MTD\AsistenciaBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2030,6 +2032,7 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2044,6 +2047,7 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2058,6 +2062,7 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2072,10 +2077,26 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>MTD\SeleccionBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>MTD\AsistenciaBundle\Entity</argument>
                 </call>
               </service>
             </argument>
@@ -2328,6 +2349,10 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle/Resources/views</argument>
         <argument>MTDSeleccion</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle/Resources/views</argument>
+        <argument>MTDAsistencia</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\app/Resources/views</argument>

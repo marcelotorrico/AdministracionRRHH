@@ -27,6 +27,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
+        // mtd_asistencia_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_homepage')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        // mtd_asistencia_empleado
+        if (0 === strpos($pathinfo, '/asistencia/postulante') && preg_match('#^/asistencia/postulante/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_empleado')), array (  '_controller' => 'MTDAsistenciaBundle:RegistroAsistencia:registrar',));
+        }
+
         // mtd_seleccion_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_seleccion_homepage')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\DefaultController::indexAction',));

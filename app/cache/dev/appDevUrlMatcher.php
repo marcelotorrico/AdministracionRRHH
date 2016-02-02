@@ -127,6 +127,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // mtd_asistencia_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_homepage')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        // mtd_asistencia_empleado
+        if (0 === strpos($pathinfo, '/asistencia/postulante') && preg_match('#^/asistencia/postulante/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_empleado')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaController::registrarAction',));
+        }
+
         // mtd_seleccion_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_seleccion_homepage')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\DefaultController::indexAction',));
@@ -157,7 +167,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // mtd_empleado_eliminar
         if (0 === strpos($pathinfo, '/postulante/eliminar') && preg_match('#^/postulante/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_eliminar')), array (  '_controller' => 'MTDSeleccionBundle:EliminaEmpleado:eliminar',));
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_eliminar')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\EliminaEmpleadoController::eliminarAction',));
         }
 
         // mtd_empleado_perfilTecnico
