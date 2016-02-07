@@ -4,12 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Controller/RegistroAsistenciaController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Entity/Asistencia.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Form/AsistenciaType.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Resources/views/Reclutamiento/registro.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/modificar/mostrarInput.js</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Resources/config/routing.yml</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Resources/views/Asistencia/registro.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/fechas/fechaAsistencia.js</file>
         </group>
     </open-files>
 </project-private>

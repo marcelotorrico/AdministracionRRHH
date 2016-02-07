@@ -19,19 +19,32 @@ class RegistroAsistenciaController extends Controller
         $form = $this->createForm(new AsistenciaType(), $asistencia);
         $form->handleRequest($request);
         
+        $proyectos = $empleado->getProyectoEmpleado();
         if($form->isValid()){
             
             $this->addFlash(
                 'notice',
                 'La asistencia fue registrada correctamente'
             );
+           
+            $horaIngresoManana = $form->get('horaIngresoManana')->getData();
+            $horaSalidaManana  = $form->get('horaSalidaManana')->getData();
+            //$horaSalidaManana  = strtotime($form->get('horaSalidaManana')->getData());
+            
+            $horaIngresoTarde  = $form->get('horaIngresoTarde')->getData();
+            $horaSalidaTarde   = $form->get('horaSalidaTarde')->getData();
 
+            $asistencia->setHoraIngresoManana(new \DateTime("@" .$horaIngresoManana));
+            $asistencia->setHoraSalidaManana(new \DateTime("@" .$horaSalidaManana));
+            $asistencia->setHoraIngresoTarde(new \DateTime("@" .$horaIngresoTarde));
+            $asistencia->setHoraSalidaTarde(new \DateTime("@" .$horaSalidaTarde));
+            
             $em->persist($asistencia);
             $em->flush();
 
             return $this->redirect($this->generateUrl('mtd_empleados_lista'));
         }
         
-        return $this->render('MTDAsistenciaBundle:Asistencia:registro.html.twig', array("form"=>$form->createView(), 'empleado' => $empleado));
+        return $this->render('MTDAsistenciaBundle:Asistencia:registro.html.twig', array("form"=>$form->createView(), 'empleado' => $empleado, 'proyectos' => $proyectos));
     }
 }

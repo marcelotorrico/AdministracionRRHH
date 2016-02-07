@@ -86,6 +86,7 @@ class Asistencia
     public function __construct()
     {
         $this->asistenciaProyecto = new ArrayCollection();
+        //$this->fecha = new \DateTime();
     }
     
     /**
@@ -189,7 +190,7 @@ class Asistencia
      */
     public function setHoraSalidaManana($horaSalidaMañana)
     {
-        $this->horaSalidaMañana = $horaSalidaMañana;
+        $this->horaSalidaManana = $horaSalidaMañana;
 
         return $this;
     }

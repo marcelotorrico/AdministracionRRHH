@@ -76,7 +76,6 @@ $(document).ready(function(){
 
                 var horaInicio = document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoManana");
                 var horaFinal = document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaManana");
-                console.log('prueba');
                 if( horaInicio.value != "" && horaFinal.value != ""){
                     if((new Date(2015,1,1, parseInt(horaInicio.value.split(':')[0]), parseInt(horaInicio.value.split(':')[1]),0,0)) > ( new Date(2015,1,1, parseInt(horaFinal.value.split(':')[0]), parseInt(horaFinal.value.split(':')[1]),0,0))){
                         alert('Los horarios registrados son incoherentes');
@@ -142,7 +141,7 @@ $(document).ready(function(){
         
         $('.clockpicker').clockpicker()
             .find('input').change(function() {
-                    console.log(this.value);
+                console.log(this.value);
             });
             var input = $('#single-input').clockpicker({
                 placement: 'bottom',
@@ -215,7 +214,6 @@ $(document).ready(function(){
 
                 var horaInicio = document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoTarde");
                 var horaFinal = document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaTarde");
-                console.log('prueba');
                 if( horaInicio.value != "" && horaFinal.value != ""){
                     if((new Date(2015,1,1, parseInt(horaInicio.value.split(':')[0]), parseInt(horaInicio.value.split(':')[1]),0,0)) > ( new Date(2015,1,1, parseInt(horaFinal.value.split(':')[0]), parseInt(horaFinal.value.split(':')[1]),0,0))){
                         alert('Los horarios registrados son incoherentes');

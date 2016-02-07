@@ -23,10 +23,30 @@ class AsistenciaType extends AbstractType
                     'data-date-format' => 'dd-mm-yyyy'
                   ]
                 ])
-            ->add('horaIngresoManana', 'text')
-            ->add('horaSalidaManana', 'text')
-            ->add('horaIngresoTarde', 'text')
-            ->add('horaSalidaTarde', 'text')
+            ->add('horaIngresoManana', 'time', array(
+                'input'  => 'timestamp',
+                'widget' => 'single_text',
+                'required' => true,
+                'label' => 'Externe Zeit',
+            ))
+            ->add('horaSalidaManana', 'time', array(
+                'input'  => 'timestamp',
+                'widget' => 'single_text',
+                'required' => true,
+                'label' => 'Externe Zeit',
+            ))
+            ->add('horaIngresoTarde', 'time', array(
+                'input'  => 'timestamp',
+                'widget' => 'single_text',
+                'required' => true,
+                'label' => 'Externe Zeit',
+            ))
+            ->add('horaSalidaTarde', 'time', array(
+                'input'  => 'timestamp',
+                'widget' => 'single_text',
+                'required' => true,
+                'label' => 'Externe Zeit',
+            ))
             ->add('actividad')
             ->add('totalHorasNormales')
             ->add('totalHorasExtras')
