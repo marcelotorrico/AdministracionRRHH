@@ -32,9 +32,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_homepage')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        // mtd_asistencia_empleado
-        if (0 === strpos($pathinfo, '/asistencia/postulante') && preg_match('#^/asistencia/postulante/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_empleado')), array (  '_controller' => 'MTDAsistenciaBundle:RegistroAsistencia:registrar',));
+        if (0 === strpos($pathinfo, '/asistencia')) {
+            // mtd_asistencia_empleado
+            if (0 === strpos($pathinfo, '/asistencia/postulante') && preg_match('#^/asistencia/postulante/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_empleado')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaController::mostrarAction',));
+            }
+
+            // mtd_asistencia_registro
+            if (0 === strpos($pathinfo, '/asistencia/registro') && preg_match('#^/asistencia/registro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_registro')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaController::registrarAction',));
+            }
+
         }
 
         // mtd_seleccion_homepage

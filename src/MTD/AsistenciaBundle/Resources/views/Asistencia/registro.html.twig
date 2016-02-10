@@ -26,137 +26,84 @@
         <div class="col-md-9">
             <br><br>
             
-            {{ form_start(form) }}
-            {{form_errors(form)}}
+            <form action="{{ path('mtd_asistencia_registro', { 'id': empleado.id }) }}" method="post">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="fecha">Fecha:</label>
+                                <input type="text" id="fecha" name="fecha" required="required" data-provide="datepicker"
+                                       data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
+                                       class="form-control input-inline datepicker inputGroup" title="Fecha de asistencia">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaIngresoManana">H. Ingreso Mañana:</label>
+                                <input type="time" id="horaIngresoManana" name="horaIngresoManana" required="required"
+                                       placeholder="Seleccione la hora de ingreso en la mañana" class="form-control input-inline
+                                       inputGroup clockpicker pull-center" data-align="top" data-autoclose="true"
+                                       title="Hora de ingreso en la mañana" value="07:45">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaSalidaManana">H. Salida Mañana:</label>
 
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.fecha, 'Fecha:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
-
-                            {{ form_widget(form.fecha, { 'attr': {'placeholder': 'Seleccione la fecha de la asistencia', 'class': 'form-control input-inline datepicker inputGroup',
-                                                         'title': 'Fecha de asistencia' } }) }}
-                        </div>
-                        {{ form_errors(form.fecha) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.horaIngresoManana, 'H. Ingreso Mañana:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
-
-                            {{ form_widget(form.horaIngresoManana, { 'attr': {'placeholder': 'Seleccione la hora de ingreso en la mañana', 'class': 'form-control input-inline
-                                                                                                                                                     inputGroup clockpicker pull-center',
-                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
-                                                         'title': 'Hora de ingreso en la mañana',
-                                                      'value': '07:45' } }) }}
-                        </div>
-                        {{ form_errors(form.horaIngresoManana) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.horaSalidaManana, 'H. Salida Mañana:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
-
-                            {{ form_widget(form.horaSalidaManana, { 'attr': {'placeholder': 'Seleccione la hora de salida en la mañana', 'class': 'form-control input-inline
-                                                                                                                                                     inputGroup clockpicker pull-center',
-                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
-                                                         'title': 'Hora de salida en la mañana',
-                                                      'value': '12:00' } }) }}      
-                        </div>
-                        {{ form_errors(form.horaSalidaManana) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.horaIngresoTarde, 'H. Ingreso Tarde:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
-
-                            {{ form_widget(form.horaIngresoTarde, { 'attr': {'placeholder': 'Seleccione la hora de ingreso en la tarde', 'class': 'form-control input-inline
-                                                                                                                                                     inputGroup clockpicker pull-center',
-                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
-                                                         'title': 'Hora de ingreso en la tarde',
-                                                      'value': '13:00' } }) }}
-                        </div>
-                        {{ form_errors(form.horaIngresoTarde) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.horaSalidaTarde, 'H. Salida Tarde:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
-
-                            {{ form_widget(form.horaSalidaTarde, { 'attr': {'placeholder': 'Seleccione la hora de salida en la tarde', 'class': 'form-control input-inline
-                                                                                                                                                     inputGroup clockpicker pull-center',
-                                                                                                                                           'data-align': 'top', 'data-autoclose': 'true',
-                                                         'title': 'Hora de salida en la tarde',
-                                                      'value': '18:15' } }) }}
-                        </div>
-                        {{ form_errors(form.horaSalidaTarde) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.actividad, 'Actividades:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
-
-                            {{ form_widget(form.actividad, { 'attr': {'placeholder': 'Escriba las actividades principales que realizo el empleado', 'class': 'form-control inputGroup',
-                                                         'title': 'Actividades principales' } }) }}      
-                        </div>
-                        {{ form_errors(form.actividad) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
-                            <select id="proyecto" name="proyecto" required="required" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
-                                <option value="" selected="selected">Seleccione un Proyecto</option>
-                                {% for proyecto in proyectos %}
-                                        <option value="{{ proyecto.proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
-                                {% endfor %}
-                            </select>
+                                <input type="time" id="horaSalidaManana" name="horaSalidaManana" required="required"
+                                       placeholder="Seleccione la hora de salida en la mañana"
+                                       class="form-control input-inline inputGroup clockpicker pull-center" data-align="top"
+                                       data-autoclose="true" title="Hora de salida en la mañana" value="12:00">      
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
-                            <input type="text" id="horasNormales" name="horasNormales" required="required" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
-                                   class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaIngresoTarde">H. Ingreso Tarde:</label>
+                                <input type="time" id="horaIngresoTarde" name="horaIngresoTarde" required="required"
+                                       placeholder="Seleccione la hora de ingreso en la tarde"
+                                       class="form-control input-inline inputGroup clockpicker pull-center" data-align="top"
+                                       data-autoclose="true" title="Hora de ingreso en la tarde" value="13:00">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
-                            <input type="text" id="horasExtras" name="horasExtras" required="required" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
-                                   class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaSalidaTarde">H. Salida Tarde:</label>
+                                <input type="time" id="horaSalidaTarde" name="horaSalidaTarde" required="required"
+                                       placeholder="Seleccione la hora de salida en la tarde"
+                                       class="form-control input-inline inputGroup clockpicker pull-center" data-align="top"
+                                       data-autoclose="true" title="Hora de salida en la tarde" value="18:15">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="oculto1" style='display:none;'>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="actividades">Actividades:</label>
+                                <textarea id="actividades" name="actividades" required="required"
+                                          placeholder="Escriba las actividades principales que realizo el empleado"
+                                          class="form-control inputGroup" title="Actividades principales"></textarea>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-7">
                         <div class ="form-group">
@@ -165,7 +112,7 @@
                                 <select id="proyecto" name="proyecto" required="required" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
                                     <option value="" selected="selected">Seleccione un Proyecto</option>
                                     {% for proyecto in proyectos %}
-                                            <option value="{{ proyecto.proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
+                                        <option value="{{ proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -178,7 +125,7 @@
                             <div class="input-group">
                                 <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
                                 <input type="text" id="horasNormales" name="horasNormales" required="required" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
+                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
                             </div>
                         </div>
                     </div>
@@ -188,32 +135,249 @@
                         <div class ="form-group">
                             <div class="input-group">
                                 <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
-                                <input type="text" id="horasExtras" name="horasExtras" required="required" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
+                                <input type="text" id="horasExtras" name="horasExtras" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
+                                       class="form-control inputGroup" title="Horas extras que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" id="link2">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <a href="#" id="linkProyecto2" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
+                <div id="oculto1" style='display:none;'>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
+                                    <select id="proyecto1" name="proyecto1" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
+                                        <option value="" selected="selected">Seleccione un Proyecto</option>
+                                        {% for proyecto in proyectos %}
+                                            <option value="{{ proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
+                                    <input type="text" id="horasNormales1" name="horasNormales1" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
+                                           class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
+                                    <input type="text" id="horasExtras1" name="horasExtras1" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
+                                           class="form-control inputGroup" title="Horas extras que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="link2">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <a href="#" id="linkProyecto2" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="oculto2" style='display:none;'>
+                <div id="oculto2" style='display:none;'>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
+                                    <select id="proyecto2" name="proyecto2" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
+                                        <option value="" selected="selected">Seleccione un Proyecto</option>
+                                        {% for proyecto in proyectos %}
+                                            <option value="{{ proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
+                                    <input type="text" id="horasNormales2" name="horasNormales2" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
+                                           class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
+                                    <input type="text" id="horasExtras2" name="horasExtras2" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
+                                           class="form-control inputGroup" title="Horas extras que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="link3">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <a href="#" id="linkProyecto3" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="oculto3" style='display:none;'>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
+                                    <select id="proyecto3" name="proyecto3" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
+                                        <option value="" selected="selected">Seleccione un Proyecto</option>
+                                        {% for proyecto in proyectos %}
+                                            <option value="{{ proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
+                                    <input type="text" id="horasNormales3" name="horasNormales3" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
+                                           class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
+                                    <input type="text" id="horasExtras3" name="horasExtras3" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
+                                           class="form-control inputGroup" title="Horas extras que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="link4">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <a href="#" id="linkProyecto4" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="oculto4" style='display:none;'>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
+                                    <select id="proyecto4" name="proyecto4" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
+                                        <option value="" selected="selected">Seleccione un Proyecto</option>
+                                        {% for proyecto in proyectos %}
+                                            <option value="{{ proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
+                                    <input type="text" id="horasNormales4" name="horasNormales4" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
+                                           class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
+                                    <input type="text" id="horasExtras4" name="horasExtras4" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
+                                           class="form-control inputGroup" title="Horas extras que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="link5">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <a href="#" id="linkProyecto5" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="oculto5" style='display:none;'>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
+                                    <select id="proyecto5" name="proyecto5" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
+                                        <option value="" selected="selected">Seleccione un Proyecto</option>
+                                        {% for proyecto in proyectos %}
+                                            <option value="{{ proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
+                                    <input type="text" id="horasNormales5" name="horasNormales5" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
+                                           class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class ="form-group">
+                                <div class="input-group">
+                                    <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
+                                    <input type="text" id="horasExtras5" name="horasExtras5" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
+                                           class="form-control inputGroup" title="Horas extras que se trabajo en el proyecto. Ejemplo: 5:30" pattern="[0-9]{1,2}:[0-9]{1,2}$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="link1">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <a href="#" id="linkProyecto1" name="linkProyecto">Presione aqui para agregar otro proyecto</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-7">
                         <div class ="form-group">
                             <div class="input-group">
-                                <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
-                                <select id="proyecto" name="proyecto" required="required" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
-                                    <option value="" selected="selected">Seleccione un Proyecto</option>
-                                    {% for proyecto in proyectos %}
-                                            <option value="{{ proyecto.proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
-                                    {% endfor %}
-                                </select>
+                                <label class="input-group-addon addonGroup required" for="totalHorasNormales">Total Horas Normales:</label>
+                                <input type="text" id="totalHorasNormales" name="totalHorasNormales" required="required" maxlength="50"
+                                       placeholder="Total Horas Normales" class="form-control inputGroup" title="Total Horas Normales" readonly="readonly">
                             </div>
                         </div>
                     </div>
@@ -222,202 +386,18 @@
                     <div class="col-md-7">
                         <div class ="form-group">
                             <div class="input-group">
-                                <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
-                                <input type="text" id="horasNormales" name="horasNormales" required="required" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
+                                <label class="input-group-addon addonGroup required" for="totalHorasExtras">Total Horas Extras:</label>
+                                <input type="text" id="totalHorasExtras" name="totalHorasExtras" required="required" maxlength="50"
+                                       placeholder="Total Horas Extras" class="form-control inputGroup" title="Total Horas Extras" readonly="readonly">      
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
-                                <input type="text" id="horasExtras" name="horasExtras" required="required" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="link3">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <a href="#" id="linkProyecto3" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="oculto3" style='display:none;'>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
-                                <select id="proyecto" name="proyecto" required="required" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
-                                    <option value="" selected="selected">Seleccione un Proyecto</option>
-                                    {% for proyecto in proyectos %}
-                                            <option value="{{ proyecto.proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
-                                <input type="text" id="horasNormales" name="horasNormales" required="required" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
-                                <input type="text" id="horasExtras" name="horasExtras" required="required" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="link4">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <a href="#" id="linkProyecto4" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="oculto4" style='display:none;'>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
-                                <select id="proyecto" name="proyecto" required="required" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
-                                    <option value="" selected="selected">Seleccione un Proyecto</option>
-                                    {% for proyecto in proyectos %}
-                                            <option value="{{ proyecto.proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
-                                <input type="text" id="horasNormales" name="horasNormales" required="required" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
-                                <input type="text" id="horasExtras" name="horasExtras" required="required" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="link5">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <a href="#" id="linkProyecto5" name="linkProyecto1">Presione aqui para agregar otro proyecto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="oculto5" style='display:none;'>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="proyecto" class="input-group-addon addonGroup required">Proyecto:</label>
-                                <select id="proyecto" name="proyecto" required="required" class="form-control inputGroup col-md-5" title="Seleccione un proyecto">
-                                    <option value="" selected="selected">Seleccione un Proyecto</option>
-                                    {% for proyecto in proyectos %}
-                                            <option value="{{ proyecto.proyecto.id }}">{{ proyecto.proyecto.nombre | trans }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="horasNormales" class="input-group-addon addonGroup required">Horas Normales:</label>
-                                <input type="text" id="horasNormales" name="horasNormales" required="required" maxlength="50" placeholder="Horas normales trabajadas en el proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class ="form-group">
-                            <div class="input-group">
-                                <label for="horasExtras" class="input-group-addon addonGroup required">Horas Extras:</label>
-                                <input type="text" id="horasExtras" name="horasExtras" required="required" maxlength="50" placeholder="Horas extras trabajadas del proyecto"
-                                       class="form-control inputGroup" title="Horas normales que se trabajo en el proyecto. Ejemplo: 5.30">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="link1">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <a href="#" id="linkProyecto1" name="linkProyecto">Presione aqui para agregar otro proyecto</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.totalHorasNormales, 'Total Horas Normales:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
 
-                            {{ form_widget(form.totalHorasNormales, { 'attr': {'placeholder': 'Total Horas Normales', 'class': 'form-control inputGroup',
-                                                         'title': 'Total Horas Normales', 'readonly':'readonly' } }) }}      
-                        </div>
-                        {{ form_errors(form.totalHorasNormales) }}
-                    </div>
+                <div class ="form-group">
+                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7">
-                    <div class ="form-group">
-                        <div class="input-group">
-                            {{ form_label(form.totalHorasExtras, 'Total Horas Extras:', {'label_attr': {'class': 'input-group-addon addonGroup'}}) }}
-
-                            {{ form_widget(form.totalHorasExtras, { 'attr': {'placeholder': 'Total Horas Extras', 'class': 'form-control inputGroup',
-                                                         'title': 'Total Horas Extras', 'readonly':'readonly' } }) }}      
-                        </div>
-                        {{ form_errors(form.totalHorasExtras) }}
-                    </div>
-                </div>
-            </div>
-
-            <div class ="form-group">
-                <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
-            </div>
-
-            {{form_end(form) }}
+            </form>
         </div>
     </div>
 {% endblock %}
@@ -429,4 +409,5 @@
     <script src="{{ asset('public/js/fechas/fechaAsistencia.js') }}"></script>
     <script src="{{ asset('public/js/hora/horaAsistencia.js') }}"></script>
     <script src="{{ asset('public/js/modificar/mostrarInput.js') }}"></script>
+    <script src="{{ asset('public/js/modificar/sumaHoras.js') }}"></script>
 {% endblock %}

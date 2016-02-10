@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $(document).on('click', '#mtd_asistenciabundle_asistencia_horaIngresoManana', function(e) {
+    $(document).on('click', '#horaIngresoManana', function(e) {
         
         $('.clockpicker').clockpicker()
             .find('input').change(function() {
@@ -58,28 +58,28 @@ $(document).ready(function(){
             }        
         });
 
-        $(document).on('click', '#mtd_asistenciabundle_asistencia_horaSalidaManana', function(e) {
+        $(document).on('click', '#horaSalidaManana', function(e) {
         $('.clockpicker').clockpicker()
-            $("#mtd_asistenciabundle_asistencia_horaSalidaManana").change(function() {
+            $("#horaSalidaManana").change(function() {
 
-                var horaInicio = document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoManana");
-                var horaFinal = document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaManana");
+                var horaInicio = document.getElementById("horaIngresoManana");
+                var horaFinal = document.getElementById("horaSalidaManana");
                 console.log('prueba');
                 if( horaInicio.value != "" && horaFinal.value != ""){
                     if((new Date(2015,1,1, parseInt(horaInicio.value.split(':')[0]), parseInt(horaInicio.value.split(':')[1]),0,0)) > ( new Date(2015,1,1, parseInt(horaFinal.value.split(':')[0]), parseInt(horaFinal.value.split(':')[1]),0,0))){
                         alert('Los horarios registrados son incoherentes');
-                        document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaManana").value = "";
+                        document.getElementById("horaSalidaManana").value = "";
                     }
                 }
             });
-            $("#mtd_asistenciabundle_asistencia_horaIngresoManana").change(function() {
+            $("#horaIngresoManana").change(function() {
 
-                var horaInicio = document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoManana");
-                var horaFinal = document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaManana");
+                var horaInicio = document.getElementById("horaIngresoManana");
+                var horaFinal = document.getElementById("horaSalidaManana");
                 if( horaInicio.value != "" && horaFinal.value != ""){
                     if((new Date(2015,1,1, parseInt(horaInicio.value.split(':')[0]), parseInt(horaInicio.value.split(':')[1]),0,0)) > ( new Date(2015,1,1, parseInt(horaFinal.value.split(':')[0]), parseInt(horaFinal.value.split(':')[1]),0,0))){
                         alert('Los horarios registrados son incoherentes');
-                        document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoManana").value = "";
+                        document.getElementById("horaIngresoManana").value = "";
                     }
                 }
             });
@@ -137,7 +137,7 @@ $(document).ready(function(){
         }            
     });
     
-    $(document).on('click', '#mtd_asistenciabundle_asistencia_horaIngresoTarde', function(e) {
+    $(document).on('click', '#horaIngresoTarde', function(e) {
         
         $('.clockpicker').clockpicker()
             .find('input').change(function() {
@@ -196,28 +196,28 @@ $(document).ready(function(){
             }        
         });
         
-        $(document).on('click', '#mtd_asistenciabundle_asistencia_horaSalidaTarde', function(e) {
+        $(document).on('click', '#horaSalidaTarde', function(e) {
         $('.clockpicker').clockpicker()
-            $("#mtd_asistenciabundle_asistencia_horaSalidaTarde").change(function() {
+            $("#horaSalidaTarde").change(function() {
 
-                var horaInicio = document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoTarde");
-                var horaFinal = document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaTarde");
+                var horaInicio = document.getElementById("horaIngresoTarde");
+                var horaFinal = document.getElementById("horaSalidaTarde");
                 console.log('prueba');
                 if( horaInicio.value != "" && horaFinal.value != ""){
                     if((new Date(2015,1,1, parseInt(horaInicio.value.split(':')[0]), parseInt(horaInicio.value.split(':')[1]),0,0)) > ( new Date(2015,1,1, parseInt(horaFinal.value.split(':')[0]), parseInt(horaFinal.value.split(':')[1]),0,0))){
                         alert('Los horarios registrados son incoherentes');
-                        document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaTarde").value = "";
+                        document.getElementById("horaSalidaTarde").value = "";
                     }
                 }
             });
-            $("#mtd_asistenciabundle_asistencia_horaIngresoTarde").change(function() {
+            $("#horaIngresoTarde").change(function() {
 
-                var horaInicio = document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoTarde");
-                var horaFinal = document.getElementById("mtd_asistenciabundle_asistencia_horaSalidaTarde");
+                var horaInicio = document.getElementById("horaIngresoTarde");
+                var horaFinal = document.getElementById("horaSalidaTarde");
                 if( horaInicio.value != "" && horaFinal.value != ""){
                     if((new Date(2015,1,1, parseInt(horaInicio.value.split(':')[0]), parseInt(horaInicio.value.split(':')[1]),0,0)) > ( new Date(2015,1,1, parseInt(horaFinal.value.split(':')[0]), parseInt(horaFinal.value.split(':')[1]),0,0))){
                         alert('Los horarios registrados son incoherentes');
-                        document.getElementById("mtd_asistenciabundle_asistencia_horaIngresoTarde").value = "";
+                        document.getElementById("horaIngresoTarde").value = "";
                     }
                 }
             });

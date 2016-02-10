@@ -86,7 +86,6 @@ class Asistencia
     public function __construct()
     {
         $this->asistenciaProyecto = new ArrayCollection();
-        //$this->fecha = new \DateTime();
     }
     
     /**

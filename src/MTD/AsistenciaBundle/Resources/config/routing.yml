@@ -4,4 +4,8 @@ mtd_asistencia_homepage:
     
 mtd_asistencia_empleado:
     path:     /asistencia/postulante/{id}
+    defaults: {_controller: MTDAsistenciaBundle:RegistroAsistencia:mostrar }
+
+mtd_asistencia_registro:
+    path:     /asistencia/registro/{id}
     defaults: {_controller: MTDAsistenciaBundle:RegistroAsistencia:registrar }

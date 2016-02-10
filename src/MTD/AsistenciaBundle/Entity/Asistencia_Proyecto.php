@@ -31,7 +31,7 @@ class Asistencia_Proyecto
     /**
      * @var string
      *
-     * @ORM\Column(name="horas_extras", type="string", length=50)
+     * @ORM\Column(name="horas_extras", type="string", nullable=true, length=50)
      */
     private $horasExtras;
 
