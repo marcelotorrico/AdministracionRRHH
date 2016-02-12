@@ -114,20 +114,13 @@ class RegistroAsistenciaController extends Controller
     
     public function validarFecha($fecha, $empleado){
         $res = true;
-        /*$em = $this->getDoctrine()->getEntityManager();
-        $fechaRegistrada = $em->getRepository('MTDAsistenciaBundle:Asistencia')->findBy(array(
-                                                                                            'fecha' => $fecha,
-                                                                                            'activo' => 'true'
-                                                                                            ));
-        if(!$fechaRegistrada){
-            $res = true;
-        }*/
         $proyectosEmpleado = $empleado->getProyectoEmpleado();
         foreach($proyectosEmpleado  as $proyectoEmpleado){
                 $asistenciasProyecto = $proyectoEmpleado->getAsistenciaProyecto();
                 foreach($asistenciasProyecto as $asistenciaProyecto){
                     $fechaEmpleado = $asistenciaProyecto->getAsistencia()->getFecha();
-                    if($fecha == $fechaEmpleado){
+                    $activo        = $asistenciaProyecto->getAsistencia()->getActivo();
+                    if($fecha == $fechaEmpleado && $activo){
                         $res = false;
                         break;
                     }

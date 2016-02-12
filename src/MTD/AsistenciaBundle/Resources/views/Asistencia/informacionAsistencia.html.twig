@@ -55,7 +55,7 @@
                                                         <a href="#ventanaDetalle" data-toggle="modal" data-id="{{ asistenciaProyecto.asistencia.id }}" class="detalle btn btn-sm btn-info">
                                                             Ver Detalle
                                                         </a>
-                                                        <a href="{{ path('mtd_empleado_eliminar', { 'id': empleado.id }) }}" class="btn btn-sm btn-danger">
+                                                        <a href="{{ path('mtd_asistencia_elimina', { 'id': asistenciaProyecto.asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
                                                             Eliminar
                                                         </a>
                                                     </td>

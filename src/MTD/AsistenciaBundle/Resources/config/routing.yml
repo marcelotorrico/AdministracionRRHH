@@ -23,3 +23,7 @@ mtd_asistencia_detalle_tabla:
     defaults: {_controller: MTDAsistenciaBundle:DetalleTabla:mostrar }
     options:
         expose: true
+        
+mtd_asistencia_elimina:
+    path:     /asistencia/elimina/{id}/{idEmpleado}
+    defaults: {_controller: MTDAsistenciaBundle:EliminaAsistencia:eliminar }

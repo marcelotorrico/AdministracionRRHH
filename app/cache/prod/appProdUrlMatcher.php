@@ -50,7 +50,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
             // mtd_asistencia_mostrar
             if (0 === strpos($pathinfo, '/asistencia/empleado/ver') && preg_match('#^/asistencia/empleado/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_mostrar')), array (  '_controller' => 'MTDAsistenciaBundle:InformacionAsistencia:mostrar',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_mostrar')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\InformacionAsistenciaController::mostrarAction',));
+            }
+
+            // mtd_asistencia_detalle_tabla
+            if (0 === strpos($pathinfo, '/asistencia/detalle/tabla') && preg_match('#^/asistencia/detalle/tabla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarAction',));
+            }
+
+            // mtd_asistencia_elimina
+            if (0 === strpos($pathinfo, '/asistencia/elimina') && preg_match('#^/asistencia/elimina/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_elimina')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\EliminaAsistenciaController::eliminarAction',));
             }
 
         }

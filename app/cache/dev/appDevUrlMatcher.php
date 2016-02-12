@@ -158,6 +158,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarAction',));
             }
 
+            // mtd_asistencia_elimina
+            if (0 === strpos($pathinfo, '/asistencia/elimina') && preg_match('#^/asistencia/elimina/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_elimina')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\EliminaAsistenciaController::eliminarAction',));
+            }
+
         }
 
         // mtd_seleccion_homepage
