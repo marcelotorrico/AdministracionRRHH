@@ -43,6 +43,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_registro')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaController::registrarAction',));
             }
 
+            // mtd_asistencia_operativos
+            if ($pathinfo === '/asistencia/operativos') {
+                return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\ListaOperativosController::listarAction',  '_route' => 'mtd_asistencia_operativos',);
+            }
+
+            // mtd_asistencia_mostrar
+            if (0 === strpos($pathinfo, '/asistencia/empleado/ver') && preg_match('#^/asistencia/empleado/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_mostrar')), array (  '_controller' => 'MTDAsistenciaBundle:InformacionAsistencia:mostrar',));
+            }
+
         }
 
         // mtd_seleccion_homepage

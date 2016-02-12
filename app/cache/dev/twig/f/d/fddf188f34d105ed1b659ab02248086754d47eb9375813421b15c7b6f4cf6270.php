@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_35f53a6453df3b0e1f520ca0baf5dc5e38cc6852603f132b664131bd9e80c7d5 = $this->env->getExtension("native_profiler");
-        $__internal_35f53a6453df3b0e1f520ca0baf5dc5e38cc6852603f132b664131bd9e80c7d5->enter($__internal_35f53a6453df3b0e1f520ca0baf5dc5e38cc6852603f132b664131bd9e80c7d5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_d350501a022ebbd081d7b151efd87dbef32e6c076ab62721901c61ce3fad596a = $this->env->getExtension("native_profiler");
+        $__internal_d350501a022ebbd081d7b151efd87dbef32e6c076ab62721901c61ce3fad596a->enter($__internal_d350501a022ebbd081d7b151efd87dbef32e6c076ab62721901c61ce3fad596a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -114,6 +114,16 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             </ul>
                         </li>
                         
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Asistencia <span class=\"caret\"></span></a>
+                            <ul class=\"dropdown-menu\">
+                                <li ><a href=\"";
+        // line 66
+        echo $this->env->getExtension('routing')->getPath("mtd_asistencia_operativos");
+        echo "\">Empleados Operativos </a></li>
+                            </ul>
+                        </li>
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -122,7 +132,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_35f53a6453df3b0e1f520ca0baf5dc5e38cc6852603f132b664131bd9e80c7d5->leave($__internal_35f53a6453df3b0e1f520ca0baf5dc5e38cc6852603f132b664131bd9e80c7d5_prof);
+        $__internal_d350501a022ebbd081d7b151efd87dbef32e6c076ab62721901c61ce3fad596a->leave($__internal_d350501a022ebbd081d7b151efd87dbef32e6c076ab62721901c61ce3fad596a_prof);
 
     }
 
@@ -138,7 +148,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  112 => 59,  102 => 52,  92 => 45,  87 => 43,  77 => 36,  72 => 34,  68 => 33,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
+        return array (  122 => 66,  112 => 59,  102 => 52,  92 => 45,  87 => 43,  77 => 36,  72 => 34,  68 => 33,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -200,6 +210,13 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empleados <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
 /*                                 <li ><a href="{{ path('mtd_empleados_lista') }}">Lista de Empleados </a></li>*/
+/*                             </ul>*/
+/*                         </li>*/
+/*                         */
+/*                         <li class="dropdown">*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Asistencia <span class="caret"></span></a>*/
+/*                             <ul class="dropdown-menu">*/
+/*                                 <li ><a href="{{ path('mtd_asistencia_operativos') }}">Empleados Operativos </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */

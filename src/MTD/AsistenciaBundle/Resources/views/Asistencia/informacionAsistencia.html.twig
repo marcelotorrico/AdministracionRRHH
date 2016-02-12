@@ -1,0 +1,100 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+        
+    <section class="jumbotron">
+        <div class="container ">
+            <h2>Asistencia de {{empleado.apellido}} {{empleado.nombre}} </h2>
+        </div>
+    </section>
+    <div class="container-fluid full-height">
+        
+        {{ include('menuEmpleado.html.twig')}}
+        
+        <div class="col-md-9">
+            <br>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Ingreso Mañana</th>
+                            <th>Salida Mañana</th>
+                            <th>Ingreso Tarde</th>
+                            <th>Salida Tarde</th>
+                            <th>Actividades</th>
+                            <th>Horas Normales</th>
+                            <th>Horas Extras</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for asistencia in asistencias %}
+                            {% if asistencia.activo == true%}
+                                {% set break = false %}
+                                {% for asistenciaProyectoAsistencia in asistencia.asistenciaProyecto if not break %}
+                                    {% for proyectoEmpleado in proyectosEmpleado %}
+                                        {% for asistenciaProyecto in proyectoEmpleado.asistenciaProyecto %}
+                                            {% if asistenciaProyecto.id == asistenciaProyectoAsistencia.id %}
+                                                {% set break = true %}
+                                                <tr>
+                                                    <td><strong>{{ asistenciaProyecto.asistencia.fecha|date('d-m-Y') }}</strong></td>
+                                                    <td>{{ asistenciaProyecto.asistencia.horaIngresoManana|date('H:i:s') }}</td>
+                                                    <td>{{ asistenciaProyecto.asistencia.horaSalidaManana|date('H:i:s') }}</td>
+                                                    <td>{{ asistenciaProyecto.asistencia.horaIngresoTarde|date('H:i:s') }}</td>
+                                                    <td>{{ asistenciaProyecto.asistencia.horaSalidaTarde|date('H:i:s') }}</td>
+                                                    <td>{{ asistenciaProyecto.asistencia.actividad }}</td>
+                                                    <td>{{ asistenciaProyecto.asistencia.totalHorasNormales }}</td>
+                                                    <td>{{ asistenciaProyecto.asistencia.totalHorasExtras }}</td>
+                                                    <td>
+                                                        <a href="#ventanaDetalle" data-toggle="modal" data-id="{{ asistenciaProyecto.asistencia.id }}" class="detalle btn btn-sm btn-info">
+                                                            Ver Detalle
+                                                        </a>
+                                                        <a href="{{ path('mtd_empleado_eliminar', { 'id': empleado.id }) }}" class="btn btn-sm btn-danger">
+                                                            Eliminar
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <div class="modal fade" id="ventanaDetalle">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title">Detalle de la asistencia del dia {{ asistenciaProyecto.asistencia.fecha|date('d-m-Y') }}</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div id="mainTipo">
+                                                                    <form class="form-horizontal">
+                                                                        <div id = "tabla"></div>
+                                                                        
+                                                                        <div class="modal-footer form-group">
+                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {%endif%}
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% endfor %}
+                            {%endif%}
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/modificar/mostrarDetalleAsistencia.js') }}"></script>
+{% endblock %}

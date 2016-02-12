@@ -9,3 +9,17 @@ mtd_asistencia_empleado:
 mtd_asistencia_registro:
     path:     /asistencia/registro/{id}
     defaults: {_controller: MTDAsistenciaBundle:RegistroAsistencia:registrar }
+    
+mtd_asistencia_operativos:
+    path:     /asistencia/operativos
+    defaults: {_controller: MTDAsistenciaBundle:ListaOperativos:listar }
+    
+mtd_asistencia_mostrar:
+    path:     /asistencia/empleado/ver/{id}
+    defaults: {_controller: MTDAsistenciaBundle:InformacionAsistencia:mostrar }
+    
+mtd_asistencia_detalle_tabla:
+    path:     /asistencia/detalle/tabla/{id}
+    defaults: {_controller: MTDAsistenciaBundle:DetalleTabla:mostrar }
+    options:
+        expose: true

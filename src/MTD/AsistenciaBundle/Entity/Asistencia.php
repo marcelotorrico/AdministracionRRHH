@@ -60,7 +60,7 @@ class Asistencia
     /**
      * @var string
      *
-     * @ORM\Column(name="actividad", type="text")
+     * @ORM\Column(name="actividad", type="text", nullable = true)
      */
     private $actividad;
 
@@ -78,6 +78,13 @@ class Asistencia
      */
     private $totalHorasExtras;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activo", type="boolean")
+     */
+    private $activo;
+    
     /**
      * @ORM\OneToMany(targetEntity="\MTD\AsistenciaBundle\Entity\Asistencia_Proyecto", mappedBy="asistencia")
      */
@@ -323,5 +330,28 @@ class Asistencia
     {
         return $this->totalHorasExtras;
     }
-}
+    
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return Asistencia
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
 
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return boolean
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+}
