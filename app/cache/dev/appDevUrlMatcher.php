@@ -396,6 +396,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/proyecto')) {
+            // mtd_proyecto_terminado
+            if (0 === strpos($pathinfo, '/proyecto/terminado') && preg_match('#^/proyecto/terminado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_terminado')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoTerminadoController::terminarAction',));
+            }
+
+            // mtd_lista_proyecto_terminados
+            if ($pathinfo === '/proyecto/lista/terminados') {
+                return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ListaProyectoTerminadosController::listarAction',  '_route' => 'mtd_lista_proyecto_terminados',);
+            }
+
+        }
+
         // mtd_categorias_trabajo_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_categorias_trabajo_homepage')), array (  '_controller' => 'MTD\\CategoriasTrabajoBundle\\Controller\\DefaultController::indexAction',));

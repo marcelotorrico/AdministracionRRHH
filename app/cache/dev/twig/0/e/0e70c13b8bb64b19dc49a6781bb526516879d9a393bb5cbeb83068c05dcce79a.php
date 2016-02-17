@@ -22,20 +22,20 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6964acc7b1293f10a7fdb0b72de2845a86e704a196048ff1018ac1575d723c10 = $this->env->getExtension("native_profiler");
-        $__internal_6964acc7b1293f10a7fdb0b72de2845a86e704a196048ff1018ac1575d723c10->enter($__internal_6964acc7b1293f10a7fdb0b72de2845a86e704a196048ff1018ac1575d723c10_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:lista.html.twig"));
+        $__internal_6d1eff5aec891cb1165a5510d6e525e436f0894c241433921602109657f3918a = $this->env->getExtension("native_profiler");
+        $__internal_6d1eff5aec891cb1165a5510d6e525e436f0894c241433921602109657f3918a->enter($__internal_6d1eff5aec891cb1165a5510d6e525e436f0894c241433921602109657f3918a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "MTDProyectoBundle:Proyecto:lista.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6964acc7b1293f10a7fdb0b72de2845a86e704a196048ff1018ac1575d723c10->leave($__internal_6964acc7b1293f10a7fdb0b72de2845a86e704a196048ff1018ac1575d723c10_prof);
+        $__internal_6d1eff5aec891cb1165a5510d6e525e436f0894c241433921602109657f3918a->leave($__internal_6d1eff5aec891cb1165a5510d6e525e436f0894c241433921602109657f3918a_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_f44dd29dc4dc148b166fdc356c26d8ced9152e4cf8d985d916c69869b0395921 = $this->env->getExtension("native_profiler");
-        $__internal_f44dd29dc4dc148b166fdc356c26d8ced9152e4cf8d985d916c69869b0395921->enter($__internal_f44dd29dc4dc148b166fdc356c26d8ced9152e4cf8d985d916c69869b0395921_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_f75f37c28f41310a3fd49b31f7a200f9134531ee9499b23c224762f85cfc0dcc = $this->env->getExtension("native_profiler");
+        $__internal_f75f37c28f41310a3fd49b31f7a200f9134531ee9499b23c224762f85cfc0dcc->enter($__internal_f75f37c28f41310a3fd49b31f7a200f9134531ee9499b23c224762f85cfc0dcc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    ";
@@ -86,7 +86,7 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
         foreach ($context['_seq'] as $context["_key"] => $context["proyecto"]) {
             // line 32
             echo "                            ";
-            if (($this->getAttribute($context["proyecto"], "activo", array()) == true)) {
+            if ((($this->getAttribute($context["proyecto"], "activo", array()) == true) && ($this->getAttribute($context["proyecto"], "terminado", array()) == false))) {
                 // line 33
                 echo "                                <tr>
                                     <td>";
@@ -130,6 +130,12 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
                                         </a>
                                         <a href=\"";
                 // line 47
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("mtd_proyecto_terminado", array("id" => $this->getAttribute($context["proyecto"], "id", array()))), "html", null, true);
+                echo "\" class=\"btn btn-sm btn-success\">
+                                            Terminado
+                                        </a>
+                                        <a href=\"";
+                // line 50
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("mtd_eliminar_proyecto", array("id" => $this->getAttribute($context["proyecto"], "id", array()))), "html", null, true);
                 echo "\" class=\"btn btn-sm btn-danger btn-delete confirmarEliminacion\">
                                             Eliminar
@@ -138,13 +144,13 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
                                 </tr>
                             ";
             }
-            // line 53
+            // line 56
             echo "                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['proyecto'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 54
+        // line 57
         echo "                    </tbody>    
                 </table>
             </div>
@@ -152,27 +158,27 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
     </div>
 ";
         
-        $__internal_f44dd29dc4dc148b166fdc356c26d8ced9152e4cf8d985d916c69869b0395921->leave($__internal_f44dd29dc4dc148b166fdc356c26d8ced9152e4cf8d985d916c69869b0395921_prof);
+        $__internal_f75f37c28f41310a3fd49b31f7a200f9134531ee9499b23c224762f85cfc0dcc->leave($__internal_f75f37c28f41310a3fd49b31f7a200f9134531ee9499b23c224762f85cfc0dcc_prof);
 
     }
 
-    // line 61
+    // line 64
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_3dc98920f26892948d325986471dbf72c1cd39bd60e302df92e70bce5aacf4a6 = $this->env->getExtension("native_profiler");
-        $__internal_3dc98920f26892948d325986471dbf72c1cd39bd60e302df92e70bce5aacf4a6->enter($__internal_3dc98920f26892948d325986471dbf72c1cd39bd60e302df92e70bce5aacf4a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_41a3ef622f4f0f55089735d8d9d4fa6540cab2b3571ab8df0283e93549db7b99 = $this->env->getExtension("native_profiler");
+        $__internal_41a3ef622f4f0f55089735d8d9d4fa6540cab2b3571ab8df0283e93549db7b99->enter($__internal_41a3ef622f4f0f55089735d8d9d4fa6540cab2b3571ab8df0283e93549db7b99_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 62
+        // line 65
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
     <script src=\"";
-        // line 63
+        // line 66
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("public/js/eliminar/eliminarProyecto.js"), "html", null, true);
         echo "\"></script>
 ";
         
-        $__internal_3dc98920f26892948d325986471dbf72c1cd39bd60e302df92e70bce5aacf4a6->leave($__internal_3dc98920f26892948d325986471dbf72c1cd39bd60e302df92e70bce5aacf4a6_prof);
+        $__internal_41a3ef622f4f0f55089735d8d9d4fa6540cab2b3571ab8df0283e93549db7b99->leave($__internal_41a3ef622f4f0f55089735d8d9d4fa6540cab2b3571ab8df0283e93549db7b99_prof);
 
     }
 
@@ -188,7 +194,7 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
 
     public function getDebugInfo()
     {
-        return array (  171 => 63,  166 => 62,  160 => 61,  148 => 54,  142 => 53,  133 => 47,  127 => 44,  121 => 41,  116 => 39,  110 => 38,  106 => 37,  102 => 36,  98 => 35,  94 => 34,  91 => 33,  88 => 32,  84 => 31,  60 => 9,  51 => 7,  47 => 6,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  177 => 66,  172 => 65,  166 => 64,  154 => 57,  148 => 56,  139 => 50,  133 => 47,  127 => 44,  121 => 41,  116 => 39,  110 => 38,  106 => 37,  102 => 36,  98 => 35,  94 => 34,  91 => 33,  88 => 32,  84 => 31,  60 => 9,  51 => 7,  47 => 6,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'layout.html.twig' %}*/
@@ -222,7 +228,7 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
 /*                     </thead>*/
 /*                     <tbody>*/
 /*                         {% for proyecto in proyectos %}*/
-/*                             {% if proyecto.activo == true %}*/
+/*                             {% if proyecto.activo == true and proyecto.terminado == false%}*/
 /*                                 <tr>*/
 /*                                     <td>{{ proyecto.nombre }}</td>*/
 /*                                     <td><strong>{{ proyecto.montoContrato }}</strong></td>*/
@@ -236,6 +242,9 @@ class __TwigTemplate_f3ed32bcb384e771c2511ca90568223f8f645c0bd80f823e43b21958c2d
 /*                                         </a>*/
 /*                                         <a href="{{ path('mtd_editar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-primary">*/
 /*                                             Editar*/
+/*                                         </a>*/
+/*                                         <a href="{{ path('mtd_proyecto_terminado', { 'id': proyecto.id }) }}" class="btn btn-sm btn-success">*/
+/*                                             Terminado*/
 /*                                         </a>*/
 /*                                         <a href="{{ path('mtd_eliminar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">*/
 /*                                             Eliminar*/

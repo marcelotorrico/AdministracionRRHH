@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         {% for proyecto in proyectos %}
-                            {% if proyecto.activo == true %}
+                            {% if proyecto.activo == true and proyecto.terminado == false%}
                                 <tr>
                                     <td>{{ proyecto.nombre }}</td>
                                     <td><strong>{{ proyecto.montoContrato }}</strong></td>
@@ -43,6 +43,9 @@
                                         </a>
                                         <a href="{{ path('mtd_editar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-primary">
                                             Editar
+                                        </a>
+                                        <a href="{{ path('mtd_proyecto_terminado', { 'id': proyecto.id }) }}" class="btn btn-sm btn-success">
+                                            Terminado
                                         </a>
                                         <a href="{{ path('mtd_eliminar_proyecto', { 'id': proyecto.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacion">
                                             Eliminar

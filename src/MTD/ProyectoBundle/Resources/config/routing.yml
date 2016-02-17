@@ -67,3 +67,11 @@ mtd_lista_clientes:
 mtd_cliente_edita:
     path:     /cliente/edita/{id}
     defaults: {_controller: MTDProyectoBundle:EditaCliente:editar }
+    
+mtd_proyecto_terminado:
+    path:     /proyecto/terminado/{id}
+    defaults: {_controller: MTDProyectoBundle:ProyectoTerminado:terminar }
+    
+mtd_lista_proyecto_terminados:
+    path:     /proyecto/lista/terminados
+    defaults: {_controller: MTDProyectoBundle:ListaProyectoTerminados:listar }

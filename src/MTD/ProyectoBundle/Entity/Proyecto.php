@@ -99,6 +99,13 @@ class Proyecto
     private $activo;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="terminado", type="boolean")
+     */
+    private $terminado;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="\MTD\CategoriasTrabajoBundle\Entity\Categoria", inversedBy="proyecto")
      * @ORM\JoinTable(name="proyecto_categoria")
      * 
@@ -291,5 +298,29 @@ class Proyecto
     public function getActivo()
     {
         return $this->activo;
+    }
+    
+    /**
+     * Set terminado
+     *
+     * @param boolean $terminado
+     *
+     * @return Proyecto
+     */
+    public function setTerminado($terminado)
+    {
+        $this->terminado = $terminado;
+
+        return $this;
+    }
+
+    /**
+     * Get terminado
+     *
+     * @return boolean
+     */
+    public function getTerminado()
+    {
+        return $this->terminado;
     }
 }

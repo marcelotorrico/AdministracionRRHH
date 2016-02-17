@@ -52,6 +52,7 @@ class RegistroProyectoController extends Controller
                 );
 
                 $proyecto->setActivo("true");
+                $proyecto->setTerminado("false");
                 
                 $em->persist($proyecto);             
                 $em->flush();
