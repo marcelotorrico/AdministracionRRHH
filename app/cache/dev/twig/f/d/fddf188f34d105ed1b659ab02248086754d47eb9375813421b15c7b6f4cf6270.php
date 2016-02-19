@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3230c80d40e36f88331eace10e6b528f1b050128af21ff1280a470965327ef90 = $this->env->getExtension("native_profiler");
-        $__internal_3230c80d40e36f88331eace10e6b528f1b050128af21ff1280a470965327ef90->enter($__internal_3230c80d40e36f88331eace10e6b528f1b050128af21ff1280a470965327ef90_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2 = $this->env->getExtension("native_profiler");
+        $__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2->enter($__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -90,12 +90,20 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                                 <li ><a href=\"";
         // line 45
         echo $this->env->getExtension('routing')->getPath("mtd_postulante_registro");
-        echo "\">Registrar Postulante </a></li>
+        echo "\">Registrar Postulante Operativo</a></li>
+                                <li ><a href=\"";
+        // line 46
+        echo $this->env->getExtension('routing')->getPath("mtd_postulante_lista");
+        echo "\">Lista de Postulantes Operativos</a></li>
                                 <li role=\"separator\" class=\"divider\"></li>
                                 <li ><a href=\"";
-        // line 47
-        echo $this->env->getExtension('routing')->getPath("mtd_postulante_lista");
-        echo "\">Lista de los Postulantes </a></li>
+        // line 48
+        echo $this->env->getExtension('routing')->getPath("mtd_postulante_administrativo_registro");
+        echo "\">Registrar Postulante Administrativos</a></li>
+                                <li ><a href=\"";
+        // line 49
+        echo $this->env->getExtension('routing')->getPath("mtd_postulante_administrativo_lista");
+        echo "\">Lista de Postulantes Administrativos</a></li>
                             </ul>
                         </li>
                         
@@ -103,7 +111,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Seleccion <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
                                 <li ><a href=\"";
-        // line 54
+        // line 56
         echo $this->env->getExtension('routing')->getPath("mtd_buscar_empleado");
         echo "\">Buscar Empleado </a></li>
                             </ul>
@@ -113,9 +121,14 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Empleados <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
                                 <li ><a href=\"";
-        // line 61
+        // line 63
         echo $this->env->getExtension('routing')->getPath("mtd_empleados_lista");
-        echo "\">Lista de Empleados </a></li>
+        echo "\">Lista de Empleados Operativos </a></li>
+                                <li role=\"separator\" class=\"divider\"></li>
+                                <li ><a href=\"";
+        // line 65
+        echo $this->env->getExtension('routing')->getPath("mtd_empleados_lista_administrativos");
+        echo "\">Lista de Empleados Administrativos </a></li>
                             </ul>
                         </li>
                         
@@ -123,7 +136,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Asistencia <span class=\"caret\"></span></a>
                             <ul class=\"dropdown-menu\">
                                 <li ><a href=\"";
-        // line 68
+        // line 72
         echo $this->env->getExtension('routing')->getPath("mtd_asistencia_operativos");
         echo "\">Empleados Operativos </a></li>
                             </ul>
@@ -137,7 +150,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_3230c80d40e36f88331eace10e6b528f1b050128af21ff1280a470965327ef90->leave($__internal_3230c80d40e36f88331eace10e6b528f1b050128af21ff1280a470965327ef90_prof);
+        $__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2->leave($__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2_prof);
 
     }
 
@@ -153,7 +166,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  127 => 68,  117 => 61,  107 => 54,  97 => 47,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
+        return array (  140 => 72,  130 => 65,  125 => 63,  115 => 56,  105 => 49,  101 => 48,  96 => 46,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -200,9 +213,11 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                         <li class="dropdown">*/
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reclutamiento <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
-/*                                 <li ><a href="{{ path('mtd_postulante_registro') }}">Registrar Postulante </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_postulante_registro') }}">Registrar Postulante Operativo</a></li>*/
+/*                                 <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de Postulantes Operativos</a></li>*/
 /*                                 <li role="separator" class="divider"></li>*/
-/*                                 <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de los Postulantes </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_postulante_administrativo_registro') }}">Registrar Postulante Administrativos</a></li>*/
+/*                                 <li ><a href="{{ path('mtd_postulante_administrativo_lista') }}">Lista de Postulantes Administrativos</a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */
@@ -216,7 +231,9 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                         <li class="dropdown">*/
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empleados <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
-/*                                 <li ><a href="{{ path('mtd_empleados_lista') }}">Lista de Empleados </a></li>*/
+/*                                 <li ><a href="{{ path('mtd_empleados_lista') }}">Lista de Empleados Operativos </a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
+/*                                 <li ><a href="{{ path('mtd_empleados_lista_administrativos') }}">Lista de Empleados Administrativos </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */

@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+        
+    <section class="jumbotron">
+        <div class="container ">
+            <h2>Lista de Empleados Administrativos</h2>
+        </div>
+    </section>
+    <div class="container-fluid full-height">
+        
+        {{ include('menuListaProyectos.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Apellidos</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Ingreso</th>
+                            <th>Categoria</th>
+                            <th>Sueldo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contratacion in contrataciones %}
+                            {% if contratacion.activo == true and contratacion.empleado.contratado == true and contratacion.empleado.operativo == false %}
+                                <tr>
+                                    <td><strong>{{ contratacion.empleado.apellido }}</strong></td>
+                                    <td>{{ contratacion.empleado.nombre }}</td>
+                                    <td>{{ contratacion.fechaIngreso|date('d-m-Y') }}</td>
+                                    {% set break = false %}
+                                    {% for requisito in contratacion.empleado.empleadoRequisito if not break %}
+                                        {% if requisito.requisito.categoria.id == contratacion.categoria %}
+                                            <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
+                                            <td><strong>{{ requisito.requisito.categoria.sueldoBasico }}</strong></td>
+                                            {% set break = true %}
+                                        {%endif%}
+                                    {% endfor %}
+                                    <td>
+                                        <a href="{{ path('mtd_empleado_ver', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
+                                            Ver Empleado
+                                        </a>
+                                        <a href="{{ path('mtd_empleado_eliminar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacionEmpleado">
+                                            Eliminar
+                                        </a>
+                                    </td>
+                                </tr>
+                            {%endif%}
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/eliminar/eliminaPostulante.js') }}"></script>
+{% endblock %}

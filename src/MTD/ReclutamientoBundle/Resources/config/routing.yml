@@ -55,3 +55,11 @@ mtd_buscar_empleado:
 mtd_empleados_idoneos:
     path:     /postulantes/idoneos/{id}
     defaults: {_controller: MTDReclutamientoBundle:BuscadorEmpleados:mostrarIdoneos }
+    
+mtd_postulante_administrativo_registro:
+    path:     /postulante/registro/administrativo
+    defaults: {_controller: MTDReclutamientoBundle:RegistroPostulanteAdministrativo:registrar }
+    
+mtd_postulante_administrativo_lista:
+    path:     /postulantes/lista/administrativos
+    defaults: {_controller: MTDReclutamientoBundle:ListaAdministrativos:listar }

@@ -108,6 +108,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_proyectos_participa')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\ProyectosEmpleadoController::listarAction',));
         }
 
+        // mtd_empleados_lista_administrativos
+        if ($pathinfo === '/empleados/lista/administrativos') {
+            return array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\ListaEmpleadosAdministrativosController::listarAction',  '_route' => 'mtd_empleados_lista_administrativos',);
+        }
+
+        // mtd_empleado_documentos
+        if (0 === strpos($pathinfo, '/documentos/empleado') && preg_match('#^/documentos/empleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_documentos')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\RegistroDocumentoController::registrarAction',));
+        }
+
         // mtd_reclutamiento_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_reclutamiento_homepage')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\DefaultController::indexAction',));
@@ -189,6 +199,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleados_idoneos')), array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\BuscadorEmpleadosController::mostrarIdoneosAction',));
                 }
 
+            }
+
+            // mtd_postulante_administrativo_registro
+            if ($pathinfo === '/postulante/registro/administrativo') {
+                return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\RegistroPostulanteAdministrativoController::registrarAction',  '_route' => 'mtd_postulante_administrativo_registro',);
+            }
+
+            // mtd_postulante_administrativo_lista
+            if ($pathinfo === '/postulantes/lista/administrativos') {
+                return array (  '_controller' => 'MTD\\ReclutamientoBundle\\Controller\\ListaAdministrativosController::listarAction',  '_route' => 'mtd_postulante_administrativo_lista',);
             }
 
         }
@@ -292,6 +312,19 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             // mtd_cliente_edita
             if (0 === strpos($pathinfo, '/cliente/edita') && preg_match('#^/cliente/edita/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_cliente_edita')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\EditaClienteController::editarAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/proyecto')) {
+            // mtd_proyecto_terminado
+            if (0 === strpos($pathinfo, '/proyecto/terminado') && preg_match('#^/proyecto/terminado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_terminado')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoTerminadoController::terminarAction',));
+            }
+
+            // mtd_lista_proyecto_terminados
+            if ($pathinfo === '/proyecto/lista/terminados') {
+                return array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ListaProyectoTerminadosController::listarAction',  '_route' => 'mtd_lista_proyecto_terminados',);
             }
 
         }

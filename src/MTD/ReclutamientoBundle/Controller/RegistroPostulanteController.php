@@ -41,6 +41,7 @@ class RegistroPostulanteController extends Controller
 
                 $empleado->setActivo("true");
                 $empleado->setContratado("false");
+                $empleado->setOperativo("true");
                 
                 $em->persist($empleado);
                 $em->flush();

@@ -1,0 +1,56 @@
+{% extends 'layout.html.twig' %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Guardar Documentos de {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid full-height">
+        
+        {{ include('menuEmpleado.html.twig')}}
+        
+        <div class="col-md-8">
+            <br><br>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Formulario</h4>
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                    {{form_errors(form)}}
+
+                        <div class="row">
+                            <div class ="form-group">
+                                {{ form_label(form.nombre, 'Nombre del Documento:', {'label_attr': {'class': 'control-label col-md-3'}}) }}
+
+                                {{ form_widget(form.nombre, { 'attr': {'placeholder': 'Escriba el nombre del documento', 'class': 'form-control inputGroup col-md-5',
+                                                                 'title': 'Nombre del documento' } }) }}      
+                                {{ form_errors(form.nombre) }}
+                            </div>
+                                <div class ="form-group">
+                                    {{ form_label(form.ruta, 'Seleccione un archivo:', {'label_attr': {'class': 'control-label col-md-3'}}) }}
+
+                                    {{ form_widget(form.ruta) }}
+                                    {{ form_errors(form.ruta) }}
+                                </div>
+                        </div>
+                            <div class ="form-group">
+                                <div class="control-label col-md-4">
+                                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Guardar</button>
+                                </div>
+                            </div>
+
+                    {{form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

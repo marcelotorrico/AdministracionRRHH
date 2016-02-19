@@ -42,6 +42,12 @@ class ContratacionEmpleadoController extends Controller
                     'El ascenso del empleado fue registrado correctamente'
                 );
         }else{
+            if($contrataciones = $empleado->getContratacion()){
+                foreach($contrataciones  as $contratacion){
+                    $contratacion->setActivo("FALSE");
+                    break;
+                }
+            }
             $empleado->setContratado("TRUE");
             $this->addFlash(
                     'notice',
@@ -63,6 +69,11 @@ class ContratacionEmpleadoController extends Controller
         $em->persist($empleado);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('mtd_empleados_lista'));
+        if($empleado->getOperativo()){
+            return $this->redirect($this->generateUrl('mtd_empleados_lista'));
+        }else{
+            return $this->redirect($this->generateUrl('mtd_empleados_lista_administrativos'));
+        }
+        
     }
 }

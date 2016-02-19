@@ -161,6 +161,13 @@ class Empleado
     private $contratado;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="operativo", type="boolean", nullable = true)
+     */
+    private $operativo;
+    
+    /**
      * @ORM\OneToMany(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado_Requisito", mappedBy="empleado")
      */
     private $empleadoRequisito;
@@ -175,13 +182,53 @@ class Empleado
      */
     private $proyectoEmpleado;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\SeleccionBundle\Entity\Documento", mappedBy="empleado")
+     */
+    private $documento;
+    
     public function __construct()
     {
         $this->empleadoRequisito = new ArrayCollection();
         $this->contratacion = new ArrayCollection();
         $this->proyectoEmpleado = new ArrayCollection();
+        $this->documento = new ArrayCollection();
     }
 
+    /**
+     * Add documento
+     *
+     * @param \MTD\SeleccionBundle\Entity\Documento $documento
+     *
+     * @return Empleado
+     */
+    public function addDocumento(\MTD\SeleccionBundle\Entity\Documento $documento)
+    {
+        $this->documento[] = $documento;
+
+        return $this;
+    }
+
+    /**
+     * Remove documento
+     *
+     * @param \MTD\SeleccionBundle\Entity\Documento $documento
+     */
+    public function removeDocumento(\MTD\SeleccionBundle\Entity\Documento $documento)
+    {
+        $this->documento->removeElement($documento);
+    }
+
+    /**
+     * Get documento
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocumento()
+    {
+        return $this->documento;
+    }
+    
     /**
      * Add proyectoEmpleado
      *
@@ -686,6 +733,30 @@ class Empleado
     public function getContratado()
     {
         return $this->contratado;
+    }
+    
+    /**
+     * Set operativo
+     *
+     * @param boolean $operativo
+     *
+     * @return Proyecto
+     */
+    public function setOperativo($operativo)
+    {
+        $this->operativo = $operativo;
+
+        return $this;
+    }
+
+    /**
+     * Get operativo
+     *
+     * @return boolean
+     */
+    public function getOperativo()
+    {
+        return $this->operativo;
     }
 }
 

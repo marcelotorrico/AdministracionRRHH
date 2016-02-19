@@ -9,7 +9,7 @@
         
     <section class="jumbotron">
         <div class="container ">
-            <h2>Lista de Postulantes</h2>
+            <h2>Postulantes Operativos</h2>
         </div>
     </section>
     <div class="container-fluid full-height">
@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                         {% for postulante in postulantes %}
-                            {% if postulante.activo == true and postulante.contratado == false %}
+                            {% if postulante.activo == true and postulante.contratado == false and postulante.operativo == true %}
                                 <tr>
                                     <td><strong>{{ postulante.apellido }}</strong></td>
                                     <td><strong>{{ postulante.nombre }}</strong></td>

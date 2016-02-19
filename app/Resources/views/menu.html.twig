@@ -42,9 +42,11 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reclutamiento <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li ><a href="{{ path('mtd_postulante_registro') }}">Registrar Postulante </a></li>
+                                <li ><a href="{{ path('mtd_postulante_registro') }}">Registrar Postulante Operativo</a></li>
+                                <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de Postulantes Operativos</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li ><a href="{{ path('mtd_postulante_lista') }}">Lista de los Postulantes </a></li>
+                                <li ><a href="{{ path('mtd_postulante_administrativo_registro') }}">Registrar Postulante Administrativos</a></li>
+                                <li ><a href="{{ path('mtd_postulante_administrativo_lista') }}">Lista de Postulantes Administrativos</a></li>
                             </ul>
                         </li>
                         
@@ -58,7 +60,9 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empleados <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li ><a href="{{ path('mtd_empleados_lista') }}">Lista de Empleados </a></li>
+                                <li ><a href="{{ path('mtd_empleados_lista') }}">Lista de Empleados Operativos </a></li>
+                                <li role="separator" class="divider"></li>
+                                <li ><a href="{{ path('mtd_empleados_lista_administrativos') }}">Lista de Empleados Administrativos </a></li>
                             </ul>
                         </li>
                         

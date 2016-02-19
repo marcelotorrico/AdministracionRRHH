@@ -29,3 +29,19 @@ mtd_empleado_perfilTecnico:
 mtd_empleado_proyectos_participa:
     path:     /proyectos/empleado/{id}
     defaults: {_controller: MTDSeleccionBundle:ProyectosEmpleado:listar }
+
+mtd_empleados_lista_administrativos:
+    path:     /empleados/lista/administrativos
+    defaults: {_controller: MTDSeleccionBundle:ListaEmpleadosAdministrativos:listar }
+    
+mtd_empleado_documentos:
+    path:     /documentos/empleado/{id}
+    defaults: {_controller: MTDSeleccionBundle:RegistroDocumento:registrar }
+    
+mtd_empleado_listar_documentos:
+    path:     /documentos/ver/empleado/{id}
+    defaults: {_controller: MTDSeleccionBundle:ListaDocumentos:listar }
+    
+mtd_empleado_documento_eliminar:
+    path:     /documentos/eliminar/empleado/{id}/{idEmpleado}
+    defaults: {_controller: MTDSeleccionBundle:EliminaDocumento:eliminar }
