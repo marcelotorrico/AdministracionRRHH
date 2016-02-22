@@ -38,9 +38,22 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_empleado')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaController::mostrarAction',));
             }
 
-            // mtd_asistencia_registro
-            if (0 === strpos($pathinfo, '/asistencia/registro') && preg_match('#^/asistencia/registro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_registro')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaController::registrarAction',));
+            // mtd_asistencia_empleado_administrativo
+            if (0 === strpos($pathinfo, '/asistencia/administrativo') && preg_match('#^/asistencia/administrativo/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_empleado_administrativo')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaAdministrativoController::mostrarAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/asistencia/registro')) {
+                // mtd_asistencia_registro
+                if (preg_match('#^/asistencia/registro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_registro')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaController::registrarAction',));
+                }
+
+                // mtd_asistencia_registro_administrativo
+                if (0 === strpos($pathinfo, '/asistencia/registro/administrativo') && preg_match('#^/asistencia/registro/administrativo/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_registro_administrativo')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroAsistenciaAdministrativoController::registrarAction',));
+                }
+
             }
 
             // mtd_asistencia_operativos
@@ -48,9 +61,19 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\ListaOperativosController::listarAction',  '_route' => 'mtd_asistencia_operativos',);
             }
 
+            // mtd_asistencia_administrativos
+            if ($pathinfo === '/asistencia/administrativos') {
+                return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\ListaAdministrativosController::listarAction',  '_route' => 'mtd_asistencia_administrativos',);
+            }
+
             // mtd_asistencia_mostrar
             if (0 === strpos($pathinfo, '/asistencia/empleado/ver') && preg_match('#^/asistencia/empleado/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_mostrar')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\InformacionAsistenciaController::mostrarAction',));
+            }
+
+            // mtd_asistencia_administrativo_mostrar
+            if (0 === strpos($pathinfo, '/asistencia/administrativo/ver') && preg_match('#^/asistencia/administrativo/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_administrativo_mostrar')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\InformacionAsistenciaAdministrativoController::mostrarAction',));
             }
 
             // mtd_asistencia_detalle_tabla
@@ -113,9 +136,22 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\ListaEmpleadosAdministrativosController::listarAction',  '_route' => 'mtd_empleados_lista_administrativos',);
         }
 
-        // mtd_empleado_documentos
-        if (0 === strpos($pathinfo, '/documentos/empleado') && preg_match('#^/documentos/empleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_documentos')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\RegistroDocumentoController::registrarAction',));
+        if (0 === strpos($pathinfo, '/documentos')) {
+            // mtd_empleado_documentos
+            if (0 === strpos($pathinfo, '/documentos/empleado') && preg_match('#^/documentos/empleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_documentos')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\RegistroDocumentoController::registrarAction',));
+            }
+
+            // mtd_empleado_listar_documentos
+            if (0 === strpos($pathinfo, '/documentos/ver/empleado') && preg_match('#^/documentos/ver/empleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_listar_documentos')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\ListaDocumentosController::listarAction',));
+            }
+
+            // mtd_empleado_documento_eliminar
+            if (0 === strpos($pathinfo, '/documentos/eliminar/empleado') && preg_match('#^/documentos/eliminar/empleado/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_empleado_documento_eliminar')), array (  '_controller' => 'MTD\\SeleccionBundle\\Controller\\EliminaDocumentoController::eliminarAction',));
+            }
+
         }
 
         // mtd_reclutamiento_homepage

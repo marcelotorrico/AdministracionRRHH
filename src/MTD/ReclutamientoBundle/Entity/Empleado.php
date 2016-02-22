@@ -187,14 +187,54 @@ class Empleado
      */
     private $documento;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\AsistenciaBundle\Entity\Asistencia", mappedBy="empleado")
+     */
+    private $asistencia;
+    
     public function __construct()
     {
         $this->empleadoRequisito = new ArrayCollection();
         $this->contratacion = new ArrayCollection();
         $this->proyectoEmpleado = new ArrayCollection();
         $this->documento = new ArrayCollection();
+        $this->asistencia = new ArrayCollection();
     }
 
+    /**
+     * Add asistencia
+     *
+     * @param \MTD\AsistenciaBundle\Entity\Asistencia $asistencia
+     *
+     * @return Empleado
+     */
+    public function addAsistencia(\MTD\AsistenciaBundle\Entity\Asistencia $asistencia)
+    {
+        $this->asistencia[] = $asistencia;
+
+        return $this;
+    }
+
+    /**
+     * Remove asistencia
+     *
+     * @param \MTD\AsistenciaBundle\Entity\Asistencia $asistencia
+     */
+    public function removeAsistencia(\MTD\AsistenciaBundle\Entity\Asistencia $asistencia)
+    {
+        $this->asistencia->removeElement($asistencia);
+    }
+
+    /**
+     * Get asistencia
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAsistencia()
+    {
+        return $this->asistencia;
+    }
+    
     /**
      * Add documento
      *

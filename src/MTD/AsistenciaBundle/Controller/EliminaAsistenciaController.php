@@ -12,6 +12,7 @@ class EliminaAsistenciaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $asistencia = $em->getRepository('MTDAsistenciaBundle:Asistencia')->find($id);
+        $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($idEmpleado);
         
         if($asistencia){
 
@@ -25,9 +26,11 @@ class EliminaAsistenciaController extends Controller
             $em->persist($asistencia);             
             $em->flush();
 
-            return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=>$idEmpleado)));
-            
+            if($empleado->getOperativo()){
+                return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=>$idEmpleado)));
+            }else{
+                return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=>$idEmpleado)));
+            }
         }
-        
     }
 }

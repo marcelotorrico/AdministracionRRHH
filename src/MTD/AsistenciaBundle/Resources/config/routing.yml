@@ -5,18 +5,34 @@ mtd_asistencia_homepage:
 mtd_asistencia_empleado:
     path:     /asistencia/postulante/{id}
     defaults: {_controller: MTDAsistenciaBundle:RegistroAsistencia:mostrar }
+    
+mtd_asistencia_empleado_administrativo:
+    path:     /asistencia/administrativo/{id}
+    defaults: {_controller: MTDAsistenciaBundle:RegistroAsistenciaAdministrativo:mostrar }
 
 mtd_asistencia_registro:
     path:     /asistencia/registro/{id}
     defaults: {_controller: MTDAsistenciaBundle:RegistroAsistencia:registrar }
+
+mtd_asistencia_registro_administrativo:
+    path:     /asistencia/registro/administrativo/{id}
+    defaults: {_controller: MTDAsistenciaBundle:RegistroAsistenciaAdministrativo:registrar }
     
 mtd_asistencia_operativos:
     path:     /asistencia/operativos
     defaults: {_controller: MTDAsistenciaBundle:ListaOperativos:listar }
     
+mtd_asistencia_administrativos:
+    path:     /asistencia/administrativos
+    defaults: {_controller: MTDAsistenciaBundle:ListaAdministrativos:listar }
+    
 mtd_asistencia_mostrar:
     path:     /asistencia/empleado/ver/{id}
     defaults: {_controller: MTDAsistenciaBundle:InformacionAsistencia:mostrar }
+    
+mtd_asistencia_administrativo_mostrar:
+    path:     /asistencia/administrativo/ver/{id}
+    defaults: {_controller: MTDAsistenciaBundle:InformacionAsistenciaAdministrativo:mostrar }
     
 mtd_asistencia_detalle_tabla:
     path:     /asistencia/detalle/tabla/{id}

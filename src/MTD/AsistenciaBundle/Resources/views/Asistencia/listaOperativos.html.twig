@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                         {% for contratacion in contrataciones %}
-                            {% if contratacion.activo == true and contratacion.empleado.contratado == true %}
+                            {% if contratacion.activo == true and contratacion.empleado.contratado == true and contratacion.empleado.operativo == true %}
                                 <tr>
                                     <td><strong>{{ contratacion.empleado.apellido }}</strong></td>
                                     <td>{{ contratacion.empleado.nombre }}</td>

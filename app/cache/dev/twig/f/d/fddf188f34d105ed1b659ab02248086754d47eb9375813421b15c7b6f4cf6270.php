@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2 = $this->env->getExtension("native_profiler");
-        $__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2->enter($__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0 = $this->env->getExtension("native_profiler");
+        $__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0->enter($__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -139,6 +139,11 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
         // line 72
         echo $this->env->getExtension('routing')->getPath("mtd_asistencia_operativos");
         echo "\">Empleados Operativos </a></li>
+                                <li role=\"separator\" class=\"divider\"></li>
+                                <li ><a href=\"";
+        // line 74
+        echo $this->env->getExtension('routing')->getPath("mtd_asistencia_administrativos");
+        echo "\">Empleados Administrativos </a></li>
                             </ul>
                         </li>
                         
@@ -150,7 +155,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2->leave($__internal_b89d35a4aec6aea82bc56837df9cc1d3bb155adbf378343cbafd0416583a2fc2_prof);
+        $__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0->leave($__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0_prof);
 
     }
 
@@ -166,7 +171,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  140 => 72,  130 => 65,  125 => 63,  115 => 56,  105 => 49,  101 => 48,  96 => 46,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
+        return array (  145 => 74,  140 => 72,  130 => 65,  125 => 63,  115 => 56,  105 => 49,  101 => 48,  96 => 46,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -241,6 +246,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Asistencia <span class="caret"></span></a>*/
 /*                             <ul class="dropdown-menu">*/
 /*                                 <li ><a href="{{ path('mtd_asistencia_operativos') }}">Empleados Operativos </a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
+/*                                 <li ><a href="{{ path('mtd_asistencia_administrativos') }}">Empleados Administrativos </a></li>*/
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */

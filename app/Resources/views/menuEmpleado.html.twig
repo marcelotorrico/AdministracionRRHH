@@ -8,7 +8,13 @@
         <a href="{{ path('mtd_empleado_documentos', { 'id': empleado.id }) }}" class="list-group-item">Agregar Documentos</a>
         <a href="{{ path('mtd_empleado_listar_documentos', { 'id': empleado.id }) }}" class="list-group-item">Ver Documentos</a>
         <a href="{{ path('mtd_empleado_proyectos_participa', { 'id': empleado.id }) }}" class="list-group-item">Proyectos en los que participa</a>
-        <a href="{{ path('mtd_asistencia_empleado', { 'id': empleado.id }) }}" class="list-group-item">Registrar Asistencia</a>
-        <a href="{{ path('mtd_asistencia_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
+        {% if empleado.operativo == true %}
+            <a href="{{ path('mtd_asistencia_empleado', { 'id': empleado.id }) }}" class="list-group-item">Registrar Asistencia</a>
+            <a href="{{ path('mtd_asistencia_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
+        {%else%}
+            <a href="{{ path('mtd_asistencia_empleado_administrativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Asistencia</a>
+            <a href="{{ path('mtd_asistencia_administrativo_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
+        {%endif%}
+        
     </div>
 </aside>

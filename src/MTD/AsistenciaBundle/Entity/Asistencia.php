@@ -130,6 +130,22 @@ class Asistencia
     }
     
     /**
+     * @ORM\ManyToOne(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado", inversedBy="asistencia")
+     * @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
+     * @return integer
+     */
+    private $empleado;
+    public function setEmpleado(\MTD\ReclutamientoBundle\Entity\Empleado $empleado)
+    {
+        $this->empleado = $empleado;
+    }
+
+    public function getEmpleado()
+    {
+        return $this->empleado;
+    }
+    
+    /**
      * Get id
      *
      * @return integer
