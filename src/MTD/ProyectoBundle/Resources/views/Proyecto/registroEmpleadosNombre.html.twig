@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/jquery-ui.theme.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/estilos/autocompleter.css') }}" /> 
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Proyecto: {{proyectoSeleccionado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row">
+            
+            {{ include('menuProyecto.html.twig')}}
+            
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Buscar Empleados</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id="main">
+                            <form action="{{ path('mtd_proyecto_registro_empleado_nombre', { 'idProyecto': proyectoSeleccionado.id }) }}" method="post" >
+                                <div class="form-group">
+                                    <div class="input-group col-md-6">
+                                        <span class="input-group-addon">Ingrese el nombre del Empleado:</span>
+                                        <input type="text" id="caja_busqueda" name="nombre" required="required" placeholder="Escriba el nombre o apellido"
+                                               class="form-control input-inline inputGroup busca" title="Nombre o apellido del empleado">
+                                    </div>
+                                </div>
+                                <div class ="form-group">
+                                    <div class="control-label col-md-4">
+                                        <button type="submit"  class="btn btn-primary" id ="enviar" name="enviar" > Agregar </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>   
+                </div>
+            </div>   
+        </div>
+    </div>
+    
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+        
+    <script>
+        $(document).ready(function(){
+            var test = {{ empleados|json_encode|raw }};
+            $("#caja_busqueda").autocomplete({
+            source: test,
+            messages: {
+                noResults: '',
+                results: function() {}
+            }
+         })
+    });
+    </script>
+{% endblock %}

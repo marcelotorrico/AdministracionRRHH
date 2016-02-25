@@ -420,6 +420,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::asignarAction',));
                 }
 
+                // mtd_proyecto_empleado_nombre
+                if (0 === strpos($pathinfo, '/proyecto/empleados/nombre') && preg_match('#^/proyecto/empleados/nombre/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_nombre')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoNombreController::mostrarAction',));
+                }
+
                 // mtd_proyecto_empleado_agregar
                 if (0 === strpos($pathinfo, '/proyecto/empleados/agregar') && preg_match('#^/proyecto/empleados/agregar/(?P<id>[^/]++)/(?P<proyecto>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_agregar')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoController::mostrarAction',));
@@ -428,6 +433,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 // mtd_proyecto_empleado_registro
                 if (0 === strpos($pathinfo, '/proyecto/empleados/registro') && preg_match('#^/proyecto/empleados/registro/(?P<id>[^/]++)/(?P<idProyecto>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_empleado_registro')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\EmpleadoRegistroController::registrarAction',));
+                }
+
+                // mtd_proyecto_registro_empleado_nombre
+                if (0 === strpos($pathinfo, '/proyecto/empleados/nombreRegistro') && preg_match('#^/proyecto/empleados/nombreRegistro/(?P<idProyecto>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_proyecto_registro_empleado_nombre')), array (  '_controller' => 'MTD\\ProyectoBundle\\Controller\\ProyectoEmpleadoNombreController::registrarAction',));
                 }
 
             }

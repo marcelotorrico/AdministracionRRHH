@@ -10,4 +10,10 @@ namespace MTD\ReclutamientoBundle\Entity;
  */
 class EmpleadoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByLetters($string){
+        return $this->getEntityManager()->createQuery('SELECT u FROM MTDReclutamientoBundle:Empleado u  
+                WHERE u.nombre LIKE :string OR u.apellido LIKE :string')
+                ->setParameter('string','%'.$string.'%')
+                ->getResult();
+    }
 }

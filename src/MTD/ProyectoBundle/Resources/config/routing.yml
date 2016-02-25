@@ -46,6 +46,10 @@ mtd_proyecto_empleado:
     path:     /proyecto/empleados/{id}
     defaults: {_controller: MTDProyectoBundle:ProyectoEmpleado:asignar }
     
+mtd_proyecto_empleado_nombre:
+    path:     /proyecto/empleados/nombre/{id}
+    defaults: {_controller: MTDProyectoBundle:ProyectoEmpleadoNombre:mostrar }
+    
 mtd_proyecto_empleado_agregar:
     path:     /proyecto/empleados/agregar/{id}/{proyecto}
     defaults: {_controller: MTDProyectoBundle:ProyectoEmpleado:mostrar }
@@ -55,6 +59,10 @@ mtd_proyecto_empleado_agregar:
 mtd_proyecto_empleado_registro:
     path:     /proyecto/empleados/registro/{id}/{idProyecto}
     defaults: {_controller: MTDProyectoBundle:EmpleadoRegistro:registrar }
+    
+mtd_proyecto_registro_empleado_nombre:
+    path:     /proyecto/empleados/nombreRegistro/{idProyecto}
+    defaults: {_controller: MTDProyectoBundle:ProyectoEmpleadoNombre:registrar }
     
 mtd_proyecto_lista_empleados:
     path:     /proyecto/lista/empleados/{id}
