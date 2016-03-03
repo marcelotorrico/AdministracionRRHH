@@ -30,28 +30,30 @@
                     </thead>
                     <tbody>
                         {% for proyectoEmpleado in proyectoSeleccionado.proyectoEmpleado %}
-                            <tr>
-                                <td>{{ proyectoEmpleado.empleado.nombre }}</td>
-                                <td>{{ proyectoEmpleado.empleado.apellido }}</td>
-                                <td>{{ proyectoEmpleado.empleado.cedulaIdentidad }}</td>
-                                
-                                {% for contratacion in proyectoEmpleado.empleado.contratacion %}
-                                    {% if contratacion.activo == true %}
-                                        {% set break = false %}
-                                        {% for requisito in proyectoEmpleado.empleado.empleadoRequisito if not break %}
-                                            {% if requisito.requisito.categoria.id == contratacion.categoria %}
-                                                <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
-                                                {% set break = true %}
-                                            {%endif%}
-                                        {% endfor %}
-                                    {%endif%}
-                                {% endfor %}
-                                <td>
-                                    <a href="{{ path('mtd_empleado_ver', { 'id': proyectoEmpleado.empleado.id }) }}" class="btn btn-sm btn-info">
-                                        Ver Empleado
-                                    </a>
-                                </td>
-                            </tr>
+                            {%if proyectoEmpleado.empleado.contratado == true%}
+                                <tr>
+                                    <td>{{ proyectoEmpleado.empleado.nombre }}</td>
+                                    <td>{{ proyectoEmpleado.empleado.apellido }}</td>
+                                    <td>{{ proyectoEmpleado.empleado.cedulaIdentidad }}</td>
+
+                                    {% for contratacion in proyectoEmpleado.empleado.contratacion %}
+                                        {% if contratacion.activo == true %}
+                                            {% set break = false %}
+                                            {% for requisito in proyectoEmpleado.empleado.empleadoRequisito if not break %}
+                                                {% if requisito.requisito.categoria.id == contratacion.categoria %}
+                                                    <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
+                                                    {% set break = true %}
+                                                {%endif%}
+                                            {% endfor %}
+                                        {%endif%}
+                                    {% endfor %}
+                                    <td>
+                                        <a href="{{ path('mtd_empleado_ver', { 'id': proyectoEmpleado.empleado.id }) }}" class="btn btn-sm btn-info">
+                                            Ver Empleado
+                                        </a>
+                                    </td>
+                                </tr>
+                            {%endif%}
                         {% endfor %}
                     </tbody>    
                 </table>

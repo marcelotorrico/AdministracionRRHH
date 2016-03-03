@@ -49,9 +49,21 @@
                                         <a href="{{ path('mtd_empleado_ver', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
                                             Ver Empleado
                                         </a>
-                                        <a href="{{ path('mtd_empleado_eliminar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacionEmpleado">
-                                            Eliminar
-                                        </a>
+                                        {% set break = false %}
+                                        {% for proyectoEmpleado in contratacion.empleado.proyectoEmpleado if not break %}
+                                            {% if proyectoEmpleado.activo == true and proyectoEmpleado.proyecto.terminado == false%}
+                                                {% set break = true %}
+                                            {% endif%}
+                                        {%endfor%}
+                                        {% if break == true%}
+                                            <a href="{{ path('mtd_empleado_eliminar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacionProyecto">
+                                                Eliminar
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ path('mtd_empleado_eliminar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacionEmpleado">
+                                                Eliminar
+                                            </a>
+                                        {%endif%}
                                     </td>
                                 </tr>
                             {%endif%}

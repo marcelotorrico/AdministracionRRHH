@@ -12,4 +12,9 @@ $(document).ready(function(){
 
     });
     
+    $(".confirmarEliminacionProyecto").on("click", function(e) {
+
+        return confirm('El empleado esta asignado a proyectos de la empresa. ¿Esta seguro que quiere eliminarlo?');
+
+    });
 });

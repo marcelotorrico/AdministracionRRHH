@@ -83,6 +83,25 @@ class ProyectoEmpleadoNombreController extends Controller
         $proyectoEmpleado->setProyecto($proyectoSeleccionado);
         $proyectoEmpleado->setActivo("TRUE");
         
+        foreach($empleado->getContratacion() as $contratacion){
+            if($contratacion->getActivo()){
+                $idCategoria = $contratacion->getCategoria();
+                $categoria = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->find($idCategoria);
+                break;
+            }
+        }
+        $boolean = true;
+        foreach($proyectoSeleccionado->getCategoria() as $categoriasProyecto){
+            if($categoriasProyecto == $categoria){
+                $boolean = false;
+                break;
+            }
+        }
+        if($boolean){
+            $proyectoSeleccionado->getCategoria()->add($categoria);
+            $em->persist($proyectoSeleccionado);
+        }
+        
         $em->persist($proyectoEmpleado);
         $em->flush();
     }
