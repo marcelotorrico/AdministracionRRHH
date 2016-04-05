@@ -32,28 +32,28 @@ class Asistencia
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_ingreso_mañana", type="time")
+     * @ORM\Column(name="hora_ingreso_mañana", nullable=true, type="time")
      */
     private $horaIngresoManana;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_salida_mañana", type="time")
+     * @ORM\Column(name="hora_salida_mañana", nullable=true, type="time")
      */
     private $horaSalidaManana;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_ingreso_tarde", type="time")
+     * @ORM\Column(name="hora_ingreso_tarde", nullable=true, type="time")
      */
     private $horaIngresoTarde;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_salida_tarde", type="time")
+     * @ORM\Column(name="hora_salida_tarde", nullable=true, type="time")
      */
     private $horaSalidaTarde;
 
@@ -67,14 +67,14 @@ class Asistencia
     /**
      * @var string
      *
-     * @ORM\Column(name="total_horas_normales", type="string", length=50)
+     * @ORM\Column(name="total_horas_normales", nullable=true, type="string", length=50)
      */
     private $totalHorasNormales;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="total_horas_extras", type="string", length=50)
+     * @ORM\Column(name="total_horas_extras", nullable=true, type="string", length=50)
      */
     private $totalHorasExtras;
 
@@ -86,13 +86,59 @@ class Asistencia
     private $activo;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="feriado", nullable = true, type="boolean")
+     */
+    private $feriado;
+    
+    /**
      * @ORM\OneToMany(targetEntity="\MTD\AsistenciaBundle\Entity\Asistencia_Proyecto", mappedBy="asistencia")
      */
     private $asistenciaProyecto;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\AsistenciaBundle\Entity\Falta", mappedBy="asistencia")
+     */
+    private $falta;
 
     public function __construct()
     {
         $this->asistenciaProyecto = new ArrayCollection();
+        $this->falta = new ArrayCollection();
+    }
+    /**
+     * Add falta
+     *
+     * @param \MTD\AsistenciaBundle\Entity\Falta $falta
+     *
+     * @return Asistencia
+     */
+    public function addFalta(\MTD\AsistenciaBundle\Entity\Falta $falta)
+    {
+        $this->falta[] = $falta;
+
+        return $this;
+    }
+
+    /**
+     * Remove falta
+     *
+     * @param \MTD\AsistenciaBundle\Entity\Falta $falta
+     */
+    public function removeFalta(\MTD\AsistenciaBundle\Entity\Falta $falta)
+    {
+        $this->falta->removeElement($falta);
+    }
+
+    /**
+     * Get falta
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFalta()
+    {
+        return $this->falta;
     }
     
     /**
@@ -369,5 +415,29 @@ class Asistencia
     public function getActivo()
     {
         return $this->activo;
+    }
+    
+    /**
+     * Set feriado
+     *
+     * @param boolean $feriado
+     *
+     * @return Asistencia
+     */
+    public function setFeriado($feriado)
+    {
+        $this->feriado = $feriado;
+
+        return $this;
+    }
+
+    /**
+     * Get feriado
+     *
+     * @return boolean
+     */
+    public function getFeriado()
+    {
+        return $this->feriado;
     }
 }

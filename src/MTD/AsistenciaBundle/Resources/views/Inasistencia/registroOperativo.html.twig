@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+    
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" /> 
+{% endblock %}
+    
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Registrar Inasistencia de {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+        
+    <div class="container-fluid">
+        <div class="row">
+            
+            {{ include('menuEmpleado.html.twig')}}
+            
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Formulario</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form action="{{ path('mtd_inasistencia_operativo_registro', { 'id': empleado.id }) }}" method="post" class="form-horizontal">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="fecha" class="control-label col-md-3">Fecha de la Inasistencia:</label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="fecha" name="fecha" required="required" data-provide="datepicker" data-date-format="dd-mm-yyyy" placeholder="Fecha de la inasistencia" class="form-control input-inline datepicker inputGroup" title="Ingrese la fecha de la inasistencia">
+                                    </div>
+                                </div>
+                                <div class ="form-group">
+                                    <label for="justificado" class="control-label col-md-3">Justificado:</label>
+                                    <div class="col-md-5">
+                                        <select id="justificado" name="justificado" required="required" class="form-control inputGroup col-md-5" title="Seleccione una opcion">
+                                            <option value="TRUE">Si</option>
+                                            <option value="FALSE">No</option> 
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="motivos" class="control-label col-md-3">Motivos:</label>
+                                    <div class="col-md-5">
+                                        <textarea id="motivos" name="motivos" placeholder="Escriba los motivos" class="form-control inputGroup" title="Motivos de la falta"></textarea>
+                                    </div>
+                                </div>
+                                <div class ="form-group">
+                                    <div class="col-md-3 control-label">
+                                        <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/fechas/fechaAsistencia.js') }}"></script>
+    <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+{% endblock %}

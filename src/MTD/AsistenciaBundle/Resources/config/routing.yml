@@ -40,6 +40,24 @@ mtd_asistencia_detalle_tabla:
     options:
         expose: true
         
+mtd_inasistencia_detalle_tabla:
+    path:     /inasistencia/detalle/tabla/{id}
+    defaults: {_controller: MTDAsistenciaBundle:DetalleTabla:mostrarInasistencia }
+    options:
+        expose: true
+        
 mtd_asistencia_elimina:
     path:     /asistencia/elimina/{id}/{idEmpleado}
     defaults: {_controller: MTDAsistenciaBundle:EliminaAsistencia:eliminar }
+    
+mtd_inasistencia_operativo:
+    path:     /inasistencia/operativo/{id}
+    defaults: {_controller: MTDAsistenciaBundle:RegistroInasistencia:mostrar }
+    
+mtd_inasistencia_operativo_registro:
+    path:     /inasistencia/operativo/registro/{id}
+    defaults: {_controller: MTDAsistenciaBundle:RegistroInasistencia:registrar }
+    
+mtd_asistencia_feriado:
+    path:     /asistencia/feriado
+    defaults: {_controller: MTDAsistenciaBundle:RegistroFeriado:registrar }

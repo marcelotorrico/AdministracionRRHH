@@ -81,9 +81,27 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarAction',));
             }
 
-            // mtd_asistencia_elimina
-            if (0 === strpos($pathinfo, '/asistencia/elimina') && preg_match('#^/asistencia/elimina/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_elimina')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\EliminaAsistenciaController::eliminarAction',));
+        }
+
+        // mtd_inasistencia_detalle_tabla
+        if (0 === strpos($pathinfo, '/inasistencia/detalle/tabla') && preg_match('#^/inasistencia/detalle/tabla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_inasistencia_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarInasistenciaAction',));
+        }
+
+        // mtd_asistencia_elimina
+        if (0 === strpos($pathinfo, '/asistencia/elimina') && preg_match('#^/asistencia/elimina/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_elimina')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\EliminaAsistenciaController::eliminarAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/inasistencia/operativo')) {
+            // mtd_inasistencia_operativo
+            if (preg_match('#^/inasistencia/operativo/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_inasistencia_operativo')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroInasistenciaController::mostrarAction',));
+            }
+
+            // mtd_inasistencia_operativo_registro
+            if (0 === strpos($pathinfo, '/inasistencia/operativo/registro') && preg_match('#^/inasistencia/operativo/registro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_inasistencia_operativo_registro')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroInasistenciaController::registrarAction',));
             }
 
         }

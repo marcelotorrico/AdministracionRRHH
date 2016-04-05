@@ -18,4 +18,15 @@ class DetalleTablaController extends Controller
         
         return $this->render('MTDAsistenciaBundle:Asistencia:detalleAsistencia.html.twig', array("asistenciasProyecto"=>$asistenciasProyecto));
     }
+    
+    public function mostrarInasistenciaAction(Request $request, $id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $asistencia = $em->getRepository('MTDAsistenciaBundle:Asistencia')->find($id);
+        $faltas = $asistencia->getFalta();
+        
+        return $this->render('MTDAsistenciaBundle:Inasistencia:detalleInasistencia.html.twig', array("faltas"=>$faltas));
+    }
 }

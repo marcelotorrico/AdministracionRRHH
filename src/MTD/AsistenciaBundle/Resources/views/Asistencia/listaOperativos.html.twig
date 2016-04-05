@@ -1,5 +1,11 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/estilos/feriado.css') }}" />
+{% endblock %}
+
 {% block body %}
     {{ parent() }}
 
@@ -26,7 +32,6 @@
                             <th>Nombre</th>
                             <th>Fecha de Ingreso</th>
                             <th>Categoria</th>
-                            <th>Sueldo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -41,7 +46,6 @@
                                     {% for requisito in contratacion.empleado.empleadoRequisito if not break %}
                                         {% if requisito.requisito.categoria.id == contratacion.categoria %}
                                             <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
-                                            <td><strong>{{ requisito.requisito.categoria.sueldoBasico }}</strong></td>
                                             {% set break = true %}
                                         {%endif%}
                                     {% endfor %}
@@ -49,11 +53,52 @@
                                         <a href="{{ path('mtd_asistencia_empleado', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-success">
                                             Registrar Asistencia
                                         </a>
+                                        <a href="{{ path('mtd_inasistencia_operativo', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-danger">
+                                            Registrar Inasistencia
+                                        </a>
+                                        <a href="#registroFeriado" class="feriado btn btn-sm btn-primary" data-id="{{ contratacion.empleado.id }}" data-toggle="modal">
+                                            Feriado
+                                        </a>
                                         <a href="{{ path('mtd_asistencia_mostrar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
                                             Ver Asistencia
                                         </a>
                                     </td>
                                 </tr>
+                                
+                                <div class="modal fade" id="registroFeriado">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title">Registro de un Feriado</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div id="mainLugar">
+
+                                                    <form action="{{ path('mtd_asistencia_feriado') }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class ="form-group">
+                                                                    <div class="input-group">
+                                                                        <label class="input-group-addon addonGroup required" for="fecha">Fecha del Feriado:</label>
+                                                                        <input type="text" id="fecha" name="fecha" required="required" data-provide="datepicker"
+                                                                        data-date-format="dd-mm-yyyy" pidEmpleadolaceholder="Seleccione la fecha de la asistencia" 
+                                                                        class=" feriado form-control input-inline datepicker inputGroup" title="Fecha de asistencia">
+                                                                        <input type = "hidden" id = "idEmpleado" name = "idEmpleado" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer form-group">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                            <button type="submit" id ="enviarLugar" name="enviarLugar" class="btn btn-primary">Guardar Cambios</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             {%endif%}
                         {% endfor %}
                     </tbody>    
@@ -61,4 +106,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+    <script src="{{ asset('public/js/fechas/fechaAsistencia.js') }}"></script>
+    <script src="{{ asset('public/js/guardar/asistenciaFeriado.js') }}"></script>
 {% endblock %}

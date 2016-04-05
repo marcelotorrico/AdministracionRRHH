@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\AsistenciaBundle\Entity\Asistencia;
 use MTD\AsistenciaBundle\Entity\Asistencia_Proyecto;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\AsistenciaBundle\Controller\RegistroAsistenciaAdministrativoController;
 
 class RegistroAsistenciaController extends Controller
 {
@@ -24,12 +25,13 @@ class RegistroAsistenciaController extends Controller
     public function registrarAction(Request $request, $id)
     {
         
+        $asistenciaAdministrativo = new RegistroAsistenciaAdministrativoController();
         $em = $this->getDoctrine()->getManager();
         $asistencia = new Asistencia();
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
         //utiliza en NAME!!
         $fecha              = $this->get('request')->request->get('fecha');
-        if(!$this->validarFecha(new \DateTime($fecha), $empleado)){
+        if(!$asistenciaAdministrativo->validarFecha(new \DateTime($fecha), $empleado)){
             $this->addFlash(
             'notice',
             'La fecha de la asistencia ya fue registrada. Por favor verifique los datos.'
@@ -53,6 +55,7 @@ class RegistroAsistenciaController extends Controller
             $asistencia->setTotalHorasNormales($totalHorasNormales);
             $asistencia->setTotalHorasExtras($totalHorasExtras);
             $asistencia->setActivo("TRUE");
+            $asistencia->setEmpleado($empleado);
 
             $em->persist($asistencia);
 
@@ -110,22 +113,5 @@ class RegistroAsistenciaController extends Controller
 
             $em->persist($asistenciaProyecto);
         }
-    }
-    
-    public function validarFecha($fecha, $empleado){
-        $res = true;
-        $proyectosEmpleado = $empleado->getProyectoEmpleado();
-        foreach($proyectosEmpleado  as $proyectoEmpleado){
-                $asistenciasProyecto = $proyectoEmpleado->getAsistenciaProyecto();
-                foreach($asistenciasProyecto as $asistenciaProyecto){
-                    $fechaEmpleado = $asistenciaProyecto->getAsistencia()->getFecha();
-                    $activo        = $asistenciaProyecto->getAsistencia()->getActivo();
-                    if($fecha == $fechaEmpleado && $activo){
-                        $res = false;
-                        break;
-                    }
-                }
-            }
-        return $res;
     }
 }
