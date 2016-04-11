@@ -1,0 +1,4 @@
+services:
+#    mtd_sueldos_salarios.example:
+#        class: MTD\SueldosSalariosBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

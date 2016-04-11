@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0 = $this->env->getExtension("native_profiler");
-        $__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0->enter($__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_06cf0319162676854d91dd71b2f4aaef32d7ce26abde65e86ff6f0eb81357078 = $this->env->getExtension("native_profiler");
+        $__internal_06cf0319162676854d91dd71b2f4aaef32d7ce26abde65e86ff6f0eb81357078->enter($__internal_06cf0319162676854d91dd71b2f4aaef32d7ce26abde65e86ff6f0eb81357078_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -147,15 +147,65 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             </ul>
                         </li>
                         
+                        <li class=\"dropdown\">
+                            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Sueldos y Salarios <span class=\"caret\"></span></a>
+                            <ul class=\"dropdown-menu\">
+                                <li ><a href=\"#fechaSueldos\" data-toggle=\"modal\">Empleados Operativos </a></li>
+                                <li role=\"separator\" class=\"divider\"></li>
+                                <li ><a href=\"";
+        // line 83
+        echo $this->env->getExtension('routing')->getPath("mtd_asistencia_administrativos");
+        echo "\">Empleados Administrativos </a></li>
+                            </ul>
+                        </li>
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
     </header>
+    
+    <div class=\"modal fade\" id=\"fechaSueldos\">
+        <div class=\"modal-dialog\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>
+                    <h4 class=\"modal-title\">Sueldos y Salarios</h4>
+                </div>
+                <div class=\"modal-body\">
+                    <div id=\"mainLugar\">
+
+                        <form action=\"";
+        // line 103
+        echo $this->env->getExtension('routing')->getPath("mtd_sueldos_ver");
+        echo "\" method=\"post\" role=\"form\" data-async data-target=\"#rating-modal\" class=\"text-left\">
+                            <div class=\"row\">
+                                <div class=\"col-md-12\">
+                                    <div class =\"form-group\">
+                                        <div class=\"input-group\">
+                                            <label class=\"input-group-addon addonGroup required\" for=\"fecha\">Mes y año:</label>
+                                            <input type=\"text\" id=\"sueldosSalarios\" name=\"sueldosSalarios\" required=\"required\" data-provide=\"datepicker\"
+                                            data-date-format=\"dd-mm-yyyy\" pidEmpleadolaceholder=\"Seleccione la fecha de la asistencia\" 
+                                            class=\" feriado form-control input-inline datepicker inputGroup\" title=\"Mes y año de los sueldos y salarios\">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=\"modal-footer form-group\">
+                                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Cerrar</button>
+                                <button type=\"submit\" id =\"enviarLugar\" name=\"enviarLugar\" class=\"btn btn-primary\">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0->leave($__internal_d3d4e18108577d1513bea27b9507ac9708c8cc62689c61e4da2a47030cbe52b0_prof);
+        $__internal_06cf0319162676854d91dd71b2f4aaef32d7ce26abde65e86ff6f0eb81357078->leave($__internal_06cf0319162676854d91dd71b2f4aaef32d7ce26abde65e86ff6f0eb81357078_prof);
 
     }
 
@@ -171,7 +221,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  145 => 74,  140 => 72,  130 => 65,  125 => 63,  115 => 56,  105 => 49,  101 => 48,  96 => 46,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
+        return array (  180 => 103,  157 => 83,  145 => 74,  140 => 72,  130 => 65,  125 => 63,  115 => 56,  105 => 49,  101 => 48,  96 => 46,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -251,10 +301,54 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                             </ul>*/
 /*                         </li>*/
 /*                         */
+/*                         <li class="dropdown">*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sueldos y Salarios <span class="caret"></span></a>*/
+/*                             <ul class="dropdown-menu">*/
+/*                                 <li ><a href="#fechaSueldos" data-toggle="modal">Empleados Operativos </a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
+/*                                 <li ><a href="{{ path('mtd_asistencia_administrativos') }}">Empleados Administrativos </a></li>*/
+/*                             </ul>*/
+/*                         </li>*/
+/*                         */
 /*                     </ul>*/
 /*                 </div><!-- /.navbar-collapse -->*/
 /*             </div><!-- /.container-fluid -->*/
 /*         </nav>*/
 /*     </header>*/
+/*     */
+/*     <div class="modal fade" id="fechaSueldos">*/
+/*         <div class="modal-dialog">*/
+/*             <div class="modal-content">*/
+/*                 <div class="modal-header">*/
+/*                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>*/
+/*                     <h4 class="modal-title">Sueldos y Salarios</h4>*/
+/*                 </div>*/
+/*                 <div class="modal-body">*/
+/*                     <div id="mainLugar">*/
+/* */
+/*                         <form action="{{ path('mtd_sueldos_ver') }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">*/
+/*                             <div class="row">*/
+/*                                 <div class="col-md-12">*/
+/*                                     <div class ="form-group">*/
+/*                                         <div class="input-group">*/
+/*                                             <label class="input-group-addon addonGroup required" for="fecha">Mes y año:</label>*/
+/*                                             <input type="text" id="sueldosSalarios" name="sueldosSalarios" required="required" data-provide="datepicker"*/
+/*                                             data-date-format="dd-mm-yyyy" pidEmpleadolaceholder="Seleccione la fecha de la asistencia" */
+/*                                             class=" feriado form-control input-inline datepicker inputGroup" title="Mes y año de los sueldos y salarios">*/
+/*                                         </div>*/
+/*                                     </div>*/
+/*                                 </div>*/
+/*                             </div>*/
+/*                             <div class="modal-footer form-group">*/
+/*                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>*/
+/*                                 <button type="submit" id ="enviarLugar" name="enviarLugar" class="btn btn-primary">Buscar</button>*/
+/*                             </div>*/
+/*                         </form>*/
+/*                     </div>*/
+/*                 </div>*/
+/*             </div>*/
+/*         </div>*/
+/*     </div>*/
+/*     */
 /* </div>*/
 /* <div id="cuerpo"></div>*/

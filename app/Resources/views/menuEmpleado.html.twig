@@ -10,9 +10,11 @@
         <a href="{{ path('mtd_empleado_proyectos_participa', { 'id': empleado.id }) }}" class="list-group-item">Proyectos en los que participa</a>
         {% if empleado.operativo == true %}
             <a href="{{ path('mtd_asistencia_empleado', { 'id': empleado.id }) }}" class="list-group-item">Registrar Asistencia</a>
+            <a href="{{ path('mtd_inasistencia_operativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Inasistencia</a>
             <a href="{{ path('mtd_asistencia_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
         {%else%}
             <a href="{{ path('mtd_asistencia_empleado_administrativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Asistencia</a>
+            <a href="{{ path('mtd_inasistencia_operativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Inasistencia</a>
             <a href="{{ path('mtd_asistencia_administrativo_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
         {%endif%}
         

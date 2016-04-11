@@ -27,6 +27,16 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
+        // mtd_sueldos_salarios_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_salarios_homepage')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        // mtd_sueldos_ver
+        if ($pathinfo === '/sueldosSalarios/ver') {
+            return array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\MuestraSueldosController::mostrarAction',  '_route' => 'mtd_sueldos_ver',);
+        }
+
         // mtd_asistencia_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_homepage')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DefaultController::indexAction',));
@@ -104,6 +114,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_inasistencia_operativo_registro')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroInasistenciaController::registrarAction',));
             }
 
+        }
+
+        // mtd_asistencia_feriado
+        if ($pathinfo === '/asistencia/feriado') {
+            return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroFeriadoController::registrarAction',  '_route' => 'mtd_asistencia_feriado',);
         }
 
         // mtd_seleccion_homepage

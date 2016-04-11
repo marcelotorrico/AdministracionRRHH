@@ -22,6 +22,7 @@
       <parameter key="MTDReclutamientoBundle">MTD\ReclutamientoBundle\MTDReclutamientoBundle</parameter>
       <parameter key="MTDSeleccionBundle">MTD\SeleccionBundle\MTDSeleccionBundle</parameter>
       <parameter key="MTDAsistenciaBundle">MTD\AsistenciaBundle\MTDAsistenciaBundle</parameter>
+      <parameter key="MTDSueldosSalariosBundle">MTD\SueldosSalariosBundle\MTDSueldosSalariosBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -1718,7 +1719,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56c53b1271d930.20853523</argument>
+            <argument>57081e1cb5a579.93996867</argument>
           </service>
         </argument>
       </argument>
@@ -1841,7 +1842,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56c53b1271d930.20853523</argument>
+            <argument>57081e1cb5a579.93996867</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2361,6 +2362,7 @@
               <argument key="MTDReclutamientoBundle">MTD\ReclutamientoBundle\Entity</argument>
               <argument key="MTDSeleccionBundle">MTD\SeleccionBundle\Entity</argument>
               <argument key="MTDAsistenciaBundle">MTD\AsistenciaBundle\Entity</argument>
+              <argument key="MTDSueldosSalariosBundle">MTD\SueldosSalariosBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2385,6 +2387,7 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2400,6 +2403,7 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2415,6 +2419,7 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2430,6 +2435,7 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2445,10 +2451,27 @@
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
                         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>MTD\AsistenciaBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\CategoriasTrabajoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProyectoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ReclutamientoBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SeleccionBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>MTD\SueldosSalariosBundle\Entity</argument>
                 </call>
               </service>
             </argument>
@@ -2885,6 +2908,10 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\AsistenciaBundle/Resources/views</argument>
         <argument>MTDAsistencia</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle/Resources/views</argument>
+        <argument>MTDSueldosSalarios</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>

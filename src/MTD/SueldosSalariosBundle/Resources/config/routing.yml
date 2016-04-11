@@ -1,0 +1,7 @@
+mtd_sueldos_salarios_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDSueldosSalariosBundle:Default:index }
+
+mtd_sueldos_ver:
+    path:     /sueldosSalarios/ver
+    defaults: {_controller: MTDSueldosSalariosBundle:MuestraSueldos:mostrar }

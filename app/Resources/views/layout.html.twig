@@ -6,6 +6,8 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}" />
             <link rel="stylesheet" href="{{ asset('public/estilos/principal.css') }}" />
+            <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" />
+            <link rel="stylesheet" href="{{ asset('public/estilos/feriado.css') }}" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -16,6 +18,8 @@
         {% block javascripts %}
             <script src="{{ asset('public/js/jquery.js') }}"></script>
             <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+            <script src="{{ asset('public/js/fechas/sueldosSalarios.js') }}"></script>
         {% endblock %}
     </body>
 </html>
