@@ -3,18 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Entity/Empleado_Requisito.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Controller/RegistroAsistenciaController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SeleccionBundle/Entity/Contratacion.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/fechas/sueldosSalarios.js</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Resources/views/Sueldos/muestraSueldos.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/app/Resources/views/menu.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProyectoBundle/Controller/ProyectoEmpleadoNombreController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/MuestraSueldosController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/app/Resources/views/menuEmpleado.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Entity/Sueldos.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SeleccionBundle/Entity/Contratacion.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/fechas/sueldosSalarios.js</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/MuestraSueldosController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SeleccionBundle/Resources/views/Seleccion/listaEmpleados.html.twig</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/app/Resources/views/layout.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Resources/config/routing.yml</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Entity/Empleado.php</file>
         </group>
     </open-files>

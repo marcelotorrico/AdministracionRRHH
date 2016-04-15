@@ -192,6 +192,11 @@ class Empleado
      */
     private $asistencia;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\SueldosSalariosBundle\Entity\Sueldos", mappedBy="empleado")
+     */
+    private $sueldos;
+    
     public function __construct()
     {
         $this->empleadoRequisito = new ArrayCollection();
@@ -199,6 +204,41 @@ class Empleado
         $this->proyectoEmpleado = new ArrayCollection();
         $this->documento = new ArrayCollection();
         $this->asistencia = new ArrayCollection();
+        $this->sueldos = new ArrayCollection();
+    }
+    
+    /**
+     * Add sueldos
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Sueldos $sueldos
+     *
+     * @return Empleado
+     */
+    public function addSueldos(\MTD\SueldosSalariosBundle\Entity\Sueldos $sueldos)
+    {
+        $this->sueldos[] = $sueldos;
+
+        return $this;
+    }
+
+    /**
+     * Remove sueldos
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Sueldos $sueldos
+     */
+    public function removeSueldos(\MTD\SueldosSalariosBundle\Entity\Sueldos $sueldos)
+    {
+        $this->sueldos->removeElement($sueldos);
+    }
+
+    /**
+     * Get sueldos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSueldos()
+    {
+        return $this->sueldos;
     }
 
     /**

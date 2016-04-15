@@ -22,9 +22,16 @@ class Sueldos
     private $id;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date")
+     */
+    private $fecha;
+    
+    /**
      * @var integer
      *
-     * @ORM\Column(name="dias_mes", type="integer")
+     * @ORM\Column(name="dias_mes", nullable = true, type="integer")
      */
     private $diasMes;
 
@@ -90,48 +97,21 @@ class Sueldos
      * @ORM\Column(name="total_pagado", nullable = true, type="float")
      */
     private $totalPagado;
-
+    
     /**
-     * @ORM\OneToMany(targetEntity="\MTD\AsistenciaBundle\Entity\Asistencia", mappedBy="sueldos")
+     * @ORM\ManyToOne(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado", inversedBy="sueldos")
+     * @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
+     * @return integer
      */
-    private $asistencia;
-
-    public function __construct()
+    private $empleado;
+    public function setEmpleado(\MTD\ReclutamientoBundle\Entity\Empleado $empleado)
     {
-        $this->asistencia = new ArrayCollection();
-    }
-    /**
-     * Add asistencia
-     *
-     * @param \MTD\AsistenciaBundle\Entity\Asistencia $asistencia
-     *
-     * @return Sueldos
-     */
-    public function addAsistencia(\MTD\AsistenciaBundle\Entity\Asistencia $asistencia)
-    {
-        $this->asistencia[] = $asistencia;
-
-        return $this;
+        $this->empleado = $empleado;
     }
 
-    /**
-     * Remove asistencia
-     *
-     * @param \MTD\AsistenciaBundle\Entity\Asistencia $asistencia
-     */
-    public function removeAsistencia(\MTD\AsistenciaBundle\Entity\Asistencia $asistencia)
+    public function getEmpleado()
     {
-        $this->asistencia->removeElement($asistencia);
-    }
-
-    /**
-     * Get asistencia
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAsistencia()
-    {
-        return $this->asistencia;
+        return $this->empleado;
     }
     
     /**
@@ -382,6 +362,30 @@ class Sueldos
     public function getTotalPagado()
     {
         return $this->totalPagado;
+    }
+    
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     *
+     * @return Asistencia
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
     }
 }
 

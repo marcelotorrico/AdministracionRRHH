@@ -34,36 +34,43 @@ class RegistroAsistenciaAdministrativoController extends Controller
             );
             return $this->redirect($this->generateUrl('mtd_asistencia_empleado_administrativo', array('id'=> $id, true)));
         }else{
-            $horaIngresoManana  = $this->get('request')->request->get('horaIngresoManana');
-            $horaSalidaManana   = $this->get('request')->request->get('horaSalidaManana');
-            $horaIngresoTarde   = $this->get('request')->request->get('horaIngresoTarde');
-            $horaSalidaTarde    = $this->get('request')->request->get('horaSalidaTarde');
-            $actividades        = $this->get('request')->request->get('actividades');
-            $totalHorasNormales = $this->get('request')->request->get('horasNormales');
-            $totalHorasExtras   = $this->get('request')->request->get('horasExtras');
-
-            $asistencia->setFecha(new \DateTime($fecha));
-            $asistencia->setHoraIngresoManana(new \DateTime($horaIngresoManana));
-            $asistencia->setHoraSalidaManana(new \DateTime($horaSalidaManana));
-            $asistencia->setHoraIngresoTarde(new \DateTime($horaIngresoTarde));
-            $asistencia->setHoraSalidaTarde(new \DateTime($horaSalidaTarde));
-            $asistencia->setActividad($actividades);
-            $asistencia->setTotalHorasNormales($totalHorasNormales);
-            $asistencia->setTotalHorasExtras($totalHorasExtras);
-            $asistencia->setActivo("TRUE");
-            $asistencia->setEmpleado($empleado);
-
-            $em->persist($asistencia);
-
-            $this->addFlash(
+            if(!$asistenciaAdministrativo->validarFechaIngreso(new \DateTime($fecha), $empleado)){
+                $this->addFlash(
                 'notice',
-                'La asistencia fue registrada correctamente'
-            );
+                'La fecha de la asistencia es posterior a la fecha de ingreso. Por favor verifique los datos.'
+                );
+                return $this->redirect($this->generateUrl('mtd_asistencia_empleado', array('id'=> $id, true)));
+            }else{
+                $horaIngresoManana  = $this->get('request')->request->get('horaIngresoManana');
+                $horaSalidaManana   = $this->get('request')->request->get('horaSalidaManana');
+                $horaIngresoTarde   = $this->get('request')->request->get('horaIngresoTarde');
+                $horaSalidaTarde    = $this->get('request')->request->get('horaSalidaTarde');
+                $actividades        = $this->get('request')->request->get('actividades');
+                $totalHorasNormales = $this->get('request')->request->get('horasNormales');
+                $totalHorasExtras   = $this->get('request')->request->get('horasExtras');
 
-            $em->flush();
+                $asistencia->setFecha(new \DateTime($fecha));
+                $asistencia->setHoraIngresoManana(new \DateTime($horaIngresoManana));
+                $asistencia->setHoraSalidaManana(new \DateTime($horaSalidaManana));
+                $asistencia->setHoraIngresoTarde(new \DateTime($horaIngresoTarde));
+                $asistencia->setHoraSalidaTarde(new \DateTime($horaSalidaTarde));
+                $asistencia->setActividad($actividades);
+                $asistencia->setTotalHorasNormales($totalHorasNormales);
+                $asistencia->setTotalHorasExtras($totalHorasExtras);
+                $asistencia->setActivo("TRUE");
+                $asistencia->setEmpleado($empleado);
 
-            return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $id, true)));
+                $em->persist($asistencia);
 
+                $this->addFlash(
+                    'notice',
+                    'La asistencia fue registrada correctamente'
+                );
+
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $id, true)));
+            }
         }
     }
     
@@ -77,6 +84,21 @@ class RegistroAsistenciaAdministrativoController extends Controller
                 $res = false;
                 break;
             }
+        }
+        return $res;
+    }
+    
+    public function validarFechaIngreso($fecha, $empleado){
+        $res = true;
+        $contrataciones = $empleado->getContratacion();
+        foreach($contrataciones  as $contratacion){
+            if($contratacion->getActivo()){
+                $fechaIngreso = $contratacion->getFechaIngreso();
+                break;
+            }
+        }
+        if($fecha < $fechaIngreso){
+            $res = false;
         }
         return $res;
     }

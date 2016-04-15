@@ -35,7 +35,7 @@ class ContratacionEmpleadoController extends Controller
             $contrataciones = $empleado->getContratacion();
             foreach($contrataciones  as $contratacion){
                 $contratacion->setActivo("FALSE");
-                break;
+                //break;
             }
             $this->addFlash(
                     'notice',
@@ -45,7 +45,7 @@ class ContratacionEmpleadoController extends Controller
             if($contrataciones = $empleado->getContratacion()){
                 foreach($contrataciones  as $contratacion){
                     $contratacion->setActivo("FALSE");
-                    break;
+                    //break;
                 }
             }
             $empleado->setContratado("TRUE");

@@ -190,23 +190,7 @@ class Asistencia
     {
         return $this->empleado;
     }
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="\MTD\SueldosSalariosBundle\Entity\Sueldos", inversedBy="asistencia")
-     * @ORM\JoinColumn(name="id_sueldo", referencedColumnName="id")
-     * @return integer
-     */
-    private $sueldo;
-    public function setSueldo(\MTD\SueldosSalariosBundle\Entity\Sueldos $sueldo)
-    {
-        $this->sueldo = $sueldo;
-    }
-
-    public function getSueldo()
-    {
-        return $this->sueldo;
-    }
-    
+   
     /**
      * Get id
      *
