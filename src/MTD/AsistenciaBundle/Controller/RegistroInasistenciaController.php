@@ -7,6 +7,7 @@ use MTD\AsistenciaBundle\Entity\Asistencia;
 use MTD\AsistenciaBundle\Controller\RegistroAsistenciaAdministrativoController;
 use MTD\AsistenciaBundle\Entity\Falta;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\SueldosSalariosBundle\Controller\SueldosPrincipalController;
 
 class RegistroInasistenciaController extends Controller
 {
@@ -44,12 +45,16 @@ class RegistroInasistenciaController extends Controller
             $asistencia->setFecha(new \DateTime($fecha));
             $asistencia->setActivo("TRUE");
             $asistencia->setEmpleado($empleado);
+            $asistencia->setFeriado("FALSE");
             $em->persist($asistencia);
             
             $falta->setAsistencia($asistencia);
             $falta->setAviso($justificado);
             $falta->setMotivo($motivos);
             $em->persist($falta);
+            
+            $sueldosPrincipal = new SueldosPrincipalController();
+            $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "falta", $asistencia);
             
             $this->addFlash(
                 'notice',

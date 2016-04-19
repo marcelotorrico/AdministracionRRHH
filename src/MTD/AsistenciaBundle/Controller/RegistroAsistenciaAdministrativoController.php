@@ -15,8 +15,17 @@ class RegistroAsistenciaAdministrativoController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
+        $configuraciones = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findAll();
+        $conf = "";
         
-        return $this->render('MTDAsistenciaBundle:Asistencia:registroAdministrativo.html.twig', array('empleado' => $empleado));
+        foreach($configuraciones as $configuracion){
+            if($configuracion->getActivo()){
+                $conf = $configuracion;
+                break;
+            }
+        }
+        
+        return $this->render('MTDAsistenciaBundle:Asistencia:registroAdministrativo.html.twig', array('empleado' => $empleado, "conf"=> $conf));
     }
     
     public function registrarAction(Request $request, $id)
@@ -59,6 +68,7 @@ class RegistroAsistenciaAdministrativoController extends Controller
                 $asistencia->setTotalHorasExtras($totalHorasExtras);
                 $asistencia->setActivo("TRUE");
                 $asistencia->setEmpleado($empleado);
+                $asistencia->setFeriado("FALSE");
 
                 $em->persist($asistencia);
 

@@ -4,10 +4,10 @@ namespace MTD\SueldosSalariosBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\SueldosSalariosBundle\Controller\CalculosSueldosController;
 
 class MuestraSueldosController extends Controller
 {
-    
     public function mostrarAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -32,7 +32,10 @@ class MuestraSueldosController extends Controller
                 $mes = $separa[1];
                 $diasMesTrabajados = $this->getDiasMes($contratacion->getEmpleado(), $año, $mes);
                 
-                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaIngreso, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados);
+                $calculo = new CalculosSueldosController();
+                $psgh = $calculo->getPsgh($em, "feriado");
+                
+                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaIngreso, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados, 'psgh'=> $psgh);
                 $i++;
             }
         }

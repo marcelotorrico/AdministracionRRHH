@@ -1,0 +1,114 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/clockpicker.min.css') }}" />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Configuracion de la Asistencia</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        
+        {{ include('menuListaProyectos.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            
+            <form action="{{ path('mtd_registrar_configuracion') }}" method="post">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaIngresoManana">H. Ingreso Mañana:</label>
+                                <input type="time" id="horaIngresoManana" name="horaIngresoManana" required="required"
+                                       placeholder="Seleccione la hora de ingreso en la mañana" class="form-control input-inline
+                                       inputGroup clockpicker pull-center" data-align="top" data-autoclose="true"
+                                       title="Hora de ingreso en la mañana" value={{ conf.horaIngresoManana|date('H:i:s') }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaSalidaManana">H. Salida Mañana:</label>
+
+                                <input type="time" id="horaSalidaManana" name="horaSalidaManana" required="required"
+                                       placeholder="Seleccione la hora de salida en la mañana"
+                                       class="form-control input-inline inputGroup clockpicker pull-center" data-align="top"
+                                       data-autoclose="true" title="Hora de salida en la mañana" value={{ conf.horaSalidaManana|date('H:i:s') }}>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaIngresoTarde">H. Ingreso Tarde:</label>
+                                <input type="time" id="horaIngresoTarde" name="horaIngresoTarde" required="required"
+                                       placeholder="Seleccione la hora de ingreso en la tarde"
+                                       class="form-control input-inline inputGroup clockpicker pull-center" data-align="top"
+                                       data-autoclose="true" title="Hora de ingreso en la tarde" value={{ conf.horaIngresoTarde|date('H:i:s') }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="horaSalidaTarde">H. Salida Tarde:</label>
+                                <input type="time" id="horaSalidaTarde" name="horaSalidaTarde" required="required"
+                                       placeholder="Seleccione la hora de salida en la tarde"
+                                       class="form-control input-inline inputGroup clockpicker pull-center" data-align="top"
+                                       data-autoclose="true" title="Hora de salida en la tarde" value={{ conf.horaSalidaTarde|date('H:i:s') }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon addonGroup">Dias por Semana:</span>
+                                <select id="dias" name="dias" required="required" class="form-control inputGroup" required="required" title="Seleccione una opcion">
+                                    {%if conf.numeroDias == 5%}
+                                        <option value="5" selected="selected">5</option>
+                                        <option value="6">6</option>
+                                    {%else%}
+                                        <option value="5">5</option>
+                                        <option value="6" selected="selected">6</option>
+                                    {%endif%}
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class ="form-group">
+                    <a href="{{path('mtd_asistencia_operativos')}}" id = "cancelar" name = "cancelar" class="btn btn-default">Cancelar</a>
+                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/clockpicker.min.js') }}"></script>
+    <script src="{{ asset('public/js/hora/horaAsistencia.js') }}"></script>
+{% endblock %}

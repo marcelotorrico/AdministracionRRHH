@@ -3,6 +3,7 @@
 namespace MTD\SueldosSalariosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Sueldos
@@ -38,9 +39,9 @@ class Sueldos
     /**
      * @var float
      *
-     * @ORM\Column(name="dias_no_trabajados", nullable = true, type="float")
+     * @ORM\Column(name="total_dias_no_trabajados", nullable = true, type="float")
      */
-    private $diasNoTrabajados;
+    private $totalDiasNoTrabajados;
 
     /**
      * @var float
@@ -99,6 +100,50 @@ class Sueldos
     private $totalPagado;
     
     /**
+     * @ORM\OneToMany(targetEntity="\MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados", mappedBy="sueldos")
+     */
+    private $diasNoTrabajados;
+    
+    public function __construct()
+    {
+        $this->diasNoTrabajados = new ArrayCollection();
+    }
+    
+    /**
+     * Add diasNoTrabajados
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados
+     *
+     * @return Sueldos
+     */
+    public function addDiasNoTrabajados(\MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados)
+    {
+        $this->diasNoTrabajados[] = $diasNoTrabajados;
+
+        return $this;
+    }
+
+    /**
+     * Remove diasNoTrabajados
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados
+     */
+    public function removeDiasNoTrabajados(\MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados)
+    {
+        $this->sueldos->removeElement($diasNoTrabajados);
+    }
+
+    /**
+     * Get diasNoTrabajados
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiasNoTrabajados()
+    {
+        return $this->diasNoTrabajados;
+    }
+    
+    /**
      * @ORM\ManyToOne(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado", inversedBy="sueldos")
      * @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * @return integer
@@ -149,27 +194,27 @@ class Sueldos
     }
 
     /**
-     * Set diasNoTrabajados
+     * Set totalDiasNoTrabajados
      *
-     * @param float $diasNoTrabajados
+     * @param float $totalDiasNoTrabajados
      *
      * @return Sueldos
      */
-    public function setDiasNoTrabajados($diasNoTrabajados)
+    public function setTotalDiasNoTrabajados($totalDiasNoTrabajados)
     {
-        $this->diasNoTrabajados = $diasNoTrabajados;
+        $this->totalDiasNoTrabajados = $totalDiasNoTrabajados;
 
         return $this;
     }
 
     /**
-     * Get diasNoTrabajados
+     * Get totalDiasNoTrabajados
      *
      * @return float
      */
-    public function getDiasNoTrabajados()
+    public function getTotalDiasNoTrabajados()
     {
-        return $this->diasNoTrabajados;
+        return $this->totalDiasNoTrabajados;
     }
 
     /**

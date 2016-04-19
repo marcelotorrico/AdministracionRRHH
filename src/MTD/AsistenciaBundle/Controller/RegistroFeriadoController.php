@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\AsistenciaBundle\Entity\Asistencia;
 use MTD\AsistenciaBundle\Controller\RegistroAsistenciaAdministrativoController;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\SueldosSalariosBundle\Controller\SueldosPrincipalController;
 
 class RegistroFeriadoController extends Controller
 {
@@ -32,6 +33,9 @@ class RegistroFeriadoController extends Controller
             $asistencia->setEmpleado($empleado);
             $asistencia->setFeriado(TRUE);
             $em->persist($asistencia);
+            
+            $sueldosPrincipal = new SueldosPrincipalController();
+            $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "feriado", $asistencia);
             
             $this->addFlash(
                 'notice',

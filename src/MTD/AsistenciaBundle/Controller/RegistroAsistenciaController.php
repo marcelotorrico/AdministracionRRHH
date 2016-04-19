@@ -5,9 +5,9 @@ namespace MTD\AsistenciaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\AsistenciaBundle\Entity\Asistencia;
 use MTD\AsistenciaBundle\Entity\Asistencia_Proyecto;
-use MTD\SueldosSalariosBundle\Entity\Sueldos;
 use Symfony\Component\HttpFoundation\Request;
 use MTD\AsistenciaBundle\Controller\RegistroAsistenciaAdministrativoController;
+use MTD\SueldosSalariosBundle\Controller\SueldosPrincipalController;
 
 class RegistroAsistenciaController extends Controller
 {
@@ -19,8 +19,17 @@ class RegistroAsistenciaController extends Controller
         
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
         $proyectos = $empleado->getProyectoEmpleado();
+        $configuraciones = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findAll();
+        $conf = "";
         
-        return $this->render('MTDAsistenciaBundle:Asistencia:registro.html.twig', array('empleado' => $empleado, 'proyectos' => $proyectos));
+        foreach($configuraciones as $configuracion){
+            if($configuracion->getActivo()){
+                $conf = $configuracion;
+                break;
+            }
+        }
+        
+        return $this->render('MTDAsistenciaBundle:Asistencia:registro.html.twig', array('empleado' => $empleado, 'proyectos' => $proyectos, "conf"=> $conf));
     }
     
     public function registrarAction(Request $request, $id)
@@ -64,6 +73,7 @@ class RegistroAsistenciaController extends Controller
                 $asistencia->setTotalHorasExtras($totalHorasExtras);
                 $asistencia->setActivo("TRUE");
                 $asistencia->setEmpleado($empleado);
+                $asistencia->setFeriado("FALSE");
 
                 $em->persist($asistencia);
 
@@ -97,7 +107,8 @@ class RegistroAsistenciaController extends Controller
                 $horasExtras5        = $this->get('request')->request->get('horasExtras5');
                 $this->guardar($em, $horasNormales5, $horasExtras5, $idProyectoEmpleado5, $asistencia);
 
-                $this->modificarSueldos($em, $fecha, $empleado);
+                $sueldosPrincipal = new SueldosPrincipalController();
+                $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "asistencia", $asistencia);
 
                 $this->addFlash(
                     'notice',
@@ -109,82 +120,6 @@ class RegistroAsistenciaController extends Controller
                 return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=> $id, true)));
                 }
         }
-    }
-    
-    public function modificarSueldos($em, $fecha, $empleado){
-        
-        $sueldosEmpleado = $empleado->getSueldos();
-        //list($año, $mes, $dia ) = split( '[/.-]', $fecha);
-        $separa = explode("/", $fecha);
-        $año = $separa[2];
-        $mes = $separa[0];
-        
-        if($sueldosEmpleado->isEmpty()){
-            $this->crearNuevoSueldo($em, $año, $mes, $empleado);
-        }else{
-            $i = 0;
-            foreach($sueldosEmpleado as $sueldoEmpleado){
-                $fechaSueldo = $sueldoEmpleado->getFecha();
-                //list($añoSueldo, $mesSueldo, $diaSueldo ) = split( '[/.-]', $fechaSueldo->format('Y-m-d H:i:s'));
-                $separa1 = explode("-", $fechaSueldo->format('Y-m-d'));
-                $añoSueldo = $separa1[0];
-                $mesSueldo = $separa1[1];
-                if($año == $añoSueldo && $mes == $mesSueldo){
-                    break;
-                }else{
-                    $i++;
-                }
-            }
-            if(count($sueldosEmpleado) == $i){
-                $this->crearNuevoSueldo($em, $año, $mes, $empleado);
-            }
-        }
-    }
-    
-    public function crearNuevoSueldo($em, $año, $mes, $empleado) {
-        $sueldos = new Sueldos();
-        $fechaSueldo = $año."-".$mes."-01";
-        $diasMes = $this->getDiasMes($empleado, $año, $mes);
-        
-        $sueldos->setFecha(new \DateTime($fechaSueldo));
-        $sueldos->setEmpleado($empleado);
-        $sueldos->setDiasMes($diasMes);
-        
-        $em->persist($sueldos);
-    }
-    
-    public function getDiasMes($empleado, $año, $mes){
-        $fechaSueldo = $año."-".$mes."-01";
-        $contrataciones = $empleado->getContratacion();
-        foreach($contrataciones as $contratacion){
-            if($contratacion->getActivo()){
-                $fechaIngreso = $contratacion->getFechaIngreso();
-                break;
-            }
-        }
-        $diferenciaDias = $this->getDiferenciaDias($fechaSueldo, $fechaIngreso);
-        $diasMes = $this->getTotalDiasMes($mes, $año);
-        if($diferenciaDias >= 0 ){
-            return $diasMes;
-        }else{
-            $ultimaFechaSueldo = $año."-".$mes."-".$diasMes;
-            $diasMesTrabajados = $this->getDiferenciaDias($ultimaFechaSueldo, $fechaIngreso);
-            return $diasMesTrabajados;
-        }
-    }
-    
-    public function getTotalDiasMes($month, $year) {
-        $first_of_month = mktime (0,0,0, $month, 1, $year); 
-        $maxdays = date('t', $first_of_month);
-        return $maxdays;
-    }
-    
-    public function getDiferenciaDias($fechaSueldo, $fechaIngreso) {
-        $inicio = strtotime($fechaIngreso->format('Y-m-d'));
-        $fin = strtotime($fechaSueldo);
-        $dif = $fin - $inicio;
-        $diasFalt = (( ( $dif / 60 ) / 60 ) / 24);
-        return ceil($diasFalt);
     }
     
     public function guardar($em, $horasNormales, $horasExtras, $idProyectoEmpleado, $asistencia){

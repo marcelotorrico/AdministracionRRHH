@@ -176,6 +176,22 @@ class Asistencia
     }
     
     /**
+     * @ORM\ManyToOne(targetEntity="\MTD\AsistenciaBundle\Entity\Configuracion", inversedBy="asistencia")
+     * @ORM\JoinColumn(name="id_configuracion", referencedColumnName="id")
+     * @return integer
+     */
+    private $configuracion;
+    public function setConfiguracion(\MTD\AsistenciaBundle\Entity\Configuracion $configuracion)
+    {
+        $this->configuracion = $configuracion;
+    }
+
+    public function getConfiguracion()
+    {
+        return $this->configuracion;
+    }
+    
+    /**
      * @ORM\ManyToOne(targetEntity="\MTD\ReclutamientoBundle\Entity\Empleado", inversedBy="asistencia")
      * @ORM\JoinColumn(name="id_empleado", referencedColumnName="id")
      * @return integer

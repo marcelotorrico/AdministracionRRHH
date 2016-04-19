@@ -116,9 +116,22 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
-        // mtd_asistencia_feriado
-        if ($pathinfo === '/asistencia/feriado') {
-            return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroFeriadoController::registrarAction',  '_route' => 'mtd_asistencia_feriado',);
+        if (0 === strpos($pathinfo, '/asistencia')) {
+            // mtd_asistencia_feriado
+            if ($pathinfo === '/asistencia/feriado') {
+                return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroFeriadoController::registrarAction',  '_route' => 'mtd_asistencia_feriado',);
+            }
+
+            // mtd_asistencia_configuracion
+            if ($pathinfo === '/asistencia/configuracion') {
+                return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroConfiguracionController::mostrarAction',  '_route' => 'mtd_asistencia_configuracion',);
+            }
+
+        }
+
+        // mtd_registrar_configuracion
+        if ($pathinfo === '/registrar/configuracion') {
+            return array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\RegistroConfiguracionController::registrarAction',  '_route' => 'mtd_registrar_configuracion',);
         }
 
         // mtd_seleccion_homepage

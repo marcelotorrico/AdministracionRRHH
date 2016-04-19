@@ -61,3 +61,11 @@ mtd_inasistencia_operativo_registro:
 mtd_asistencia_feriado:
     path:     /asistencia/feriado
     defaults: {_controller: MTDAsistenciaBundle:RegistroFeriado:registrar }
+    
+mtd_asistencia_configuracion:
+    path:     /asistencia/configuracion
+    defaults: {_controller: MTDAsistenciaBundle:RegistroConfiguracion:mostrar }
+    
+mtd_registrar_configuracion:
+    path:     /registrar/configuracion
+    defaults: {_controller: MTDAsistenciaBundle:RegistroConfiguracion:registrar }
