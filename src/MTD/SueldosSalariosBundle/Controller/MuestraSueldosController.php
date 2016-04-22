@@ -25,17 +25,19 @@ class MuestraSueldosController extends Controller
                 $sueldoBasico = $this->getSueldoBasico($contratacion);
                 //$fechaMes = strtotime($fecha);
                 //$diasMesTrabajados = date( "t", $fechaMes);
-                $fecha1 = "2016/03/14";
+                $fecha1 = "2016/01/03";
                 //list($anio, $mes) = split( '[/.-]', $fecha1);
                 $separa = explode("/", $fecha1);
                 $año = $separa[0];
                 $mes = $separa[1];
                 $diasMesTrabajados = $this->getDiasMes($contratacion->getEmpleado(), $año, $mes);
+                $fechaSueldo = $año."-".$mes."-03";
+                $semanaSueldo = date("W", strtotime($fechaSueldo));
                 
                 $calculo = new CalculosSueldosController();
-                $psgh = $calculo->getPsgh($em, "feriado");
+                $pesosPsgh = $calculo->getPesosFalla(3220, 01, 2016, 4.80, 1);
                 
-                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaIngreso, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados, 'psgh'=> $psgh);
+                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaIngreso, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados, 'pesosPsgh' => $semanaSueldo);
                 $i++;
             }
         }

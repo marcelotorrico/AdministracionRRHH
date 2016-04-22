@@ -6,6 +6,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CalculosSueldosController extends Controller
 {
+    public function getPesosFalla($sueldoBasico, $mes, $año, $falla, $feriadoPerdido) {
+        $diasTotalMes   = $this->getTotalDiasMes($mes, $año);
+        $division       = $sueldoBasico/$diasTotalMes;
+        $multiplicacion = $division * $falla;
+        $multFP         = $division * $feriadoPerdido;
+        $pesosFalla     = $multiplicacion + $multFP;
+        return round($pesosFalla, 2);
+    }
+    
+    public function getPesosPsgh($sueldoBasico, $mes, $año, $decimalesPsgh) {
+        $diasTotalMes   = $this->getTotalDiasMes($mes, $año);
+        $division       = $sueldoBasico/$diasTotalMes;
+        $multiplicacion = (1/6)*($division);
+        $pesosPsgh      = ($division + $multiplicacion) * $decimalesPsgh;
+        return round($pesosPsgh, 2);
+    }
+    
     public function getPsgh($em, $tipoAsistencia, $asistencia) {
         $configuracion = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
         $psgh = "";
@@ -22,8 +39,8 @@ class CalculosSueldosController extends Controller
     }
     
     public function getPsghFalta($configuracion) {
-        $diasTrabajo        = $configuracion->getNumeroDias();
-        $psgh = 48/$diasTrabajo;
+        $diasTrabajo = $configuracion->getNumeroDias();
+        $psgh        = 48/$diasTrabajo;
         return $psgh;
     }
     

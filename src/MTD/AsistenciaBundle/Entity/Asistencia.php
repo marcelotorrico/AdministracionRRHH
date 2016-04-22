@@ -98,6 +98,13 @@ class Asistencia
     private $asistenciaProyecto;
     
     /**
+     * @var float
+     *
+     * @ORM\Column(name="psgh", nullable = true, type="float")
+     */
+    private $psgh;
+    
+    /**
      * @ORM\OneToMany(targetEntity="\MTD\AsistenciaBundle\Entity\Falta", mappedBy="asistencia")
      */
     private $falta;
@@ -407,6 +414,30 @@ class Asistencia
     public function getTotalHorasExtras()
     {
         return $this->totalHorasExtras;
+    }
+    
+    /**
+     * Set psgh
+     *
+     * @param float $psgh
+     *
+     * @return Asistencia
+     */
+    public function setPsgh($psgh)
+    {
+        $this->psgh = $psgh;
+
+        return $this;
+    }
+
+    /**
+     * Get psgh
+     *
+     * @return float
+     */
+    public function getPsgh()
+    {
+        return $this->psgh;
     }
     
     /**

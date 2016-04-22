@@ -54,7 +54,11 @@ class RegistroInasistenciaController extends Controller
             $em->persist($falta);
             
             $sueldosPrincipal = new SueldosPrincipalController();
-            $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "falta", $asistencia);
+            if($justificado == "TRUE"){
+                $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "permiso", $asistencia);
+            }else{
+                $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "falta", $asistencia);
+            }
             
             $this->addFlash(
                 'notice',

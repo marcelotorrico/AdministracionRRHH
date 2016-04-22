@@ -15,15 +15,7 @@ class RegistroAsistenciaAdministrativoController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
-        $configuraciones = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findAll();
-        $conf = "";
-        
-        foreach($configuraciones as $configuracion){
-            if($configuracion->getActivo()){
-                $conf = $configuracion;
-                break;
-            }
-        }
+        $conf = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
         
         return $this->render('MTDAsistenciaBundle:Asistencia:registroAdministrativo.html.twig', array('empleado' => $empleado, "conf"=> $conf));
     }

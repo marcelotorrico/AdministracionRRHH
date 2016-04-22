@@ -8,6 +8,7 @@ use MTD\AsistenciaBundle\Entity\Asistencia_Proyecto;
 use Symfony\Component\HttpFoundation\Request;
 use MTD\AsistenciaBundle\Controller\RegistroAsistenciaAdministrativoController;
 use MTD\SueldosSalariosBundle\Controller\SueldosPrincipalController;
+use MTD\SueldosSalariosBundle\Controller\CalculosSueldosController;
 
 class RegistroAsistenciaController extends Controller
 {
@@ -19,15 +20,7 @@ class RegistroAsistenciaController extends Controller
         
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
         $proyectos = $empleado->getProyectoEmpleado();
-        $configuraciones = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findAll();
-        $conf = "";
-        
-        foreach($configuraciones as $configuracion){
-            if($configuracion->getActivo()){
-                $conf = $configuracion;
-                break;
-            }
-        }
+        $conf = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
         
         return $this->render('MTDAsistenciaBundle:Asistencia:registro.html.twig', array('empleado' => $empleado, 'proyectos' => $proyectos, "conf"=> $conf));
     }
@@ -74,6 +67,10 @@ class RegistroAsistenciaController extends Controller
                 $asistencia->setActivo("TRUE");
                 $asistencia->setEmpleado($empleado);
                 $asistencia->setFeriado("FALSE");
+                
+                $calculoSueldos = new CalculosSueldosController();
+                $psgh = $calculoSueldos->getPsgh($em, "asistencia", $asistencia);
+                $asistencia->setPsgh($psgh);
 
                 $em->persist($asistencia);
 

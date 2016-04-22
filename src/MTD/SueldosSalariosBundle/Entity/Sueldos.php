@@ -39,10 +39,38 @@ class Sueldos
     /**
      * @var float
      *
-     * @ORM\Column(name="total_dias_no_trabajados", nullable = true, type="float")
+     * @ORM\Column(name="psgh", nullable = true, type="float")
      */
-    private $totalDiasNoTrabajados;
+    private $psgh;
 
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pesos_psgh", nullable = true, type="float")
+     */
+    private $pesosPsgh;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="falla", nullable = true, type="float")
+     */
+    private $falla;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="feriado_perdido", nullable = true, type="integer")
+     */
+    private $feriadoPerdido;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pesos_falla", nullable = true, type="float")
+     */
+    private $pesosFalla;
+    
     /**
      * @var float
      *
@@ -100,47 +128,47 @@ class Sueldos
     private $totalPagado;
     
     /**
-     * @ORM\OneToMany(targetEntity="\MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados", mappedBy="sueldos")
+     * @ORM\OneToMany(targetEntity="\MTD\SueldosSalariosBundle\Entity\Falla_Acumulada", mappedBy="sueldo")
      */
-    private $diasNoTrabajados;
+    private $fallaAcumulada;
     
     public function __construct()
     {
-        $this->diasNoTrabajados = new ArrayCollection();
+        $this->fallaAcumulada = new ArrayCollection();
     }
     
     /**
-     * Add diasNoTrabajados
+     * Add fallaAcumulada
      *
-     * @param \MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados
+     * @param \MTD\SueldosSalariosBundle\Entity\Falla_Acumulada $fallaAcumulada
      *
      * @return Sueldos
      */
-    public function addDiasNoTrabajados(\MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados)
+    public function addFallaAcumulada(\MTD\SueldosSalariosBundle\Entity\Falla_Acumulada $fallaAcumulada)
     {
-        $this->diasNoTrabajados[] = $diasNoTrabajados;
+        $this->fallaAcumulada[] = $fallaAcumulada;
 
         return $this;
     }
 
     /**
-     * Remove diasNoTrabajados
+     * Remove fallaAcumulada
      *
-     * @param \MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados
+     * @param \MTD\SueldosSalariosBundle\Entity\Falla_Acumulada $fallaAcumulada
      */
-    public function removeDiasNoTrabajados(\MTD\SueldosSalariosBundle\Entity\Dias_No_Trabajados $diasNoTrabajados)
+    public function removeFallaAcumulada(\MTD\SueldosSalariosBundle\Entity\Falla_Acumulada $fallaAcumulada)
     {
-        $this->sueldos->removeElement($diasNoTrabajados);
+        $this->fallaAcumulada->removeElement($fallaAcumulada);
     }
 
     /**
-     * Get diasNoTrabajados
+     * Get fallaAcumulada
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDiasNoTrabajados()
+    public function getFallaAcumulada()
     {
-        return $this->diasNoTrabajados;
+        return $this->fallaAcumulada;
     }
     
     /**
@@ -194,27 +222,123 @@ class Sueldos
     }
 
     /**
-     * Set totalDiasNoTrabajados
+     * Set psgh
      *
-     * @param float $totalDiasNoTrabajados
+     * @param float $psgh
      *
      * @return Sueldos
      */
-    public function setTotalDiasNoTrabajados($totalDiasNoTrabajados)
+    public function setPsgh($psgh)
     {
-        $this->totalDiasNoTrabajados = $totalDiasNoTrabajados;
+        $this->psgh = $psgh;
 
         return $this;
     }
 
     /**
-     * Get totalDiasNoTrabajados
+     * Get psgh
      *
      * @return float
      */
-    public function getTotalDiasNoTrabajados()
+    public function getPsgh()
     {
-        return $this->totalDiasNoTrabajados;
+        return $this->psgh;
+    }
+
+    /**
+     * Set pesosPsgh
+     *
+     * @param float $pesosPsgh
+     *
+     * @return Sueldos
+     */
+    public function setPesosPsgh($pesosPsgh)
+    {
+        $this->pesosPsgh = $pesosPsgh;
+
+        return $this;
+    }
+
+    /**
+     * Get pesosPsgh
+     *
+     * @return float
+     */
+    public function getPesosPsgh()
+    {
+        return $this->pesosPsgh;
+    }
+
+    /**
+     * Set falla
+     *
+     * @param float $falla
+     *
+     * @return Sueldos
+     */
+    public function setFalla($falla)
+    {
+        $this->falla = $falla;
+
+        return $this;
+    }
+
+    /**
+     * Get falla
+     *
+     * @return float
+     */
+    public function getFalla()
+    {
+        return $this->falla;
+    }
+
+    /**
+     * Set feriadoPerdido
+     *
+     * @param integer $feriadoPerdido
+     *
+     * @return Sueldos
+     */
+    public function setFeriadoPerdido($feriadoPerdido)
+    {
+        $this->feriadoPerdido = $feriadoPerdido;
+
+        return $this;
+    }
+
+    /**
+     * Get feriadoPerdido
+     *
+     * @return integer
+     */
+    public function getFeriadoPerdido()
+    {
+        return $this->feriadoPerdido;
+    }
+
+    /**
+     * Set pesosFalla
+     *
+     * @param float $pesosFalla
+     *
+     * @return Sueldos
+     */
+    public function setPesosFalla($pesosFalla)
+    {
+        $this->pesosFalla = $pesosFalla;
+
+        return $this;
+    }
+
+    /**
+     * Get pesosFalla
+     *
+     * @return float
+     */
+    public function getPesosFalla()
+    {
+        return $this->pesosFalla;
     }
 
     /**
