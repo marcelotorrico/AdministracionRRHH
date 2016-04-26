@@ -77,6 +77,13 @@ class Sueldos
      * @ORM\Column(name="dias_trabajados", nullable = true, type="float")
      */
     private $diasTrabajados;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="numero_horas_extras", nullable = true, type="float")
+     */
+    private $numeroHorasExtras;
 
     /**
      * @var float
@@ -363,6 +370,30 @@ class Sueldos
     public function getDiasTrabajados()
     {
         return $this->diasTrabajados;
+    }
+    
+    /**
+     * Set numeroHorasExtras
+     *
+     * @param float $numeroHorasExtras
+     *
+     * @return Sueldos
+     */
+    public function setNumeroHorasExtras($numeroHorasExtras)
+    {
+        $this->numeroHorasExtras = $numeroHorasExtras;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroHorasExtras
+     *
+     * @return float
+     */
+    public function getNumeroHorasExtras()
+    {
+        return $this->numeroHorasExtras;
     }
 
     /**

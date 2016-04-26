@@ -62,8 +62,16 @@ class RegistroAsistenciaController extends Controller
                 $asistencia->setHoraIngresoTarde(new \DateTime($horaIngresoTarde));
                 $asistencia->setHoraSalidaTarde(new \DateTime($horaSalidaTarde));
                 $asistencia->setActividad($actividades);
-                $asistencia->setTotalHorasNormales($totalHorasNormales);
-                $asistencia->setTotalHorasExtras($totalHorasExtras);
+                if($totalHorasNormales){
+                    $asistencia->setTotalHorasNormales($totalHorasNormales);
+                }else{
+                    $asistencia->setTotalHorasNormales(0);
+                }
+                if($totalHorasExtras){
+                    $asistencia->setTotalHorasExtras($totalHorasExtras);
+                }else{
+                    $asistencia->setTotalHorasExtras(0);
+                }
                 $asistencia->setActivo("TRUE");
                 $asistencia->setEmpleado($empleado);
                 $asistencia->setFeriado("FALSE");

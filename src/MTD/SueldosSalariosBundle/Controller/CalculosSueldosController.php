@@ -6,6 +6,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CalculosSueldosController extends Controller
 {
+    public function getHorasExtras($sueldoBasico, $mes, $año, $numeroHorasExtras) {
+        $diasTotalMes   = $this->getTotalDiasMes($mes, $año);
+        $division = $sueldoBasico/$diasTotalMes;
+        $horasExtras = ($division / 8) * 2 * $numeroHorasExtras;
+        return round($horasExtras, 2);
+    }
+    
+    public function getDiasTrabajados($sueldoBasico, $mes, $año, $diasMes, $pesosPsgh, $pesosFalla) {
+        $diasTotalMes   = $this->getTotalDiasMes($mes, $año);
+        $division = $sueldoBasico/$diasTotalMes;
+        $multiplicacion = $division * $diasMes;
+        $diasTrabajados = $multiplicacion - $pesosPsgh - $pesosFalla;
+        return $diasTrabajados;
+    }
+    
     public function getPesosFalla($sueldoBasico, $mes, $año, $falla, $feriadoPerdido) {
         $diasTotalMes   = $this->getTotalDiasMes($mes, $año);
         $division       = $sueldoBasico/$diasTotalMes;
@@ -77,10 +92,7 @@ class CalculosSueldosController extends Controller
         
         if(strtotime($horasEstablecidas) > strtotime($horasTrabajadasDia)){
             $permiso              = $this->diferenciaHoras($horasTrabajadasDia, $horasEstablecidas);
-            $horasPermiso         = date('H', strtotime($permiso));
-            $minutosPermiso       = date('i', strtotime($permiso));
-            $minutosTransformados = $minutosPermiso/60;
-            $psgh = (float)$horasPermiso + (float)$minutosTransformados;
+            $psgh = $this->transformarMinutos($permiso);
         }else{
             $psgh = 0;
         }
@@ -135,5 +147,19 @@ class CalculosSueldosController extends Controller
         $dif = $fin - $inicio;
         $diasFalt = (( ( $dif / 60 ) / 60 ) / 24);
         return ceil($diasFalt);
+    }
+    
+    public function actualizarCifra($valorAntiguo, $valorNuevo) {
+        $valorAnterior = $valorAntiguo * 8;
+        $cifraNueva = $valorAnterior + $valorNuevo;
+        return round($cifraNueva/8, 2);
+    }
+    
+    public function transformarMinutos($hora) {
+        $horas                = date('H', strtotime($hora));
+        $minutos              = date('i', strtotime($hora));
+        $minutosTransformados = $minutos/60;
+        $horaTransformada     = (float)$horas + (float)$minutosTransformados;
+        return $horaTransformada;
     }
 }

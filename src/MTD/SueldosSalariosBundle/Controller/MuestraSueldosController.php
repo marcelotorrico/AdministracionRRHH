@@ -37,7 +37,9 @@ class MuestraSueldosController extends Controller
                 $calculo = new CalculosSueldosController();
                 $pesosPsgh = $calculo->getPesosFalla(3220, 01, 2016, 4.80, 1);
                 
-                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaIngreso, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados, 'pesosPsgh' => $semanaSueldo);
+                $diasTrabajados = $calculo->getDiasTrabajados(3220, 01, 2016, 31, 112.7, 602.5);
+                
+                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaIngreso, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados, 'pesosPsgh' => $semanaSueldo, 'diasTrabajados' => $diasTrabajados);
                 $i++;
             }
         }

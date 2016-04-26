@@ -8,8 +8,7 @@
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/MuestraSueldosController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Entity/Sueldos.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/CalculosSueldosController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Entity/Falla_Acumulada.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ReclutamientoBundle/Entity/Empleado.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/DiasNoTrabajadosController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/SueldosPrincipalController.php</file>
         </group>
     </open-files>

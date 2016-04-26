@@ -5,7 +5,7 @@ namespace MTD\SueldosSalariosBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\SueldosSalariosBundle\Entity\Sueldos;
 use MTD\SueldosSalariosBundle\Controller\CalculosSueldosController;
-use MTD\SueldosSalariosBundle\Entity\Falla_Acumulada;
+use MTD\SueldosSalariosBundle\Controller\DiasNoTrabajadosController;
 
 class SueldosPrincipalController extends Controller
 {
@@ -31,7 +31,7 @@ class SueldosPrincipalController extends Controller
                 $añoSueldo = $separa1[0];
                 $mesSueldo = $separa1[1];
                 if($año == $añoSueldo && $mes == $mesSueldo){
-                    $this->actualizarSueldo($em, $sueldoEmpleado, $tipoAsistencia, $año, $semanaSueldo, $asistencia);
+                    $this->actualizarSueldo($em, $empleado, $mes, $sueldoEmpleado, $tipoAsistencia, $año, $semanaSueldo, $asistencia);
                     break;
                 }else{
                     $i++;
@@ -43,83 +43,41 @@ class SueldosPrincipalController extends Controller
         }
     }
     
-    public function actualizarSueldo($em, $sueldo, $tipoAsistencia, $año, $semanaSueldo, $asistencia) {
+    public function actualizarSueldo($em, $empleado, $mes, $sueldo, $tipoAsistencia, $año, $semanaSueldo, $asistencia) {
         $calculoSueldos = new CalculosSueldosController();
+        $diasNoTrabajados = new DiasNoTrabajadosController();
+        $sueldoBasico = $this->getSueldoBasico($empleado);
+        
         if($tipoAsistencia == "falta"){
-            $this->actualizarFallaFalta($em, $sueldo, $año, $semanaSueldo);
+            $diasNoTrabajados->actualizarFallaFalta($em, $sueldo, $año, $semanaSueldo);
+            
+            $configuracion = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
+            $fallaNueva = $calculoSueldos->getPsghFalta($configuracion);
+            $falla = $sueldo->getFalla();
+            $fallaActualizada = $calculoSueldos->actualizarCifra($falla, $fallaNueva);
+            $feriadoPerdido = $sueldo->getFeriadoPerdido();
+            $pesosFalla = $calculoSueldos->getPesosFalla($sueldoBasico, $mes, $año, $fallaActualizada, $feriadoPerdido);
+            
+            $this->actualizarSueldoFalta($em, $sueldo, $fallaActualizada, $pesosFalla);
         }else{
             $psgh = $calculoSueldos->getPsgh($em, $tipoAsistencia, $asistencia);
             if($psgh > 0){
-                $this->actualizarFallaInasistencia($em, $sueldo, $año, $semanaSueldo);
+                $diasNoTrabajados->actualizarFallaInasistencia($em, $sueldo, $año, $semanaSueldo);
             }
         }
     }
     
-    public function actualizarFallaInasistencia($em, $sueldo, $año, $semanaSueldo) {
-        $acumulacionFallas = $sueldo->getFallaAcumulada();
-        $i = 0;
-        foreach($acumulacionFallas as $acumulacionFalla){
-            $añoFalla = $acumulacionFalla->getAño();
-            $semanaFalla = $acumulacionFalla->getSemana();
-            if($año == $añoFalla && $semanaSueldo == $semanaFalla){
-                $this->actualizarPermisos($em, $acumulacionFalla, $sueldo);
-                $i++;
-            }
-        }
-        if($i == 0){
-            $this->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 1);
-        }
-    }
-    
-    public function actualizarFallaFalta($em, $sueldo, $año, $semanaSueldo) {
-        $i = 0;
-        foreach($sueldo->getFallaAcumulada() as $acumulacionFalla){
-            $añoFalla = $acumulacionFalla->getAño();
-            $semanaFalla = $acumulacionFalla->getSemana();
-            $estadoFalla = $acumulacionFalla->getActivo();
-            if($año == $añoFalla && $semanaSueldo == $semanaFalla){
-                if($estadoFalla){
-                    $this->actualizarFeriadoPerdido($em, $sueldo);
-                    $acumulacionFalla->setActivo(FALSE);
-                    $em->persist($acumulacionFalla);
-                }
-                $i++;
-            }
-        }
-        if($i == 0){
-            $this->actualizarFeriadoPerdido($em, $sueldo);
-            $this->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, FALSE, 0);
-        }
-    }
-    
-    public function actualizarFeriadoPerdido($em, $sueldo) {
-        $feriadoPerdido = $sueldo->getFeriadoPerdido();
-        $sueldo->setFeriadoPerdido($feriadoPerdido+1);
-        
+    public function actualizarSueldoFalta($em, $sueldo, $fallaActualizada, $pesosFalla){
+        $sueldo->setFalla($fallaActualizada);
+        $sueldo->setPesosFalla($pesosFalla);
         $em->persist($sueldo);
-    }
-    
-    public function actualizarPermisos($em, $acumulacionFalla, $sueldo) {
-        $estadoFalla = $acumulacionFalla->getActivo();
-        $permiso = $acumulacionFalla->getPermiso();
-        if($permiso == 2){
-            $acumulacionFalla->setPermiso($permiso+1);
-            $acumulacionFalla->setActivo(FALSE);
-            if($estadoFalla){
-                $feriadoPerdido = $sueldo->getFeriadoPerdido();
-                $sueldo->setFeriadoPerdido($feriadoPerdido+1);
-                $em->persist($sueldo);
-            }
-        }else{
-            $acumulacionFalla->setPermiso($permiso+1);
-        }
-        $em->persist($acumulacionFalla);
     }
     
     public function crearNuevoSueldo($em, $año, $mes, $semanaSueldo, $empleado, $tipoAsistencia, $asistencia) {
         
         $calculoSueldos = new CalculosSueldosController();
         $sueldo = new Sueldos();
+        $diasNoTrabajados = new DiasNoTrabajadosController();
         
         $fechaSueldo = $año."-".$mes."-01";
         $diasMes = $calculoSueldos->getDiasMes($empleado, $año, $mes);
@@ -132,19 +90,25 @@ class SueldosPrincipalController extends Controller
             $pesosPsgh = 0;
             $feriadoPerdido = 1;
             $pesosFalla = $calculoSueldos->getPesosFalla($sueldoBasico, $mes, $año, $falla, $feriadoPerdido);
-            $fallaAcumulada = $this->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, FALSE, 0);
+            $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, FALSE, 0);
+            $diasTrabajados = $calculoSueldos->getDiasTrabajados($sueldoBasico, $mes, $año, $diasMes, $pesosPsgh, $pesosFalla);
+            $numeroHorasExtras = 0;
+            $horasExtras = 0;
         }else{
             $psgh = $calculoSueldos->getPsgh($em, $tipoAsistencia, $asistencia);
             $decimalesPsgh = round($psgh/8, 2);
             $pesosPsgh = $calculoSueldos->getPesosPsgh($sueldoBasico, $mes, $año, $decimalesPsgh);
             if($decimalesPsgh > 0){
-                $fallaAcumulada = $this->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 1);
+                $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 1);
             }else{
-                $fallaAcumulada = $this->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 0);
+                $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 0);
             }
             $falla = 0;
             $feriadoPerdido = 0;
             $pesosFalla = 0;
+            $diasTrabajados = $calculoSueldos->getDiasTrabajados($sueldoBasico, $mes, $año, $diasMes, $pesosPsgh, $pesosFalla);
+            $numeroHorasExtras = $calculoSueldos->transformarMinutos($asistencia->getTotalHorasExtras());
+            $horasExtras = $calculoSueldos->getHorasExtras($sueldoBasico, $mes, $año, $numeroHorasExtras);
         }
         
         $sueldo->setFecha(new \DateTime($fechaSueldo));
@@ -155,20 +119,13 @@ class SueldosPrincipalController extends Controller
         $sueldo->setFalla($falla);
         $sueldo->setFeriadoPerdido($feriadoPerdido);
         $sueldo->setPesosFalla($pesosFalla);
+        $sueldo->setDiasTrabajados($diasTrabajados);
+        $sueldo->setNumeroHorasExtras($numeroHorasExtras);
+        $sueldo->setHorasExtras($horasExtras);
+        
         $sueldo->addFallaAcumulada($fallaAcumulada);
         
         $em->persist($sueldo);
-    }
-    
-    public function crearAcumulacionFalla($em, $sueldo, $año, $semana, $activo, $permiso) {
-        $fallaAcumulada = new Falla_Acumulada();
-        $fallaAcumulada->setSueldo($sueldo);
-        $fallaAcumulada->setAño($año);
-        $fallaAcumulada->setSemana($semana);
-        $fallaAcumulada->setActivo($activo);
-        $fallaAcumulada->setPermiso($permiso);
-        $em->persist($fallaAcumulada);
-        return $fallaAcumulada;
     }
     
     public function getSueldoBasico($empleado) {
