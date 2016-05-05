@@ -34,13 +34,20 @@ class Contratacion
      * @ORM\Column(name="examen_medico", type="boolean")
      */
     private $examenMedico;
-
+    
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ingreso", type="date")
+     * @ORM\Column(name="fecha_ingreso", nullable = true, type="date")
      */
     private $fechaIngreso;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_contratacion", type="date")
+     */
+    private $fechaContratacion;
 
     /**
      * @var string
@@ -160,7 +167,7 @@ class Contratacion
     {
         return $this->examenMedico;
     }
-
+    
     /**
      * Set fechaIngreso
      *
@@ -183,6 +190,30 @@ class Contratacion
     public function getFechaIngreso()
     {
         return $this->fechaIngreso;
+    }
+
+    /**
+     * Set fechaIngreso
+     *
+     * @param \DateTime $fechaContratacion
+     *
+     * @return Contratacion
+     */
+    public function setFechaContratacion($fechaContratacion)
+    {
+        $this->fechaContratacion = $fechaContratacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaContratacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaContratacion()
+    {
+        return $this->fechaContratacion;
     }
 
     /**

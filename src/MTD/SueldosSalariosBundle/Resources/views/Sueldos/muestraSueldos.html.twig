@@ -46,15 +46,11 @@
                                 <td>{{sueldo.diasMesTrabajados}}</td>
                                 <td>{{sueldo.pesosPsgh}}</td>
                                 <td>{{sueldo.diasTrabajados}}</td>
+                                <td>{{sueldo.porcentajeAntiguedad}} %</td>
                         {%endfor%}
                     </tbody>    
                 </table>
             </div>
         </div>
     </div>
-{% endblock %}
-        
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('public/js/eliminar/eliminaPostulante.js') }}"></script>
 {% endblock %}

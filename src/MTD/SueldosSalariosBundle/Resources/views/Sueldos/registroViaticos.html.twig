@@ -1,0 +1,86 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Premios y Viaticos de {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        
+        {{ include('menuEmpleado.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            
+            <form action="{{ path('mtd_viaticos_premios_registro', { 'id': empleado.id }) }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="fecha">Mes y Año:</label>
+                                <input type="text" id="fecha" name="fecha" required="required"
+                                            data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
+                                            class="form-control input-inline datepicker inputGroup" title="Mes y año de los sueldos y salarios" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label for="responsabilidad" class="input-group-addon addonGroup required">Responsabilidad:</label>
+                                <input type="text" id="responsabilidad" name="responsabilidad" maxlength="50" placeholder="Monto responsabilidad"
+                                       class="form-control inputGroup" title="Monto responsabilidad" readonly="readonly" pattern="[0-9]{1,50}" value={{ responsabilidad }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label for="diasViatico" class="input-group-addon addonGroup required">Dias Viatico:</label>
+                                <input type="text" id="diasViatico" name="diasViatico" maxlength="50" placeholder="Monto dias viatico"
+                                       class="form-control inputGroup" title="Monto dias viatico" pattern="[0-9]{1,50}" value={{ diasViatico }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label for="transporteViatico" class="input-group-addon addonGroup required">Transporte Viatico:</label>
+                                <input type="text" id="transporteViatico" name="transporteViatico" maxlength="50" placeholder="Monto transporte viatico"
+                                       class="form-control inputGroup" title="Monto transporte viatico" pattern="[0-9]{1,50}" value={{ transporteViatico }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class ="form-group">
+                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+    <script src="{{ asset('public/js/fechas/fechaDescuento.js') }}"></script>
+{% endblock %}

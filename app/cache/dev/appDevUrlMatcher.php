@@ -137,6 +137,37 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\MuestraSueldosController::mostrarAction',  '_route' => 'mtd_sueldos_ver',);
         }
 
+        if (0 === strpos($pathinfo, '/descuento')) {
+            // mtd_descuentos_empleados
+            if ($pathinfo === '/descuentos/empleados') {
+                return array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DescuentosEmpleadosController::listarAction',  '_route' => 'mtd_descuentos_empleados',);
+            }
+
+            // mtd_descuentos_registro
+            if (0 === strpos($pathinfo, '/descuento/registro') && preg_match('#^/descuento/registro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_descuentos_registro')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DescuentosEmpleadosController::mostrarAction',));
+            }
+
+            // mtd_registro_afps_anticipos
+            if (0 === strpos($pathinfo, '/descuento/afpsAnticipo') && preg_match('#^/descuento/afpsAnticipo/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_registro_afps_anticipos')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DescuentosEmpleadosController::registrarAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/viaticos')) {
+            // mtd_viaticos_registro
+            if (0 === strpos($pathinfo, '/viaticos/registro') && preg_match('#^/viaticos/registro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_viaticos_registro')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\ViaticosPremiosController::mostrarAction',));
+            }
+
+            // mtd_viaticos_premios_registro
+            if (0 === strpos($pathinfo, '/viaticosPremios/registro') && preg_match('#^/viaticosPremios/registro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_viaticos_premios_registro')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\ViaticosPremiosController::registrarAction',));
+            }
+
+        }
+
         // mtd_asistencia_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_homepage')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DefaultController::indexAction',));

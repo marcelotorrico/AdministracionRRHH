@@ -14,7 +14,7 @@
     
     <section class="jumbotron">
         <div class="container">
-            <h2>Configuracion de la Asistencia</h2>
+            <h2>Configuracion de la Asistencia y Sueldos y Salarios</h2>
         </div>
     </section>
 
@@ -94,6 +94,17 @@
                                     {%endif%}
                                     
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="minimo">Minimo Nacional:</label>
+                                <input type="text" id="minimo" name="minimo" required="required" maxlength ="100" placeholder="Ingrese el minimo nacional"
+                                class="form-control inputGroup" pattern ="[0-9]{1,}" title="Minimo Nacional" value={{ minimoNacional }}>
                             </div>
                         </div>
                     </div>

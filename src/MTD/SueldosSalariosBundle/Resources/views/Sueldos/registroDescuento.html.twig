@@ -1,0 +1,75 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Registrar AFP's y Anticipos de de {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        
+        {{ include('menuEmpleado.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            
+            <form action="{{ path('mtd_registro_afps_anticipos', { 'id': empleado.id }) }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label class="input-group-addon addonGroup required" for="fecha">Mes y Año:</label>
+                                <input type="text" id="fecha" name="fecha" required="required"
+                                            data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
+                                            class="form-control input-inline datepicker inputGroup" title="Mes y año de los sueldos y salarios" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label for="afps" class="input-group-addon addonGroup required">AFP's:</label>
+                                <input type="text" id="afps" name="afps" maxlength="50" placeholder="Monto de la AFP's"
+                                       class="form-control inputGroup" title="Monto de la AFP's" pattern="[0-9]{1,50}" value={{ afps }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class ="form-group">
+                            <div class="input-group">
+                                <label for="anticipos" class="input-group-addon addonGroup required">Anticipos:</label>
+                                <input type="text" id="anticipos" name="anticipos" maxlength="50" placeholder="Ingrese el monto del anticipo"
+                                       class="form-control inputGroup" title="Monto del anticipo" pattern="[0-9]{1,50}" value={{ anticipo }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class ="form-group">
+                    <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+    
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/jquery-datepicker.js') }}"></script>
+    <script src="{{ asset('public/js/fechas/fechaDescuento.js') }}"></script>
+{% endblock %}

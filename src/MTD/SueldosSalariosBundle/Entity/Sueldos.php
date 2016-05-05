@@ -30,6 +30,27 @@ class Sueldos
     private $fecha;
     
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ingreso", nullable = true, type="date")
+     */
+    private $fechaIngreso;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categoria", type="string", nullable = true, length=100)
+     */
+    private $categoria;
+    
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="sueldo_basico", type="decimal", nullable = true, scale=2)
+     */
+    private $sueldoBasico;
+    
+    /**
      * @var integer
      *
      * @ORM\Column(name="dias_mes", nullable = true, type="integer")
@@ -95,6 +116,13 @@ class Sueldos
     /**
      * @var float
      *
+     * @ORM\Column(name="porcentaje_antiguedad", nullable = true, type="float")
+     */
+    private $porcentajeAntiguedad;
+    
+    /**
+     * @var float
+     *
      * @ORM\Column(name="bono_antiguedad", nullable = true, type="float")
      */
     private $bonoAntiguedad;
@@ -109,23 +137,9 @@ class Sueldos
     /**
      * @var float
      *
-     * @ORM\Column(name="descuentos", nullable = true, type="float")
-     */
-    private $descuentos;
-
-    /**
-     * @var float
-     *
      * @ORM\Column(name="liquido_pagable", nullable = true, type="float")
      */
     private $liquidoPagable;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="premios_viaticos", nullable = true, type="float")
-     */
-    private $premiosViaticos;
 
     /**
      * @var float
@@ -135,13 +149,109 @@ class Sueldos
     private $totalPagado;
     
     /**
+     * @ORM\ManyToOne(targetEntity="\MTD\SueldosSalariosBundle\Entity\Minimo", inversedBy="sueldo")
+     * @ORM\JoinColumn(name="id_minimo", referencedColumnName="id")
+     * @return integer
+     */
+    private $minimo;
+    public function setMinimo(\MTD\SueldosSalariosBundle\Entity\Minimo $minimo)
+    {
+        $this->minimo = $minimo;
+    }
+
+    public function getMinimo()
+    {
+        return $this->minimo;
+    }
+    
+    /**
      * @ORM\OneToMany(targetEntity="\MTD\SueldosSalariosBundle\Entity\Falla_Acumulada", mappedBy="sueldo")
      */
     private $fallaAcumulada;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\SueldosSalariosBundle\Entity\Descuento", mappedBy="sueldo")
+     */
+    private $descuento;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="\MTD\SueldosSalariosBundle\Entity\Viatico", mappedBy="sueldo")
+     */
+    private $viatico;
+    
     public function __construct()
     {
         $this->fallaAcumulada = new ArrayCollection();
+        $this->descuento      = new ArrayCollection();
+        $this->viatico        = new ArrayCollection();
+    }
+    
+    /**
+     * Add viatico
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Viatico $viatico
+     *
+     * @return Sueldos
+     */
+    public function addViatico(\MTD\SueldosSalariosBundle\Entity\Viatico $viatico)
+    {
+        $this->viatico[] = $viatico;
+
+        return $this;
+    }
+
+    /**
+     * Remove viatico
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Viatico $viatico
+     */
+    public function removeViatico(\MTD\SueldosSalariosBundle\Entity\Viatico $viatico)
+    {
+        $this->viatico->removeElement($viatico);
+    }
+
+    /**
+     * Get viatico
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getViatico()
+    {
+        return $this->viatico;
+    }
+    
+    /**
+     * Add descuento
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Descuento $descuento
+     *
+     * @return Sueldos
+     */
+    public function addDescuento(\MTD\SueldosSalariosBundle\Entity\Descuento $descuento)
+    {
+        $this->descuento[] = $descuento;
+
+        return $this;
+    }
+
+    /**
+     * Remove descuento
+     *
+     * @param \MTD\SueldosSalariosBundle\Entity\Descuento $descuento
+     */
+    public function removeDescuento(\MTD\SueldosSalariosBundle\Entity\Descuento $descuento)
+    {
+        $this->descuento->removeElement($descuento);
+    }
+
+    /**
+     * Get descuento
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDescuento()
+    {
+        return $this->descuento;
     }
     
     /**
@@ -419,6 +529,30 @@ class Sueldos
     {
         return $this->horasExtras;
     }
+    
+    /**
+     * Set porcentajeAntiguedad
+     *
+     * @param float $porcentajeAntiguedad
+     *
+     * @return Sueldos
+     */
+    public function setPorcentajeAntiguedad($porcentajeAntiguedad)
+    {
+        $this->porcentajeAntiguedad = $porcentajeAntiguedad;
+
+        return $this;
+    }
+
+    /**
+     * Get porcentajeAntiguedad
+     *
+     * @return float
+     */
+    public function getPorcentajeAntiguedad()
+    {
+        return $this->porcentajeAntiguedad;
+    }
 
     /**
      * Set bonoAntiguedad
@@ -469,30 +603,6 @@ class Sueldos
     }
 
     /**
-     * Set descuentos
-     *
-     * @param float $descuentos
-     *
-     * @return Sueldos
-     */
-    public function setDescuentos($descuentos)
-    {
-        $this->descuentos = $descuentos;
-
-        return $this;
-    }
-
-    /**
-     * Get descuentos
-     *
-     * @return float
-     */
-    public function getDescuentos()
-    {
-        return $this->descuentos;
-    }
-
-    /**
      * Set liquidoPagable
      *
      * @param float $liquidoPagable
@@ -514,30 +624,6 @@ class Sueldos
     public function getLiquidoPagable()
     {
         return $this->liquidoPagable;
-    }
-
-    /**
-     * Set premiosViaticos
-     *
-     * @param float $premiosViaticos
-     *
-     * @return Sueldos
-     */
-    public function setPremiosViaticos($premiosViaticos)
-    {
-        $this->premiosViaticos = $premiosViaticos;
-
-        return $this;
-    }
-
-    /**
-     * Get premiosViaticos
-     *
-     * @return float
-     */
-    public function getPremiosViaticos()
-    {
-        return $this->premiosViaticos;
     }
 
     /**
@@ -586,6 +672,78 @@ class Sueldos
     public function getFecha()
     {
         return $this->fecha;
+    }
+    
+    /**
+     * Set fechaIngreso
+     *
+     * @param \DateTime $fechaIngreso
+     *
+     * @return Sueldos
+     */
+    public function setFechaIngreso($fechaIngreso)
+    {
+        $this->fechaIngreso = $fechaIngreso;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaIngreso
+     *
+     * @return \DateTime
+     */
+    public function getFechaIngreso()
+    {
+        return $this->fechaIngreso;
+    }
+    
+    /**
+     * Set categoria
+     *
+     * @param string $categoria
+     *
+     * @return Sueldos
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return string
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+    
+    /**
+     * Set sueldoBasico
+     *
+     * @param float $sueldoBasico
+     *
+     * @return Sueldos
+     */
+    public function setSueldoBasico($sueldoBasico)
+    {
+        $this->sueldoBasico = $sueldoBasico;
+
+        return $this;
+    }
+
+    /**
+     * Get sueldoBasico
+     *
+     * @return float
+     */
+    public function getSueldoBasico()
+    {
+        return $this->sueldoBasico;
     }
 }
 

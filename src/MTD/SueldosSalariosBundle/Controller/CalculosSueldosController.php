@@ -6,6 +6,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CalculosSueldosController extends Controller
 {
+    public function getBonoAntiguedad($porcentajeAntiguedad, $minimoNacional) {
+        $bonoAntiguedad = ($minimoNacional * $porcentajeAntiguedad) / 100;
+        return round($bonoAntiguedad, 2);
+    }
+    
+    public function getPorcentajeAntiguedad($antiguedades, $fechaIngreso) {
+        $años = floor((time() - strtotime($fechaIngreso->format('Y-m-d'))) / 31556926);
+        $porcentaje = 0;
+        foreach ($antiguedades as $antiguedad){
+            $añoInicio = $antiguedad->getAñoInicio();
+            $añoFin = $antiguedad->getAñoFin();
+            if($añoInicio <= $años && $añoFin >= $años){
+                $porcentaje = $antiguedad->getPorcentaje();
+                break;
+            }
+        }
+        return $porcentaje;
+    }
+    
     public function getHorasExtras($sueldoBasico, $mes, $año, $numeroHorasExtras) {
         $diasTotalMes   = $this->getTotalDiasMes($mes, $año);
         $division = $sueldoBasico/$diasTotalMes;
@@ -115,15 +134,8 @@ class CalculosSueldosController extends Controller
         return $dif;
     }
     
-    public function getDiasMes($empleado, $año, $mes){
+    public function getDiasMes($fechaIngreso, $año, $mes){
         $fechaSueldo = $año."-".$mes."-01";
-        $contrataciones = $empleado->getContratacion();
-        foreach($contrataciones as $contratacion){
-            if($contratacion->getActivo()){
-                $fechaIngreso = $contratacion->getFechaIngreso();
-                break;
-            }
-        }
         $diferenciaDias = $this->getDiferenciaDias($fechaSueldo, $fechaIngreso);
         $diasMes = $this->getTotalDiasMes($mes, $año);
         if($diferenciaDias >= 0 ){

@@ -30,11 +30,13 @@ class ContratacionEmpleadoController extends Controller
         $examenMedico = $this->get('request')->request->get('examen');
         $fechaIngreso = $this->get('request')->request->get('mtd_proyectobundle_proyecto_plazoEntrega');
         $observaciones = $this->get('request')->request->get('observaciones');
+        $fechaIngresoNuevo = $fechaIngreso;
         
         if($empleado->getContratado()){
             $contrataciones = $empleado->getContratacion();
             foreach($contrataciones  as $contratacion){
                 $contratacion->setActivo("FALSE");
+                $fechaIngresoNuevo = $contratacion->getFechaIngreso()->format('Y-m-d');
                 //break;
             }
             $this->addFlash(
@@ -60,7 +62,8 @@ class ContratacionEmpleadoController extends Controller
         $contratacion->setEmpleado($empleado);
         $contratacion->setEntrevista($entrevista);
         $contratacion->setExamenMedico($examenMedico);
-        $contratacion->setFechaIngreso(new \DateTime($fechaIngreso));
+        $contratacion->setFechaIngreso(new \DateTime($fechaIngresoNuevo));
+        $contratacion->setFechaContratacion(new \DateTime($fechaIngreso));
         $contratacion->setObservaciones($observaciones);
         $contratacion->setCategoria($idCategoria);
         $contratacion->setActivo("TRUE");

@@ -5,3 +5,23 @@ mtd_sueldos_salarios_homepage:
 mtd_sueldos_ver:
     path:     /sueldosSalarios/ver
     defaults: {_controller: MTDSueldosSalariosBundle:MuestraSueldos:mostrar }
+    
+mtd_descuentos_empleados:
+    path:     /descuentos/empleados
+    defaults: {_controller: MTDSueldosSalariosBundle:DescuentosEmpleados:listar }
+    
+mtd_descuentos_registro:
+    path:     /descuento/registro/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:DescuentosEmpleados:mostrar }
+    
+mtd_registro_afps_anticipos:
+    path:     /descuento/afpsAnticipo/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:DescuentosEmpleados:registrar }
+    
+mtd_viaticos_registro:
+    path:     /viaticos/registro/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:ViaticosPremios:mostrar }
+    
+mtd_viaticos_premios_registro:
+    path:     /viaticosPremios/registro/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:ViaticosPremios:registrar }

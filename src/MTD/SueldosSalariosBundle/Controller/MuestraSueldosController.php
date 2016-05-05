@@ -17,29 +17,32 @@ class MuestraSueldosController extends Controller
         
         $sueldos = array();
         $i = 0;
+        
+        $antiguedades = $em->getRepository('MTDSueldosSalariosBundle:Antiguedad')->findAll();
         foreach($contrataciones as $contratacion){
             if($contratacion->getActivo() && $contratacion->getEmpleado()->getContratado() && $contratacion->getEmpleado()->getOperativo()){
                 $empleado = $contratacion->getEmpleado()->getApellido()." ".$contratacion->getEmpleado()->getNombre();
                 $fechaIngreso = $contratacion->getFechaIngreso();
                 $categoria = $this->getCategoria($contratacion);
                 $sueldoBasico = $this->getSueldoBasico($contratacion);
-                //$fechaMes = strtotime($fecha);
+                $fechaMes = new \DateTime(strtotime($fecha));
                 //$diasMesTrabajados = date( "t", $fechaMes);
                 $fecha1 = "2016/01/03";
                 //list($anio, $mes) = split( '[/.-]', $fecha1);
-                $separa = explode("/", $fecha1);
+                $separa = explode("-", $fechaMes->format('Y-m-d'));
                 $año = $separa[0];
                 $mes = $separa[1];
                 $diasMesTrabajados = $this->getDiasMes($contratacion->getEmpleado(), $año, $mes);
-                $fechaSueldo = $año."-".$mes."-03";
+                $fechaSueldo = $año."-".$mes."-01";
                 $semanaSueldo = date("W", strtotime($fechaSueldo));
                 
                 $calculo = new CalculosSueldosController();
                 $pesosPsgh = $calculo->getPesosFalla(3220, 01, 2016, 4.80, 1);
                 
                 $diasTrabajados = $calculo->getDiasTrabajados(3220, 01, 2016, 31, 112.7, 602.5);
+                $porcentajeAntiguedad = $calculo->getBonoAntiguedad(5, 4968);
                 
-                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaIngreso, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados, 'pesosPsgh' => $semanaSueldo, 'diasTrabajados' => $diasTrabajados);
+                $sueldos[$i] = array('empleado'=>$empleado, 'fechaIngreso'=>$fechaSueldo, 'categoria' => $categoria, 'sueldoBasico' => $sueldoBasico, 'diasMesTrabajados' => $diasMesTrabajados, 'pesosPsgh' => $semanaSueldo, 'diasTrabajados' => $diasTrabajados, 'porcentajeAntiguedad' => $porcentajeAntiguedad);
                 $i++;
             }
         }

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\SueldosSalariosBundle\Entity\Sueldos;
 use MTD\SueldosSalariosBundle\Controller\CalculosSueldosController;
 use MTD\SueldosSalariosBundle\Controller\DiasNoTrabajadosController;
+use MTD\SueldosSalariosBundle\Controller\ViaticosPremiosController;
 
 class SueldosPrincipalController extends Controller
 {
@@ -46,7 +47,7 @@ class SueldosPrincipalController extends Controller
     public function actualizarSueldo($em, $empleado, $mes, $sueldo, $tipoAsistencia, $año, $semanaSueldo, $asistencia) {
         $calculoSueldos = new CalculosSueldosController();
         $diasNoTrabajados = new DiasNoTrabajadosController();
-        $sueldoBasico = $this->getSueldoBasico($empleado);
+        $sueldoBasico = $this->getSueldoBasico($em, $empleado);
         
         if($tipoAsistencia == "falta"){
             $diasNoTrabajados->actualizarFallaFalta($em, $sueldo, $año, $semanaSueldo);
@@ -58,7 +59,10 @@ class SueldosPrincipalController extends Controller
             $feriadoPerdido = $sueldo->getFeriadoPerdido();
             $pesosFalla = $calculoSueldos->getPesosFalla($sueldoBasico, $mes, $año, $fallaActualizada, $feriadoPerdido);
             
-            $this->actualizarSueldoFalta($em, $sueldo, $fallaActualizada, $pesosFalla);
+            $categoria = $this->getCategoria($em, $empleado);
+            $fechaIngreso = $this->getFechaIngreso($empleado);
+            $diasMes = $calculoSueldos->getDiasMes($fechaIngreso, $año, $mes);
+            $this->actualizarSueldoFalta($em, $categoria, $sueldo, $fallaActualizada, $pesosFalla, $diasMes, $mes, $año);
         }else{
             $psgh = $calculoSueldos->getPsgh($em, $tipoAsistencia, $asistencia);
             if($psgh > 0){
@@ -67,10 +71,14 @@ class SueldosPrincipalController extends Controller
         }
     }
     
-    public function actualizarSueldoFalta($em, $sueldo, $fallaActualizada, $pesosFalla){
+    public function actualizarSueldoFalta($em, $categoria, $sueldo, $fallaActualizada, $pesosFalla, $diasMes, $mes, $año){
+        $calculoSueldos = new CalculosSueldosController();
         $sueldo->setFalla($fallaActualizada);
         $sueldo->setPesosFalla($pesosFalla);
         $em->persist($sueldo);
+        $viaticosPremios = new ViaticosPremiosController();
+        $totalDiasMes = $calculoSueldos->getTotalDiasMes($mes, $año);
+        $viaticosPremios->actualizarPremio($em, $categoria, $sueldo, $fallaActualizada, $diasMes, $totalDiasMes);
     }
     
     public function crearNuevoSueldo($em, $año, $mes, $semanaSueldo, $empleado, $tipoAsistencia, $asistencia) {
@@ -80,9 +88,11 @@ class SueldosPrincipalController extends Controller
         $diasNoTrabajados = new DiasNoTrabajadosController();
         
         $fechaSueldo = $año."-".$mes."-01";
-        $diasMes = $calculoSueldos->getDiasMes($empleado, $año, $mes);
-        $sueldoBasico = $this->getSueldoBasico($empleado);
-
+        $fechaIngreso = $this->getFechaIngreso($empleado);
+        $diasMes = $calculoSueldos->getDiasMes($fechaIngreso, $año, $mes);
+        $categoria = $this->getCategoria($em, $empleado);
+        $sueldoBasico = $this->getSueldoBasico($em, $empleado);
+        
         if($tipoAsistencia == "falta"){
             $configuracion = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
             $falla = round(($calculoSueldos->getPsghFalta($configuracion))/8, 2);
@@ -110,8 +120,18 @@ class SueldosPrincipalController extends Controller
             $numeroHorasExtras = $calculoSueldos->transformarMinutos($asistencia->getTotalHorasExtras());
             $horasExtras = $calculoSueldos->getHorasExtras($sueldoBasico, $mes, $año, $numeroHorasExtras);
         }
+
+        $antiguedades = $em->getRepository('MTDSueldosSalariosBundle:Antiguedad')->findAll();
+        $porcentajeAntiguedad = $calculoSueldos->getPorcentajeAntiguedad($antiguedades, $fechaIngreso);
+        $minimo = $em->getRepository('MTDSueldosSalariosBundle:Minimo')->findOneBy(array('activo'=>'TRUE'));
+        $minimoNacional = $minimo->getValor();
+        $bonoAntiguedad = $calculoSueldos->getBonoAntiguedad($porcentajeAntiguedad, $minimoNacional);
+        $totalGanado = $diasTrabajados + $horasExtras + $bonoAntiguedad;
         
         $sueldo->setFecha(new \DateTime($fechaSueldo));
+        $sueldo->setFechaIngreso($fechaIngreso);
+        $sueldo->setCategoria($categoria->getNombre());
+        $sueldo->setSueldoBasico($sueldoBasico);
         $sueldo->setEmpleado($empleado);
         $sueldo->setDiasMes($diasMes);
         $sueldo->setPsgh($decimalesPsgh);
@@ -122,27 +142,47 @@ class SueldosPrincipalController extends Controller
         $sueldo->setDiasTrabajados($diasTrabajados);
         $sueldo->setNumeroHorasExtras($numeroHorasExtras);
         $sueldo->setHorasExtras($horasExtras);
-        
+        $sueldo->setPorcentajeAntiguedad($porcentajeAntiguedad);
+        $sueldo->setBonoAntiguedad($bonoAntiguedad);
+        $sueldo->setMinimo($minimo);
+        $sueldo->setTotalGanado($totalGanado);
+        $sueldo->setLiquidoPagable($totalGanado);
         $sueldo->addFallaAcumulada($fallaAcumulada);
+        
+        $viaticosPremios = new ViaticosPremiosController();
+        $totalDiasMes = $calculoSueldos->getTotalDiasMes($mes, $año);
+        $viaticosPremios->crearViatico($em, $sueldo, $falla, $categoria, $diasMes, $totalDiasMes);
         
         $em->persist($sueldo);
     }
     
-    public function getSueldoBasico($empleado) {
-        $contratacion = "";
-        foreach($empleado->getContratacion() as $cont){
-            if($cont->getActivo()){
-                $contratacion = $cont;
-                break;
-            }
-        }
-        $sueldoBasico = "";
+    public function getSueldoBasico($em, $empleado) {
+        
+        $categoria    = $this->getCategoria($em, $empleado);
+        $sueldoBasico = $categoria->getSueldoBasico();
+        return $sueldoBasico;
+    }
+    
+    public function getCategoria($em, $empleado) {
+        $contratacion = $em->getRepository('MTDSeleccionBundle:Contratacion')->findOneBy(
+                array('empleado' => $empleado, 'activo' => TRUE));
         foreach ($contratacion->getEmpleado()->getEmpleadoRequisito() as $requisito){
             if($requisito->getRequisito()->getCategoria()->getId() == $contratacion->getCategoria()){
-                $sueldoBasico = $requisito->getRequisito()->getCategoria()->getSueldoBasico();
+                $categoria = $requisito->getRequisito()->getCategoria();
                 break;
             }
         }
-        return $sueldoBasico;
+        return $categoria;
+    }
+    
+    public function getFechaIngreso($empleado) {
+        $contrataciones = $empleado->getContratacion();
+        foreach($contrataciones as $contratacion){
+            if($contratacion->getActivo()){
+                $fechaIngreso = $contratacion->getFechaIngreso();
+                break;
+            }
+        }
+        return $fechaIngreso;
     }
 }

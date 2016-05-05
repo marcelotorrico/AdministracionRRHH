@@ -5,6 +5,7 @@ namespace MTD\AsistenciaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\AsistenciaBundle\Entity\Configuracion;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\SueldosSalariosBundle\Entity\Minimo;
 
 class RegistroConfiguracionController extends Controller
 {
@@ -16,7 +17,10 @@ class RegistroConfiguracionController extends Controller
         $proyectos = $em->getRepository('MTDProyectoBundle:Proyecto')->findAll();
         $conf = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
         
-        return $this->render('MTDAsistenciaBundle:Asistencia:registroConfiguracion.html.twig', array("proyectos"=> $proyectos, "conf"=> $conf));
+        $minimo = $em->getRepository('MTDSueldosSalariosBundle:Minimo')->findOneBy(array('activo'=>'TRUE'));
+        $minimoNacional = $minimo->getValor();
+        
+        return $this->render('MTDAsistenciaBundle:Asistencia:registroConfiguracion.html.twig', array("proyectos"=> $proyectos, "conf"=> $conf, "minimoNacional"=> $minimoNacional));
     }
     
     public function registrarAction(Request $request)
@@ -42,15 +46,25 @@ class RegistroConfiguracionController extends Controller
         $configuracion->setActivo("TRUE");
 
         $em->persist($configuracion);
+        
+        $minimoNacional = $this->get('request')->request->get('minimo');
+        $minimo = $em->getRepository('MTDSueldosSalariosBundle:Minimo')->findOneBy(array('activo'=>'TRUE'));
+        if($minimo->getValor() != $minimoNacional){
+            $minimo->setActivo(FALSE);
+            $minimoNuevo = new Minimo();
+            $minimoNuevo->setValor($minimoNacional);
+            $minimoNuevo->setActivo(TRUE);
+            $em->persist($minimoNuevo);
+        }
 
         $this->addFlash(
             'notice',
-            'La configuracion para la asistencia fue registrada correctamente'
+            'La configuracion fue registrada correctamente'
         );
 
         $em->flush();
 
-        return $this->redirect($this->generateUrl('mtd_asistencia_operativos'));
+        return $this->redirect($this->generateUrl('mtd_asistencia_configuracion'));
 
     }
 }
