@@ -48,7 +48,8 @@ class SueldosPrincipalController extends Controller
         $calculoSueldos = new CalculosSueldosController();
         $diasNoTrabajados = new DiasNoTrabajadosController();
         $sueldoBasico = $this->getSueldoBasico($em, $empleado);
-        
+        $fechaIngreso = $this->getFechaIngreso($empleado);
+        $diasMes = $calculoSueldos->getDiasMes($fechaIngreso, $año, $mes);
         if($tipoAsistencia == "falta"){
             $diasNoTrabajados->actualizarFallaFalta($em, $sueldo, $año, $semanaSueldo);
             
@@ -60,13 +61,16 @@ class SueldosPrincipalController extends Controller
             $pesosFalla = $calculoSueldos->getPesosFalla($sueldoBasico, $mes, $año, $fallaActualizada, $feriadoPerdido);
             
             $categoria = $this->getCategoria($em, $empleado);
-            $fechaIngreso = $this->getFechaIngreso($empleado);
-            $diasMes = $calculoSueldos->getDiasMes($fechaIngreso, $año, $mes);
             $this->actualizarSueldoFalta($em, $categoria, $sueldo, $fallaActualizada, $pesosFalla, $diasMes, $mes, $año);
         }else{
             $psgh = $calculoSueldos->getPsgh($em, $tipoAsistencia, $asistencia);
             if($psgh > 0){
-                $diasNoTrabajados->actualizarFallaInasistencia($em, $sueldo, $año, $semanaSueldo);
+                $diasNoTrabajados->actualizarFallaInasistencia($em, $sueldo, $año, $semanaSueldo, $mes);
+                $diasNoTrabajados->actualizarPsgh($em, $tipoAsistencia, $asistencia, $sueldo, $sueldoBasico, $mes, $año, $diasMes);
+            }
+            $horasExtras = $asistencia->getTotalHorasExtras();
+            if($horasExtras > 0 && $tipoAsistencia == "asistencia"){
+                $calculoSueldos->actualizarHorasExtras($em, $sueldo, $horasExtras, $mes, $año);
             }
         }
     }
@@ -75,6 +79,7 @@ class SueldosPrincipalController extends Controller
         $calculoSueldos = new CalculosSueldosController();
         $sueldo->setFalla($fallaActualizada);
         $sueldo->setPesosFalla($pesosFalla);
+        $calculoSueldos->actualizarDiasTrabajados($sueldo, $mes, $año, $diasMes);
         $em->persist($sueldo);
         $viaticosPremios = new ViaticosPremiosController();
         $totalDiasMes = $calculoSueldos->getTotalDiasMes($mes, $año);
@@ -100,18 +105,18 @@ class SueldosPrincipalController extends Controller
             $pesosPsgh = 0;
             $feriadoPerdido = 1;
             $pesosFalla = $calculoSueldos->getPesosFalla($sueldoBasico, $mes, $año, $falla, $feriadoPerdido);
-            $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, FALSE, 0);
+            $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, FALSE, 0, 1);
             $diasTrabajados = $calculoSueldos->getDiasTrabajados($sueldoBasico, $mes, $año, $diasMes, $pesosPsgh, $pesosFalla);
             $numeroHorasExtras = 0;
             $horasExtras = 0;
         }else{
             $psgh = $calculoSueldos->getPsgh($em, $tipoAsistencia, $asistencia);
-            $decimalesPsgh = round($psgh/8, 2);
+            $decimalesPsgh = round($psgh/8, 3);
             $pesosPsgh = $calculoSueldos->getPesosPsgh($sueldoBasico, $mes, $año, $decimalesPsgh);
             if($decimalesPsgh > 0){
-                $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 1);
+                $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 1, 0);
             }else{
-                $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 0);
+                $fallaAcumulada = $diasNoTrabajados->crearAcumulacionFalla($em, $sueldo, $año, $semanaSueldo, TRUE, 0, 0);
             }
             $falla = 0;
             $feriadoPerdido = 0;

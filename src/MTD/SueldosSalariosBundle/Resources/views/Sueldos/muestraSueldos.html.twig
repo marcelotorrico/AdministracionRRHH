@@ -39,14 +39,20 @@
                     <tbody>
                         {% for sueldo in sueldos %}
                             <tr>
-                                <td><strong>{{sueldo.empleado}}</strong></td>
-                                <td>{{sueldo.fechaIngreso|date('d-m-Y')}}</td>
-                                <td>{{sueldo.categoria}}</td>
-                                <td>{{sueldo.sueldoBasico}}</td>
-                                <td>{{sueldo.diasMesTrabajados}}</td>
-                                <td>{{sueldo.pesosPsgh}}</td>
-                                <td>{{sueldo.diasTrabajados}}</td>
-                                <td>{{sueldo.porcentajeAntiguedad}} %</td>
+                                <td><strong>{{sueldo.empleado.apellido}} {{sueldo.empleado.nombre}}</strong></td>
+                                <td>{{sueldo.sueldo.fechaIngreso|date('d-m-Y')}}</td>
+                                <td>{{sueldo.sueldo.categoria}}</td>
+                                <td>{{sueldo.sueldo.sueldoBasico}}</td>
+                                <td>{{sueldo.sueldo.diasMes}}</td>
+                                <td>{{sueldo.diasNoTrabajados}}</td>
+                                <td><strong>{{sueldo.sueldo.diasTrabajados}}</strong></td>
+                                <td>{{sueldo.sueldo.horasExtras}}</td>
+                                <td>{{sueldo.sueldo.bonoAntiguedad}}</td>
+                                <td><strong>{{sueldo.sueldo.totalGanado}}</strong></td>
+                                <td>{{sueldo.totalDescuento}}</td>
+                                <td><strong>{{sueldo.sueldo.liquidoPagable}}</strong></td>
+                                <td>{{sueldo.totalPremios}}</td>
+                                <td><strong>{{sueldo.sueldo.totalPagado}}</strong></td>
                         {%endfor%}
                     </tbody>    
                 </table>

@@ -41,6 +41,13 @@ class Falla_Acumulada
      * @ORM\Column(name="permiso", type="integer")
      */
     private $permiso;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="falta", type="integer")
+     */
+    private $falta;
 
     /**
      * @var boolean
@@ -145,6 +152,30 @@ class Falla_Acumulada
     public function getPermiso()
     {
         return $this->permiso;
+    }
+    
+    /**
+     * Set falta
+     *
+     * @param integer $falta
+     *
+     * @return Falla_Acumulada
+     */
+    public function setFalta($falta)
+    {
+        $this->falta = $falta;
+
+        return $this;
+    }
+
+    /**
+     * Get falta
+     *
+     * @return integer
+     */
+    public function getFalta()
+    {
+        return $this->falta;
     }
 
     /**

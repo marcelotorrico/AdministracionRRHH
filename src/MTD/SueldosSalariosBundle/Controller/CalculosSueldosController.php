@@ -6,6 +6,50 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CalculosSueldosController extends Controller
 {
+    public function actualizarHorasExtras($em, $sueldo, $horasExtras, $mes, $año) {
+        $numeroHorasExtras = $this->transformarMinutos($horasExtras);
+        $sueldoBasico = $sueldo->getSueldoBasico();
+        $horasExtras = $this->getHorasExtras($sueldoBasico, $mes, $año, $numeroHorasExtras);
+        $sueldo->setNumeroHorasExtras($numeroHorasExtras);
+        $sueldo->setHorasExtras($horasExtras);
+        $this->actualizarTotalGanado($sueldo);
+        $em->persist($sueldo);
+    }
+    
+    public function actualizarDiasTrabajados($sueldo, $mes, $año, $diasMes) {
+        $sueldoBasico = $sueldo->getSueldoBasico();
+        $pesosPsgh = $sueldo->getPesosPsgh();
+        $pesosFalla = $sueldo->getPesosFalla();
+        $diasTrabajados = $this->getDiasTrabajados($sueldoBasico, $mes, $año, $diasMes, $pesosPsgh, $pesosFalla);
+        $sueldo->setDiasTrabajados($diasTrabajados);
+        $this->actualizarTotalGanado($sueldo);
+    }
+    
+    public function actualizarTotalGanado($sueldo) {
+        $horasExtras = $sueldo->getHorasExtras();
+        $bonoAntiguedad = $sueldo->getBonoAntiguedad();
+        $diasTrabajados = $sueldo->getDiasTrabajados();
+        $totalGanado = $diasTrabajados + $horasExtras + $bonoAntiguedad;
+        $totalGanadoAnterior = $sueldo->getTotalGanado();
+        $sueldo->setTotalGanado($totalGanado);
+        $this->actualizarLiquidoPagable($sueldo, $totalGanadoAnterior);
+    }
+    
+    public function actualizarLiquidoPagable($sueldo, $totalGanadoAnterior) {
+        $totalGanado = $sueldo->getTotalGanado();
+        $liquidoPagableAnterior = $sueldo->getLiquidoPagable();
+        $liquidoPagable = $liquidoPagableAnterior - $totalGanadoAnterior + $totalGanado;
+        $sueldo->setLiquidoPagable($liquidoPagable);
+        $this->actualizarTotalPagado($sueldo, $liquidoPagableAnterior);
+    }
+    
+    public function actualizarTotalPagado($sueldo, $liquidoPagableAnterior) {
+        $totalPagadoAnterior = $sueldo->getTotalPagado();
+        $liquidoPagable = $sueldo->getLiquidoPagable();
+        $totalPagado = $totalPagadoAnterior - $liquidoPagableAnterior + $liquidoPagable;
+        $sueldo->setTotalPagado($totalPagado);
+    }
+    
     public function getBonoAntiguedad($porcentajeAntiguedad, $minimoNacional) {
         $bonoAntiguedad = ($minimoNacional * $porcentajeAntiguedad) / 100;
         return round($bonoAntiguedad, 2);
