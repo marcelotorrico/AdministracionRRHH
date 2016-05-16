@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Controller/RegistroAsistenciaController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Resources/views/Sueldos/muestraSueldos.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/MuestraSueldosController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Controller/EliminaAsistenciaController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/AsistenciaBundle/Controller/RegistroInasistenciaController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Entity/Sueldos.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/CalculosSueldosController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/DiasNoTrabajadosController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/ActualizaSueldosController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/SueldosPrincipalController.php</file>
         </group>
     </open-files>

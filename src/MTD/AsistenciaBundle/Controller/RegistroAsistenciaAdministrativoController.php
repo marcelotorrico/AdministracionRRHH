@@ -5,6 +5,8 @@ namespace MTD\AsistenciaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MTD\AsistenciaBundle\Entity\Asistencia;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\SueldosSalariosBundle\Controller\SueldosPrincipalController;
+use MTD\SueldosSalariosBundle\Controller\CalculosSueldosController;
 
 class RegistroAsistenciaAdministrativoController extends Controller
 {
@@ -69,8 +71,13 @@ class RegistroAsistenciaAdministrativoController extends Controller
                 $asistencia->setActivo("TRUE");
                 $asistencia->setEmpleado($empleado);
                 $asistencia->setFeriado("FALSE");
-
+                
+                $calculoSueldos = new CalculosSueldosController();
+                $psgh = $calculoSueldos->getPsgh($em, "asistencia", $asistencia);
+                $asistencia->setPsgh($psgh);
                 $em->persist($asistencia);
+                $sueldosPrincipal = new SueldosPrincipalController();
+                $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "asistencia", $asistencia);
 
                 $this->addFlash(
                     'notice',

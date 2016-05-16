@@ -655,7 +655,7 @@ class Sueldos
      *
      * @param \DateTime $fecha
      *
-     * @return Asistencia
+     * @return Sueldos
      */
     public function setFecha($fecha)
     {

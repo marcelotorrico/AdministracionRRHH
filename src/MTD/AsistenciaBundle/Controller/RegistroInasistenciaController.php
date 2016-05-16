@@ -8,6 +8,7 @@ use MTD\AsistenciaBundle\Controller\RegistroAsistenciaAdministrativoController;
 use MTD\AsistenciaBundle\Entity\Falta;
 use Symfony\Component\HttpFoundation\Request;
 use MTD\SueldosSalariosBundle\Controller\SueldosPrincipalController;
+use MTD\SueldosSalariosBundle\Controller\CalculosSueldosController;
 
 class RegistroInasistenciaController extends Controller
 {
@@ -46,20 +47,25 @@ class RegistroInasistenciaController extends Controller
             $asistencia->setActivo("TRUE");
             $asistencia->setEmpleado($empleado);
             $asistencia->setFeriado("FALSE");
-            $em->persist($asistencia);
             
             $falta->setAsistencia($asistencia);
             $falta->setAviso($justificado);
             $falta->setMotivo($motivos);
-            $em->persist($falta);
             
             $sueldosPrincipal = new SueldosPrincipalController();
+            $calculoSueldos = new CalculosSueldosController();
             if($justificado == "TRUE"){
+                $psgh = $calculoSueldos->getPsgh($em, "permiso", $asistencia);
+                $asistencia->setPsgh($psgh);
                 $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "permiso", $asistencia);
             }else{
+                $falla = $calculoSueldos->getPsgh($em, "falta", $asistencia);
+                $falta->setFalla($falla);
                 $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "falta", $asistencia);
             }
-            
+            $asistencia->addFalta($falta);
+            $em->persist($falta);
+            $em->persist($asistencia);
             $this->addFlash(
                 'notice',
                 'La inasistencia fue registrada correctamente'

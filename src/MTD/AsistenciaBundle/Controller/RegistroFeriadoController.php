@@ -7,6 +7,7 @@ use MTD\AsistenciaBundle\Entity\Asistencia;
 use MTD\AsistenciaBundle\Controller\RegistroAsistenciaAdministrativoController;
 use Symfony\Component\HttpFoundation\Request;
 use MTD\SueldosSalariosBundle\Controller\SueldosPrincipalController;
+use MTD\SueldosSalariosBundle\Controller\CalculosSueldosController;
 
 class RegistroFeriadoController extends Controller
 {
@@ -32,6 +33,9 @@ class RegistroFeriadoController extends Controller
             $asistencia->setActivo("TRUE");
             $asistencia->setEmpleado($empleado);
             $asistencia->setFeriado(TRUE);
+            $calculoSueldos = new CalculosSueldosController();
+            $psgh = $calculoSueldos->getPsgh($em, "feriado", $asistencia);
+            $asistencia->setPsgh($psgh);
             $em->persist($asistencia);
             
             $sueldosPrincipal = new SueldosPrincipalController();
@@ -39,7 +43,7 @@ class RegistroFeriadoController extends Controller
             
             $this->addFlash(
                 'notice',
-                'La asistencia fue registrada correctamente'
+                'El feriado fue registrado correctamente'
             );
             
             $em->flush();

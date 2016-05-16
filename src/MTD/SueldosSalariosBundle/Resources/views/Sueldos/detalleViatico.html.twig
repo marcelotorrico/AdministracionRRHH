@@ -1,0 +1,27 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>RESPONSABILIDAD</th>
+                <th>DIAS VIATICO</th>
+                <th>TRANSPORTE VIATICO</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {%if premios is empty%}
+                    <td>NO HAY PREMIOS Y VIATICOS</td>
+                    <td>NO HAY PREMIOS Y VIATICOS</td>
+                    <td>NO HAY PREMIOS Y VIATICOS</td>
+                    <td>NO HAY PREMIOS Y VIATICOS</td>
+                {%else%}
+                    <td>{{ premios.responsabilidad}}</td>
+                    <td>{{ premios.diasViatico}}</td>
+                    <td>{{ premios.transporteViatico}}</td>
+                    <td><strong>{{ total}}</strong></td>
+                {%endif%}
+            </tr>
+        </tbody>    
+    </table>
+</div>

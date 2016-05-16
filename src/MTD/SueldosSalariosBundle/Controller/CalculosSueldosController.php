@@ -7,11 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CalculosSueldosController extends Controller
 {
     public function actualizarHorasExtras($em, $sueldo, $horasExtras, $mes, $año) {
+        $numeroHorasExtrasAnterior = $sueldo->getNumeroHorasExtras();
         $numeroHorasExtras = $this->transformarMinutos($horasExtras);
         $sueldoBasico = $sueldo->getSueldoBasico();
-        $horasExtras = $this->getHorasExtras($sueldoBasico, $mes, $año, $numeroHorasExtras);
-        $sueldo->setNumeroHorasExtras($numeroHorasExtras);
-        $sueldo->setHorasExtras($horasExtras);
+        $horasExtrasActualizado = $numeroHorasExtrasAnterior + $numeroHorasExtras;
+        $pesosHorasExtras = $this->getHorasExtras($sueldoBasico, $mes, $año, $horasExtrasActualizado);
+        $sueldo->setNumeroHorasExtras($horasExtrasActualizado);
+        $sueldo->setHorasExtras($pesosHorasExtras);
         $this->actualizarTotalGanado($sueldo);
         $em->persist($sueldo);
     }

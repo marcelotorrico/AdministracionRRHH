@@ -1,0 +1,18 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>FECHA INGRESO</th>
+                <th>PORCENTAJE ANTIGUEDAD</th>
+                <th>BONO ANTIGUEDAD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ sueldo.fechaIngreso|date('d-m-Y')}}</td>
+                <td>{{ sueldo.porcentajeAntiguedad}} %</td>
+                <td><strong>{{ sueldo.bonoAntiguedad}}</strong></td>
+            </tr>
+        </tbody>    
+    </table>
+</div>

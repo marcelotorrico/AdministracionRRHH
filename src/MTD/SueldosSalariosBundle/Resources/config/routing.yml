@@ -25,3 +25,33 @@ mtd_viaticos_registro:
 mtd_viaticos_premios_registro:
     path:     /viaticosPremios/registro/{id}
     defaults: {_controller: MTDSueldosSalariosBundle:ViaticosPremios:registrar }
+    
+mtd_sueldoDetalle_diasNoTrabajados:
+    path:     /sueldo/detalle/diasNoTrabajados/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:DetalleSueldos:diasNoTrabajados }
+    options:
+        expose: true
+        
+mtd_sueldoDetalle_horasExtras:
+    path:     /sueldo/detalle/horasExtras/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:DetalleSueldos:horasExtras }
+    options:
+        expose: true
+        
+mtd_sueldoDetalle_bonoAntiguedad:
+    path:     /sueldo/detalle/bonoAntiguedad/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:DetalleSueldos:bonoAntiguedad }
+    options:
+        expose: true
+        
+mtd_sueldoDetalle_descuentos:
+    path:     /sueldo/detalle/descuentos/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:DetalleSueldos:descuentos }
+    options:
+        expose: true
+        
+mtd_sueldoDetalle_premios:
+    path:     /sueldo/detalle/premios/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:DetalleSueldos:premios }
+    options:
+        expose: true

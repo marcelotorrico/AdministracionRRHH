@@ -168,6 +168,34 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/sueldo/detalle')) {
+            // mtd_sueldoDetalle_diasNoTrabajados
+            if (0 === strpos($pathinfo, '/sueldo/detalle/diasNoTrabajados') && preg_match('#^/sueldo/detalle/diasNoTrabajados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_diasNoTrabajados')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::diasNoTrabajadosAction',));
+            }
+
+            // mtd_sueldoDetalle_horasExtras
+            if (0 === strpos($pathinfo, '/sueldo/detalle/horasExtras') && preg_match('#^/sueldo/detalle/horasExtras/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_horasExtras')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::horasExtrasAction',));
+            }
+
+            // mtd_sueldoDetalle_bonoAntiguedad
+            if (0 === strpos($pathinfo, '/sueldo/detalle/bonoAntiguedad') && preg_match('#^/sueldo/detalle/bonoAntiguedad/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_bonoAntiguedad')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::bonoAntiguedadAction',));
+            }
+
+            // mtd_sueldoDetalle_descuentos
+            if (0 === strpos($pathinfo, '/sueldo/detalle/descuentos') && preg_match('#^/sueldo/detalle/descuentos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_descuentos')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::descuentosAction',));
+            }
+
+            // mtd_sueldoDetalle_premios
+            if (0 === strpos($pathinfo, '/sueldo/detalle/premios') && preg_match('#^/sueldo/detalle/premios/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_premios')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::premiosAction',));
+            }
+
+        }
+
         // mtd_asistencia_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_homepage')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DefaultController::indexAction',));

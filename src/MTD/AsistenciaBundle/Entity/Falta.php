@@ -34,6 +34,13 @@ class Falta
      * @ORM\Column(name="motivo", nullable=true, type="text")
      */
     private $motivo;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="falla", nullable = true, type="float")
+     */
+    private $falla;
 
     /**
      * @ORM\ManyToOne(targetEntity="\MTD\AsistenciaBundle\Entity\Asistencia", inversedBy="falta")
@@ -107,6 +114,30 @@ class Falta
     public function getMotivo()
     {
         return $this->motivo;
+    }
+    
+    /**
+     * Set falla
+     *
+     * @param float $falla
+     *
+     * @return Falta
+     */
+    public function setFalla($falla)
+    {
+        $this->falla = $falla;
+
+        return $this;
+    }
+
+    /**
+     * Get falla
+     *
+     * @return float
+     */
+    public function getFalla()
+    {
+        return $this->falla;
     }
 }
 

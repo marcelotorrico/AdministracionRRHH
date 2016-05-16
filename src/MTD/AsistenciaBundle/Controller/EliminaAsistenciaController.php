@@ -4,6 +4,7 @@ namespace MTD\AsistenciaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\SueldosSalariosBundle\Controller\ActualizaSueldosController;
 
 class EliminaAsistenciaController extends Controller
 {
@@ -20,9 +21,10 @@ class EliminaAsistenciaController extends Controller
                 'notice',
                 'La asistencia fue eliminada correctamente'
             );
-                
+            $actualizaSueldos = new ActualizaSueldosController();
+            $actualizaSueldos->actualizarEliminaAsistencia($em, $asistencia, $empleado);
+            
             $asistencia->setActivo("FALSE");
-                
             $em->persist($asistencia);             
             $em->flush();
 

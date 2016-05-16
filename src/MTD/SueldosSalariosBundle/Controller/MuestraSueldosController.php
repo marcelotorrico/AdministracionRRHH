@@ -26,7 +26,8 @@ class MuestraSueldosController extends Controller
                     $totalDescuento = $this->getTotalDescuento($em, $sueldo);
                     $totalPremios = $this->getTotalPremios($em, $sueldo);
                     
-                    $sueldos[$i] = array('sueldo' => $sueldo, 'totalPremios' => $totalPremios, 'totalDescuento' => $totalDescuento, 'diasNoTrabajados' => $diasNoTrabajados, 'empleado' => $empleado);
+                    $sueldos[$i] = array('sueldo' => $sueldo, 'totalPremios' => $totalPremios, 'totalDescuento' => $totalDescuento,
+                        'diasNoTrabajados' => $diasNoTrabajados, 'empleado' => $empleado);
                 }
                 $i++;
             }

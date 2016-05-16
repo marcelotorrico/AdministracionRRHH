@@ -1,0 +1,24 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>AFP's</th>
+                <th>ANTICIPO</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {%if descuento is empty%}
+                    <td>NO HAY DESCUENTOS</td>
+                    <td>NO HAY DESCUENTOS</td>
+                    <td>NO HAY DESCUENTOS</td>
+                {%else%}
+                    <td>{{ descuento.afps}}</td>
+                    <td>{{ descuento.anticipo}}</td>
+                    <td><strong>{{ total}}</strong></td>
+                {%endif%}
+            </tr>
+        </tbody>    
+    </table>
+</div>

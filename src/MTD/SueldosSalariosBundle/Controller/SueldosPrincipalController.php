@@ -65,7 +65,9 @@ class SueldosPrincipalController extends Controller
         }else{
             $psgh = $calculoSueldos->getPsgh($em, $tipoAsistencia, $asistencia);
             if($psgh > 0){
-                $diasNoTrabajados->actualizarFallaInasistencia($em, $sueldo, $año, $semanaSueldo, $mes);
+                if($tipoAsistencia != "feriado"){
+                    $diasNoTrabajados->actualizarFallaInasistencia($em, $sueldo, $año, $semanaSueldo, $mes);
+                }
                 $diasNoTrabajados->actualizarPsgh($em, $tipoAsistencia, $asistencia, $sueldo, $sueldoBasico, $mes, $año, $diasMes);
             }
             $horasExtras = $asistencia->getTotalHorasExtras();
