@@ -47,6 +47,7 @@ class RegistroInasistenciaController extends Controller
             $asistencia->setActivo("TRUE");
             $asistencia->setEmpleado($empleado);
             $asistencia->setFeriado("FALSE");
+            $asistencia->setCobrado(FALSE);
             
             $falta->setAsistencia($asistencia);
             $falta->setAviso($justificado);

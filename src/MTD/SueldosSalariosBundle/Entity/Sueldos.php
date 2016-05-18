@@ -149,6 +149,13 @@ class Sueldos
     private $totalPagado;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="emitido", nullable=true, type="boolean")
+     */
+    private $emitido;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="\MTD\SueldosSalariosBundle\Entity\Minimo", inversedBy="sueldo")
      * @ORM\JoinColumn(name="id_minimo", referencedColumnName="id")
      * @return integer
@@ -744,6 +751,30 @@ class Sueldos
     public function getSueldoBasico()
     {
         return $this->sueldoBasico;
+    }
+    
+    /**
+     * Set emitido
+     *
+     * @param boolean $emitido
+     *
+     * @return Sueldos
+     */
+    public function setEmitido($emitido)
+    {
+        $this->emitido = $emitido;
+
+        return $this;
+    }
+
+    /**
+     * Get emitido
+     *
+     * @return boolean
+     */
+    public function getEmitido()
+    {
+        return $this->emitido;
     }
 }
 

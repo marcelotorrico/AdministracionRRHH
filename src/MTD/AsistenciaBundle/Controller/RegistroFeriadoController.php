@@ -33,6 +33,7 @@ class RegistroFeriadoController extends Controller
             $asistencia->setActivo("TRUE");
             $asistencia->setEmpleado($empleado);
             $asistencia->setFeriado(TRUE);
+            $asistencia->setCobrado(FALSE);
             $calculoSueldos = new CalculosSueldosController();
             $psgh = $calculoSueldos->getPsgh($em, "feriado", $asistencia);
             $asistencia->setPsgh($psgh);

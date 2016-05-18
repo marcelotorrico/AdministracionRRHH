@@ -5,6 +5,7 @@ namespace MTD\SueldosSalariosBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use MTD\SueldosSalariosBundle\Entity\Descuento;
+use MTD\SueldosSalariosBundle\Controller\ViaticosPremiosController;
 
 class DescuentosEmpleadosController extends Controller
 {
@@ -46,11 +47,12 @@ class DescuentosEmpleadosController extends Controller
     }
     
     public function registrarAction(Request $request, $id) {
+        $viatico = new ViaticosPremiosController();
         $em = $this->getDoctrine()->getManager();
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
         
         $fecha = $this->get('request')->request->get('fecha');
-        $sueldo = $this->verificarSueldo($em, $fecha, $empleado);
+        $sueldo = $viatico->verificarSueldo($em, $fecha, $empleado);
         if($sueldo){
             $afps = $this->get('request')->request->get('afps');
             if(!$afps){
@@ -101,22 +103,5 @@ class DescuentosEmpleadosController extends Controller
         $totalPagadoAnterior    = $sueldo->getTotalPagado();
         $totalPagado = $totalPagadoAnterior - $liquidoPagableAnterior + $liquidoPagable;
         $sueldo->setTotalPagado($totalPagado);
-    }
-    
-    public function verificarSueldo($em, $fecha, $empleado) {
-        $res = FALSE;
-        $fechaDate = new \DateTime(strtotime($fecha));
-        $separa = explode("-", $fechaDate->format('Y-m-d'));
-        $año = $separa[0];
-        $mes = $separa[1];
-        $fechaSueldo = $año."-".$mes."-01";
-        $fechaNueva = new \DateTime($fechaSueldo);
-                
-        $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findOneBy(
-                array('empleado' => $empleado,'fecha' => $fechaNueva));
-        if($sueldo){
-            $res = $sueldo;
-        }
-        return $res;
     }
 }

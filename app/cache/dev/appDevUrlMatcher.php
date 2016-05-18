@@ -168,30 +168,54 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/sueldo/detalle')) {
-            // mtd_sueldoDetalle_diasNoTrabajados
-            if (0 === strpos($pathinfo, '/sueldo/detalle/diasNoTrabajados') && preg_match('#^/sueldo/detalle/diasNoTrabajados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_diasNoTrabajados')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::diasNoTrabajadosAction',));
+        if (0 === strpos($pathinfo, '/sueldo')) {
+            if (0 === strpos($pathinfo, '/sueldo/detalle')) {
+                // mtd_sueldoDetalle_diasNoTrabajados
+                if (0 === strpos($pathinfo, '/sueldo/detalle/diasNoTrabajados') && preg_match('#^/sueldo/detalle/diasNoTrabajados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_diasNoTrabajados')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::diasNoTrabajadosAction',));
+                }
+
+                // mtd_sueldoDetalle_horasExtras
+                if (0 === strpos($pathinfo, '/sueldo/detalle/horasExtras') && preg_match('#^/sueldo/detalle/horasExtras/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_horasExtras')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::horasExtrasAction',));
+                }
+
+                // mtd_sueldoDetalle_bonoAntiguedad
+                if (0 === strpos($pathinfo, '/sueldo/detalle/bonoAntiguedad') && preg_match('#^/sueldo/detalle/bonoAntiguedad/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_bonoAntiguedad')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::bonoAntiguedadAction',));
+                }
+
+                // mtd_sueldoDetalle_descuentos
+                if (0 === strpos($pathinfo, '/sueldo/detalle/descuentos') && preg_match('#^/sueldo/detalle/descuentos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_descuentos')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::descuentosAction',));
+                }
+
+                // mtd_sueldoDetalle_premios
+                if (0 === strpos($pathinfo, '/sueldo/detalle/premios') && preg_match('#^/sueldo/detalle/premios/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_premios')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::premiosAction',));
+                }
+
             }
 
-            // mtd_sueldoDetalle_horasExtras
-            if (0 === strpos($pathinfo, '/sueldo/detalle/horasExtras') && preg_match('#^/sueldo/detalle/horasExtras/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_horasExtras')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::horasExtrasAction',));
-            }
+            if (0 === strpos($pathinfo, '/sueldosSalarios')) {
+                if (0 === strpos($pathinfo, '/sueldosSalarios/emitir')) {
+                    // mtd_sueldos_emitir
+                    if ($pathinfo === '/sueldosSalarios/emitir') {
+                        return array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\MuestraSueldosController::emitirAction',  '_route' => 'mtd_sueldos_emitir',);
+                    }
 
-            // mtd_sueldoDetalle_bonoAntiguedad
-            if (0 === strpos($pathinfo, '/sueldo/detalle/bonoAntiguedad') && preg_match('#^/sueldo/detalle/bonoAntiguedad/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_bonoAntiguedad')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::bonoAntiguedadAction',));
-            }
+                    // mtd_sueldos_emitirRegistro
+                    if (0 === strpos($pathinfo, '/sueldosSalarios/emitirRegistro') && preg_match('#^/sueldosSalarios/emitirRegistro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_emitirRegistro')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\EmitirSueldosController::registrarAction',));
+                    }
 
-            // mtd_sueldoDetalle_descuentos
-            if (0 === strpos($pathinfo, '/sueldo/detalle/descuentos') && preg_match('#^/sueldo/detalle/descuentos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_descuentos')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::descuentosAction',));
-            }
+                }
 
-            // mtd_sueldoDetalle_premios
-            if (0 === strpos($pathinfo, '/sueldo/detalle/premios') && preg_match('#^/sueldo/detalle/premios/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldoDetalle_premios')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DetalleSueldosController::premiosAction',));
+                // mtd_sueldos_mostrarEmpleado
+                if (0 === strpos($pathinfo, '/sueldosSalarios/mostrarEmpleado') && preg_match('#^/sueldosSalarios/mostrarEmpleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_mostrarEmpleado')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\EmpleadoSueldosController::mostrarAction',));
+                }
+
             }
 
         }

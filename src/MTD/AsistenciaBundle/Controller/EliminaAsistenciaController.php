@@ -15,8 +15,17 @@ class EliminaAsistenciaController extends Controller
         $asistencia = $em->getRepository('MTDAsistenciaBundle:Asistencia')->find($id);
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($idEmpleado);
         
-        if($asistencia){
-
+        if($asistencia->getCobrado()){
+            $this->addFlash(
+                'notice',
+                'La asistencia no pudo ser eliminada porque el pago del mismo ya fue realizado'
+            );
+            if($empleado->getOperativo()){
+                return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=>$idEmpleado)));
+            }else{
+                return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=>$idEmpleado)));
+            }
+        }else{
             $this->addFlash(
                 'notice',
                 'La asistencia fue eliminada correctamente'

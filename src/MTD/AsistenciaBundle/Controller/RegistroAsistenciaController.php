@@ -79,7 +79,9 @@ class RegistroAsistenciaController extends Controller
                 $calculoSueldos = new CalculosSueldosController();
                 $psgh = $calculoSueldos->getPsgh($em, "asistencia", $asistencia);
                 $asistencia->setPsgh($psgh);
-
+                $configuracion = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
+                $asistencia->setConfiguracion($configuracion);
+                $asistencia->setCobrado(FALSE);
                 $em->persist($asistencia);
 
                 $idProyectoEmpleado = $this->get('request')->request->get('proyecto');

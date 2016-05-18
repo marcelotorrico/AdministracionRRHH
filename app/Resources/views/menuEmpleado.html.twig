@@ -17,6 +17,7 @@
             <a href="{{ path('mtd_inasistencia_operativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Inasistencia</a>
             <a href="{{ path('mtd_asistencia_administrativo_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
         {%endif%}
+        <a href="{{ path('mtd_sueldos_mostrarEmpleado', { 'id': empleado.id }) }}" class="list-group-item">Sueldos Emitidos</a>
         
     </div>
 </aside>

@@ -24,4 +24,9 @@ $(document).ready(function(){
         $("#tablaPremios").empty();
         $("#tablaPremios").load('/AdministracionRRHH/web/app_dev.php/sueldo/detalle/premios/'+id);
     });
+    $(".confirmarEmicion").on("click", function(e) {
+
+        return confirm('¿Esta seguro que quiere emitir el sueldo?');
+
+    });
 });

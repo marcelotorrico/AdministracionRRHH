@@ -37,7 +37,7 @@ class RegistroAsistenciaAdministrativoController extends Controller
             );
             return $this->redirect($this->generateUrl('mtd_asistencia_empleado_administrativo', array('id'=> $id, true)));
         }else{
-            if(!$asistenciaAdministrativo->validarFechaIngreso(new \DateTime($fecha), $empleado)){
+            if(!$this->validarFechaIngreso(new \DateTime($fecha), $empleado)){
                 $this->addFlash(
                 'notice',
                 'La fecha de la asistencia es posterior a la fecha de ingreso. Por favor verifique los datos.'
@@ -75,6 +75,9 @@ class RegistroAsistenciaAdministrativoController extends Controller
                 $calculoSueldos = new CalculosSueldosController();
                 $psgh = $calculoSueldos->getPsgh($em, "asistencia", $asistencia);
                 $asistencia->setPsgh($psgh);
+                $configuracion = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
+                $asistencia->setConfiguracion($configuracion);
+                $asistencia->setCobrado(FALSE);
                 $em->persist($asistencia);
                 $sueldosPrincipal = new SueldosPrincipalController();
                 $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "asistencia", $asistencia);

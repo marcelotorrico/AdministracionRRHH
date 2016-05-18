@@ -24,7 +24,7 @@ class SueldosPrincipalController extends Controller
         if($sueldosEmpleado->isEmpty()){
             $this->crearNuevoSueldo($em, $año, $mes, $semanaSueldo, $empleado, $tipoAsistencia, $asistencia);
         }else{
-            $i = 0;
+            $estado = TRUE;
             foreach($sueldosEmpleado as $sueldoEmpleado){
                 $fechaSueldo = $sueldoEmpleado->getFecha();
                 //list($añoSueldo, $mesSueldo, $diaSueldo ) = split( '[/.-]', $fechaSueldo->format('Y-m-d H:i:s'));
@@ -33,12 +33,11 @@ class SueldosPrincipalController extends Controller
                 $mesSueldo = $separa1[1];
                 if($año == $añoSueldo && $mes == $mesSueldo){
                     $this->actualizarSueldo($em, $empleado, $mes, $sueldoEmpleado, $tipoAsistencia, $año, $semanaSueldo, $asistencia);
+                    $estado = FALSE;
                     break;
-                }else{
-                    $i++;
                 }
             }
-            if(count($sueldosEmpleado) == $i){
+            if($estado){
                 $this->crearNuevoSueldo($em, $año, $mes, $semanaSueldo, $empleado, $tipoAsistencia, $asistencia);
             }
         }
@@ -154,6 +153,7 @@ class SueldosPrincipalController extends Controller
         $sueldo->setMinimo($minimo);
         $sueldo->setTotalGanado($totalGanado);
         $sueldo->setLiquidoPagable($totalGanado);
+        $sueldo->setEmitido(FALSE);
         $sueldo->addFallaAcumulada($fallaAcumulada);
         
         $viaticosPremios = new ViaticosPremiosController();

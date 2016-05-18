@@ -55,3 +55,15 @@ mtd_sueldoDetalle_premios:
     defaults: {_controller: MTDSueldosSalariosBundle:DetalleSueldos:premios }
     options:
         expose: true
+        
+mtd_sueldos_emitir:
+    path:     /sueldosSalarios/emitir
+    defaults: {_controller: MTDSueldosSalariosBundle:MuestraSueldos:emitir }
+    
+mtd_sueldos_emitirRegistro:
+    path:     /sueldosSalarios/emitirRegistro/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:EmitirSueldos:registrar }
+    
+mtd_sueldos_mostrarEmpleado:
+    path:     /sueldosSalarios/mostrarEmpleado/{id}
+    defaults: {_controller: MTDSueldosSalariosBundle:EmpleadoSueldos:mostrar }

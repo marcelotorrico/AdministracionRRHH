@@ -17,10 +17,10 @@ $(document).on('ready',function(){
     //yearSuffix: ''
     };
  $.datepicker.setDefaults($.datepicker.regional['es']);
-    $("#sueldosSalarios").datepicker({
+    $(".sueldosSalarios").datepicker({
         changeMonth: true,
         changeYear: true,
         //showButtonPanel: true,
         dateFormat: 'MM yy'
     }).datepicker("setDate", new Date());
-});
+    });

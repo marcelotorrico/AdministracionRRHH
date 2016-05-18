@@ -88,6 +88,13 @@ class Asistencia
     /**
      * @var boolean
      *
+     * @ORM\Column(name="cobrado", nullable = true, type="boolean")
+     */
+    private $cobrado;
+    
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="feriado", nullable = true, type="boolean")
      */
     private $feriado;
@@ -486,5 +493,29 @@ class Asistencia
     public function getFeriado()
     {
         return $this->feriado;
+    }
+    
+    /**
+     * Set cobrado
+     *
+     * @param boolean $cobrado
+     *
+     * @return Asistencia
+     */
+    public function setCobrado($cobrado)
+    {
+        $this->cobrado = $cobrado;
+
+        return $this;
+    }
+
+    /**
+     * Get cobrado
+     *
+     * @return boolean
+     */
+    public function getCobrado()
+    {
+        return $this->cobrado;
     }
 }
