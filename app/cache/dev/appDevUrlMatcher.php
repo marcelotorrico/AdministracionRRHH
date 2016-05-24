@@ -260,18 +260,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // mtd_asistencia_mostrar
-            if (0 === strpos($pathinfo, '/asistencia/empleado/ver') && preg_match('#^/asistencia/empleado/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/asistencia/empleado/ver') && preg_match('#^/asistencia/empleado/ver/(?P<id>[^/]++)/(?P<ano>[^/]++)/(?P<mes>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_mostrar')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\InformacionAsistenciaController::mostrarAction',));
             }
 
             // mtd_asistencia_administrativo_mostrar
-            if (0 === strpos($pathinfo, '/asistencia/administrativo/ver') && preg_match('#^/asistencia/administrativo/ver/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/asistencia/administrativo/ver') && preg_match('#^/asistencia/administrativo/ver/(?P<id>[^/]++)/(?P<ano>[^/]++)/(?P<mes>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_administrativo_mostrar')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\InformacionAsistenciaAdministrativoController::mostrarAction',));
             }
 
-            // mtd_asistencia_detalle_tabla
-            if (0 === strpos($pathinfo, '/asistencia/detalle/tabla') && preg_match('#^/asistencia/detalle/tabla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarAction',));
+            if (0 === strpos($pathinfo, '/asistencia/detalle')) {
+                // mtd_asistencia_detalle_tabla
+                if (0 === strpos($pathinfo, '/asistencia/detalle/tabla') && preg_match('#^/asistencia/detalle/tabla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarAction',));
+                }
+
+                // mtd_asistencia_detalleAdministrativo_tabla
+                if (0 === strpos($pathinfo, '/asistencia/detalleAdministrativo/tabla') && preg_match('#^/asistencia/detalleAdministrativo/tabla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_asistencia_detalleAdministrativo_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarAdministrativoAction',));
+                }
+
             }
 
         }
@@ -279,6 +287,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // mtd_inasistencia_detalle_tabla
         if (0 === strpos($pathinfo, '/inasistencia/detalle/tabla') && preg_match('#^/inasistencia/detalle/tabla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_inasistencia_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarInasistenciaAction',));
+        }
+
+        // mtd_feriado_detalle_tabla
+        if (0 === strpos($pathinfo, '/feriado/detalle/tabla') && preg_match('#^/feriado/detalle/tabla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_feriado_detalle_tabla')), array (  '_controller' => 'MTD\\AsistenciaBundle\\Controller\\DetalleTablaController::mostrarFeriadoAction',));
         }
 
         // mtd_asistencia_elimina

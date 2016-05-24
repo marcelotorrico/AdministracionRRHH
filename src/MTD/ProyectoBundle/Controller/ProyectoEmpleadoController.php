@@ -14,7 +14,7 @@ class ProyectoEmpleadoController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $proyectoSeleccionado = $em->getRepository('MTDProyectoBundle:Proyecto')->find($id);
-        $categoriasProyecto = $proyectoSeleccionado->getCategoria();
+        $categoriasProyecto = $em->getRepository('MTDCategoriasTrabajoBundle:Categoria')->findAll();
         
         return $this->render('MTDProyectoBundle:Proyecto:registroEmpleados.html.twig', array('proyectoSeleccionado' => $proyectoSeleccionado, "categoriasProyecto"=>$categoriasProyecto));
     }

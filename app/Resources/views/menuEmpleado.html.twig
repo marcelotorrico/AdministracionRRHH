@@ -10,14 +10,121 @@
         <a href="{{ path('mtd_empleado_proyectos_participa', { 'id': empleado.id }) }}" class="list-group-item">Proyectos en los que participa</a>
         {% if empleado.operativo == true %}
             <a href="{{ path('mtd_asistencia_empleado', { 'id': empleado.id }) }}" class="list-group-item">Registrar Asistencia</a>
-            <a href="{{ path('mtd_inasistencia_operativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Inasistencia</a>
-            <a href="{{ path('mtd_asistencia_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
         {%else%}
             <a href="{{ path('mtd_asistencia_empleado_administrativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Asistencia</a>
-            <a href="{{ path('mtd_inasistencia_operativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Inasistencia</a>
-            <a href="{{ path('mtd_asistencia_administrativo_mostrar', { 'id': empleado.id }) }}" class="list-group-item">Ver Asistencia</a>
         {%endif%}
+        <a href="{{ path('mtd_inasistencia_operativo', { 'id': empleado.id }) }}" class="list-group-item">Registrar Inasistencia</a>
+        <a href="#registroFeriado" class="feriado1 list-group-item" data-id="{{empleado.id }}" data-toggle="modal">Registrar Feriado</a>
+        {% if empleado.operativo == true %}
+            <a href="#verAsistencia" class="asistencia1 list-group-item" data-id="{{ empleado.id }}" data-toggle="modal">Ver Asistencia</a>
+        {%else%}
+            <a href="#verAsistenciaAdministrativo" class="asistencia2 list-group-item" data-id="{{ empleado.id }}" data-toggle="modal">Ver Asistencia</a>
+        {%endif%}
+        <a href="{{ path('mtd_viaticos_registro', { 'id': empleado.id }) }}" class="list-group-item">Premios y Viaticos</a>
+        <a href="{{ path('mtd_descuentos_registro', { 'id': empleado.id }) }}" class="list-group-item">Registrar Descuento</a>
         <a href="{{ path('mtd_sueldos_mostrarEmpleado', { 'id': empleado.id }) }}" class="list-group-item">Sueldos Emitidos</a>
         
+    </div>
+    <div class="modal fade" id="verAsistenciaAdministrativo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Asistencia</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="mainLugar">
+                        <form action="{{ path('mtd_asistencia_administrativo_mostrar', { 'id': empleado.id, 'ano': empleado.id, 'mes': empleado.id }) }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class ="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon addonGroup required" for="fecha">Mes y año:</label>
+                                            <input type="text" id="mesAsistencia" name="mesAsistencia" required="required" data-provide="datepicker"
+                                            data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
+                                            class="sueldosSalarios feriado form-control input-inline datepicker inputGroup" title="Mes y año de la asistencia">
+                                            <input type = "hidden" id = "idEmpleadoAdministrativoAsistencia" name = "idEmpleadoAdministrativoAsistencia" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer form-group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" id ="enviarMes" name="enviarMes" class="btn btn-primary">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="verAsistencia">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Asistencia</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="mainLugar">
+                        <form action="{{ path('mtd_asistencia_mostrar', { 'id': empleado.id, 'ano': empleado.id, 'mes': empleado.id }) }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class ="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon addonGroup required" for="fecha">Mes y años:</label>
+                                            <input type="text" id="mesAsistenciaOperativo" name="mesAsistenciaOperativo" required="required" data-provide="datepicker"
+                                            data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
+                                            class="sueldosSalarios feriado form-control input-inline datepicker inputGroup" title="Mes y año de la asistencia">
+                                            <input type = "hidden" id = "idEmpleadoAsistencia" name = "idEmpleadoAsistencia" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer form-group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" id ="enviarMes" name="enviarMes" class="btn btn-primary">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="registroFeriado">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Registro de un Feriado</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="mainLugar">
+
+                        <form action="{{ path('mtd_asistencia_feriado') }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class ="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon addonGroup required" for="fecha">Fecha del Feriado:</label>
+                                            <input type="text" id="fechaFeriado" name="fechaFeriado" required="required" data-provide="datepicker"
+                                            data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
+                                            class=" feriado form-control input-inline datepicker inputGroup" title="Fecha de asistencia">
+                                            <input type = "hidden" id = "idEmpleado" name = "idEmpleado" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer form-group">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" id ="enviarLugar" name="enviarLugar" class="btn btn-primary">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </aside>

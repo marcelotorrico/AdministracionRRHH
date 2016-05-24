@@ -5,6 +5,7 @@
                 <th>Proyecto</th>
                 <th>Horas Normales</th>
                 <th>Horas Extras</th>
+                <th>PSGH</th>
             </tr>
         </thead>
         <tbody>
@@ -13,8 +14,10 @@
                     <td>{{ asistenciaProyecto.proyectoEmpleado.proyecto.nombre}}</td>
                     <td>{{ asistenciaProyecto.horasNormales}}</td>
                     <td>{{ asistenciaProyecto.horasExtras}}</td>
-                </tr>
+                    
             {%endfor%}
+                    <td>{{asistencia.psgh}}</td>
+                </tr>
         </tbody>    
     </table>
 </div>

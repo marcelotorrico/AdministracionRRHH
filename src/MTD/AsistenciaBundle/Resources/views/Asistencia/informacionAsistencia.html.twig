@@ -49,11 +49,35 @@
                                                 <td><strong> FERIADO </strong></td>
                                                 <td><strong> FERIADO </strong></td>
                                                 <td>
+                                                    <a href="#ventanaDetalleFeriado" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFeriado btn btn-sm btn-info">
+                                                        Ver Detalle
+                                                    </a>
                                                     <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
                                                         Eliminar
                                                     </a>
                                                 </td>
                                             </tr>
+                                            <div class="modal fade" id="ventanaDetalleFeriado">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="modal-title">Detalle del Feriado</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div id="mainTipo">
+                                                                <form class="form-horizontal">
+                                                                    <div id = "tablaFeriado"></div>
+
+                                                                    <div class="modal-footer form-group">
+                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         {%elseif asistencia.falta is empty%}
                                             <tr>
                                                 <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>

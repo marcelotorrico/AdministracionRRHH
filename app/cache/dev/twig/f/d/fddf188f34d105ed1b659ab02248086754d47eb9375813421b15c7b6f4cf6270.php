@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b47db2a1c67b0f2add629462b5ded292a4f1e7148d0df0acfde7cffe3a818493 = $this->env->getExtension("native_profiler");
-        $__internal_b47db2a1c67b0f2add629462b5ded292a4f1e7148d0df0acfde7cffe3a818493->enter($__internal_b47db2a1c67b0f2add629462b5ded292a4f1e7148d0df0acfde7cffe3a818493_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28 = $this->env->getExtension("native_profiler");
+        $__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28->enter($__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -214,7 +214,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
             <div class=\"modal-content\">
                 <div class=\"modal-header\">
                     <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>
-                    <h4 class=\"modal-title\">Sueldos y Salarios</h4>
+                    <h4 class=\"modal-title\">Sueldos Emitidos</h4>
                 </div>
                 <div class=\"modal-body\">
                     <div id=\"mainLugar\">
@@ -249,7 +249,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_b47db2a1c67b0f2add629462b5ded292a4f1e7148d0df0acfde7cffe3a818493->leave($__internal_b47db2a1c67b0f2add629462b5ded292a4f1e7148d0df0acfde7cffe3a818493_prof);
+        $__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28->leave($__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28_prof);
 
     }
 
@@ -403,7 +403,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*             <div class="modal-content">*/
 /*                 <div class="modal-header">*/
 /*                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>*/
-/*                     <h4 class="modal-title">Sueldos y Salarios</h4>*/
+/*                     <h4 class="modal-title">Sueldos Emitidos</h4>*/
 /*                 </div>*/
 /*                 <div class="modal-body">*/
 /*                     <div id="mainLugar">*/

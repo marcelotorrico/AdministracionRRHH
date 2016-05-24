@@ -27,11 +27,11 @@ mtd_asistencia_administrativos:
     defaults: {_controller: MTDAsistenciaBundle:ListaAdministrativos:listar }
     
 mtd_asistencia_mostrar:
-    path:     /asistencia/empleado/ver/{id}
+    path:     /asistencia/empleado/ver/{id}/{ano}/{mes}
     defaults: {_controller: MTDAsistenciaBundle:InformacionAsistencia:mostrar }
     
 mtd_asistencia_administrativo_mostrar:
-    path:     /asistencia/administrativo/ver/{id}
+    path:     /asistencia/administrativo/ver/{id}/{ano}/{mes}
     defaults: {_controller: MTDAsistenciaBundle:InformacionAsistenciaAdministrativo:mostrar }
     
 mtd_asistencia_detalle_tabla:
@@ -40,9 +40,21 @@ mtd_asistencia_detalle_tabla:
     options:
         expose: true
         
+mtd_asistencia_detalleAdministrativo_tabla:
+    path:     /asistencia/detalleAdministrativo/tabla/{id}
+    defaults: {_controller: MTDAsistenciaBundle:DetalleTabla:mostrarAdministrativo }
+    options:
+        expose: true
+        
 mtd_inasistencia_detalle_tabla:
     path:     /inasistencia/detalle/tabla/{id}
     defaults: {_controller: MTDAsistenciaBundle:DetalleTabla:mostrarInasistencia }
+    options:
+        expose: true
+        
+mtd_feriado_detalle_tabla:
+    path:     /feriado/detalle/tabla/{id}
+    defaults: {_controller: MTDAsistenciaBundle:DetalleTabla:mostrarFeriado }
     options:
         expose: true
         

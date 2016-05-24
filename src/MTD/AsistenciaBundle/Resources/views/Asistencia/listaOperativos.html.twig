@@ -59,11 +59,45 @@
                                         <a href="#registroFeriado" class="feriado1 btn btn-sm btn-primary" data-id="{{ contratacion.empleado.id }}" data-toggle="modal">
                                             Feriado
                                         </a>
-                                        <a href="{{ path('mtd_asistencia_mostrar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
+                                        <a href="#verAsistencia" class="asistencia1 btn btn-sm btn-info" data-id="{{ contratacion.empleado.id }}" data-toggle="modal">
                                             Ver Asistencia
                                         </a>
                                     </td>
                                 </tr>
+                                
+                                <div class="modal fade" id="verAsistencia">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title">Asistencia</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div id="mainLugar">
+                                                    <form action="{{ path('mtd_asistencia_mostrar', { 'id': contratacion.empleado.id, 'ano': contratacion.empleado.id, 'mes': contratacion.empleado.id }) }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class ="form-group">
+                                                                    <div class="input-group">
+                                                                        <label class="input-group-addon addonGroup required" for="fecha">Mes y año:</label>
+                                                                        <input type="text" id="mesAsistencia" name="mesAsistencia" required="required" data-provide="datepicker"
+                                                                        data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
+                                                                        class="sueldosSalarios feriado form-control input-inline datepicker inputGroup" title="Mes y año de la asistencia">
+                                                                        <input type = "hidden" id = "idEmpleadoAsistencia" name = "idEmpleadoAsistencia" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer form-group">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                            <button type="submit" id ="enviarMes" name="enviarMes" class="btn btn-primary">Buscar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                                 <div class="modal fade" id="registroFeriado">
                                     <div class="modal-dialog">
@@ -81,8 +115,8 @@
                                                                 <div class ="form-group">
                                                                     <div class="input-group">
                                                                         <label class="input-group-addon addonGroup required" for="fecha">Fecha del Feriado:</label>
-                                                                        <input type="text" id="fecha" name="fecha" required="required" data-provide="datepicker"
-                                                                        data-date-format="dd-mm-yyyy" pidEmpleadolaceholder="Seleccione la fecha de la asistencia" 
+                                                                        <input type="text" id="fechaFeriado" name="fechaFeriado" required="required" data-provide="datepicker"
+                                                                        data-date-format="dd-mm-yyyy" placeholder="Seleccione la fecha de la asistencia" 
                                                                         class=" feriado form-control input-inline datepicker inputGroup" title="Fecha de asistencia">
                                                                         <input type = "hidden" id = "idEmpleado" name = "idEmpleado" />
                                                                     </div>
@@ -91,7 +125,7 @@
                                                         </div>
                                                         <div class="modal-footer form-group">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                            <button type="submit" id ="enviarLugar" name="enviarLugar" class="btn btn-primary">Guardar Cambios</button>
+                                                            <button type="submit" id ="enviarLugar" name="enviarLugar" class="btn btn-primary">Registrar</button>
                                                         </div>
                                                     </form>
                                                 </div>

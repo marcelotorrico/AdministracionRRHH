@@ -83,6 +83,13 @@ class ProyectoEmpleadoNombreController extends Controller
         $proyectoEmpleado->setProyecto($proyectoSeleccionado);
         $proyectoEmpleado->setActivo("TRUE");
         
+        $this->asignarCategoria($em, $empleado, $proyectoSeleccionado);
+        
+        $em->persist($proyectoEmpleado);
+        $em->flush();
+    }
+    
+    public function asignarCategoria($em, $empleado, $proyectoSeleccionado) {
         foreach($empleado->getContratacion() as $contratacion){
             if($contratacion->getActivo()){
                 $idCategoria = $contratacion->getCategoria();
@@ -101,8 +108,5 @@ class ProyectoEmpleadoNombreController extends Controller
             $proyectoSeleccionado->getCategoria()->add($categoria);
             $em->persist($proyectoSeleccionado);
         }
-        
-        $em->persist($proyectoEmpleado);
-        $em->flush();
     }
 }
