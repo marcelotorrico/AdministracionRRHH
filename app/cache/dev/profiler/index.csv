@@ -8358,3 +8358,6 @@ fb530e,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalari
 8c44ca,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/mostrarEmpleado/21,1465231056,,200
 5f8df7,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/productividad/sueldos/21,1465231383,,200
 bcd8e8,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/productividad/sueldos/17,1465231398,,200
+874337,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/productividad/sueldos/21,1465232465,,200
+493ba1,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/productividad/sueldos/17,1465232493,,200
+73ead2,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/mostrarEmpleado/17,1465232509,,200
