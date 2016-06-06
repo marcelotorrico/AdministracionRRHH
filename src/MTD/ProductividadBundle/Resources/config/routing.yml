@@ -1,0 +1,11 @@
+mtd_productividad_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MTDProductividadBundle:Default:index }
+
+mtd_productividad_empleados:
+    path:     /productividad/empleados
+    defaults: {_controller: MTDProductividadBundle:ListaEmpleados:listar }
+    
+mtd_productividad_sueldos:
+    path:     /productividad/sueldos/{id}
+    defaults: {_controller: MTDProductividadBundle:Sueldos:mostrar }

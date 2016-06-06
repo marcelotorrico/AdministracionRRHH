@@ -127,6 +127,24 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // mtd_productividad_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_productividad_homepage')), array (  '_controller' => 'MTD\\ProductividadBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/productividad')) {
+            // mtd_productividad_empleados
+            if ($pathinfo === '/productividad/empleados') {
+                return array (  '_controller' => 'MTD\\ProductividadBundle\\Controller\\ListaEmpleadosController::listarAction',  '_route' => 'mtd_productividad_empleados',);
+            }
+
+            // mtd_productividad_sueldos
+            if (0 === strpos($pathinfo, '/productividad/sueldos') && preg_match('#^/productividad/sueldos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_productividad_sueldos')), array (  '_controller' => 'MTD\\ProductividadBundle\\Controller\\SueldosController::mostrarAction',));
+            }
+
+        }
+
         // mtd_sueldos_salarios_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_salarios_homepage')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\DefaultController::indexAction',));

@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28 = $this->env->getExtension("native_profiler");
-        $__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28->enter($__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29 = $this->env->getExtension("native_profiler");
+        $__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29->enter($__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -166,6 +166,13 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                             </ul>
                         </li>
                         
+                        <li class=\"dropdown\">
+                            <a href=\"";
+        // line 92
+        echo $this->env->getExtension('routing')->getPath("mtd_productividad_empleados");
+        echo "\" class=\"dropdown-toggle\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Indicadores de Productividad</a>
+                        </li>
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -183,7 +190,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                     <div id=\"mainLugar\">
 
                         <form action=\"";
-        // line 107
+        // line 111
         echo $this->env->getExtension('routing')->getPath("mtd_sueldos_emitir");
         echo "\" method=\"post\" role=\"form\" data-async data-target=\"#rating-modal\" class=\"text-left\">
                             <div class=\"row\">
@@ -220,7 +227,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
                     <div id=\"mainLugar\">
 
                         <form action=\"";
-        // line 141
+        // line 145
         echo $this->env->getExtension('routing')->getPath("mtd_sueldos_ver");
         echo "\" method=\"post\" role=\"form\" data-async data-target=\"#rating-modal\" class=\"text-left\">
                             <div class=\"row\">
@@ -249,7 +256,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28->leave($__internal_3be25888d4b7951421e1285eaf1fc075418f27dea81f6b29e158fd453085ea28_prof);
+        $__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29->leave($__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29_prof);
 
     }
 
@@ -265,7 +272,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     public function getDebugInfo()
     {
-        return array (  224 => 141,  187 => 107,  164 => 87,  150 => 76,  145 => 74,  140 => 72,  130 => 65,  125 => 63,  115 => 56,  105 => 49,  101 => 48,  96 => 46,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
+        return array (  231 => 145,  194 => 111,  172 => 92,  164 => 87,  150 => 76,  145 => 74,  140 => 72,  130 => 65,  125 => 63,  115 => 56,  105 => 49,  101 => 48,  96 => 46,  92 => 45,  82 => 38,  77 => 36,  73 => 35,  63 => 28,  58 => 26,  53 => 24,  49 => 23,  36 => 13,  22 => 1,);
     }
 }
 /* <div class="">*/
@@ -356,6 +363,10 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                                 <li role="separator" class="divider"></li>*/
 /*                                 <li ><a href="{{ path('mtd_descuentos_empleados') }}">Descuentos, Premios y Viaticos</a></li>*/
 /*                             </ul>*/
+/*                         </li>*/
+/*                         */
+/*                         <li class="dropdown">*/
+/*                             <a href="{{ path('mtd_productividad_empleados') }}" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Indicadores de Productividad</a>*/
 /*                         </li>*/
 /*                         */
 /*                     </ul>*/

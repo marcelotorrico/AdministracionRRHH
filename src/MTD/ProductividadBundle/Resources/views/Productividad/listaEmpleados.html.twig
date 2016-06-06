@@ -1,0 +1,60 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+        
+    <section class="jumbotron">
+        <div class="container ">
+            <h2>Productividad de los Empleados </h2>
+        </div>
+    </section>
+    <div class="container-fluid full-height">
+        
+        {{ include('menuListaProyectos.html.twig')}}
+        
+        <div class="col-md-9">
+            <br><br>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Apellidos</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Ingreso</th>
+                            <th>Categoria</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contratacion in contrataciones %}
+                                <tr>
+                                    <td><strong>{{ contratacion.contratacion.empleado.apellido }}</strong></td>
+                                    <td>{{ contratacion.contratacion.empleado.nombre }}</td>
+                                    <td>{{ contratacion.contratacion.fechaIngreso|date('d-m-Y') }}</td>
+                                    <td>{{ contratacion.categoria.nombre }}</td>
+                                    <td>
+                                        <a href="{{ path('mtd_productividad_sueldos', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-success">
+                                            Sueldos y Salarios
+                                        </a>
+                                        <a href="{{ path('mtd_inasistencia_operativo', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-danger">
+                                            Registrar Inasistencia
+                                        </a>
+                                        <a href="#registroFeriado" class="feriado1 btn btn-sm btn-primary" data-id="{{ contratacion.contratacion.empleado.id }}" data-toggle="modal">
+                                            Feriado
+                                        </a>
+                                        <a href="#verAsistencia" class="asistencia1 btn btn-sm btn-info" data-id="{{ contratacion.contratacion.empleado.id }}" data-toggle="modal">
+                                            Ver Asistencia
+                                        </a>
+                                    </td>
+                                </tr>
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

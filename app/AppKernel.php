@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new MTD\SeleccionBundle\MTDSeleccionBundle(),
             new MTD\AsistenciaBundle\MTDAsistenciaBundle(),
             new MTD\SueldosSalariosBundle\MTDSueldosSalariosBundle(),
+            new MTD\ProductividadBundle\MTDProductividadBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

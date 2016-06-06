@@ -23,6 +23,7 @@
       <parameter key="MTDSeleccionBundle">MTD\SeleccionBundle\MTDSeleccionBundle</parameter>
       <parameter key="MTDAsistenciaBundle">MTD\AsistenciaBundle\MTDAsistenciaBundle</parameter>
       <parameter key="MTDSueldosSalariosBundle">MTD\SueldosSalariosBundle\MTDSueldosSalariosBundle</parameter>
+      <parameter key="MTDProductividadBundle">MTD\ProductividadBundle\MTDProductividadBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -1719,7 +1720,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57081e1cb5a579.93996867</argument>
+            <argument>574dd1013bb9e0.85656937</argument>
           </service>
         </argument>
       </argument>
@@ -1842,7 +1843,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>57081e1cb5a579.93996867</argument>
+            <argument>574dd1013bb9e0.85656937</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2912,6 +2913,10 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\SueldosSalariosBundle/Resources/views</argument>
         <argument>MTDSueldosSalarios</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\AdministracionRRHH\src\MTD\ProductividadBundle/Resources/views</argument>
+        <argument>MTDProductividad</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\AdministracionRRHH\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>

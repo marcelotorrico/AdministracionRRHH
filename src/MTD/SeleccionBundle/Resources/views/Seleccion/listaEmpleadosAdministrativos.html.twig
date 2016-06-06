@@ -32,29 +32,21 @@
                     </thead>
                     <tbody>
                         {% for contratacion in contrataciones %}
-                            {% if contratacion.activo == true and contratacion.empleado.contratado == true and contratacion.empleado.operativo == false %}
-                                <tr>
-                                    <td><strong>{{ contratacion.empleado.apellido }}</strong></td>
-                                    <td>{{ contratacion.empleado.nombre }}</td>
-                                    <td>{{ contratacion.fechaIngreso|date('d-m-Y') }}</td>
-                                    {% set break = false %}
-                                    {% for requisito in contratacion.empleado.empleadoRequisito if not break %}
-                                        {% if requisito.requisito.categoria.id == contratacion.categoria %}
-                                            <td><strong>{{ requisito.requisito.categoria.nombre }}</strong></td>
-                                            <td><strong>{{ requisito.requisito.categoria.sueldoBasico }}</strong></td>
-                                            {% set break = true %}
-                                        {%endif%}
-                                    {% endfor %}
-                                    <td>
-                                        <a href="{{ path('mtd_empleado_ver', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
-                                            Ver Empleado
-                                        </a>
-                                        <a href="{{ path('mtd_empleado_eliminar', { 'id': contratacion.empleado.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacionEmpleado">
-                                            Eliminar
-                                        </a>
-                                    </td>
-                                </tr>
-                            {%endif%}
+                            <tr>
+                                <td><strong>{{ contratacion.contratacion.empleado.apellido }}</strong></td>
+                                <td>{{ contratacion.contratacion.empleado.nombre }}</td>
+                                <td>{{ contratacion.contratacion.fechaIngreso|date('d-m-Y') }}</td>
+                                <td><strong>{{ contratacion.categoria.nombre }}</strong></td>
+                                <td><strong>{{ contratacion.categoria.sueldoBasico }}</strong></td>
+                                <td>
+                                    <a href="{{ path('mtd_empleado_ver', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
+                                        Ver Empleado
+                                    </a>
+                                    <a href="{{ path('mtd_empleado_eliminar', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-danger btn-delete confirmarEliminacionEmpleado">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>    
                 </table>
