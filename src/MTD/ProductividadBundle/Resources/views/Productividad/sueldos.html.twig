@@ -24,103 +24,112 @@
         
         {{ include('menuEmpleado.html.twig')}}
         
-        <div class="col-md-9">
-            <br><br>
-            <div class = "caja input-group">
-                <label class="labelSelect input-group-addon" for="fecha">Año:</label>
-                <select onChange="mostrarResultados(this.value, window.myBar, $progress);">
-                    {% for año in añosSueldo %}
-                        <option value="{{año}}">{{año}}</option>
-                    {%endfor%}
-                </select>
-            </div>
-            <div id="container" style="width: 90%;">
-                <canvas id="canvas"></canvas>
-                <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
-            </div>
-            
-            <script>
-                var $progress = $('#animationProgress');
-                $(document).ready(mostrarResultados({{ultimoAño}}, window.myBar, $progress));
-                function mostrarResultados(año, antiguo, $progress){
-                    if(antiguo != null){
-                        antiguo.destroy();
-                    }
-                   
-                    {% for sueldo in todosSueldos %}
-                        
-                        if({{sueldo.año}} == año){
-                            var sueldosAño = {{ sueldo.sueldosAño|json_encode|raw }};
-                            var enero      = sueldosAño[0];
-                            var febrero    = sueldosAño[1];
-                            var marzo      = sueldosAño[2];
-                            var abril      = sueldosAño[3];
-                            var mayo       = sueldosAño[4];
-                            var junio      = sueldosAño[5];
-                            var julio      = sueldosAño[6];
-                            var agosto     = sueldosAño[7];
-                            var septiembre = sueldosAño[8];
-                            var octubre    = sueldosAño[9];
-                            var noviembre  = sueldosAño[10];
-                            var diciembre  = sueldosAño[11];
+        {%if añosSueldo|length > 0 %}
+            <div class="col-md-9">
+                <br><br>
+                <div class = "caja input-group">
+                    <label class="labelSelect input-group-addon" for="fecha">Año:</label>
+                    <select onChange="mostrarResultados(this.value, window.myBar, $progress);">
+                        {% for año in añosSueldo %}
+                            <option value="{{año}}">{{año}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <div id="container" style="width: 90%;">
+                    <canvas id="canvas"></canvas>
+                    <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+                </div>
+
+                <script>
+                    var $progress = $('#animationProgress');
+                    $(document).ready(mostrarResultados({{ultimoAño}}, window.myBar, $progress));
+                    function mostrarResultados(año, antiguo, $progress){
+                        if(antiguo != null){
+                            antiguo.destroy();
                         }
-                    {%endfor%}
-                    
-                    var barChartData = {
-                        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
-                                 "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                        datasets: [{
-                            label: '{{empleado.apellido}} {{empleado.nombre}}',
-                            backgroundColor: "#36A2EB",
-                            data: [enero, febrero, marzo, abril, mayo, junio,
-                                julio, agosto, septiembre, octubre, noviembre, diciembre]
-                        }]
-                    };
-                    var ctx = document.getElementById("canvas").getContext("2d");
-                    window.myBar = new Chart(ctx, {
-                        type: 'bar',
-                        data: barChartData,
-                        options: {
-                            elements: {
-                                rectangle: {
-                                    borderWidth: 2,
-                                    borderColor: 'rgb(151,187,205,0.5)',
-                                    borderSkipped: 'bottom'
-                                }
-                            },
-                            responsive: true,
-                            legend: {
-                                position: 'top'
-                            },
-                            title: {
-                                display: false,
-                                text: 'Sueldos y salarios'
-                            },
-                            animation: {
-                                duration: 2000,
-                                onProgress: function(animation) {
-                                    $progress.attr({
-                                        value: animation.animationObject.currentStep / animation.animationObject.numSteps
-                                    });
+
+                        {% for sueldo in todosSueldos %}
+
+                            if({{sueldo.año}} == año){
+                                var sueldosAño = {{ sueldo.sueldosAño|json_encode|raw }};
+                                var enero      = sueldosAño[0];
+                                var febrero    = sueldosAño[1];
+                                var marzo      = sueldosAño[2];
+                                var abril      = sueldosAño[3];
+                                var mayo       = sueldosAño[4];
+                                var junio      = sueldosAño[5];
+                                var julio      = sueldosAño[6];
+                                var agosto     = sueldosAño[7];
+                                var septiembre = sueldosAño[8];
+                                var octubre    = sueldosAño[9];
+                                var noviembre  = sueldosAño[10];
+                                var diciembre  = sueldosAño[11];
+                            }
+                        {%endfor%}
+
+                        var barChartData = {
+                            labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+                                     "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                            datasets: [{
+                                label: '{{empleado.apellido}} {{empleado.nombre}}',
+                                backgroundColor: "#36A2EB",
+                                data: [enero, febrero, marzo, abril, mayo, junio,
+                                    julio, agosto, septiembre, octubre, noviembre, diciembre]
+                            }]
+                        };
+                        var ctx = document.getElementById("canvas").getContext("2d");
+                        window.myBar = new Chart(ctx, {
+                            type: 'bar',
+                            data: barChartData,
+                            options: {
+                                elements: {
+                                    rectangle: {
+                                        borderWidth: 2,
+                                        borderColor: 'rgb(151,187,205,0.5)',
+                                        borderSkipped: 'bottom'
+                                    }
                                 },
-                                onComplete: function () {
+                                responsive: true,
+                                legend: {
+                                    position: 'top'
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Sueldos y salarios'
+                                },
+                                animation: {
+                                    duration: 2000,
+                                    onProgress: function(animation) {
+                                        $progress.attr({
+                                            value: animation.animationObject.currentStep / animation.animationObject.numSteps
+                                        });
+                                    },
+                                    onComplete: function () {
 
-                                    var chartInstance = this.chart;
-                                    var ctx = chartInstance.ctx;
-                                    ctx.textAlign = "center";
+                                        var chartInstance = this.chart;
+                                        var ctx = chartInstance.ctx;
+                                        ctx.textAlign = "center";
 
-                                    Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
-                                        var meta = chartInstance.controller.getDatasetMeta(i);
-                                        Chart.helpers.each(meta.data.forEach(function (bar, index) {
-                                            ctx.fillText(dataset.data[index], bar._model.x, bar._model.y - 15);
+                                        Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
+                                            var meta = chartInstance.controller.getDatasetMeta(i);
+                                            Chart.helpers.each(meta.data.forEach(function (bar, index) {
+                                                ctx.fillText(dataset.data[index], bar._model.x, bar._model.y - 15);
+                                            }),this);
                                         }),this);
-                                    }),this);
+                                    }
                                 }
                             }
-                        }
-                    });
-                }
-            </script>
-        </div>
+                        });
+                    }
+                </script>
+            </div>
+        {%else%}
+            <div class="col-md-9">
+                <br><br>
+                <center><h3>No se ha registrado ningun sueldo</h3></center>
+            </div>
+        {%endif%}
+        
+        
     </div>
 {% endblock %}

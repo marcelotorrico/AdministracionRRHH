@@ -9,3 +9,15 @@ mtd_productividad_empleados:
 mtd_productividad_sueldos:
     path:     /productividad/sueldos/{id}
     defaults: {_controller: MTDProductividadBundle:Sueldos:mostrar }
+    
+mtd_productividad_faltas:
+    path:     /productividad/faltas/{id}
+    defaults: {_controller: MTDProductividadBundle:Faltas:mostrar }
+    
+mtd_productividad_permisos:
+    path:     /productividad/permisos/{id}
+    defaults: {_controller: MTDProductividadBundle:Permisos:mostrar }
+    
+mtd_productividad_horas:
+    path:     /productividad/horasTrabajadas/{id}
+    defaults: {_controller: MTDProductividadBundle:Horas:mostrar }

@@ -1,0 +1,145 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/estilos/productividadSueldos.css') }}" />
+    <script src="{{ asset('public/js/ChartJS/dist/Chart.bundle.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Reportes de Faltas de {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        
+        {{ include('menuEmpleado.html.twig')}}
+        
+        {%if añosAsistencia|length > 0 %}
+            <div class="col-md-9">
+                <br><br>
+                <div class = "caja input-group">
+                    <label class="labelSelect input-group-addon" for="fecha">Año:</label>
+                    <select onChange="mostrarResultados(this.value, window.myBar, $progress);">
+                        {% for año in añosAsistencia %}
+                            <option value="{{año}}">{{año}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <div id="container" style="width: 90%;">
+                    <canvas id="canvas"></canvas>
+                    <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+                </div>
+
+                <script>
+                    var $progress = $('#animationProgress');
+                    $(document).ready(mostrarResultados({{ultimoAño}}, window.myBar, $progress));
+                    function mostrarResultados(año, antiguo, $progress){
+                        if(antiguo != null){
+                            antiguo.destroy();
+                        }
+
+                        {% for falta in todasFaltas %}
+
+                            if({{falta.año}} == año){
+                                var faltaAño = {{ falta.faltasAño|json_encode|raw }};
+                                var enero      = faltaAño[0];
+                                var febrero    = faltaAño[1];
+                                var marzo      = faltaAño[2];
+                                var abril      = faltaAño[3];
+                                var mayo       = faltaAño[4];
+                                var junio      = faltaAño[5];
+                                var julio      = faltaAño[6];
+                                var agosto     = faltaAño[7];
+                                var septiembre = faltaAño[8];
+                                var octubre    = faltaAño[9];
+                                var noviembre  = faltaAño[10];
+                                var diciembre  = faltaAño[11];
+                            }
+                        {%endfor%}
+
+                        var barChartData = {
+                            labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+                                     "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                            datasets: [{
+                                label: '{{empleado.apellido}} {{empleado.nombre}}',
+                                backgroundColor: "#36A2EB",
+                                data: [enero, febrero, marzo, abril, mayo, junio,
+                                    julio, agosto, septiembre, octubre, noviembre, diciembre]
+                            }]
+                        };
+                        var ctx = document.getElementById("canvas").getContext("2d");
+                        window.myBar = new Chart(ctx, {
+                            type: 'bar',
+                            data: barChartData,
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            stepSize: 1
+                                        }
+                                    }]
+                                },
+                                elements: {
+                                    rectangle: {
+                                        borderWidth: 2,
+                                        borderColor: 'rgb(151,187,205,0.5)',
+                                        borderSkipped: 'bottom'
+                                    }
+                                },
+                                
+                                responsive: true,
+                                legend: {
+                                    position: 'top'
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Faltas'
+                                },
+                                
+                                animation: {
+                                    duration: 2000,
+                                    onProgress: function(animation) {
+                                        $progress.attr({
+                                            value: animation.animationObject.currentStep / animation.animationObject.numSteps
+                                        });
+                                    },
+                                    onComplete: function () {
+
+                                        var chartInstance = this.chart;
+                                        var ctx = chartInstance.ctx;
+                                        ctx.textAlign = "center";
+
+                                        Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
+                                            var meta = chartInstance.controller.getDatasetMeta(i);
+                                            Chart.helpers.each(meta.data.forEach(function (bar, index) {
+                                                ctx.fillText(dataset.data[index], bar._model.x, bar._model.y - 15);
+                                            }),this);
+                                        }),this);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                </script>
+            </div>
+        {%else%}
+            <div class="col-md-9">
+                <br><br>
+                <center><h3>No se ha registrado ninguna falta</h3></center>
+            </div>
+        {%endif%}
+        
+        
+    </div>
+{% endblock %}

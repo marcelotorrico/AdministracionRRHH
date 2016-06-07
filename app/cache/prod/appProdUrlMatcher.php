@@ -43,6 +43,21 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_productividad_sueldos')), array (  '_controller' => 'MTD\\ProductividadBundle\\Controller\\SueldosController::mostrarAction',));
             }
 
+            // mtd_productividad_faltas
+            if (0 === strpos($pathinfo, '/productividad/faltas') && preg_match('#^/productividad/faltas/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_productividad_faltas')), array (  '_controller' => 'MTD\\ProductividadBundle\\Controller\\FaltasController::mostrarAction',));
+            }
+
+            // mtd_productividad_permisos
+            if (0 === strpos($pathinfo, '/productividad/permisos') && preg_match('#^/productividad/permisos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_productividad_permisos')), array (  '_controller' => 'MTD\\ProductividadBundle\\Controller\\PermisosController::mostrarAction',));
+            }
+
+            // mtd_productividad_horas
+            if (0 === strpos($pathinfo, '/productividad/horasTrabajadas') && preg_match('#^/productividad/horasTrabajadas/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_productividad_horas')), array (  '_controller' => 'MTD\\ProductividadBundle\\Controller\\HorasController::mostrarAction',));
+            }
+
         }
 
         // mtd_sueldos_salarios_homepage

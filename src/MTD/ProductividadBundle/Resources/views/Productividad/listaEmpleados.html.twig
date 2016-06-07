@@ -40,14 +40,14 @@
                                         <a href="{{ path('mtd_productividad_sueldos', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-success">
                                             Sueldos y Salarios
                                         </a>
-                                        <a href="{{ path('mtd_inasistencia_operativo', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-danger">
-                                            Registrar Inasistencia
+                                        <a href="{{ path('mtd_productividad_horas', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-info">
+                                            Horas Trabajadas
                                         </a>
-                                        <a href="#registroFeriado" class="feriado1 btn btn-sm btn-primary" data-id="{{ contratacion.contratacion.empleado.id }}" data-toggle="modal">
-                                            Feriado
+                                        <a href="{{ path('mtd_productividad_permisos', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-primary">
+                                            Permisos
                                         </a>
-                                        <a href="#verAsistencia" class="asistencia1 btn btn-sm btn-info" data-id="{{ contratacion.contratacion.empleado.id }}" data-toggle="modal">
-                                            Ver Asistencia
+                                        <a href="{{ path('mtd_productividad_faltas', { 'id': contratacion.contratacion.empleado.id }) }}" class="btn btn-sm btn-danger">
+                                            Faltas
                                         </a>
                                     </td>
                                 </tr>

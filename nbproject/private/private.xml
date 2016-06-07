@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Resources/views/Productividad/sueldos.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/web/public/js/productividad/sueldos.js</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProyectoBundle/Resources/views/Proyecto/registroEmpleadosNombre.html.twig</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProyectoBundle/Controller/ProyectoEmpleadoNombreController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Controller/SueldosController.php</file>
-            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Resources/views/Sueldos/descuentos.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Controller/PermisosController.php</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Resources/views/Productividad/permisos.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/CalculosSueldosController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Resources/views/Productividad/horas.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/SueldosSalariosBundle/Controller/SueldosPrincipalController.php</file>
             <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Resources/views/Productividad/listaEmpleados.html.twig</file>
+            <file>file:/C:/xampp/htdocs/AdministracionRRHH/src/MTD/ProductividadBundle/Controller/HorasController.php</file>
         </group>
     </open-files>
 </project-private>

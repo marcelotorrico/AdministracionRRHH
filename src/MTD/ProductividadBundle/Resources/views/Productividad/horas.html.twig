@@ -1,0 +1,152 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/estilos/productividadSueldos.css') }}" />
+    <script src="{{ asset('public/js/ChartJS/dist/Chart.bundle.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <script>alert('{{ flashMessage }}');</script>
+    {% endfor %}
+    
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Reportes de las Horas Trabajadas de {{empleado.apellido}} {{empleado.nombre}}</h2>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        
+        {{ include('menuEmpleado.html.twig')}}
+        
+        {%if añosAsistencia|length > 0 %}
+            <div class="col-md-9">
+                <br><br>
+                <div class = "caja input-group">
+                    <label class="labelSelect input-group-addon" for="fecha">Año:</label>
+                    <select onChange="mostrarResultados(this.value, window.myBar, $progress);">
+                        {% for año in añosAsistencia %}
+                            <option value="{{año}}">{{año}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <div id="container" style="width: 90%;">
+                    <canvas id="canvas"></canvas>
+                    <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+                </div>
+
+                <script>
+                    var $progress = $('#animationProgress');
+                    $(document).ready(mostrarResultados({{ultimoAño}}, window.myBar, $progress));
+                    function mostrarResultados(año, antiguo, $progress){
+                        if(antiguo != null){
+                            antiguo.destroy();
+                        }
+
+                        {% for hora in todasHoras %}
+
+                            if({{hora.año}} == año){
+                                var horaAño = {{ hora.horasNormalesAño|json_encode|raw }};
+                                var enero      = horaAño[0];
+                                var febrero    = horaAño[1];
+                                var marzo      = horaAño[2];
+                                var abril      = horaAño[3];
+                                var mayo       = horaAño[4];
+                                var junio      = horaAño[5];
+                                var julio      = horaAño[6];
+                                var agosto     = horaAño[7];
+                                var septiembre = horaAño[8];
+                                var octubre    = horaAño[9];
+                                var noviembre  = horaAño[10];
+                                var diciembre  = horaAño[11];
+                                
+                                var horaExtrasAño = {{ hora.horasExtrasAño|json_encode|raw }};
+                                var enero1      = horaExtrasAño[0];
+                                var febrero1    = horaExtrasAño[1];
+                                var marzo1      = horaExtrasAño[2];
+                                var abril1      = horaExtrasAño[3];
+                                var mayo1       = horaExtrasAño[4];
+                                var junio1      = horaExtrasAño[5];
+                                var julio1      = horaExtrasAño[6];
+                                var agosto1     = horaExtrasAño[7];
+                                var septiembre1 = horaExtrasAño[8];
+                                var octubre1    = horaExtrasAño[9];
+                                var noviembre1  = horaExtrasAño[10];
+                                var diciembre1  = horaExtrasAño[11];
+                            }
+                        {%endfor%}
+
+                        var barChartData = {
+                            labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+                                     "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                            datasets: [{
+                                label: 'Horas Normales',
+                                backgroundColor: "#36A2EB",
+                                data: [enero, febrero, marzo, abril, mayo, junio,
+                                    julio, agosto, septiembre, octubre, noviembre, diciembre]
+                                },{
+                                label: 'Horas Extras',
+                                backgroundColor: "rgba(220,220,220,0.5)",
+                                data: [enero1, febrero1, marzo1, abril1, mayo1, junio1,
+                                    julio1, agosto1, septiembre1, octubre1, noviembre1, diciembre1] 
+                                }
+                            ]
+                        };
+                        var ctx = document.getElementById("canvas").getContext("2d");
+                        window.myBar = new Chart(ctx, {
+                            type: 'bar',
+                            data: barChartData,
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                            stacked: true
+                                    }],
+                                    yAxes: [{
+                                            stacked: true
+                                    }]
+                                },
+                                elements: {
+                                    rectangle: {
+                                        borderWidth: 2,
+                                        borderColor: 'rgb(151,187,205,0.5)',
+                                        borderSkipped: 'bottom'
+                                    }
+                                },
+                                responsive: true,
+                                legend: {
+                                    position: 'top'
+                                },
+                                title: {
+                                    display: false,
+                                    text: 'Horas Trabajadas'
+                                },
+                                
+                                animation: {
+                                    duration: 2000,
+                                    onProgress: function(animation) {
+                                        $progress.attr({
+                                            value: animation.animationObject.currentStep / animation.animationObject.numSteps
+                                        });
+                                    },
+                                    
+                                }
+                            }
+                        });
+                    }
+                </script>
+            </div>
+        {%else%}
+            <div class="col-md-9">
+                <br><br>
+                <center><h3>No se ha registrado ninguna Asistencia</h3></center>
+            </div>
+        {%endif%}
+        
+        
+    </div>
+{% endblock %}
