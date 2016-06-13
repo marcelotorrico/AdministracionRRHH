@@ -56,10 +56,10 @@
                                 <td><a class="linkPremios" href="#premios" data-toggle="modal" 
                                     data-id="{{ sueldo.sueldo.id }}">{{sueldo.totalPremios}}</a></td>
                                 {% if sueldo.sueldo.modificado == true%}
-                                        <td><strong><a href="{{ path('mtd_sueldos_historial', { 'id': sueldo.sueldo.id, 'idEmpleado': sueldo.empleado.id }) }}">{{sueldo.sueldo.totalPagado}} *</a></strong></td>
-                                    {%else%}
-                                        <td><strong>{{sueldo.sueldo.totalPagado}}</strong></td>
-                                    {%endif%}
+                                    <td><strong><a href="{{ path('mtd_sueldos_historial', { 'id': sueldo.sueldo.id, 'idEmpleado': sueldo.empleado.id }) }}">{{sueldo.sueldo.totalPagado}} *</a></strong></td>
+                                {%else%}
+                                    <td><strong>{{sueldo.sueldo.totalPagado}}</strong></td>
+                                {%endif%}
                             </tr>
                         {%endfor%}
                         <div class="modal fade" id="premios">
