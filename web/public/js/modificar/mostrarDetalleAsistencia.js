@@ -28,4 +28,10 @@ $(document).ready(function(){
         return confirm('¿Esta seguro que quiere eliminar la asistencia?');
 
     });
+    
+    $(".asistenciaCobrada").on("click", function(e) {
+
+        return confirm('¡ATENCION! Esta apunto de eliminar una asistencia para un sueldo que ya fue emitido. Si continua el sueldo sera modificado');
+
+    });
 });

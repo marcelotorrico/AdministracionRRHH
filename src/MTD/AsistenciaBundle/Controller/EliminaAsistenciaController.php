@@ -18,33 +18,25 @@ class EliminaAsistenciaController extends Controller
         $informacionAsistencia = new InformacionAsistenciaController();
         $mes = $informacionAsistencia->transformarFechaAsistencia($asistencia, "mes");
         $año = $informacionAsistencia->transformarFechaAsistencia($asistencia, "año");
+        
+        $this->addFlash(
+            'notice',
+            'La asistencia fue eliminada correctamente'
+        );
+        $actualizaSueldos = new ActualizaSueldosController();
         if($asistencia->getCobrado()){
-            $this->addFlash(
-                'notice',
-                'La asistencia no pudo ser eliminada porque el pago del mismo ya fue realizado'
-            );
-            if($empleado->getOperativo()){
-                return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=> $idEmpleado, 'ano'=> $año, 'mes'=> $mes)));
-            }else{
-                return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $idEmpleado, 'ano'=> $año, 'mes'=> $mes)));
-            }
-        }else{
-            $this->addFlash(
-                'notice',
-                'La asistencia fue eliminada correctamente'
-            );
-            $actualizaSueldos = new ActualizaSueldosController();
-            $actualizaSueldos->actualizarEliminaAsistencia($em, $asistencia, $empleado);
-            
-            $asistencia->setActivo("FALSE");
-            $em->persist($asistencia);             
-            $em->flush();
+            $actualizaSueldos->crearHistorial($em, $empleado, $mes, $año);
+        }
+        $actualizaSueldos->actualizarEliminaAsistencia($em, $asistencia, $empleado);
+        
+        $asistencia->setActivo("FALSE");
+        $em->persist($asistencia);             
+        $em->flush();
 
-            if($empleado->getOperativo()){
-                return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=> $idEmpleado, 'ano'=> $año, 'mes'=> $mes)));
-            }else{
-                return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $idEmpleado, 'ano'=> $año, 'mes'=> $mes)));
-            }
+        if($empleado->getOperativo()){
+            return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=> $idEmpleado, 'ano'=> $año, 'mes'=> $mes)));
+        }else{
+            return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $idEmpleado, 'ano'=> $año, 'mes'=> $mes)));
         }
     }
 }

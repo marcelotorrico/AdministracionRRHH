@@ -37,28 +37,26 @@
                     </thead>
                     <tbody>
                         {% for sueldo in sueldos %}
-                            {% if sueldo.sueldo.emitido == true%}
-                                <tr>
-                                    <td><strong>{{sueldo.sueldo.fecha|date('m-Y')}}</strong></td>
-                                    <td>{{sueldo.sueldo.categoria}}</td>
-                                    <td>{{sueldo.sueldo.sueldoBasico}}</td>
-                                    <td>{{sueldo.sueldo.diasMes}}</td>
-                                    <td><a class="linkdiasNoTrabajados" href="#diasNoTrabajados" data-toggle="modal" 
-                                        data-id="{{ sueldo.sueldo.id }}">{{sueldo.diasNoTrabajados}}</a></td>
-                                    <td><strong>{{sueldo.sueldo.diasTrabajados}}</strong></td>
-                                    <td><a class="linkHorasExtras" href="#horasExtras" data-toggle="modal" 
-                                        data-id="{{ sueldo.sueldo.id }}">{{sueldo.sueldo.horasExtras}}</a></td>
-                                    <td><a class="linkBonoAntiguedad" href="#bonoAntiguedad" data-toggle="modal" 
-                                        data-id="{{ sueldo.sueldo.id }}">{{sueldo.sueldo.bonoAntiguedad}}</a></td>
-                                    <td><strong>{{sueldo.sueldo.totalGanado}}</strong></td>
-                                    <td><a class="linkDescuentos" href="#descuentos" data-toggle="modal" 
-                                        data-id="{{ sueldo.sueldo.id }}">{{sueldo.totalDescuento}}</a></td>
-                                    <td><strong>{{sueldo.sueldo.liquidoPagable}}</strong></td>
-                                    <td><a class="linkPremios" href="#premios" data-toggle="modal" 
-                                        data-id="{{ sueldo.sueldo.id }}">{{sueldo.totalPremios}}</a></td>
-                                    <td><strong>{{sueldo.sueldo.totalPagado}}</strong></td>
-                                </tr>
-                            {%endif%}
+                            <tr>
+                                <td><strong>{{sueldo.sueldo.fecha|date('m-Y')}}</strong></td>
+                                <td>{{sueldo.sueldo.categoria}}</td>
+                                <td>{{sueldo.sueldo.sueldoBasico}}</td>
+                                <td>{{sueldo.sueldo.diasMes}}</td>
+                                <td><a class="linkdiasNoTrabajados" href="#diasNoTrabajados" data-toggle="modal" 
+                                    data-id="{{ sueldo.sueldo.id }}">{{sueldo.diasNoTrabajados}}</a></td>
+                                <td><strong>{{sueldo.sueldo.diasTrabajados}}</strong></td>
+                                <td><a class="linkHorasExtras" href="#horasExtras" data-toggle="modal" 
+                                    data-id="{{ sueldo.sueldo.id }}">{{sueldo.sueldo.horasExtras}}</a></td>
+                                <td><a class="linkBonoAntiguedad" href="#bonoAntiguedad" data-toggle="modal" 
+                                    data-id="{{ sueldo.sueldo.id }}">{{sueldo.sueldo.bonoAntiguedad}}</a></td>
+                                <td><strong>{{sueldo.sueldo.totalGanado}}</strong></td>
+                                <td><a class="linkDescuentos" href="#descuentos" data-toggle="modal" 
+                                    data-id="{{ sueldo.sueldo.id }}">{{sueldo.totalDescuento}}</a></td>
+                                <td><strong>{{sueldo.sueldo.liquidoPagable}}</strong></td>
+                                <td><a class="linkPremios" href="#premios" data-toggle="modal" 
+                                    data-id="{{ sueldo.sueldo.id }}">{{sueldo.totalPremios}}</a></td>
+                                <td><strong>{{sueldo.sueldo.totalPagado}}</strong></td>
+                            </tr>
                         {%endfor%}
                         <div class="modal fade" id="premios">
                             <div class="modal-dialog">

@@ -44,45 +44,37 @@ class RegistroFeriadoController extends Controller
                     return $this->redirect($this->generateUrl('mtd_asistencia_administrativos'));
                 }
             }else{
+                $asistencia->setFecha(new \DateTime($fecha));
+                $asistencia->setActivo("TRUE");
+                $asistencia->setEmpleado($empleado);
+                $asistencia->setFeriado(TRUE);
+                $asistencia->setCobrado(FALSE);
+                $calculoSueldos = new CalculosSueldosController();
+                $psgh = $calculoSueldos->getPsgh($em, "feriado", $asistencia);
+                $asistencia->setPsgh($psgh);
+                $em->persist($asistencia);
+
+                $sueldosPrincipal = new SueldosPrincipalController();
                 if(!$registroAsistencia->validarCobro($em, $fecha, $empleado)){
-                    $this->addFlash(
-                    'notice',
-                    'La asistencia no fue registrada porque el sueldo de este mes ya fue emitido.'
-                    );
-                    if($empleado->getOperativo()){
-                        return $this->redirect($this->generateUrl('mtd_asistencia_operativos'));
-                    }else{
-                        return $this->redirect($this->generateUrl('mtd_asistencia_administrativos'));
-                    }
+                    $sueldosPrincipal->actualizarErrorSueldos($em, $empleado, $fecha, "feriado", $asistencia);
                 }else{
-                    $asistencia->setFecha(new \DateTime($fecha));
-                    $asistencia->setActivo("TRUE");
-                    $asistencia->setEmpleado($empleado);
-                    $asistencia->setFeriado(TRUE);
-                    $asistencia->setCobrado(FALSE);
-                    $calculoSueldos = new CalculosSueldosController();
-                    $psgh = $calculoSueldos->getPsgh($em, "feriado", $asistencia);
-                    $asistencia->setPsgh($psgh);
-                    $em->persist($asistencia);
-
-                    $sueldosPrincipal = new SueldosPrincipalController();
                     $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "feriado", $asistencia);
+                }
 
-                    $this->addFlash(
-                        'notice',
-                        'El feriado fue registrado correctamente'
-                    );
+                $this->addFlash(
+                    'notice',
+                    'El feriado fue registrado correctamente'
+                );
 
-                    $em->flush();
+                $em->flush();
 
-                    $informacionAsistencia = new InformacionAsistenciaController();
-                    $mes = $informacionAsistencia->transformarFechaAsistencia($asistencia, "mes");
-                    $año = $informacionAsistencia->transformarFechaAsistencia($asistencia, "año");
-                    if($empleado->getOperativo()){
-                        return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=> $id, 'ano'=> $año, 'mes'=> $mes)));
-                    }else{
-                        return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $id, 'ano'=> $año, 'mes'=> $mes)));
-                    }
+                $informacionAsistencia = new InformacionAsistenciaController();
+                $mes = $informacionAsistencia->transformarFechaAsistencia($asistencia, "mes");
+                $año = $informacionAsistencia->transformarFechaAsistencia($asistencia, "año");
+                if($empleado->getOperativo()){
+                    return $this->redirect($this->generateUrl('mtd_asistencia_mostrar', array('id'=> $id, 'ano'=> $año, 'mes'=> $mes)));
+                }else{
+                    return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $id, 'ano'=> $año, 'mes'=> $mes)));
                 }
             }
         }

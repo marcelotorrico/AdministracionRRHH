@@ -52,9 +52,15 @@
                                                     <a href="#ventanaDetalleFeriado" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFeriado btn btn-sm btn-info">
                                                         Ver Detalle
                                                     </a>
-                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
-                                                        Eliminar
-                                                    </a>
+                                                    {% if asistencia.cobrado == true%}
+                                                        <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                            Eliminar
+                                                        </a>
+                                                    {%else%}
+                                                        <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
+                                                            Eliminar
+                                                        </a>
+                                                    {%endif%}
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="ventanaDetalleFeriado">
@@ -92,9 +98,15 @@
                                                     <a href="#ventanaDetalle" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleAdministrativo btn btn-sm btn-info">
                                                         Ver Detalle
                                                     </a>
-                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
-                                                        Eliminar
-                                                    </a>
+                                                    {% if asistencia.cobrado == true%}
+                                                        <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                            Eliminar
+                                                        </a>
+                                                    {%else%}
+                                                        <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
+                                                            Eliminar
+                                                        </a>
+                                                    {%endif%}
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="ventanaDetalle">
@@ -134,9 +146,15 @@
                                                             <a href="#ventanaDetalleFalta" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFalta btn btn-sm btn-info">
                                                                 Ver Detalle
                                                             </a>
-                                                            <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
-                                                                Eliminar
-                                                            </a>
+                                                            {% if asistencia.cobrado == true%}
+                                                                <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                                    Eliminar
+                                                                </a>
+                                                            {%else%}
+                                                                <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
+                                                                    Eliminar
+                                                                </a>
+                                                            {%endif%}
                                                         </td>
                                                     </tr>
                                                 {%else%}
@@ -153,9 +171,15 @@
                                                             <a href="#ventanaDetalleFalta" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFalta btn btn-sm btn-info">
                                                                 Ver Detalle
                                                             </a>
-                                                            <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
-                                                                Eliminar
-                                                            </a>
+                                                            {% if asistencia.cobrado == true%}
+                                                                <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                                    Eliminar
+                                                                </a>
+                                                            {%else%}
+                                                                <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
+                                                                    Eliminar
+                                                                </a>
+                                                            {%endif%}
                                                         </td>
                                                     </tr>
                                                 {%endif%}

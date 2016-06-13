@@ -18,176 +18,204 @@
         
         <div class="col-md-9">
             <br>
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Ingreso Mañana</th>
-                            <th>Salida Mañana</th>
-                            <th>Ingreso Tarde</th>
-                            <th>Salida Tarde</th>
-                            <th>Actividades</th>
-                            <th>Horas Normales</th>
-                            <th>Horas Extras</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for asistencia in asistencias %}
-                            {% if asistencia.activo == true%}
-                                {%for asistenciaEmpleado in empleado.asistencia%}
-                                    {%if asistencia.id == asistenciaEmpleado.id%}
-                                        {% if asistencia.feriado == TRUE%}
-                                            <tr>
-                                                <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
-                                                <td><strong> FERIADO </strong></td>
-                                                <td><strong> FERIADO </strong></td>
-                                                <td><strong> FERIADO </strong></td>
-                                                <td><strong> FERIADO </strong></td>
-                                                <td><strong> FERIADO </strong></td>
-                                                <td><strong> FERIADO </strong></td>
-                                                <td><strong> FERIADO </strong></td>
-                                                <td>
-                                                    <a href="#ventanaDetalleFeriado" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFeriado btn btn-sm btn-info">
-                                                        Ver Detalle
-                                                    </a>
-                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
-                                                        Eliminar
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <div class="modal fade" id="ventanaDetalleFeriado">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                            <h4 class="modal-title">Detalle del Feriado</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div id="mainTipo">
-                                                                <form class="form-horizontal">
-                                                                    <div id = "tablaFeriado"></div>
-
-                                                                    <div class="modal-footer form-group">
-                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {%elseif asistencia.falta is empty%}
-                                            <tr>
-                                                <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
-                                                <td>{{ asistencia.horaIngresoManana|date('H:i:s') }}</td>
-                                                <td>{{ asistencia.horaSalidaManana|date('H:i:s') }}</td>
-                                                <td>{{ asistencia.horaIngresoTarde|date('H:i:s') }}</td>
-                                                <td>{{ asistencia.horaSalidaTarde|date('H:i:s') }}</td>
-                                                <td>{{ asistencia.actividad }}</td>
-                                                <td>{{ asistencia.totalHorasNormales }}</td>
-                                                <td>{{ asistencia.totalHorasExtras }}</td>
-                                                <td>
-                                                    <a href="#ventanaDetalle" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalle btn btn-sm btn-info">
-                                                        Ver Detalle
-                                                    </a>
-                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
-                                                        Eliminar
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <div class="modal fade" id="ventanaDetalle">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                            <h4 class="modal-title">Detalle de la asistencia</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div id="mainTipo">
-                                                                <form class="form-horizontal">
-                                                                    <div id = "tabla"></div>
-
-                                                                    <div class="modal-footer form-group">
-                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {%else%}
-                                            {% for inasistencia in asistencia.falta %}
-                                                {% if inasistencia.aviso == "TRUE"%}
-                                                    <tr>
-                                                        <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
-                                                        <td><strong> PERMISO </strong></td>
-                                                        <td><strong> PERMISO </strong></td>
-                                                        <td><strong> PERMISO </strong></td>
-                                                        <td><strong> PERMISO </strong></td>
-                                                        <td><strong> PERMISO </strong></td>
-                                                        <td><strong> PERMISO </strong></td>
-                                                        <td><strong> PERMISO </strong></td>
-                                                        <td>
-                                                            <a href="#ventanaDetalleFalta" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFalta btn btn-sm btn-info">
-                                                                Ver Detalle
+            {%if asistencias|length > 0 %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Ingreso Mañana</th>
+                                <th>Salida Mañana</th>
+                                <th>Ingreso Tarde</th>
+                                <th>Salida Tarde</th>
+                                <th>Actividades</th>
+                                <th>Horas Normales</th>
+                                <th>Horas Extras</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for asistencia in asistencias %}
+                                {% if asistencia.activo == true%}
+                                    {%for asistenciaEmpleado in empleado.asistencia%}
+                                        {%if asistencia.id == asistenciaEmpleado.id%}
+                                            {% if asistencia.feriado == TRUE%}
+                                                <tr>
+                                                    <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
+                                                    <td><strong> FERIADO </strong></td>
+                                                    <td><strong> FERIADO </strong></td>
+                                                    <td><strong> FERIADO </strong></td>
+                                                    <td><strong> FERIADO </strong></td>
+                                                    <td><strong> FERIADO </strong></td>
+                                                    <td><strong> FERIADO </strong></td>
+                                                    <td><strong> FERIADO </strong></td>
+                                                    <td>
+                                                        <a href="#ventanaDetalleFeriado" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFeriado btn btn-sm btn-info">
+                                                            Ver Detalle
+                                                        </a>
+                                                        {% if asistencia.cobrado == true%}
+                                                            <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                                Eliminar
                                                             </a>
+                                                        {%else%}
                                                             <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
                                                                 Eliminar
                                                             </a>
-                                                        </td>
-                                                    </tr>
-                                                {%else%}
-                                                    <tr>
-                                                        <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
-                                                        <td><strong> FALTA </strong></td>
-                                                        <td><strong> FALTA </strong></td>
-                                                        <td><strong> FALTA </strong></td>
-                                                        <td><strong> FALTA </strong></td>
-                                                        <td><strong> FALTA </strong></td>
-                                                        <td><strong> FALTA </strong></td>
-                                                        <td><strong> FALTA </strong></td>
-                                                        <td>
-                                                            <a href="#ventanaDetalleFalta" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFalta btn btn-sm btn-info">
-                                                                Ver Detalle
-                                                            </a>
-                                                            <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
-                                                                Eliminar
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                {%endif%}
-                                                    
-                                                <div class="modal fade" id="ventanaDetalleFalta">
+                                                        {%endif%}
+                                                    </td>
+                                                </tr>
+                                                <div class="modal fade" id="ventanaDetalleFeriado">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                <h4 class="modal-title">Detalle de la inasistencia</h4>
+                                                                <h4 class="modal-title">Detalle del Feriado</h4>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form class="form-horizontal">
-                                                                    <div id = "tablaFalta"></div>
+                                                                <div id="mainTipo">
+                                                                    <form class="form-horizontal">
+                                                                        <div id = "tablaFeriado"></div>
 
-                                                                    <div class="modal-footer form-group">
-                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                                                                    </div>
-                                                                </form>
+                                                                        <div class="modal-footer form-group">
+                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            {%endfor%}
+                                            {%elseif asistencia.falta is empty%}
+                                                <tr>
+                                                    <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
+                                                    <td>{{ asistencia.horaIngresoManana|date('H:i:s') }}</td>
+                                                    <td>{{ asistencia.horaSalidaManana|date('H:i:s') }}</td>
+                                                    <td>{{ asistencia.horaIngresoTarde|date('H:i:s') }}</td>
+                                                    <td>{{ asistencia.horaSalidaTarde|date('H:i:s') }}</td>
+                                                    <td>{{ asistencia.actividad }}</td>
+                                                    <td>{{ asistencia.totalHorasNormales }}</td>
+                                                    <td>{{ asistencia.totalHorasExtras }}</td>
+                                                    <td>
+                                                        <a href="#ventanaDetalle" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalle btn btn-sm btn-info">
+                                                            Ver Detalle
+                                                        </a>
+                                                        {% if asistencia.cobrado == true%}
+                                                            <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                                Eliminar
+                                                            </a>
+                                                        {%else%}
+                                                            <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
+                                                                Eliminar
+                                                            </a>
+                                                        {%endif%}
+                                                    </td>
+                                                </tr>
+                                                <div class="modal fade" id="ventanaDetalle">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title">Detalle de la asistencia</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div id="mainTipo">
+                                                                    <form class="form-horizontal">
+                                                                        <div id = "tabla"></div>
+
+                                                                        <div class="modal-footer form-group">
+                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {%else%}
+                                                {% for inasistencia in asistencia.falta %}
+                                                    {% if inasistencia.aviso == "TRUE"%}
+                                                        <tr>
+                                                            <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
+                                                            <td><strong> PERMISO </strong></td>
+                                                            <td><strong> PERMISO </strong></td>
+                                                            <td><strong> PERMISO </strong></td>
+                                                            <td><strong> PERMISO </strong></td>
+                                                            <td><strong> PERMISO </strong></td>
+                                                            <td><strong> PERMISO </strong></td>
+                                                            <td><strong> PERMISO </strong></td>
+                                                            <td>
+                                                                <a href="#ventanaDetalleFalta" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFalta btn btn-sm btn-info">
+                                                                    Ver Detalle
+                                                                </a>
+                                                                {% if asistencia.cobrado == true%}
+                                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                                        Eliminar
+                                                                    </a>
+                                                                {%else%}
+                                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
+                                                                        Eliminar
+                                                                    </a>
+                                                                {%endif%}
+                                                            </td>
+                                                        </tr>
+                                                    {%else%}
+                                                        <tr>
+                                                            <td><strong>{{ asistencia.fecha|date('d-m-Y') }}</strong></td>
+                                                            <td><strong> FALTA </strong></td>
+                                                            <td><strong> FALTA </strong></td>
+                                                            <td><strong> FALTA </strong></td>
+                                                            <td><strong> FALTA </strong></td>
+                                                            <td><strong> FALTA </strong></td>
+                                                            <td><strong> FALTA </strong></td>
+                                                            <td><strong> FALTA </strong></td>
+                                                            <td>
+                                                                <a href="#ventanaDetalleFalta" data-toggle="modal" data-id="{{ asistencia.id }}" class="detalleFalta btn btn-sm btn-info">
+                                                                    Ver Detalle
+                                                                </a>
+                                                                {% if asistencia.cobrado == true%}
+                                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger asistenciaCobrada">
+                                                                        Eliminar
+                                                                    </a>
+                                                                {%else%}
+                                                                    <a href="{{ path('mtd_asistencia_elimina', { 'id': asistencia.id, 'idEmpleado': empleado.id }) }}" class="btn btn-sm btn-danger confirmarEliminacion">
+                                                                        Eliminar
+                                                                    </a>
+                                                                {%endif%}
+                                                            </td>
+                                                        </tr>
+                                                    {%endif%}
+
+                                                    <div class="modal fade" id="ventanaDetalleFalta">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 class="modal-title">Detalle de la inasistencia</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form class="form-horizontal">
+                                                                        <div id = "tablaFalta"></div>
+
+                                                                        <div class="modal-footer form-group">
+                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {%endfor%}
+                                            {%endif%}
                                         {%endif%}
-                                    {%endif%}
-                                {%endfor%}
-                            {%endif%}
-                        {%endfor%}
-                    </tbody>    
-                </table>
-            </div>
+                                    {%endfor%}
+                                {%endif%}
+                            {%endfor%}
+                        </tbody>    
+                    </table>
+                </div>
+            {%else%}
+                <center><h3>No se ha registrado ninguna asistencia en este mes</h3></center>
+            {%endif%}
         </div>
     </div>
 {% endblock %}

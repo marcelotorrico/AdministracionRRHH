@@ -2,7 +2,8 @@
     
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" /> 
+    <link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}" />
+    <script src="{{ asset('public/js/jquery.js') }}"></script>
 {% endblock %}
     
 {% block body %}
@@ -54,11 +55,31 @@
                                 </div>
                                 <div class ="form-group">
                                     <div class="col-md-3 control-label">
-                                        <button type="submit" id ="enviar" name="enviar" class="btn btn-primary"> Registrar </button>
+                                        <button type="submit" id ="enviar" name="enviar" class="registrarAsistencia btn btn-primary"> Registrar </button>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        
+                        <script>
+                            $(document).ready(function(){
+                                $(".registrarAsistencia").click(function(){
+                                    var fecha = document.getElementById("fecha").value;
+                                    var split = fecha.split("/");
+                                    var mes = split[0];
+                                    var año = split[2];
+                                    var fechaAsistenciaSueldo = año+"-"+mes+"-01";
+                                    var fechasueldos = {{ fechaSueldos|json_encode|raw }};
+                                    for(i=0; i<fechasueldos.length; i++){
+                                        if(fechasueldos[i] === fechaAsistenciaSueldo){
+                                            return confirm('¡ATENCION! Esta apunto de emitir una asistencia para un sueldo que ya fue emitido. Si continua el sueldo sera modificado');
+                                            break;
+                                        }
+                                    }
+                                });
+                            });
+                        </script>
+            
                     </div>
                 </div>
             </div>

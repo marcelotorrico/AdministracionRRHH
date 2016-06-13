@@ -4,28 +4,33 @@ namespace MTD\SueldosSalariosBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use MTD\ProductividadBundle\Controller\SueldosController;
 
 class EmitirSueldosController extends Controller
 {
-    public function registrarAction(Request $request, $id) {
+    public function registrarAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->find($id);
-        
-        if($sueldo){
-            $sueldo->setEmitido(TRUE);
-            $this->actualizarAsistencias($em, $sueldo);
-            $em->persist($sueldo);
+        $idSueldos = $this->get('request')->request->get('sueldos');
+        if($idSueldos){
+            foreach($idSueldos  as $id){
+                $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->find($id);
+                $sueldo->setEmitido(TRUE);
+                $this->actualizarAsistencias($em, $sueldo);
+                $em->persist($sueldo);
+            }
+            $sueldosController = new SueldosController();
+            $ano = $sueldosController->getAño($sueldo, "año");
+            $mes = $sueldosController->getAño($sueldo, "mes");
             $em->flush();
             $this->addFlash(
                 'notice',
-                'El sueldo fue emitido correctamente.'
+                'Los sueldos seleccionados fueron emitidos correctamente.'
             );
-            $idEmpleado = $sueldo->getEmpleado()->getId();
-            return $this->redirect($this->generateUrl('mtd_sueldos_mostrarEmpleado', array('id'=> $idEmpleado, true)));
+            return $this->redirect($this->generateUrl('mtd_sueldos_ver', array('ano'=> $ano, 'mes'=> $mes)));
         }else{
             $this->addFlash(
                 'notice',
-                'El registro no fue realizado correctamente.'
+                'No se emitieron los sueldos.'
             );
             return $this->redirect($this->generateUrl('mtd_inicio'));
         }

@@ -10,13 +10,13 @@ class MuestraSueldosController extends Controller
     public function emitirAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        
         $fechaRecibida = $this->get('request')->request->get('fechaEmision');
         $fecha = $this->transformarFecha($fechaRecibida);
         $contrataciones = $em->getRepository('MTDSeleccionBundle:Contratacion')->findAll();
-        $sueldos = array();
+        $resultado = array();
+        $posicion = array();
         $i = 0;
-        foreach($contrataciones as $contratacion){
+        foreach($contrataciones as $i => $contratacion){
             if($contratacion->getActivo() && $contratacion->getEmpleado()->getContratado()){
                 $empleado = $contratacion->getEmpleado();
                 $sueldo = $this->verificarSueldo($em, $fecha, $empleado);
@@ -24,38 +24,57 @@ class MuestraSueldosController extends Controller
                     $diasNoTrabajados = $sueldo->getPesosPsgh() + $sueldo->getPesosFalla();
                     $totalDescuento = $this->getTotalDescuento($em, $sueldo);
                     $totalPremios = $this->getTotalPremios($em, $sueldo);
-                    
-                    $sueldos[$i] = array('sueldo' => $sueldo, 'totalPremios' => $totalPremios, 'totalDescuento' => $totalDescuento,
+                    $posicion[$i] = $contratacion->getEmpleado()->getApellido().', '.$contratacion->getEmpleado()->getNombre();
+                    $resultado[$i] = array('sueldo' => $sueldo, 'totalPremios' => $totalPremios, 'totalDescuento' => $totalDescuento,
                         'diasNoTrabajados' => $diasNoTrabajados, 'empleado' => $empleado);
                     $i++;
                 }
             }
         }
+        asort($posicion);
+        $sueldos = array();
+
+        foreach ($posicion as $i => $pos) {
+            $sueldos[] = $resultado[$i];
+        }
         return $this->render('MTDSueldosSalariosBundle:Sueldos:emitirSueldos.html.twig', array('fechaRecibida' => $fechaRecibida, 'sueldos' => $sueldos));
     }
-    public function mostrarAction(Request $request)
+    public function mostrarAction(Request $request, $ano, $mes)
     {
         $em = $this->getDoctrine()->getManager();
         
         $fechaRecibida = $this->get('request')->request->get('sueldosSalarios');
-        $fecha = $this->transformarFecha($fechaRecibida);
+        if(!is_null($fechaRecibida)){
+            $fecha = $this->transformarFecha($fechaRecibida);
+        }else{
+            $fecha = "01-".$mes."-".$ano;
+            $fechaRecibida = $this->getNombreMes($mes)." ".$ano;
+        }
+        
         $contrataciones = $em->getRepository('MTDSeleccionBundle:Contratacion')->findAll();
-        $sueldos = array();
+        $resultado = array();
+        $posicion = array();
         $i = 0;
-        foreach($contrataciones as $contratacion){
+        foreach($contrataciones as $i => $contratacion){
             if($contratacion->getActivo() && $contratacion->getEmpleado()->getContratado()){
                 $empleado = $contratacion->getEmpleado();
-                $sueldo = $this->verificarSueldo($em, $fecha, $empleado);
+                $sueldo = $this->verificarSueldoEmitido($em, $fecha, $empleado);
                 if($sueldo){
                     $diasNoTrabajados = $sueldo->getPesosPsgh() + $sueldo->getPesosFalla();
                     $totalDescuento = $this->getTotalDescuento($em, $sueldo);
                     $totalPremios = $this->getTotalPremios($em, $sueldo);
-                    
-                    $sueldos[$i] = array('sueldo' => $sueldo, 'totalPremios' => $totalPremios, 'totalDescuento' => $totalDescuento,
+                    $posicion[$i] = $contratacion->getEmpleado()->getApellido().', '.$contratacion->getEmpleado()->getNombre();
+                    $resultado[$i] = array('sueldo' => $sueldo, 'totalPremios' => $totalPremios, 'totalDescuento' => $totalDescuento,
                         'diasNoTrabajados' => $diasNoTrabajados, 'empleado' => $empleado);
                     $i++;
                 }
             }
+        }
+        asort($posicion);
+        $sueldos = array();
+
+        foreach ($posicion as $i => $pos) {
+            $sueldos[] = $resultado[$i];
         }
         return $this->render('MTDSueldosSalariosBundle:Sueldos:muestraSueldos.html.twig', array('fechaRecibida' => $fechaRecibida, 'sueldos' => $sueldos));
     }
@@ -64,12 +83,12 @@ class MuestraSueldosController extends Controller
         $separa = explode(" ", $fecha);
         $año = $separa[1];
         $mesRecibido = $separa[0];
-        $mes = $this->getNombreMes($mesRecibido);
+        $mes = $this->getNumeroMes($mesRecibido);
         $fechaTransformada = "01-".$mes."-".$año;
         return $fechaTransformada;
     }
     
-    public function getNombreMes($mes) {
+    public function getNumeroMes($mes) {
         if($mes == "Enero"){
             return("01");
         }
@@ -108,6 +127,45 @@ class MuestraSueldosController extends Controller
         }
     }
     
+    public function getNombreMes($mes) {
+        if($mes == "01"){
+            return("Enero");
+        }
+        if($mes == "02"){
+            return("Febrero");
+        }
+        if($mes == "03"){
+            return("Marzo");
+        }
+        if($mes == "04"){
+            return("Abril");
+        }
+        if($mes == "05"){
+            return("Mayo");
+        }
+        if($mes == "06"){
+            return("Junio");
+        }
+        if($mes == "07"){
+            return("Julio");
+        }
+        if($mes == "08"){
+            return("Agosto");
+        }
+        if($mes == "09"){
+            return("Septiembre");
+        }
+        if($mes == "10"){
+            return("Octubre");
+        }
+        if($mes == "11"){
+            return("Noviembre");
+        }
+        if($mes == "12"){
+            return("Diciembre");
+        }
+    }
+    
     public function getTotalPremios($em, $sueldo) {
         $viatico = $em->getRepository('MTDSueldosSalariosBundle:Viatico')->findOneBy(
                 array('sueldo' => $sueldo));
@@ -136,29 +194,25 @@ class MuestraSueldosController extends Controller
     public function verificarSueldo($em, $fecha, $empleado) {
         $res = FALSE;
         $fechaDate = new \DateTime($fecha);
-        /*$separa = explode("-", $fechaDate->format('Y-m-d'));
-        $año = $separa[0];
-        $mes = $separa[1];
-        $fechaSueldo = $año."-".$mes."-01";
-        //$fechaNueva = new \DateTime($fechaSueldo);
-        
-        $sueldos = $empleado->getSueldos();
-        foreach($sueldos as $sueldo){
-            $fechaS = $sueldo->getFecha();
-            $fechaSu = $fechaS->format('Y-m-d');
-            $separa1 = explode("-", $fechaS->format('Y-m-d'));
-            $añoSueldo = $separa1[0];
-            $mesSueldo = $separa1[1];
-            $diaSueldo = $separa1[2];
-            $fechaNueva = $añoSueldo."-".$mesSueldo."-".$diaSueldo;
-            if($fechaSueldo == $fechaNueva){
-                $res = $sueldo;
-                break;
+        $sueldoModificado = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findOneBy(
+                array('empleado' => $empleado,'fecha' => $fechaDate, 'emitido' => true, 'modificado' => true));
+        if($sueldoModificado){
+            return $sueldoModificado;
+        }else{
+            $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findOneBy(
+                    array('empleado' => $empleado,'fecha' => $fechaDate));
+            if($sueldo){
+               $res = $sueldo;
             }
-        }*/
-                
+        }
+        return $res;
+    }
+    
+    public function verificarSueldoEmitido($em, $fecha, $empleado) {
+        $res = FALSE;
+        $fechaDate = new \DateTime($fecha);
         $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findOneBy(
-                array('empleado' => $empleado,'fecha' => $fechaDate));
+                array('empleado' => $empleado,'fecha' => $fechaDate, 'emitido' => true));
         if($sueldo){
            $res = $sueldo;
         }

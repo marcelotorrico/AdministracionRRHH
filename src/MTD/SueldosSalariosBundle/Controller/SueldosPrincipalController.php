@@ -154,6 +154,7 @@ class SueldosPrincipalController extends Controller
         $sueldo->setTotalGanado($totalGanado);
         $sueldo->setLiquidoPagable($totalGanado);
         $sueldo->setEmitido(FALSE);
+        $sueldo->setModificado(FALSE);
         $sueldo->addFallaAcumulada($fallaAcumulada);
         
         $viaticosPremios = new ViaticosPremiosController();
@@ -191,5 +192,26 @@ class SueldosPrincipalController extends Controller
             }
         }
         return $fechaIngreso;
+    }
+    
+    public function actualizarErrorSueldos($em, $empleado, $fecha, $tipoAsistencia, $asistencia) {
+        $separa = explode("/", $fecha);
+        $año = $separa[2];
+        $mes = $separa[0];
+        $dia = $separa[1];
+        $fechaSemana = $año."-".$mes."-".$dia;
+        $semanaSueldo = date("W", strtotime($fechaSemana));
+        $fechaSueldo = $año."-".$mes."-01";
+        $fechaActual = new \DateTime($fechaSueldo);
+        $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findOneBy(
+                array('empleado' => $empleado,'fecha' => $fechaActual, 'emitido' => true));
+        $copiaSueldo = clone $sueldo;
+        $copiaSueldo->setEmitido(FALSE);
+        $copiaSueldo->setModificado(TRUE);
+        $sueldo->setModificado(TRUE);
+        $asistencia->setCobrado(TRUE);
+        $em->persist($asistencia);
+        $em->persist($copiaSueldo);
+        $this->actualizarSueldo($em, $empleado, $mes, $sueldo, $tipoAsistencia, $año, $semanaSueldo, $asistencia);
     }
 }

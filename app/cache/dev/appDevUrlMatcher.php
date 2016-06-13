@@ -166,8 +166,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // mtd_sueldos_ver
-        if ($pathinfo === '/sueldosSalarios/ver') {
-            return array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\MuestraSueldosController::mostrarAction',  '_route' => 'mtd_sueldos_ver',);
+        if (0 === strpos($pathinfo, '/sueldosSalarios/ver') && preg_match('#^/sueldosSalarios/ver/(?P<ano>[^/]++)/(?P<mes>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_ver')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\MuestraSueldosController::mostrarAction',));
         }
 
         if (0 === strpos($pathinfo, '/descuento')) {
@@ -238,8 +238,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     }
 
                     // mtd_sueldos_emitirRegistro
-                    if (0 === strpos($pathinfo, '/sueldosSalarios/emitirRegistro') && preg_match('#^/sueldosSalarios/emitirRegistro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_emitirRegistro')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\EmitirSueldosController::registrarAction',));
+                    if ($pathinfo === '/sueldosSalarios/emitirRegistro') {
+                        return array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\EmitirSueldosController::registrarAction',  '_route' => 'mtd_sueldos_emitirRegistro',);
                     }
 
                 }
@@ -247,6 +247,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 // mtd_sueldos_mostrarEmpleado
                 if (0 === strpos($pathinfo, '/sueldosSalarios/mostrarEmpleado') && preg_match('#^/sueldosSalarios/mostrarEmpleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_mostrarEmpleado')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\EmpleadoSueldosController::mostrarAction',));
+                }
+
+                // mtd_sueldos_historial
+                if (0 === strpos($pathinfo, '/sueldosSalarios/historial') && preg_match('#^/sueldosSalarios/historial/(?P<id>[^/]++)/(?P<idEmpleado>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'mtd_sueldos_historial')), array (  '_controller' => 'MTD\\SueldosSalariosBundle\\Controller\\HistorialController::mostrarAction',));
                 }
 
             }

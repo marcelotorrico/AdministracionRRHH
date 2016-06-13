@@ -156,6 +156,13 @@ class Sueldos
     private $emitido;
     
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="modificado", nullable=true, type="boolean")
+     */
+    private $modificado;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="\MTD\SueldosSalariosBundle\Entity\Minimo", inversedBy="sueldo")
      * @ORM\JoinColumn(name="id_minimo", referencedColumnName="id")
      * @return integer
@@ -775,6 +782,30 @@ class Sueldos
     public function getEmitido()
     {
         return $this->emitido;
+    }
+    
+    /**
+     * Set modificado
+     *
+     * @param boolean $modificado
+     *
+     * @return Sueldos
+     */
+    public function setModificado($modificado)
+    {
+        $this->modificado = $modificado;
+
+        return $this;
+    }
+
+    /**
+     * Get modificado
+     *
+     * @return boolean
+     */
+    public function getModificado()
+    {
+        return $this->modificado;
     }
 }
 

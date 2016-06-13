@@ -9,6 +9,19 @@ use MTD\SueldosSalariosBundle\Controller\DiasNoTrabajadosController;
 
 class ActualizaSueldosController extends Controller
 {
+    public function crearHistorial($em, $empleado, $mes, $año) {
+        $fechaSueldo = $año."-".$mes."-01";
+        $fechaActual = new \DateTime($fechaSueldo);
+        $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findOneBy(
+                array('empleado' => $empleado,'fecha' => $fechaActual, 'emitido' => true));
+        $copiaSueldo = clone $sueldo;
+        $copiaSueldo->setEmitido(FALSE);
+        $copiaSueldo->setModificado(TRUE);
+        $sueldo->setModificado(TRUE);
+        $em->persist($copiaSueldo);
+        $em->persist($sueldo);
+    }
+    
     public function actualizarEliminaAsistencia($em, $asistencia, $empleado)
     {
         $psgh = $asistencia->getPsgh();

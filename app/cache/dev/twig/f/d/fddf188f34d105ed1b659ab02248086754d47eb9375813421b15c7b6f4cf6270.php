@@ -15,8 +15,8 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29 = $this->env->getExtension("native_profiler");
-        $__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29->enter($__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
+        $__internal_1b9be62779fcc269a846e3c54edfbabf3be48ff47224230be1200ad64d2e1eb3 = $this->env->getExtension("native_profiler");
+        $__internal_1b9be62779fcc269a846e3c54edfbabf3be48ff47224230be1200ad64d2e1eb3->enter($__internal_1b9be62779fcc269a846e3c54edfbabf3be48ff47224230be1200ad64d2e1eb3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "menu.html.twig"));
 
         // line 1
         echo "<div class=\"\">
@@ -228,7 +228,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 
                         <form action=\"";
         // line 145
-        echo $this->env->getExtension('routing')->getPath("mtd_sueldos_ver");
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("mtd_sueldos_ver", array("ano" => 7, "mes" => 7)), "html", null, true);
         echo "\" method=\"post\" role=\"form\" data-async data-target=\"#rating-modal\" class=\"text-left\">
                             <div class=\"row\">
                                 <div class=\"col-md-12\">
@@ -256,7 +256,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 </div>
 <div id=\"cuerpo\"></div>";
         
-        $__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29->leave($__internal_b6d45f4c4188e6186298051070e04a50876f44d57f84770c194ba57ad666eb29_prof);
+        $__internal_1b9be62779fcc269a846e3c54edfbabf3be48ff47224230be1200ad64d2e1eb3->leave($__internal_1b9be62779fcc269a846e3c54edfbabf3be48ff47224230be1200ad64d2e1eb3_prof);
 
     }
 
@@ -419,7 +419,7 @@ class __TwigTemplate_3a5a0f751dff9f6cc13f01464f401feca4d23c5bca37b04fcd306aed636
 /*                 <div class="modal-body">*/
 /*                     <div id="mainLugar">*/
 /* */
-/*                         <form action="{{ path('mtd_sueldos_ver') }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">*/
+/*                         <form action="{{ path('mtd_sueldos_ver', { 'ano': 7, 'mes': 7 }) }}" method="post" role="form" data-async data-target="#rating-modal" class="text-left">*/
 /*                             <div class="row">*/
 /*                                 <div class="col-md-12">*/
 /*                                     <div class ="form-group">*/

@@ -58,7 +58,7 @@ class InformacionAsistenciaController extends Controller
         $separa = explode(" ", $fecha);
         $año = $separa[1];
         $mesRecibido = $separa[0];
-        $mes = $muestraSueldos->getNombreMes($mesRecibido);
+        $mes = $muestraSueldos->getNumeroMes($mesRecibido);
         if($palabra == "mes"){
             return $mes;
         }else{

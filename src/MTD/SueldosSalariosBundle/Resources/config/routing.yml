@@ -3,7 +3,7 @@ mtd_sueldos_salarios_homepage:
     defaults: { _controller: MTDSueldosSalariosBundle:Default:index }
 
 mtd_sueldos_ver:
-    path:     /sueldosSalarios/ver
+    path:     /sueldosSalarios/ver/{ano}/{mes}
     defaults: {_controller: MTDSueldosSalariosBundle:MuestraSueldos:mostrar }
     
 mtd_descuentos_empleados:
@@ -61,9 +61,13 @@ mtd_sueldos_emitir:
     defaults: {_controller: MTDSueldosSalariosBundle:MuestraSueldos:emitir }
     
 mtd_sueldos_emitirRegistro:
-    path:     /sueldosSalarios/emitirRegistro/{id}
+    path:     /sueldosSalarios/emitirRegistro
     defaults: {_controller: MTDSueldosSalariosBundle:EmitirSueldos:registrar }
     
 mtd_sueldos_mostrarEmpleado:
     path:     /sueldosSalarios/mostrarEmpleado/{id}
     defaults: {_controller: MTDSueldosSalariosBundle:EmpleadoSueldos:mostrar }
+    
+mtd_sueldos_historial:
+    path:     /sueldosSalarios/historial/{id}/{idEmpleado}
+    defaults: {_controller: MTDSueldosSalariosBundle:Historial:mostrar }

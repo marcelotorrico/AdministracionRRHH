@@ -14,18 +14,25 @@ class RegistroAsistenciaAdministrativoController extends Controller
     
     public function mostrarAction(Request $request, $id)
     {
-        
         $em = $this->getDoctrine()->getManager();
-        
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
         $conf = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
-        
-        return $this->render('MTDAsistenciaBundle:Asistencia:registroAdministrativo.html.twig', array('empleado' => $empleado, "conf"=> $conf));
+        $sueldos = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findBy(
+                array('empleado' => $empleado,'emitido' => true));
+        $fechaSueldos = array();
+        foreach($sueldos as $sueldo){
+            $fecha = $sueldo->getFecha();
+            $separa = explode("-", $fecha->format('Y-m-d'));
+            $añoSueldo = $separa[0];
+            $mesSueldo = $separa[1];
+            $fechaSueldo = $añoSueldo.'-'.$mesSueldo.'-01';
+            array_push($fechaSueldos, $fechaSueldo);
+        }
+        return $this->render('MTDAsistenciaBundle:Asistencia:registroAdministrativo.html.twig', array('empleado' => $empleado, "conf"=> $conf, "fechaSueldos" => $fechaSueldos));
     }
     
     public function registrarAction(Request $request, $id)
     {
-        
         $em = $this->getDoctrine()->getManager();
         $asistencia = new Asistencia();
         $empleado = $em->getRepository('MTDReclutamientoBundle:Empleado')->find($id);
@@ -45,63 +52,58 @@ class RegistroAsistenciaAdministrativoController extends Controller
                 );
                 return $this->redirect($this->generateUrl('mtd_asistencia_empleado_administrativo', array('id'=> $id, true)));
             }else{
-                if(!$this->validarCobro($em, $fecha, $empleado)){
-                    $this->addFlash(
-                    'notice',
-                    'La asistencia no fue registrada porque el sueldo de este mes ya fue emitido.'
-                    );
-                    return $this->redirect($this->generateUrl('mtd_asistencia_empleado_administrativo', array('id'=> $id, true)));
+                $horaIngresoManana  = $this->get('request')->request->get('horaIngresoManana');
+                $horaSalidaManana   = $this->get('request')->request->get('horaSalidaManana');
+                $horaIngresoTarde   = $this->get('request')->request->get('horaIngresoTarde');
+                $horaSalidaTarde    = $this->get('request')->request->get('horaSalidaTarde');
+                $actividades        = $this->get('request')->request->get('actividades');
+                $totalHorasNormales = $this->get('request')->request->get('horasNormales');
+                $totalHorasExtras   = $this->get('request')->request->get('horasExtras');
+
+                $asistencia->setFecha(new \DateTime($fecha));
+                $asistencia->setHoraIngresoManana(new \DateTime($horaIngresoManana));
+                $asistencia->setHoraSalidaManana(new \DateTime($horaSalidaManana));
+                $asistencia->setHoraIngresoTarde(new \DateTime($horaIngresoTarde));
+                $asistencia->setHoraSalidaTarde(new \DateTime($horaSalidaTarde));
+                $asistencia->setActividad($actividades);
+                if($totalHorasNormales){
+                    $asistencia->setTotalHorasNormales($totalHorasNormales);
                 }else{
-                    $horaIngresoManana  = $this->get('request')->request->get('horaIngresoManana');
-                    $horaSalidaManana   = $this->get('request')->request->get('horaSalidaManana');
-                    $horaIngresoTarde   = $this->get('request')->request->get('horaIngresoTarde');
-                    $horaSalidaTarde    = $this->get('request')->request->get('horaSalidaTarde');
-                    $actividades        = $this->get('request')->request->get('actividades');
-                    $totalHorasNormales = $this->get('request')->request->get('horasNormales');
-                    $totalHorasExtras   = $this->get('request')->request->get('horasExtras');
-
-                    $asistencia->setFecha(new \DateTime($fecha));
-                    $asistencia->setHoraIngresoManana(new \DateTime($horaIngresoManana));
-                    $asistencia->setHoraSalidaManana(new \DateTime($horaSalidaManana));
-                    $asistencia->setHoraIngresoTarde(new \DateTime($horaIngresoTarde));
-                    $asistencia->setHoraSalidaTarde(new \DateTime($horaSalidaTarde));
-                    $asistencia->setActividad($actividades);
-                    if($totalHorasNormales){
-                        $asistencia->setTotalHorasNormales($totalHorasNormales);
-                    }else{
-                        $asistencia->setTotalHorasNormales(0);
-                    }
-                    if($totalHorasExtras){
-                        $asistencia->setTotalHorasExtras($totalHorasExtras);
-                    }else{
-                        $asistencia->setTotalHorasExtras(0);
-                    }
-                    $asistencia->setActivo("TRUE");
-                    $asistencia->setEmpleado($empleado);
-                    $asistencia->setFeriado("FALSE");
-
-                    $calculoSueldos = new CalculosSueldosController();
-                    $psgh = $calculoSueldos->getPsgh($em, "asistencia", $asistencia);
-                    $asistencia->setPsgh($psgh);
-                    $configuracion = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
-                    $asistencia->setConfiguracion($configuracion);
-                    $asistencia->setCobrado(FALSE);
-                    $em->persist($asistencia);
-                    $sueldosPrincipal = new SueldosPrincipalController();
-                    $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "asistencia", $asistencia);
-
-                    $this->addFlash(
-                        'notice',
-                        'La asistencia fue registrada correctamente'
-                    );
-
-                    $em->flush();
-
-                    $informacionAsistencia = new InformacionAsistenciaController();
-                    $mes = $informacionAsistencia->transformarFechaAsistencia($asistencia, "mes");
-                    $año = $informacionAsistencia->transformarFechaAsistencia($asistencia, "año");
-                    return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $id, 'ano'=> $año, 'mes'=> $mes)));
+                    $asistencia->setTotalHorasNormales(0);
                 }
+                if($totalHorasExtras){
+                    $asistencia->setTotalHorasExtras($totalHorasExtras);
+                }else{
+                    $asistencia->setTotalHorasExtras(0);
+                }
+                $asistencia->setActivo("TRUE");
+                $asistencia->setEmpleado($empleado);
+                $asistencia->setFeriado("FALSE");
+
+                $calculoSueldos = new CalculosSueldosController();
+                $psgh = $calculoSueldos->getPsgh($em, "asistencia", $asistencia);
+                $asistencia->setPsgh($psgh);
+                $configuracion = $em->getRepository('MTDAsistenciaBundle:Configuracion')->findOneBy(array('activo'=>'TRUE'));
+                $asistencia->setConfiguracion($configuracion);
+                $asistencia->setCobrado(FALSE);
+                $em->persist($asistencia);
+                $sueldosPrincipal = new SueldosPrincipalController();
+                if(!$this->validarCobro($em, $fecha, $empleado)){
+                    $sueldosPrincipal->actualizarErrorSueldos($em, $empleado, $fecha, "asistencia", $asistencia);
+                }else{
+                    $sueldosPrincipal->modificarSueldos($em, $fecha, $empleado, "asistencia", $asistencia);
+                }
+                $this->addFlash(
+                    'notice',
+                    'La asistencia fue registrada correctamente'
+                );
+
+                $em->flush();
+
+                $informacionAsistencia = new InformacionAsistenciaController();
+                $mes = $informacionAsistencia->transformarFechaAsistencia($asistencia, "mes");
+                $año = $informacionAsistencia->transformarFechaAsistencia($asistencia, "año");
+                return $this->redirect($this->generateUrl('mtd_asistencia_administrativo_mostrar', array('id'=> $id, 'ano'=> $año, 'mes'=> $mes)));
             }
         }
     }
@@ -143,8 +145,8 @@ class RegistroAsistenciaAdministrativoController extends Controller
         $fechaSueldo = $año."-".$mes."-01";
         $fechaActual = new \DateTime($fechaSueldo);
         $sueldo = $em->getRepository('MTDSueldosSalariosBundle:Sueldos')->findOneBy(
-                array('empleado' => $empleado,'fecha' => $fechaActual));
-        if($sueldo && $sueldo->getEmitido()){
+                array('empleado' => $empleado,'fecha' => $fechaActual, 'emitido' => true));
+        if($sueldo){
             $res = false;
         }
         return $res;
