@@ -8988,3 +8988,15 @@ a44ee9,::1,POST,http://localhost/AdministracionRRHH/web/app_dev.php/asistencia/r
 07bbb1,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/mostrarEmpleado/8,1465834123,,200
 af29ba,::1,POST,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/emitir,1465834160,,200
 9fd9ea,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/mostrarEmpleado/21,1465834164,,200
+7fef76,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/inicio,1465839389,,200
+4f9747,::1,POST,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/emitir,1465839899,,200
+2ac155,::1,POST,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/ver/7/7,1465842441,,200
+d0ae73,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/empleados/lista,1465842498,,200
+b33f1f,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/empleado/ver/7,1465842507,,200
+f8d056,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/mostrarEmpleado/7,1465842515,,200
+bf8cc9,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/mostrarEmpleado/7,1465843075,,200
+cc0a35,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/historial/106/7,1465843082,,200
+ed52ec,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/historial/106/7,1465843085,,200
+8b442f,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/empleados/lista/administrativos,1465843105,,200
+1cdfb2,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/empleado/ver/17,1465843113,,200
+eb3335,::1,GET,http://localhost/AdministracionRRHH/web/app_dev.php/sueldosSalarios/mostrarEmpleado/17,1465843118,,200
